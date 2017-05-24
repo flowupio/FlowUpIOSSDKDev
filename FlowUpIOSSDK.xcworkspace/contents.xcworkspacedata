@@ -5,6 +5,6 @@
       location = "group:Demo/Demo.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/sergio/Developer/FlowUpIOSSDK/SDK/SDK.xcodeproj">
+      location = "group:SDK/SDK.xcodeproj">
    </FileRef>
 </Workspace>
