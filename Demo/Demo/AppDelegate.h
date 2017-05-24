@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlowUp.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -7,8 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ReportApiClient.h"
+
+@class UIApplication;
 
 @interface FlowUp : NSObject
+
+- (instancetype)init NS_UNAVAILABLE;
+
++ (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 
 @end

@@ -19,14 +19,12 @@
 
 - (void)start
 {
-    float cpuUsage = self.cpuUsage;
-    NSLog(@"CPU: %f", cpuUsage);
+    // TODO
 }
 
 - (float)cpuUsage
 {
     NSArray *threads = [self threadsBasicInfo];
-    NSLog(@"Threads: %@", threads);
 
     float result = 0;
     for (NSValue *thread in threads) {
@@ -36,9 +34,7 @@
         result += cpuUsage / TH_USAGE_SCALE;
     }
 
-    NSLog(@"CPU usage: %f", result);
-
-    return result * 100;
+    return result;
 }
 
 - (NSArray *)threadsBasicInfo

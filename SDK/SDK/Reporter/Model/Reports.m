@@ -10,4 +10,25 @@
 
 @implementation Reports
 
+- (instancetype)initWithAppPackage:(NSString *)appPackage
+                  installationUuid:(NSString *)installationUuid
+                       deviceModel:(NSString *)deviceModel
+                     screenDensity:(NSString *)screenDensity
+                        screenSize:(NSString *)screenSize
+                     numberOfCores:(NSInteger)numberOfCores
+                               cpu:(CPUMetric *)cpu
+{
+    self = [super init];
+    if (self) {
+        _appPackage = appPackage;
+        _installationUuid = installationUuid;
+        _deviceModel = deviceModel;
+        _screenDensity = screenDensity;
+        _screenSize = screenSize;
+        _numberOfCores = numberOfCores;
+        _cpu = cpu;
+    }
+    return self;
+}
+
 @end

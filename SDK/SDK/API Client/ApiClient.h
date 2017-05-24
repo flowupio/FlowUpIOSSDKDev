@@ -13,6 +13,7 @@
 
 @property (readonly, nonatomic, strong) AFHTTPSessionManager *manager;
 
+- (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithManager:(AFHTTPSessionManager *)manager
                         baseUrl:(NSString *)baseUrl;
 

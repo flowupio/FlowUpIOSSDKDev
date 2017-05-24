@@ -23,12 +23,6 @@
             [self fib];
         });
     }];
-
-    [NSTimer scheduledTimerWithTimeInterval:0.1f repeats:YES block:^(NSTimer * _Nonnull timer) {
-        CPUUsageCollector *collector = [[CPUUsageCollector alloc] init];
-        float cpuUsage = collector.cpuUsage;
-        self.cpuUsageLabel.text = [NSString stringWithFormat:@"%.02f%%", cpuUsage];
-    }];
 }
 
 - (void)fib

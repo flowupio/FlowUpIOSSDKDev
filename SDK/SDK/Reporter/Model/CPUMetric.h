@@ -12,4 +12,7 @@
 
 @property (readonly, nonatomic) NSInteger cpuUsage;
 
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithCpuUsage:(NSInteger)cpuUsage;
+
 @end

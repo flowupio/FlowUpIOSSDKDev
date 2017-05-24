@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic, strong) AFHTTPRequestSerializer *serializer;
 
+- (instancetype)init NS_UNAVAILABLE;
 - (void)sendReports:(Reports *)reports;
 
 @end

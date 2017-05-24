@@ -10,4 +10,13 @@
 
 @implementation CPUMetric
 
+- (instancetype)initWithCpuUsage:(NSInteger)cpuUsage
+{
+    self = [super init];
+    if (self) {
+        _cpuUsage = cpuUsage;
+    }
+    return self;
+}
+
 @end

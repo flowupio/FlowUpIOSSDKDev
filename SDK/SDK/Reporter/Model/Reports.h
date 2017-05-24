@@ -16,7 +16,16 @@
 @property (readonly, nonatomic, copy) NSString *deviceModel;
 @property (readonly, nonatomic, copy) NSString *screenDensity;
 @property (readonly, nonatomic, copy) NSString *screenSize;
-@property (readonly, nonatomic, copy) NSString *numberOfCores;
+@property (readonly, nonatomic) NSInteger numberOfCores;
 @property (readonly, nonatomic, copy) CPUMetric *cpu;
+
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithAppPackage:(NSString *)appPackage
+                  installationUuid:(NSString *)installationUuid
+                       deviceModel:(NSString *)deviceModel
+                     screenDensity:(NSString *)screenDensity
+                        screenSize:(NSString *)screenSize
+                     numberOfCores:(NSInteger)numberOfCores
+                               cpu:(CPUMetric *)cpu;
 
 @end
