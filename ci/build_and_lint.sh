@@ -1,7 +1,7 @@
 #!/bin/bash
 
 command -v infer >/dev/null 2>&1 || { brew install infer; }
-command -v synx >/dev/null 2>&1 || { brew install synx; }
+command -v synx >/dev/null 2>&1 || { gem install synx; }
 
 synx Demo/Demo.xcodeproj
 synx SDK/SDK.xcodeproj
