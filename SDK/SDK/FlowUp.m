@@ -9,6 +9,7 @@
 #import "FlowUp.h"
 #import "CPUUsageCollector.h"
 #import "ReportApiClient.h"
+#import "AFNetworking.h"
 
 @interface FlowUp ()
 
@@ -59,7 +60,10 @@
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        _apiClient = [[ReportApiClient alloc] init];
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        _apiClient = [[ReportApiClient alloc] initWithManager:manager
+                                                      baseUrl:@"https://api.flowupapp.com"];
     });
 
     return _apiClient;

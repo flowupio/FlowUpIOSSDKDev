@@ -18,7 +18,7 @@
 		4978C07F1ED5E7E600148A4E /* CPUMetric.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C07D1ED5E7E600148A4E /* CPUMetric.m */; };
 		4978C0841ED5EC0100148A4E /* ApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0821ED5EC0100148A4E /* ApiClient.h */; };
 		4978C0851ED5EC0100148A4E /* ApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0831ED5EC0100148A4E /* ApiClient.m */; };
-		4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0861ED5EFCB00148A4E /* FlowUp.h */; };
+		4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0861ED5EFCB00148A4E /* FlowUp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0871ED5EFCB00148A4E /* FlowUp.m */; };
 		4983806F1ED48D6B003BCFB0 /* CPUUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983806E1ED48D6B003BCFB0 /* CPUUsageCollector.m */; };
 		498380751ED48F5C003BCFB0 /* Collector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806C1ED48D1E003BCFB0 /* Collector.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -488,7 +488,10 @@
 			baseConfigurationReference = 72868C35D70EF8DC403575B2 /* Pods-SDK.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 2Z9R68TU59;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -499,7 +502,10 @@
 			baseConfigurationReference = AD3D6E8A6BD0C180426F5809 /* Pods-SDK.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 2Z9R68TU59;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -515,6 +521,7 @@
 				4909E62A1ED5F17C0009FBA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		498380371ED48C7A003BCFB0 /* Build configuration list for PBXProject "SDK" */ = {
 			isa = XCConfigurationList;

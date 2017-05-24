@@ -14,13 +14,21 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - FlowUpIOSSDK (0.0.1):
+    - AFNetworking
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - FlowUpIOSSDK (from `SDK`)
+
+EXTERNAL SOURCES:
+  FlowUpIOSSDK:
+    :path: SDK
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  FlowUpIOSSDK: 24c346fb710f6c26858194ca7e9476ab62d39c42
 
-PODFILE CHECKSUM: cf4ce200f157cc066d097f72603f6755e263fa2d
+PODFILE CHECKSUM: cda3a02534dbcf5a7ae7d1a4d9f5f6b411335040
 
 COCOAPODS: 1.2.0
