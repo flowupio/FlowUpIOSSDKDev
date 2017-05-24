@@ -1,5 +1,5 @@
 //
-//  CPUMetric.h
+//  FlowUp.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 24/05/2017.
@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ReportApiClient.h"
 
-@interface CPUMetric : NSObject
-
-@property (readonly, nonatomic) NSInteger cpuUsage;
+@interface FlowUp : NSObject
 
 @end

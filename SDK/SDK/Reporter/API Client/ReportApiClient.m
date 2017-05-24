@@ -12,7 +12,7 @@
 
 - (void)sendReports:(Reports *)reports
 {
-    [self.manager POST:@""
+    [self.manager POST:[self urlStringWithEndpoint:@"report"]
             parameters:[self serializeReports:reports]
               progress:nil
                success:^(NSURLSessionDataTask *task, id responseObject) {

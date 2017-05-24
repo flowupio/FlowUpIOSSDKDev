@@ -12,9 +12,10 @@
 @interface ApiClient : NSObject
 
 @property (readonly, nonatomic, strong) AFHTTPSessionManager *manager;
-@property (readonly, nonatomic, copy) NSString *baseUrl;
 
 - (instancetype)initWithManager:(AFHTTPSessionManager *)manager
                         baseUrl:(NSString *)baseUrl;
+
+- (NSString *)urlStringWithEndpoint:(NSString *)endpoint;
 
 @end

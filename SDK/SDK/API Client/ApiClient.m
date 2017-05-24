@@ -8,6 +8,12 @@
 
 #import "ApiClient.h"
 
+@interface ApiClient ()
+
+@property (readonly, nonatomic, copy) NSString *baseUrl;
+
+@end
+
 @implementation ApiClient
 
 - (instancetype)initWithManager:(AFHTTPSessionManager *)manager
@@ -19,6 +25,11 @@
         _baseUrl = baseUrl;
     }
     return self;
+}
+
+- (NSString *)urlStringWithEndpoint:(NSString *)endpoint
+{
+    return [NSString stringWithFormat:@"%@/%@", self.baseUrl, endpoint];
 }
 
 @end
