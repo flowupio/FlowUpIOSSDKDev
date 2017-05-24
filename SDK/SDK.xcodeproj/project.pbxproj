@@ -64,7 +64,7 @@
 				4983806B1ED48D10003BCFB0 /* Collector */,
 			);
 			name = SDK;
-			path = IOSSDK;
+			path = SDK;
 			sourceTree = "<group>";
 		};
 		4983806B1ED48D10003BCFB0 /* Collector */ = {
@@ -106,7 +106,7 @@
 			dependencies = (
 			);
 			name = SDK;
-			productName = IOSSDK;
+			productName = SDK;
 			productReference = 4983803C1ED48C7A003BCFB0 /* libSDK.a */;
 			productType = "com.apple.product-type.library.static";
 		};

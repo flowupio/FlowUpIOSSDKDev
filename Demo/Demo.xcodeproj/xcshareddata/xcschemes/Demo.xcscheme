@@ -17,7 +17,7 @@
                BlueprintIdentifier = "4983803B1ED48C7A003BCFB0"
                BuildableName = "libSDK.a"
                BlueprintName = "SDK"
-               ReferencedContainer = "container:../IOSSDK/SDK.xcodeproj">
+               ReferencedContainer = "container:../SDK/SDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
