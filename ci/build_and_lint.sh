@@ -11,5 +11,5 @@ if [ -n "$(git status --porcelain)" ]; then
     exit -1
 fi
 
-infer run -- xcodebuild -workspace FlowUpIOSSDK.xcworkspace -scheme 'SDK' -destination 'platform=iOS Simulator,name=iPhone 6s Plus' clean build CODE_SIGN_IDENTITY=-
+infer run -- xcodebuild -workspace FlowUpIOSSDK.xcworkspace -scheme 'SDK' -destination 'platform=iOS Simulator,name=iPhone 6s Plus' clean build test CODE_SIGN_IDENTITY=-
 infer run -- xcodebuild -workspace FlowUpIOSSDK.xcworkspace -scheme 'Demo' -destination 'platform=iOS Simulator,name=iPhone 6s Plus' clean build CODE_SIGN_IDENTITY=-
