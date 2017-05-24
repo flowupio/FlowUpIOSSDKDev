@@ -36,7 +36,9 @@
         result += cpuUsage / TH_USAGE_SCALE;
     }
 
-    return result;
+    NSLog(@"CPU usage: %f", result);
+
+    return result * 100;
 }
 
 - (NSArray *)threadsBasicInfo
