@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "Reports.h"
 #import "AFNetworking.h"
+#import "ApiClient.h"
 
-@interface ReportApiClient : NSObject
+@interface ReportApiClient : ApiClient
 
 @property (readonly, nonatomic, strong) AFHTTPRequestSerializer *serializer;
 
-- (void)sendReports: (Reports *) reports;
+- (void)sendReports:(Reports *)reports;
 
 @end

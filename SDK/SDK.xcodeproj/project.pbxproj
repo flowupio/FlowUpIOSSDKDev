@@ -14,6 +14,8 @@
 		4978C07A1ED5E71400148A4E /* Reports.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0761ED5E71400148A4E /* Reports.m */; };
 		4978C07E1ED5E7E600148A4E /* CPUMetric.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C07C1ED5E7E600148A4E /* CPUMetric.h */; };
 		4978C07F1ED5E7E600148A4E /* CPUMetric.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C07D1ED5E7E600148A4E /* CPUMetric.m */; };
+		4978C0841ED5EC0100148A4E /* ApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0821ED5EC0100148A4E /* ApiClient.h */; };
+		4978C0851ED5EC0100148A4E /* ApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0831ED5EC0100148A4E /* ApiClient.m */; };
 		4983806F1ED48D6B003BCFB0 /* CPUUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983806E1ED48D6B003BCFB0 /* CPUUsageCollector.m */; };
 		498380751ED48F5C003BCFB0 /* Collector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806C1ED48D1E003BCFB0 /* Collector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		498380761ED48F5C003BCFB0 /* CPUUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* CPUUsageCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -38,6 +40,8 @@
 		4978C0761ED5E71400148A4E /* Reports.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reports.m; sourceTree = "<group>"; };
 		4978C07C1ED5E7E600148A4E /* CPUMetric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPUMetric.h; sourceTree = "<group>"; };
 		4978C07D1ED5E7E600148A4E /* CPUMetric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPUMetric.m; sourceTree = "<group>"; };
+		4978C0821ED5EC0100148A4E /* ApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiClient.h; sourceTree = "<group>"; };
+		4978C0831ED5EC0100148A4E /* ApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiClient.m; sourceTree = "<group>"; };
 		4983803C1ED48C7A003BCFB0 /* libSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4983806C1ED48D1E003BCFB0 /* Collector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Collector.h; sourceTree = "<group>"; };
 		4983806D1ED48D6B003BCFB0 /* CPUUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPUUsageCollector.h; sourceTree = "<group>"; };
@@ -62,9 +66,8 @@
 		4978C0641ED5C36800148A4E /* Reporter */ = {
 			isa = PBXGroup;
 			children = (
+				4978C0811ED5EBF100148A4E /* API Client */,
 				4978C07B1ED5E7D600148A4E /* Model */,
-				4978C0731ED5E71400148A4E /* ReportApiClient.h */,
-				4978C0741ED5E71400148A4E /* ReportApiClient.m */,
 			);
 			path = Reporter;
 			sourceTree = "<group>";
@@ -77,8 +80,27 @@
 				4978C0751ED5E71400148A4E /* Reports.h */,
 				4978C0761ED5E71400148A4E /* Reports.m */,
 			);
-			name = Model;
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4978C0801ED5EBE500148A4E /* API Client */ = {
+			isa = PBXGroup;
+			children = (
+				4978C0821ED5EC0100148A4E /* ApiClient.h */,
+				4978C0831ED5EC0100148A4E /* ApiClient.m */,
+			);
+			name = "API Client";
+			path = "API Client";
+			sourceTree = "<group>";
+		};
+		4978C0811ED5EBF100148A4E /* API Client */ = {
+			isa = PBXGroup;
+			children = (
+				4978C0731ED5E71400148A4E /* ReportApiClient.h */,
+				4978C0741ED5E71400148A4E /* ReportApiClient.m */,
+			);
+			name = "API Client";
+			path = "API Client";
 			sourceTree = "<group>";
 		};
 		498380331ED48C7A003BCFB0 = {
@@ -102,6 +124,7 @@
 		4983803E1ED48C7A003BCFB0 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				4978C0801ED5EBE500148A4E /* API Client */,
 				4983806B1ED48D10003BCFB0 /* Collector */,
 				4978C0641ED5C36800148A4E /* Reporter */,
 			);
@@ -142,6 +165,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4978C0841ED5EC0100148A4E /* ApiClient.h in Headers */,
 				4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */,
 				498380751ED48F5C003BCFB0 /* Collector.h in Headers */,
 				4978C0791ED5E71400148A4E /* Reports.h in Headers */,
@@ -247,6 +271,7 @@
 				4983806F1ED48D6B003BCFB0 /* CPUUsageCollector.m in Sources */,
 				4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */,
 				4978C07F1ED5E7E600148A4E /* CPUMetric.m in Sources */,
+				4978C0851ED5EC0100148A4E /* ApiClient.m in Sources */,
 				4978C07A1ED5E71400148A4E /* Reports.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
