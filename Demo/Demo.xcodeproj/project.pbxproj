@@ -46,8 +46,8 @@
 			isa = PBXGroup;
 			children = (
 				498380531ED48CD1003BCFB0 /* Demo */,
-				498380521ED48CD1003BCFB0 /* Products */,
 				498380701ED48E2B003BCFB0 /* Frameworks */,
+				498380521ED48CD1003BCFB0 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,15 +62,15 @@
 		498380531ED48CD1003BCFB0 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				498380541ED48CD1003BCFB0 /* Supporting Files */,
 				498380571ED48CD1003BCFB0 /* AppDelegate.h */,
 				498380581ED48CD1003BCFB0 /* AppDelegate.m */,
+				498380601ED48CD1003BCFB0 /* Assets.xcassets */,
+				498380651ED48CD1003BCFB0 /* Info.plist */,
+				498380621ED48CD1003BCFB0 /* LaunchScreen.storyboard */,
+				4983805D1ED48CD1003BCFB0 /* Main.storyboard */,
 				4983805A1ED48CD1003BCFB0 /* ViewController.h */,
 				4983805B1ED48CD1003BCFB0 /* ViewController.m */,
-				4983805D1ED48CD1003BCFB0 /* Main.storyboard */,
-				498380601ED48CD1003BCFB0 /* Assets.xcassets */,
-				498380621ED48CD1003BCFB0 /* LaunchScreen.storyboard */,
-				498380651ED48CD1003BCFB0 /* Info.plist */,
-				498380541ED48CD1003BCFB0 /* Supporting Files */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -81,6 +81,7 @@
 				498380551ED48CD1003BCFB0 /* main.m */,
 			);
 			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		498380701ED48E2B003BCFB0 /* Frameworks */ = {
@@ -178,6 +179,7 @@
 				4983805E1ED48CD1003BCFB0 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		498380621ED48CD1003BCFB0 /* LaunchScreen.storyboard */ = {
@@ -186,6 +188,7 @@
 				498380631ED48CD1003BCFB0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

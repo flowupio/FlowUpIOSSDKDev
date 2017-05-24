@@ -42,11 +42,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4978C0641ED5C36800148A4E /* Reporter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Reporter;
+			path = Reporter;
+			sourceTree = "<group>";
+		};
 		498380331ED48C7A003BCFB0 = {
 			isa = PBXGroup;
 			children = (
-				4983803E1ED48C7A003BCFB0 /* SDK */,
 				4983803D1ED48C7A003BCFB0 /* Products */,
+				4983803E1ED48C7A003BCFB0 /* SDK */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,19 +70,20 @@
 			isa = PBXGroup;
 			children = (
 				4983806B1ED48D10003BCFB0 /* Collector */,
+				4978C0641ED5C36800148A4E /* Reporter */,
 			);
-			name = SDK;
 			path = SDK;
 			sourceTree = "<group>";
 		};
 		4983806B1ED48D10003BCFB0 /* Collector */ = {
 			isa = PBXGroup;
 			children = (
-				4983806C1ED48D1E003BCFB0 /* Collector.h */,
 				4983806D1ED48D6B003BCFB0 /* CPUUsageCollector.h */,
 				4983806E1ED48D6B003BCFB0 /* CPUUsageCollector.m */,
+				4983806C1ED48D1E003BCFB0 /* Collector.h */,
 			);
 			name = Collector;
+			path = Collector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +291,7 @@
 				498380471ED48C7A003BCFB0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
