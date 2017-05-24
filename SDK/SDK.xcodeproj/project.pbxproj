@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		49021464D6F5526D2F51276C /* libPods-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A635D7B39C8E4A9C416BE063 /* libPods-SDK.a */; };
+		4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0731ED5E71400148A4E /* ReportApiClient.h */; };
+		4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0741ED5E71400148A4E /* ReportApiClient.m */; };
+		4978C0791ED5E71400148A4E /* Reports.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0751ED5E71400148A4E /* Reports.h */; };
+		4978C07A1ED5E71400148A4E /* Reports.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0761ED5E71400148A4E /* Reports.m */; };
+		4978C07E1ED5E7E600148A4E /* CPUMetric.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C07C1ED5E7E600148A4E /* CPUMetric.h */; };
+		4978C07F1ED5E7E600148A4E /* CPUMetric.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C07D1ED5E7E600148A4E /* CPUMetric.m */; };
 		4983806F1ED48D6B003BCFB0 /* CPUUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983806E1ED48D6B003BCFB0 /* CPUUsageCollector.m */; };
 		498380751ED48F5C003BCFB0 /* Collector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806C1ED48D1E003BCFB0 /* Collector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		498380761ED48F5C003BCFB0 /* CPUUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* CPUUsageCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,6 +32,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4978C0731ED5E71400148A4E /* ReportApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportApiClient.h; sourceTree = "<group>"; };
+		4978C0741ED5E71400148A4E /* ReportApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportApiClient.m; sourceTree = "<group>"; };
+		4978C0751ED5E71400148A4E /* Reports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reports.h; sourceTree = "<group>"; };
+		4978C0761ED5E71400148A4E /* Reports.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reports.m; sourceTree = "<group>"; };
+		4978C07C1ED5E7E600148A4E /* CPUMetric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPUMetric.h; sourceTree = "<group>"; };
+		4978C07D1ED5E7E600148A4E /* CPUMetric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPUMetric.m; sourceTree = "<group>"; };
 		4983803C1ED48C7A003BCFB0 /* libSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4983806C1ED48D1E003BCFB0 /* Collector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Collector.h; sourceTree = "<group>"; };
 		4983806D1ED48D6B003BCFB0 /* CPUUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPUUsageCollector.h; sourceTree = "<group>"; };
@@ -50,18 +62,32 @@
 		4978C0641ED5C36800148A4E /* Reporter */ = {
 			isa = PBXGroup;
 			children = (
+				4978C07B1ED5E7D600148A4E /* Model */,
+				4978C0731ED5E71400148A4E /* ReportApiClient.h */,
+				4978C0741ED5E71400148A4E /* ReportApiClient.m */,
 			);
-			name = Reporter;
 			path = Reporter;
+			sourceTree = "<group>";
+		};
+		4978C07B1ED5E7D600148A4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4978C07C1ED5E7E600148A4E /* CPUMetric.h */,
+				4978C07D1ED5E7E600148A4E /* CPUMetric.m */,
+				4978C0751ED5E71400148A4E /* Reports.h */,
+				4978C0761ED5E71400148A4E /* Reports.m */,
+			);
+			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		498380331ED48C7A003BCFB0 = {
 			isa = PBXGroup;
 			children = (
+				71E50B7189EC0D979241ECB1 /* Frameworks */,
+				724DB15A5A1C3057621E7E6F /* Pods */,
 				4983803D1ED48C7A003BCFB0 /* Products */,
 				4983803E1ED48C7A003BCFB0 /* SDK */,
-				724DB15A5A1C3057621E7E6F /* Pods */,
-				71E50B7189EC0D979241ECB1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,7 +115,6 @@
 				4983806E1ED48D6B003BCFB0 /* CPUUsageCollector.m */,
 				4983806C1ED48D1E003BCFB0 /* Collector.h */,
 			);
-			name = Collector;
 			path = Collector;
 			sourceTree = "<group>";
 		};
@@ -117,7 +142,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */,
 				498380751ED48F5C003BCFB0 /* Collector.h in Headers */,
+				4978C0791ED5E71400148A4E /* Reports.h in Headers */,
+				4978C07E1ED5E7E600148A4E /* CPUMetric.h in Headers */,
 				498380761ED48F5C003BCFB0 /* CPUUsageCollector.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +245,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4983806F1ED48D6B003BCFB0 /* CPUUsageCollector.m in Sources */,
+				4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */,
+				4978C07F1ED5E7E600148A4E /* CPUMetric.m in Sources */,
+				4978C07A1ED5E71400148A4E /* Reports.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
