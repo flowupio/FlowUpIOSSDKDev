@@ -50,8 +50,8 @@
 			children = (
 				498380531ED48CD1003BCFB0 /* Demo */,
 				498380701ED48E2B003BCFB0 /* Frameworks */,
-				498380521ED48CD1003BCFB0 /* Products */,
 				B8D9FA53EBCDE257A6268E58 /* Pods */,
+				498380521ED48CD1003BCFB0 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
