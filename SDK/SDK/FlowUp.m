@@ -38,7 +38,7 @@
                                                      screenDensity:@""
                                                         screenSize:@""
                                                      numberOfCores:4
-                                                               cpu:cpuMetric];
+                                                        cpuMetrics:@[cpuMetric]];
 
             [FlowUp.reportApiClient sendReports:reports];
         });
@@ -70,7 +70,7 @@
         _apiClient = [[ReportApiClient alloc] initWithManager:manager
                                                       baseUrl:@"https://api.flowupapp.com"];
     });
-
+    
     return _apiClient;
 }
 

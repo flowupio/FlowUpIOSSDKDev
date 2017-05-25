@@ -17,7 +17,7 @@
 @property (readonly, nonatomic, copy) NSString *screenDensity;
 @property (readonly, nonatomic, copy) NSString *screenSize;
 @property (readonly, nonatomic) NSInteger numberOfCores;
-@property (readonly, nonatomic, copy) CPUMetric *cpu;
+@property (readonly, nonatomic, copy) NSArray<CPUMetric *> *cpuMetrics;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithAppPackage:(NSString *)appPackage
@@ -26,6 +26,6 @@
                      screenDensity:(NSString *)screenDensity
                         screenSize:(NSString *)screenSize
                      numberOfCores:(NSInteger)numberOfCores
-                               cpu:(CPUMetric *)cpu;
+                        cpuMetrics:(NSArray<CPUMetric *> *)cpuMetrics;
 
 @end
