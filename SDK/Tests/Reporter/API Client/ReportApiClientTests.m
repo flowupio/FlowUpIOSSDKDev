@@ -10,6 +10,7 @@
 #import "ReportApiClient.h"
 #import "ApiClientTests.h"
 #import "NSDictionary+Matcheable.h"
+#import "Configuration.h"
 @import Nimble;
 @import Nocilla;
 
@@ -75,6 +76,18 @@ static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
 - (void)testUuidHeaderIsBeingSent {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
     withHeader(@"X-UUID", Uuid).
+    andReturn(200);
+
+    __block BOOL didSendReport = NO;
+    [self.reportApiClient sendReports:[self anyReports]
+                           completion:^(BOOL success) { didSendReport = success; }];
+
+    expect(didSendReport).toEventually(equal(YES));
+}
+
+- (void)testUserAgentHeaderIsBeingSent {
+    stubRequest(@"POST", @"https://www.testingflowup.com/report").
+    withHeader(@"User-Agent", [NSString stringWithFormat:@"FlowUpIOSSDK/%@", SDKVersion]).
     andReturn(200);
 
     __block BOOL didSendReport = NO;
