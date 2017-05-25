@@ -12,6 +12,8 @@
 #import "AFNetworking.h"
 #import "AFNetworkActivityLogger.h"
 
+static NSString *const FlowUpApiBaseUrl = @"https://api.flowupapp.com";
+
 @interface FlowUp ()
 
 + (CPUUsageCollector *)cpuUsageCollector;
@@ -66,7 +68,7 @@
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        _apiClient = [[ReportApiClient alloc] initWithBaseUrl:@"https://api.flowupapp.com"];
+        _apiClient = [[ReportApiClient alloc] initWithBaseUrl:FlowUpApiBaseUrl];
     });
     
     return _apiClient;
