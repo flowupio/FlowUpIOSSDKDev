@@ -10,12 +10,12 @@
 #import "Reports.h"
 #import "AFNetworking.h"
 #import "ApiClient.h"
+#import "Device.h"
 
 @interface ReportApiClient : ApiClient
 
-@property (readonly, nonatomic, strong) AFHTTPRequestSerializer *serializer;
-
 - (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithBaseUrl:(NSString *)baseUrl device:(Device *)device;
 
 - (void)sendReports:(Reports *)reports completion:(void (^)(BOOL))completion;
 

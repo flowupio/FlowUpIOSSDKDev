@@ -85,9 +85,9 @@
                                     cpuMetrics:@[[self anyCpuMetric]]];
 }
 
-- (CPUMetric *)anyCpuMetric
+- (CpuMetric *)anyCpuMetric
 {
-    return [[CPUMetric alloc] initWithTimestamp:1234
+    return [[CpuMetric alloc] initWithTimestamp:1234
                                  appVersionName:@"App Version Name"
                                       osVersion:@"OS Version"
                           isLowPowerModeEnabled:NO

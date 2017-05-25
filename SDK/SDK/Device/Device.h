@@ -20,6 +20,7 @@
 @property (readonly, nonatomic, copy) NSString *screenSize;
 @property (readonly, nonatomic) NSInteger numberOfCores;
 
+- (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithUuidGenerator:(UuidGenerator *)uuidGenerator;
 
 @end

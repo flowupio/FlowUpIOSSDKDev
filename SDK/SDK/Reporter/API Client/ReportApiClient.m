@@ -8,7 +8,23 @@
 
 #import "ReportApiClient.h"
 
+@interface ReportApiClient ()
+
+@property (readonly, nonatomic) Device *device;
+
+@end
+
 @implementation ReportApiClient
+
+- (instancetype)initWithBaseUrl:(NSString *)baseUrl device:(Device *)device
+{
+    self = [super initWithBaseUrl:baseUrl];
+    if (self) {
+        _device = device;
+    }
+    return self;
+
+}
 
 - (void)sendReports:(Reports *)reports completion:(void (^)(BOOL))completion
 {
@@ -41,10 +57,10 @@
     return serializedReports;
 }
 
-- (NSArray *)serializeCpuReports:(NSArray<CPUMetric *> *)cpuMetrics
+- (NSArray *)serializeCpuReports:(NSArray<CpuMetric *> *)cpuMetrics
 {
     NSMutableArray *cpuSerializedReports = [[NSMutableArray alloc] init];
-    for (CPUMetric *cpuMetric in cpuMetrics) {
+    for (CpuMetric *cpuMetric in cpuMetrics) {
         [cpuSerializedReports addObject:@{@"consumption": [NSNumber numberWithInt:cpuMetric.cpuUsage],
                                           @"timestamp": [NSNumber numberWithDouble:cpuMetric.timestamp],
                                           @"appVersionName": cpuMetric.appVersionName,

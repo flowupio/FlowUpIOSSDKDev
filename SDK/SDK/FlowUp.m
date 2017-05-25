@@ -7,7 +7,7 @@
 //
 
 #import "FlowUp.h"
-#import "CPUUsageCollector.h"
+#import "ReportScheduler.h"
 #import "ReportApiClient.h"
 #import "AFNetworking.h"
 #import "AFNetworkActivityLogger.h"
@@ -16,7 +16,7 @@ static NSString *const FlowUpApiBaseUrl = @"https://api.flowupapp.com";
 
 @interface FlowUp ()
 
-+ (CPUUsageCollector *)cpuUsageCollector;
++ (ReportScheduler *)reportScheduler;
 + (ReportApiClient *)reportApiClient;
 
 @end
@@ -25,41 +25,24 @@ static NSString *const FlowUpApiBaseUrl = @"https://api.flowupapp.com";
 
 + (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [NSTimer scheduledTimerWithTimeInterval:1.0f repeats:YES block:^(NSTimer * _Nonnull timer) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            float cpuUsage = FlowUp.cpuUsageCollector.cpuUsage;
-
-            CPUMetric *cpuMetric = [[CPUMetric alloc] initWithTimestamp:0
-                                                         appVersionName:@""
-                                                              osVersion:@""
-                                                  isLowPowerModeEnabled:NO
-                                                               cpuUsage:cpuUsage * 100];
-
-            Reports *reports = [[Reports alloc] initWithAppPackage:@""
-                                                  installationUuid:@""
-                                                       deviceModel:@""
-                                                     screenDensity:@""
-                                                        screenSize:@""
-                                                     numberOfCores:4
-                                                        cpuMetrics:@[cpuMetric]];
-
-            [FlowUp.reportApiClient sendReports:reports completion:^(BOOL success) {}];
-        });
-    }];
+    [[FlowUp reportScheduler] start];
 }
 
 #pragma mark - Properties
 
-+ (CPUUsageCollector *)cpuUsageCollector
++ (ReportScheduler *)reportScheduler
 {
-    static CPUUsageCollector *_collector;
+    static ReportScheduler *_scheduler;
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        _collector = [[CPUUsageCollector alloc] init];
+        UuidGenerator *uuidGenerator = [[UuidGenerator alloc] init];
+        Device *device = [[Device alloc] initWithUuidGenerator:uuidGenerator];
+        _scheduler = [[ReportScheduler alloc] initWithDevice:device
+                                             reportApiClient:[FlowUp reportApiClient]];
     });
 
-    return _collector;
+    return _scheduler;
 }
 
 + (ReportApiClient *)reportApiClient
