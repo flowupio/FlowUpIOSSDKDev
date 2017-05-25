@@ -31,6 +31,19 @@
     return [[NSBundle mainBundle] bundleIdentifier];
 }
 
+- (NSString *)appVersionName
+{
+    return [NSString stringWithFormat:@"%@ [%@]",
+            [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
+            [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
+
+}
+
+- (NSString *)osVersion
+{
+    return [[UIDevice currentDevice] systemVersion];
+}
+
 - (NSString *)installationUuid
 {
     return self.uuidGenerator.uuid;
@@ -61,6 +74,11 @@
 - (NSInteger)numberOfCores
 {
     return [[NSProcessInfo processInfo] processorCount];
+}
+
+- (BOOL)isIsLowPowerModeEnabled
+{
+    return [[NSProcessInfo processInfo] isLowPowerModeEnabled];
 }
 
 @end
