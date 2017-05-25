@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
+#import "AFNetworkActivityLogger.h"
 
 @interface ApiClient : NSObject
 
 @property (readonly, nonatomic, strong) AFHTTPSessionManager *manager;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithManager:(AFHTTPSessionManager *)manager
-                        baseUrl:(NSString *)baseUrl;
+- (instancetype)initWithBaseUrl:(NSString *)baseUrl;
 
 - (NSString *)urlStringWithEndpoint:(NSString *)endpoint;
 

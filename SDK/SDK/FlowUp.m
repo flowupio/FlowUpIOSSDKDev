@@ -66,17 +66,7 @@
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        [[AFNetworkActivityLogger sharedLogger] startLogging];
-        for (id<AFNetworkActivityLoggerProtocol> logger in [[AFNetworkActivityLogger sharedLogger] loggers]) {
-            [logger setLevel:AFLoggerLevelDebug];
-        }
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        [manager.requestSerializer setValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
-        _apiClient = [[ReportApiClient alloc] initWithManager:manager
-                                                      baseUrl:@"https://api.flowupapp.com"];
+        _apiClient = [[ReportApiClient alloc] initWithBaseUrl:@"https://api.flowupapp.com"];
     });
     
     return _apiClient;

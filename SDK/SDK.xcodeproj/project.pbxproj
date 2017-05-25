@@ -13,6 +13,7 @@
 		4909F5A71ED6C10100825B0B /* Metric.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5A51ED6C10100825B0B /* Metric.h */; };
 		4909F5A81ED6C10100825B0B /* Metric.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5A61ED6C10100825B0B /* Metric.m */; };
 		4909F5AC1ED6E50D00825B0B /* reportApiRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = 4909F5AB1ED6E50D00825B0B /* reportApiRequest.json */; };
+		4909F5B01ED6EBC600825B0B /* ApiClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5AF1ED6EBC600825B0B /* ApiClientTests.m */; };
 		4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0731ED5E71400148A4E /* ReportApiClient.h */; };
 		4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0741ED5E71400148A4E /* ReportApiClient.m */; };
 		4978C0791ED5E71400148A4E /* Reports.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0751ED5E71400148A4E /* Reports.h */; };
@@ -59,6 +60,8 @@
 		4909F5A51ED6C10100825B0B /* Metric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Metric.h; sourceTree = "<group>"; };
 		4909F5A61ED6C10100825B0B /* Metric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Metric.m; sourceTree = "<group>"; };
 		4909F5AB1ED6E50D00825B0B /* reportApiRequest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reportApiRequest.json; sourceTree = "<group>"; };
+		4909F5AE1ED6EBC600825B0B /* ApiClientTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiClientTests.h; sourceTree = "<group>"; };
+		4909F5AF1ED6EBC600825B0B /* ApiClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiClientTests.m; sourceTree = "<group>"; };
 		4978C0731ED5E71400148A4E /* ReportApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportApiClient.h; sourceTree = "<group>"; };
 		4978C0741ED5E71400148A4E /* ReportApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportApiClient.m; sourceTree = "<group>"; };
 		4978C0751ED5E71400148A4E /* Reports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reports.h; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				4909F5A91ED6E1EA00825B0B /* Reporter */,
+				4909F5AE1ED6EBC600825B0B /* ApiClientTests.h */,
+				4909F5AF1ED6EBC600825B0B /* ApiClientTests.m */,
 				4909E6251ED5F17C0009FBA9 /* Info.plist */,
 			);
 			path = Tests;
@@ -125,6 +130,14 @@
 				4909F5AB1ED6E50D00825B0B /* reportApiRequest.json */,
 			);
 			path = "API Client";
+			sourceTree = "<group>";
+		};
+		4909F5AD1ED6EA9C00825B0B /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Infrastructure;
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 		4978C0641ED5C36800148A4E /* Reporter */ = {
@@ -192,6 +205,7 @@
 			children = (
 				4978C0801ED5EBE500148A4E /* API Client */,
 				4983806B1ED48D10003BCFB0 /* Collector */,
+				4909F5AD1ED6EA9C00825B0B /* Infrastructure */,
 				4978C0641ED5C36800148A4E /* Reporter */,
 				4978C0861ED5EFCB00148A4E /* FlowUp.h */,
 				4978C0871ED5EFCB00148A4E /* FlowUp.m */,
@@ -297,7 +311,7 @@
 		498380341ED48C7A003BCFB0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = flowup;
 				TargetAttributes = {
 					4909E6201ED5F17C0009FBA9 = {
@@ -425,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4909E6241ED5F17C0009FBA9 /* ReportApiClientTests.m in Sources */,
+				4909F5B01ED6EBC600825B0B /* ApiClientTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +472,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AF4BB7C2B5DD8F731BC3FF28 /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = 2Z9R68TU59;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -471,6 +487,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A38916CCADBAE09EDE316A98 /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = 2Z9R68TU59;
 				INFOPLIST_FILE = Tests/Info.plist;

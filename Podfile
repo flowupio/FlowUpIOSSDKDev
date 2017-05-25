@@ -1,5 +1,6 @@
 workspace 'FlowUpIOSSDK'
 platform :ios, '7.0'
+inhibit_all_warnings!
 
 target 'Demo' do
   project 'Demo/Demo.xcodeproj'

@@ -8,10 +8,11 @@
 
 #import <XCTest/XCTest.h>
 #import "ReportApiClient.h"
+#import "ApiClientTests.h"
 @import Nimble;
 @import Nocilla;
 
-@interface ReportApiClientTests : XCTestCase
+@interface ReportApiClientTests : ApiClientTests
 
 @property (readwrite, nonatomic) ReportApiClient *reportApiClient;
 
@@ -45,7 +46,7 @@
 
 - (void)testContentTypeJsonHeaderIsBeingSent {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
-    withHeader(@"Content-Type", @"application/json").
+    withHeader(@"Content-Type", @"application/json; charset=utf-8").
     andReturn(200);
 
     __block BOOL didSendReport = NO;
@@ -57,7 +58,6 @@
 
 - (void)testBodyIsBeingSent {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
-    withHeader(@"Content-Type", @"application/json").
     withBody([self fromFileWithName:@"reportApiRequest" fileExtension:@"json"]).
     andReturn(200);
 
@@ -70,12 +70,7 @@
 
 - (ReportApiClient *)reportApiClient
 {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [manager.requestSerializer setValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
-    return [[ReportApiClient alloc] initWithManager:manager baseUrl:@"https://www.testingflowup.com"];
+    return [[ReportApiClient alloc] initWithBaseUrl:@"https://www.testingflowup.com"];
 }
 
 - (Reports *)anyReports
