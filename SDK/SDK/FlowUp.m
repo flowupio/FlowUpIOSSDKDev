@@ -26,7 +26,12 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             float cpuUsage = FlowUp.cpuUsageCollector.cpuUsage;
 
-            CPUMetric *cpuMetric = [[CPUMetric alloc] initWithCpuUsage:cpuUsage * 100];
+            CPUMetric *cpuMetric = [[CPUMetric alloc] initWithTimestamp:0
+                                                         appVersionName:@""
+                                                              osVersion:@""
+                                                  isLowPowerModeEnabled:NO
+                                                               cpuUsage:cpuUsage * 100];
+
             Reports *reports = [[Reports alloc] initWithAppPackage:@""
                                                   installationUuid:@""
                                                        deviceModel:@""

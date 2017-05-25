@@ -10,6 +10,8 @@
 		49021464D6F5526D2F51276C /* libPods-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A635D7B39C8E4A9C416BE063 /* libPods-SDK.a */; };
 		4909E6241ED5F17C0009FBA9 /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909E6231ED5F17C0009FBA9 /* Tests.m */; };
 		4909E6261ED5F17C0009FBA9 /* libSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4983803C1ED48C7A003BCFB0 /* libSDK.a */; };
+		4909F5A71ED6C10100825B0B /* Metric.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5A51ED6C10100825B0B /* Metric.h */; };
+		4909F5A81ED6C10100825B0B /* Metric.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5A61ED6C10100825B0B /* Metric.m */; };
 		4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0731ED5E71400148A4E /* ReportApiClient.h */; };
 		4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0741ED5E71400148A4E /* ReportApiClient.m */; };
 		4978C0791ED5E71400148A4E /* Reports.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0751ED5E71400148A4E /* Reports.h */; };
@@ -51,6 +53,8 @@
 		4909E6211ED5F17C0009FBA9 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4909E6231ED5F17C0009FBA9 /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		4909E6251ED5F17C0009FBA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4909F5A51ED6C10100825B0B /* Metric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Metric.h; sourceTree = "<group>"; };
+		4909F5A61ED6C10100825B0B /* Metric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Metric.m; sourceTree = "<group>"; };
 		4978C0731ED5E71400148A4E /* ReportApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportApiClient.h; sourceTree = "<group>"; };
 		4978C0741ED5E71400148A4E /* ReportApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportApiClient.m; sourceTree = "<group>"; };
 		4978C0751ED5E71400148A4E /* Reports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reports.h; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 			children = (
 				4978C07C1ED5E7E600148A4E /* CPUMetric.h */,
 				4978C07D1ED5E7E600148A4E /* CPUMetric.m */,
+				4909F5A51ED6C10100825B0B /* Metric.h */,
+				4909F5A61ED6C10100825B0B /* Metric.m */,
 				4978C0751ED5E71400148A4E /* Reports.h */,
 				4978C0761ED5E71400148A4E /* Reports.m */,
 			);
@@ -205,6 +211,7 @@
 			files = (
 				4978C0841ED5EC0100148A4E /* ApiClient.h in Headers */,
 				4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */,
+				4909F5A71ED6C10100825B0B /* Metric.h in Headers */,
 				498380751ED48F5C003BCFB0 /* Collector.h in Headers */,
 				4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */,
 				4978C0791ED5E71400148A4E /* Reports.h in Headers */,
@@ -349,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4909F5A81ED6C10100825B0B /* Metric.m in Sources */,
 				4983806F1ED48D6B003BCFB0 /* CPUUsageCollector.m in Sources */,
 				4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */,
 				4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */,

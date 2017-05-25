@@ -10,9 +10,16 @@
 
 @implementation CPUMetric
 
-- (instancetype)initWithCpuUsage:(NSInteger)cpuUsage
+- (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
+                   appVersionName:(NSString *)appVersionName
+                        osVersion:(NSString *)osVersion
+            isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled
+                         cpuUsage:(NSInteger)cpuUsage
 {
-    self = [super init];
+    self = [super initWithTimestamp:timestamp
+                     appVersionName:appVersionName
+                          osVersion:osVersion
+              isLowPowerModeEnabled:isLowPowerModeEnabled];
     if (self) {
         _cpuUsage = cpuUsage;
     }
