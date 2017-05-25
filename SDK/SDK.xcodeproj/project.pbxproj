@@ -22,6 +22,8 @@
 		4909F5C11ED70E9E00825B0B /* UuidGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5BF1ED70E9E00825B0B /* UuidGenerator.m */; };
 		4909F5C51ED713AA00825B0B /* ReportScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5C31ED713AA00825B0B /* ReportScheduler.h */; };
 		4909F5C61ED713AA00825B0B /* ReportScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5C41ED713AA00825B0B /* ReportScheduler.m */; };
+		4909F5CE1ED72A1D00825B0B /* DIContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5CC1ED72A1D00825B0B /* DIContainer.h */; };
+		4909F5CF1ED72A1D00825B0B /* DIContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5CD1ED72A1D00825B0B /* DIContainer.m */; };
 		4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0731ED5E71400148A4E /* ReportApiClient.h */; };
 		4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0741ED5E71400148A4E /* ReportApiClient.m */; };
 		4978C0791ED5E71400148A4E /* Reports.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0751ED5E71400148A4E /* Reports.h */; };
@@ -79,7 +81,9 @@
 		4909F5BF1ED70E9E00825B0B /* UuidGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UuidGenerator.m; sourceTree = "<group>"; };
 		4909F5C31ED713AA00825B0B /* ReportScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportScheduler.h; sourceTree = "<group>"; };
 		4909F5C41ED713AA00825B0B /* ReportScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportScheduler.m; sourceTree = "<group>"; };
-		4909F5CB1ED726AB00825B0B /* SDKVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDKVersion.h; sourceTree = "<group>"; };
+		4909F5CB1ED726AB00825B0B /* Configuration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
+		4909F5CC1ED72A1D00825B0B /* DIContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIContainer.h; sourceTree = "<group>"; };
+		4909F5CD1ED72A1D00825B0B /* DIContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIContainer.m; sourceTree = "<group>"; };
 		4978C0731ED5E71400148A4E /* ReportApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportApiClient.h; sourceTree = "<group>"; };
 		4978C0741ED5E71400148A4E /* ReportApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportApiClient.m; sourceTree = "<group>"; };
 		4978C0751ED5E71400148A4E /* Reports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reports.h; sourceTree = "<group>"; };
@@ -153,7 +157,9 @@
 		4909F5AD1ED6EA9C00825B0B /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				4909F5CB1ED726AB00825B0B /* SDKVersion.h */,
+				4909F5CB1ED726AB00825B0B /* Configuration.h */,
+				4909F5CC1ED72A1D00825B0B /* DIContainer.h */,
+				4909F5CD1ED72A1D00825B0B /* DIContainer.m */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -309,6 +315,7 @@
 				4909F5BC1ED7090E00825B0B /* Device.h in Headers */,
 				4978C0791ED5E71400148A4E /* Reports.h in Headers */,
 				4978C07E1ED5E7E600148A4E /* CpuMetric.h in Headers */,
+				4909F5CE1ED72A1D00825B0B /* DIContainer.h in Headers */,
 				498380761ED48F5C003BCFB0 /* CpuUsageCollector.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +518,7 @@
 				4978C07F1ED5E7E600148A4E /* CpuMetric.m in Sources */,
 				4978C0851ED5EC0100148A4E /* ApiClient.m in Sources */,
 				4978C07A1ED5E71400148A4E /* Reports.m in Sources */,
+				4909F5CF1ED72A1D00825B0B /* DIContainer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

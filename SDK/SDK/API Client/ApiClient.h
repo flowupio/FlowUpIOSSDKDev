@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 #import "AFNetworkActivityLogger.h"
-#import "SDKVersion.h"
+#import "Configuration.h"
 
 @interface ApiClient : NSObject
 
