@@ -8,7 +8,23 @@
 
 #import "Device.h"
 
+@interface Device ()
+
+@property (readonly, nonatomic) UuidGenerator *uuidGenerator;
+
+@end
+
 @implementation Device
+
+- (instancetype)initWithUuidGenerator:(UuidGenerator *)uuidGenerator
+{
+    self = [super init];
+    if (self) {
+        _uuidGenerator = uuidGenerator;
+    }
+    return self;
+
+}
 
 - (NSString *)appPackage
 {
@@ -17,7 +33,7 @@
 
 - (NSString *)installationUuid
 {
-    return @"";
+    return self.uuidGenerator.uuid;
 }
 
 - (NSString *)deviceModel

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <sys/utsname.h>
+#import "UuidGenerator.h"
 
 @interface Device : NSObject
 
@@ -18,5 +19,7 @@
 @property (readonly, nonatomic, copy) NSString *screenDensity;
 @property (readonly, nonatomic, copy) NSString *screenSize;
 @property (readonly, nonatomic) NSInteger numberOfCores;
+
+- (instancetype)initWithUuidGenerator:(UuidGenerator *)uuidGenerator;
 
 @end

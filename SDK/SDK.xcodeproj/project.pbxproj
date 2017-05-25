@@ -18,6 +18,8 @@
 		4909F5B71ED7076800825B0B /* NSDictionary+Matcheable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5B61ED7076800825B0B /* NSDictionary+Matcheable.m */; };
 		4909F5BC1ED7090E00825B0B /* Device.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5BA1ED7090E00825B0B /* Device.h */; };
 		4909F5BD1ED7090E00825B0B /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5BB1ED7090E00825B0B /* Device.m */; };
+		4909F5C01ED70E9E00825B0B /* UuidGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5BE1ED70E9E00825B0B /* UuidGenerator.h */; };
+		4909F5C11ED70E9E00825B0B /* UuidGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5BF1ED70E9E00825B0B /* UuidGenerator.m */; };
 		4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0731ED5E71400148A4E /* ReportApiClient.h */; };
 		4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0741ED5E71400148A4E /* ReportApiClient.m */; };
 		4978C0791ED5E71400148A4E /* Reports.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0751ED5E71400148A4E /* Reports.h */; };
@@ -71,6 +73,8 @@
 		4909F5B61ED7076800825B0B /* NSDictionary+Matcheable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Matcheable.m"; sourceTree = "<group>"; };
 		4909F5BA1ED7090E00825B0B /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		4909F5BB1ED7090E00825B0B /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
+		4909F5BE1ED70E9E00825B0B /* UuidGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UuidGenerator.h; sourceTree = "<group>"; };
+		4909F5BF1ED70E9E00825B0B /* UuidGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UuidGenerator.m; sourceTree = "<group>"; };
 		4978C0731ED5E71400148A4E /* ReportApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportApiClient.h; sourceTree = "<group>"; };
 		4978C0741ED5E71400148A4E /* ReportApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportApiClient.m; sourceTree = "<group>"; };
 		4978C0751ED5E71400148A4E /* Reports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reports.h; sourceTree = "<group>"; };
@@ -164,8 +168,9 @@
 			children = (
 				4909F5BA1ED7090E00825B0B /* Device.h */,
 				4909F5BB1ED7090E00825B0B /* Device.m */,
+				4909F5BE1ED70E9E00825B0B /* UuidGenerator.h */,
+				4909F5BF1ED70E9E00825B0B /* UuidGenerator.m */,
 			);
-			name = Device;
 			path = Device;
 			sourceTree = "<group>";
 		};
@@ -282,6 +287,7 @@
 				4978C0841ED5EC0100148A4E /* ApiClient.h in Headers */,
 				4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */,
 				4909F5A71ED6C10100825B0B /* Metric.h in Headers */,
+				4909F5C01ED70E9E00825B0B /* UuidGenerator.h in Headers */,
 				4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */,
 				4909F5BC1ED7090E00825B0B /* Device.h in Headers */,
 				4978C0791ED5E71400148A4E /* Reports.h in Headers */,
@@ -479,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4909F5A81ED6C10100825B0B /* Metric.m in Sources */,
+				4909F5C11ED70E9E00825B0B /* UuidGenerator.m in Sources */,
 				4983806F1ED48D6B003BCFB0 /* CPUUsageCollector.m in Sources */,
 				4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */,
 				4909F5BD1ED7090E00825B0B /* Device.m in Sources */,
