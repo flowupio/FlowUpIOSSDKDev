@@ -10,6 +10,8 @@
 #import "CPUUsageCollector.h"
 #import "ReportApiClient.h"
 #import "AFNetworking.h"
+#import "AFNetworkActivityLogger.h"
+#import "AFNetworkActivityLoggerProtocol.h"
 
 @interface FlowUp ()
 
@@ -66,6 +68,11 @@
 
     dispatch_once(&onceToken, ^{
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [[AFNetworkActivityLogger sharedLogger] startLogging];
+        for (id<AFNetworkActivityLoggerProtocol> logger in [[AFNetworkActivityLogger sharedLogger] loggers]) {
+            [logger setLevel:AFLoggerLevelDebug];
+        }
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
         [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         _apiClient = [[ReportApiClient alloc] initWithManager:manager
                                                       baseUrl:@"https://api.flowupapp.com"];

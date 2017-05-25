@@ -1,4 +1,6 @@
 PODS:
+  - AFNetworkActivityLogger (3.0.0):
+    - AFNetworking/NSURLSession (~> 3.0)
   - AFNetworking (3.1.0):
     - AFNetworking/NSURLSession (= 3.1.0)
     - AFNetworking/Reachability (= 3.1.0)
@@ -15,20 +17,31 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - FlowUpIOSSDK (0.0.1):
+    - AFNetworkActivityLogger
     - AFNetworking
 
 DEPENDENCIES:
+  - AFNetworkActivityLogger (from `https://github.com/AFNetworking/AFNetworkActivityLogger.git`, branch `3_0_0`)
   - AFNetworking (~> 3.1.0)
   - FlowUpIOSSDK (from `SDK`)
 
 EXTERNAL SOURCES:
+  AFNetworkActivityLogger:
+    :branch: '3_0_0'
+    :git: https://github.com/AFNetworking/AFNetworkActivityLogger.git
   FlowUpIOSSDK:
     :path: SDK
 
-SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  FlowUpIOSSDK: 24c346fb710f6c26858194ca7e9476ab62d39c42
+CHECKOUT OPTIONS:
+  AFNetworkActivityLogger:
+    :commit: abc565fe804f210dfda3b028c9a64e7c32e44600
+    :git: https://github.com/AFNetworking/AFNetworkActivityLogger.git
 
-PODFILE CHECKSUM: cda3a02534dbcf5a7ae7d1a4d9f5f6b411335040
+SPEC CHECKSUMS:
+  AFNetworkActivityLogger: e77f68d014becb33c4306a23f56a64906ff72670
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  FlowUpIOSSDK: 4d3a32c46b6b9ef491bc8569be13cddb88466ee0
+
+PODFILE CHECKSUM: aa57b8cb545a5a5ed25328ef2b17e3079adaa186
 
 COCOAPODS: 1.2.0

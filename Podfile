@@ -9,4 +9,5 @@ end
 target 'SDK' do
   project 'SDK/SDK.xcodeproj'
   pod 'AFNetworking', '~> 3.1.0'
+  pod 'AFNetworkActivityLogger', :git => 'https://github.com/AFNetworking/AFNetworkActivityLogger.git', :branch => '3_0_0'
 end

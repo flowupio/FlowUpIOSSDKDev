@@ -16,10 +16,8 @@
             parameters:[self serializeReports:reports]
               progress:nil
                success:^(NSURLSessionDataTask *task, id responseObject) {
-                   NSLog(@"Request success: %@", responseObject);
                }
                failure:^(NSURLSessionDataTask *task, NSError *error) {
-                   NSLog(@"Request error: %@", error);
                }];
 }
 
