@@ -10,6 +10,23 @@
 
 @implementation DIContainer
 
++ (CollectorScheduler *)collectorScheduler
+{
+    static CollectorScheduler *_scheduler;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        _scheduler = [[CollectorScheduler alloc] init];
+    });
+
+    return _scheduler;
+}
+
++ (CpuUsageCollector *)cpuUsageCollector
+{
+    return [[CpuUsageCollector alloc] init];
+}
+
 + (ReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey
 {
     static ReportScheduler *_scheduler;

@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "ReportScheduler.h"
+#import "CollectorScheduler.h"
 #import "ReportApiClient.h"
 #import "Configuration.h"
 
 @interface DIContainer : NSObject
 
++ (CollectorScheduler *)collectorScheduler;
++ (CpuUsageCollector *)cpuUsageCollector;
 + (ReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey;
 
 @end

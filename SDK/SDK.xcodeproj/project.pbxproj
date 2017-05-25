@@ -26,6 +26,8 @@
 		4909F5CF1ED72A1D00825B0B /* DIContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5CD1ED72A1D00825B0B /* DIContainer.m */; };
 		4909F5D31ED73AA900825B0B /* TimeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5D11ED73AA900825B0B /* TimeProvider.h */; };
 		4909F5D41ED73AA900825B0B /* TimeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5D21ED73AA900825B0B /* TimeProvider.m */; };
+		4909F5D71ED742DA00825B0B /* CollectorScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5D51ED742DA00825B0B /* CollectorScheduler.h */; };
+		4909F5D81ED742DA00825B0B /* CollectorScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5D61ED742DA00825B0B /* CollectorScheduler.m */; };
 		4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0731ED5E71400148A4E /* ReportApiClient.h */; };
 		4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0741ED5E71400148A4E /* ReportApiClient.m */; };
 		4978C0791ED5E71400148A4E /* Reports.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0751ED5E71400148A4E /* Reports.h */; };
@@ -88,6 +90,9 @@
 		4909F5CD1ED72A1D00825B0B /* DIContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIContainer.m; sourceTree = "<group>"; };
 		4909F5D11ED73AA900825B0B /* TimeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeProvider.h; sourceTree = "<group>"; };
 		4909F5D21ED73AA900825B0B /* TimeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeProvider.m; sourceTree = "<group>"; };
+		4909F5D51ED742DA00825B0B /* CollectorScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectorScheduler.h; sourceTree = "<group>"; };
+		4909F5D61ED742DA00825B0B /* CollectorScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectorScheduler.m; sourceTree = "<group>"; };
+		4909F5D91ED748CB00825B0B /* Collector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Collector.h; sourceTree = "<group>"; };
 		4978C0731ED5E71400148A4E /* ReportApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportApiClient.h; sourceTree = "<group>"; };
 		4978C0741ED5E71400148A4E /* ReportApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportApiClient.m; sourceTree = "<group>"; };
 		4978C0751ED5E71400148A4E /* Reports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reports.h; sourceTree = "<group>"; };
@@ -193,6 +198,8 @@
 		4909F5C21ED7139800825B0B /* Scheduler */ = {
 			isa = PBXGroup;
 			children = (
+				4909F5D51ED742DA00825B0B /* CollectorScheduler.h */,
+				4909F5D61ED742DA00825B0B /* CollectorScheduler.m */,
 				4909F5C31ED713AA00825B0B /* ReportScheduler.h */,
 				4909F5C41ED713AA00825B0B /* ReportScheduler.m */,
 			);
@@ -287,6 +294,7 @@
 		4983806B1ED48D10003BCFB0 /* Collector */ = {
 			isa = PBXGroup;
 			children = (
+				4909F5D91ED748CB00825B0B /* Collector.h */,
 				4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */,
 				4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */,
 			);
@@ -328,6 +336,7 @@
 				4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */,
 				4909F5BC1ED7090E00825B0B /* Device.h in Headers */,
 				4909F5D31ED73AA900825B0B /* TimeProvider.h in Headers */,
+				4909F5D71ED742DA00825B0B /* CollectorScheduler.h in Headers */,
 				4978C0791ED5E71400148A4E /* Reports.h in Headers */,
 				4978C07E1ED5E7E600148A4E /* CpuMetric.h in Headers */,
 				4909F5CE1ED72A1D00825B0B /* DIContainer.h in Headers */,
@@ -529,6 +538,7 @@
 				4983806F1ED48D6B003BCFB0 /* CpuUsageCollector.m in Sources */,
 				4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */,
 				4909F5BD1ED7090E00825B0B /* Device.m in Sources */,
+				4909F5D81ED742DA00825B0B /* CollectorScheduler.m in Sources */,
 				4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */,
 				4978C07F1ED5E7E600148A4E /* CpuMetric.m in Sources */,
 				4909F5D41ED73AA900825B0B /* TimeProvider.m in Sources */,

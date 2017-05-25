@@ -12,8 +12,9 @@
 #include <mach/mach.h>
 #include <mach/processor_info.h>
 #include <mach/mach_host.h>
+#import "Collector.h"
 
-@interface CpuUsageCollector : NSObject
+@interface CpuUsageCollector : NSObject <Collector>
 
 @property (readonly, nonatomic) float cpuUsage;
 

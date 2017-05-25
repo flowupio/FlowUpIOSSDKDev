@@ -17,6 +17,11 @@
     return self;
 }
 
+- (void)collect
+{
+    NSLog(@"Collecting CPU");
+}
+
 - (float)cpuUsage
 {
     NSArray *threads = [self threadsBasicInfo];

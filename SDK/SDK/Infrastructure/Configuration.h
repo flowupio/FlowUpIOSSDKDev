@@ -9,6 +9,7 @@
 #ifndef Configuration_h
 #define Configuration_h
 
+static NSTimeInterval SamplingTimeInterval = 10;
 static NSString *const SDKVersion = @"0.0.1";
 static NSString *const ApiBaseUrl = @"https://api.flowupapp.com";
 
