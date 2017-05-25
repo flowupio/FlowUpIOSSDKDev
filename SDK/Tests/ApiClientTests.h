@@ -10,6 +10,6 @@
 
 @interface ApiClientTests : XCTestCase
 
-- (NSString *)fromFileWithName:(NSString *)fileName fileExtension:(NSString *)fileExtension;
+- (NSDictionary *)fromJsonFileWithName:(NSString *)fileName;
 
 @end

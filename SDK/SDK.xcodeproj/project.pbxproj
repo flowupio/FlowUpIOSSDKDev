@@ -14,6 +14,8 @@
 		4909F5A81ED6C10100825B0B /* Metric.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5A61ED6C10100825B0B /* Metric.m */; };
 		4909F5AC1ED6E50D00825B0B /* reportApiRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = 4909F5AB1ED6E50D00825B0B /* reportApiRequest.json */; };
 		4909F5B01ED6EBC600825B0B /* ApiClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5AF1ED6EBC600825B0B /* ApiClientTests.m */; };
+		4909F5B41ED7040600825B0B /* JsonMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5B31ED7040600825B0B /* JsonMatcher.m */; };
+		4909F5B71ED7076800825B0B /* NSDictionary+Matcheable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5B61ED7076800825B0B /* NSDictionary+Matcheable.m */; };
 		4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0731ED5E71400148A4E /* ReportApiClient.h */; };
 		4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0741ED5E71400148A4E /* ReportApiClient.m */; };
 		4978C0791ED5E71400148A4E /* Reports.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0751ED5E71400148A4E /* Reports.h */; };
@@ -62,6 +64,10 @@
 		4909F5AB1ED6E50D00825B0B /* reportApiRequest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reportApiRequest.json; sourceTree = "<group>"; };
 		4909F5AE1ED6EBC600825B0B /* ApiClientTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiClientTests.h; sourceTree = "<group>"; };
 		4909F5AF1ED6EBC600825B0B /* ApiClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiClientTests.m; sourceTree = "<group>"; };
+		4909F5B21ED7040600825B0B /* JsonMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonMatcher.h; sourceTree = "<group>"; };
+		4909F5B31ED7040600825B0B /* JsonMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonMatcher.m; sourceTree = "<group>"; };
+		4909F5B51ED7076800825B0B /* NSDictionary+Matcheable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Matcheable.h"; sourceTree = "<group>"; };
+		4909F5B61ED7076800825B0B /* NSDictionary+Matcheable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Matcheable.m"; sourceTree = "<group>"; };
 		4978C0731ED5E71400148A4E /* ReportApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportApiClient.h; sourceTree = "<group>"; };
 		4978C0741ED5E71400148A4E /* ReportApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportApiClient.m; sourceTree = "<group>"; };
 		4978C0751ED5E71400148A4E /* Reports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reports.h; sourceTree = "<group>"; };
@@ -107,6 +113,7 @@
 		4909E6221ED5F17C0009FBA9 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				4909F5B81ED7084A00825B0B /* Nocilla */,
 				4909F5A91ED6E1EA00825B0B /* Reporter */,
 				4909F5AE1ED6EBC600825B0B /* ApiClientTests.h */,
 				4909F5AF1ED6EBC600825B0B /* ApiClientTests.m */,
@@ -136,8 +143,19 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Infrastructure;
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		4909F5B81ED7084A00825B0B /* Nocilla */ = {
+			isa = PBXGroup;
+			children = (
+				4909F5B21ED7040600825B0B /* JsonMatcher.h */,
+				4909F5B31ED7040600825B0B /* JsonMatcher.m */,
+				4909F5B51ED7076800825B0B /* NSDictionary+Matcheable.h */,
+				4909F5B61ED7076800825B0B /* NSDictionary+Matcheable.m */,
+			);
+			name = Nocilla;
+			path = Nocilla;
 			sourceTree = "<group>";
 		};
 		4978C0641ED5C36800148A4E /* Reporter */ = {
@@ -438,6 +456,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4909F5B71ED7076800825B0B /* NSDictionary+Matcheable.m in Sources */,
+				4909F5B41ED7040600825B0B /* JsonMatcher.m in Sources */,
 				4909E6241ED5F17C0009FBA9 /* ReportApiClientTests.m in Sources */,
 				4909F5B01ED6EBC600825B0B /* ApiClientTests.m in Sources */,
 			);

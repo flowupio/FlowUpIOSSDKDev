@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "ReportApiClient.h"
 #import "ApiClientTests.h"
+#import "NSDictionary+Matcheable.h"
 @import Nimble;
 @import Nocilla;
 
@@ -58,7 +59,7 @@
 
 - (void)testBodyIsBeingSent {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
-    withBody([self fromFileWithName:@"reportApiRequest" fileExtension:@"json"]).
+    withBody([self fromJsonFileWithName:@"reportApiRequest"]).
     andReturn(200);
 
     __block BOOL didSendReport = NO;
@@ -91,16 +92,6 @@
                                       osVersion:@"OS Version"
                           isLowPowerModeEnabled:NO
                                        cpuUsage:23];
-}
-
-- (NSString *)fromFileWithName:(NSString *)fileName fileExtension:(NSString *)fileExtension
-{
-    NSBundle *bundle = [NSBundle bundleForClass:self.classForCoder];
-    NSString *path = [bundle pathForResource:fileName ofType:fileExtension];
-    return [[NSString stringWithContentsOfFile:path
-                                      encoding:NSUTF8StringEncoding
-                                         error:nil]
-            stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 @end

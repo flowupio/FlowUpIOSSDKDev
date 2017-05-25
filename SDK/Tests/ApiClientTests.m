@@ -10,14 +10,12 @@
 
 @implementation ApiClientTests
 
-- (NSString *)fromFileWithName:(NSString *)fileName fileExtension:(NSString *)fileExtension
+- (NSDictionary *)fromJsonFileWithName:(NSString *)fileName
 {
     NSBundle *bundle = [NSBundle bundleForClass:self.classForCoder];
-    NSString *path = [bundle pathForResource:fileName ofType:fileExtension];
-    return [[NSString stringWithContentsOfFile:path
-                                      encoding:NSUTF8StringEncoding
-                                         error:nil]
-            stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *path = [bundle pathForResource:fileName ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:path options:0 error:nil];
+    return [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 }
 
 @end
