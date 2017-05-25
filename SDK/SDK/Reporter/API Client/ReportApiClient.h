@@ -15,7 +15,6 @@
 @interface ReportApiClient : ApiClient
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithBaseUrl:(NSString *)baseUrl device:(Device *)device;
 
 - (void)sendReports:(Reports *)reports completion:(void (^)(BOOL))completion;
 

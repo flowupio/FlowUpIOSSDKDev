@@ -8,23 +8,7 @@
 
 #import "ReportApiClient.h"
 
-@interface ReportApiClient ()
-
-@property (readonly, nonatomic) Device *device;
-
-@end
-
 @implementation ReportApiClient
-
-- (instancetype)initWithBaseUrl:(NSString *)baseUrl device:(Device *)device
-{
-    self = [super initWithBaseUrl:baseUrl];
-    if (self) {
-        _device = device;
-    }
-    return self;
-
-}
 
 - (void)sendReports:(Reports *)reports completion:(void (^)(BOOL))completion
 {
