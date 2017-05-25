@@ -27,7 +27,6 @@
 		4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0861ED5EFCB00148A4E /* FlowUp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0871ED5EFCB00148A4E /* FlowUp.m */; };
 		4983806F1ED48D6B003BCFB0 /* CPUUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983806E1ED48D6B003BCFB0 /* CPUUsageCollector.m */; };
-		498380751ED48F5C003BCFB0 /* Collector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806C1ED48D1E003BCFB0 /* Collector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		498380761ED48F5C003BCFB0 /* CPUUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* CPUUsageCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB17F9F44D210DA36877F0A1 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F782FFAC96EACD8B18099F /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -79,7 +78,6 @@
 		4978C0861ED5EFCB00148A4E /* FlowUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowUp.h; sourceTree = "<group>"; };
 		4978C0871ED5EFCB00148A4E /* FlowUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowUp.m; sourceTree = "<group>"; };
 		4983803C1ED48C7A003BCFB0 /* libSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4983806C1ED48D1E003BCFB0 /* Collector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Collector.h; sourceTree = "<group>"; };
 		4983806D1ED48D6B003BCFB0 /* CPUUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPUUsageCollector.h; sourceTree = "<group>"; };
 		4983806E1ED48D6B003BCFB0 /* CPUUsageCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPUUsageCollector.m; sourceTree = "<group>"; };
 		72868C35D70EF8DC403575B2 /* Pods-SDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SDK/Pods-SDK.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 				4909F5B51ED7076800825B0B /* NSDictionary+Matcheable.h */,
 				4909F5B61ED7076800825B0B /* NSDictionary+Matcheable.m */,
 			);
-			name = Nocilla;
 			path = Nocilla;
 			sourceTree = "<group>";
 		};
@@ -236,7 +233,6 @@
 			children = (
 				4983806D1ED48D6B003BCFB0 /* CPUUsageCollector.h */,
 				4983806E1ED48D6B003BCFB0 /* CPUUsageCollector.m */,
-				4983806C1ED48D1E003BCFB0 /* Collector.h */,
 			);
 			path = Collector;
 			sourceTree = "<group>";
@@ -271,7 +267,6 @@
 				4978C0841ED5EC0100148A4E /* ApiClient.h in Headers */,
 				4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */,
 				4909F5A71ED6C10100825B0B /* Metric.h in Headers */,
-				498380751ED48F5C003BCFB0 /* Collector.h in Headers */,
 				4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */,
 				4978C0791ED5E71400148A4E /* Reports.h in Headers */,
 				4978C07E1ED5E7E600148A4E /* CPUMetric.h in Headers */,

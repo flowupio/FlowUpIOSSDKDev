@@ -17,11 +17,6 @@
     return self;
 }
 
-- (void)start
-{
-    // TODO
-}
-
 - (float)cpuUsage
 {
     NSArray *threads = [self threadsBasicInfo];
