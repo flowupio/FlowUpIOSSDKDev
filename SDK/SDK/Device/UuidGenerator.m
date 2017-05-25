@@ -8,7 +8,7 @@
 
 #import "UuidGenerator.h"
 
-static NSString *const uuidKey = @"FlowUp.UUID";
+static NSString *const UuidKey = @"FlowUp.UUID";
 
 @implementation UuidGenerator
 
@@ -18,17 +18,17 @@ static NSString *const uuidKey = @"FlowUp.UUID";
         [self storeUuid:[[NSUUID UUID] UUIDString]];
     }
 
-    return [[NSUserDefaults standardUserDefaults] stringForKey:uuidKey];
+    return [[NSUserDefaults standardUserDefaults] stringForKey:UuidKey];
 }
 
 - (BOOL)hasStoredUuid
 {
-    return [[NSUserDefaults standardUserDefaults] stringForKey:uuidKey] != nil;
+    return [[NSUserDefaults standardUserDefaults] stringForKey:UuidKey] != nil;
 }
 
 - (void)storeUuid:(NSString *)uuid
 {
-    [[NSUserDefaults standardUserDefaults] setValue:uuid forKey:uuidKey];
+    [[NSUserDefaults standardUserDefaults] setValue:uuid forKey:UuidKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
