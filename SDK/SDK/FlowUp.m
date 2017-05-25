@@ -23,8 +23,11 @@ static NSString *const FlowUpApiBaseUrl = @"https://api.flowupapp.com";
 
 @implementation FlowUp
 
-+ (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+static NSString *_apiKey;
+
++ (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions apiKey:(NSString *)apiKey
 {
+    _apiKey = apiKey;
     [[FlowUp reportScheduler] start];
 }
 
@@ -51,7 +54,10 @@ static NSString *const FlowUpApiBaseUrl = @"https://api.flowupapp.com";
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        _apiClient = [[ReportApiClient alloc] initWithBaseUrl:FlowUpApiBaseUrl];
+        UuidGenerator *uuidGenerator = [[UuidGenerator alloc] init];
+        _apiClient = [[ReportApiClient alloc] initWithBaseUrl:FlowUpApiBaseUrl
+                                                       apiKey:_apiKey
+                                                         uuid:uuidGenerator.uuid];
     });
     
     return _apiClient;

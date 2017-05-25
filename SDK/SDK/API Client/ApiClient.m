@@ -17,10 +17,12 @@
 @implementation ApiClient
 
 - (instancetype)initWithBaseUrl:(NSString *)baseUrl
+                         apiKey:(NSString *)apiKey
+                           uuid:(NSString *)uuid
 {
     self = [super init];
     if (self) {
-        _manager = [self sessionManager];
+        _manager = [self sessionManagerWithApiKey:apiKey uuid:uuid];
         _baseUrl = baseUrl;
     }
     return self;
@@ -31,7 +33,7 @@
     return [NSString stringWithFormat:@"%@/%@", self.baseUrl, endpoint];
 }
 
-- (AFHTTPSessionManager *)sessionManager
+- (AFHTTPSessionManager *)sessionManagerWithApiKey:(NSString *)apiKey uuid:(NSString *)uuid
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [[AFNetworkActivityLogger sharedLogger] startLogging];
@@ -42,7 +44,15 @@
     [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [manager.requestSerializer setValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
+    [manager.requestSerializer setValue:[self userAgent] forHTTPHeaderField:@"User-Agent"];
+    [manager.requestSerializer setValue:uuid forHTTPHeaderField:@"X-UUID"];
+    [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"X-Api-Key"];
     return manager;
+}
+
+- (NSString *)userAgent
+{
+    return [NSString stringWithFormat:@"FlowUpIOSSDK/%@", SDKVersion];
 }
 
 @end
