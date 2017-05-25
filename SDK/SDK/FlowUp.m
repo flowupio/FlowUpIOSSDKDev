@@ -41,7 +41,7 @@
                                                      numberOfCores:4
                                                         cpuMetrics:@[cpuMetric]];
 
-            [FlowUp.reportApiClient sendReports:reports];
+            [FlowUp.reportApiClient sendReports:reports completion:^(BOOL success) {}];
         });
     }];
 }
@@ -72,9 +72,9 @@
             [logger setLevel:AFLoggerLevelDebug];
         }
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-        manager.responseSerializer.acceptableContentTypes = [[NSSet alloc] initWithObjects:@"application/json", @"text/plain", nil];
+        [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [manager.requestSerializer setValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
         _apiClient = [[ReportApiClient alloc] initWithManager:manager
                                                       baseUrl:@"https://api.flowupapp.com"];
     });

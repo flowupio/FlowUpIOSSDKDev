@@ -10,14 +10,16 @@
 
 @implementation ReportApiClient
 
-- (void)sendReports:(Reports *)reports
+- (void)sendReports:(Reports *)reports completion:(void (^)(BOOL))completion
 {
     [self.manager POST:[self urlStringWithEndpoint:@"report"]
             parameters:[self serializeReports:reports]
               progress:nil
                success:^(NSURLSessionDataTask *task, id responseObject) {
+                   completion(YES);
                }
                failure:^(NSURLSessionDataTask *task, NSError *error) {
+                   completion(NO);
                }];
 }
 

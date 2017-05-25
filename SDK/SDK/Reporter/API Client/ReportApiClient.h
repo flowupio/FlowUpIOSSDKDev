@@ -17,6 +17,6 @@
 
 - (instancetype)init NS_UNAVAILABLE;
 
-- (void)sendReports:(Reports *)reports;
+- (void)sendReports:(Reports *)reports completion:(void (^)(BOOL))completion;
 
 @end
