@@ -11,7 +11,6 @@
 #import "ReportApiClient.h"
 #import "AFNetworking.h"
 #import "AFNetworkActivityLogger.h"
-#import "AFNetworkActivityLoggerProtocol.h"
 
 @interface FlowUp ()
 
@@ -74,6 +73,8 @@
         }
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+        manager.responseSerializer.acceptableContentTypes = [[NSSet alloc] initWithObjects:@"application/json", @"text/plain", nil];
         _apiClient = [[ReportApiClient alloc] initWithManager:manager
                                                       baseUrl:@"https://api.flowupapp.com"];
     });
