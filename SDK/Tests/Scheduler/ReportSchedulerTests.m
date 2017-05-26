@@ -8,11 +8,15 @@
 
 #import <XCTest/XCTest.h>
 #import "ReportScheduler.h"
-#import "ApiClientTests.h"
-#import "Configuration.h"
-@import Nimble;
-@import Nocilla;
-@import OCMockito;
+#import "CpuMetricMother.h"
+#import <Nimble/Nimble.h>
+#import <OCHamcrest/OCHamcrest.h>
+#import <OCMockito/OCMockito.h>
+@import Nimble.Swift;
+
+static NSTimeInterval const Now = 123;
+static NSTimeInterval const RightAfterNow = Now + 1;
+static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenReportsTimeInterval + 1;
 
 @interface ReportSchedulerTests : XCTestCase
 
@@ -35,6 +39,63 @@
     self.scheduler = [self reportScheduler];
 }
 
+- (void)testScheduler_WontReport_IfNoMetrics
+{
+    [self.scheduler start];
+
+    [verifyCount(self.apiClient, never()) sendReports:anything() completion:anything()];
+}
+
+- (void)testScheduler_WontReport_IfNotEnoughTimeSinceLastReport
+{
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+    [self.scheduler start];
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+    [self givenNotEnoughTimePassedToReport];
+    [self.scheduler start];
+
+    [verifyCount(self.apiClient, times(1)) sendReports:anything() completion:anything()];
+}
+
+- (void)testScheduler_Reports_IfItsTheFirstTime
+{
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+
+    [self.scheduler start];
+
+    [verify(self.apiClient) sendReports:anything() completion:anything()];
+}
+
+- (void)testScheduler_Reports_IfThereAreMetricsAndHasPassedEnoughTimeSinceLastReport
+{
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+    [self.scheduler start];
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+    [self givenEnoughTimePassedToReport];
+    [self.scheduler start];
+
+    [verifyCount(self.apiClient, times(2)) sendReports:anything() completion:anything()];
+}
+
+- (void)testScheduler_RemovesMetrics_IfTheyHaveBeenSuccessfullyReported
+{
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+
+    [self.scheduler start];
+
+    expect(self.storage.hasReports).to(equal(NO));
+}
+
+- (void)givenNotEnoughTimePassedToReport
+{
+    [given([self.time now]) willReturnInt: RightAfterNow];
+}
+
+- (void)givenEnoughTimePassedToReport
+{
+    [given([self.time now]) willReturnInt: LongTimeSinceNow];
+}
+
 - (MetricsStorage *)metricsStorage
 {
     return [[MetricsStorage alloc] init];
@@ -52,7 +113,9 @@
 
 - (TimeProvider *)timeProvider
 {
-    return mock([TimeProvider class]);
+    TimeProvider *timeProvider = mock([TimeProvider class]);
+    [given([timeProvider now]) willReturnInt: Now];
+    return timeProvider;
 }
 
 - (ReportScheduler *)reportScheduler
