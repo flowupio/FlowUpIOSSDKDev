@@ -12,6 +12,7 @@
 #import "TimeIntervalUnits.h"
 
 static NSTimeInterval SamplingTimeInterval = 10;
+static NSTimeInterval ReportSchedulerFirstReportDelayTimeInterval = 15;
 static NSTimeInterval ReportSchedulerReportingTimeInterval = 15;
 static NSTimeInterval ReportSchedulerTimeBetweenReportsTimeInterval = MINUTES(5);
 static NSUInteger MaxNumberOfReportsPerRequest = 898;
