@@ -19,9 +19,7 @@
 - (instancetype)initWithMetricsStorage:(MetricsStorage *)metricsStorage
                        reportApiClient:(ReportApiClient *)reportApiClient
                                 device:(Device *)device
-                                  time:(TimeProvider *)time
-          firstReportDelayTimeInterval:(NSTimeInterval)firstReportDelayTimeInterval
-                 reportingTimeInterval:(NSTimeInterval) reportingTimeInterval;
+                                  time:(TimeProvider *)time;
 
 - (void)start;
 - (void)reportMetrics;

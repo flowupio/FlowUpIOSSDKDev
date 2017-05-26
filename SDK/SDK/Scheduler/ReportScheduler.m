@@ -16,8 +16,6 @@ static NSTimeInterval const NeverReported = -1;
 @property (readonly, nonatomic) ReportApiClient *reportApiClient;
 @property (readonly, nonatomic) Device *device;
 @property (readonly, nonatomic) TimeProvider *time;
-@property (readonly, nonatomic) NSTimeInterval firstReportDelayTimeInterval;
-@property (readonly, nonatomic) NSTimeInterval reportingTimeInterval;
 @property (readwrite, nonatomic) NSTimeInterval lastReportTimeInterval;
 
 @end
@@ -28,9 +26,6 @@ static NSTimeInterval const NeverReported = -1;
                        reportApiClient:(ReportApiClient *)reportApiClient
                                 device:(Device *)device
                                   time:(TimeProvider *)time
-          firstReportDelayTimeInterval:(NSTimeInterval)firstReportDelayTimeInterval
-                 reportingTimeInterval:(NSTimeInterval) reportingTimeInterval
-
 {
     self = [super init];
     if (self) {
@@ -38,8 +33,6 @@ static NSTimeInterval const NeverReported = -1;
         _device = device;
         _time = time;
         _reportApiClient = reportApiClient;
-        _firstReportDelayTimeInterval = firstReportDelayTimeInterval;
-        _reportingTimeInterval = reportingTimeInterval;
         _lastReportTimeInterval = NeverReported;
     }
     return self;
@@ -47,8 +40,8 @@ static NSTimeInterval const NeverReported = -1;
 
 - (void)start
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.firstReportDelayTimeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [NSTimer scheduledTimerWithTimeInterval:self.reportingTimeInterval repeats:YES block:^(NSTimer *timer) {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ReportSchedulerFirstReportDelayTimeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [NSTimer scheduledTimerWithTimeInterval:ReportSchedulerReportingTimeInterval repeats:YES block:^(NSTimer *timer) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 [self reportMetrics];
             });

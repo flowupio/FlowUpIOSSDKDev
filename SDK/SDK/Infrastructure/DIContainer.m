@@ -43,9 +43,7 @@
         _scheduler = [[ReportScheduler alloc] initWithMetricsStorage:[DIContainer metricsStorage]
                                                      reportApiClient:[DIContainer reportApiClientWithApiKey:apiKey]
                                                               device:[DIContainer device]
-                                                                time:[DIContainer time]
-                                        firstReportDelayTimeInterval:ReportSchedulerFirstReportDelayTimeInterval
-                                               reportingTimeInterval:ReportSchedulerReportingTimeInterval];
+                                                                time:[DIContainer time]];
     });
 
     return _scheduler;

@@ -174,9 +174,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
     return [[ReportScheduler alloc] initWithMetricsStorage:self.storage
                                            reportApiClient:self.apiClient
                                                     device:self.device
-                                                      time:self.time
-                              firstReportDelayTimeInterval:1000
-                                     reportingTimeInterval:1000];
+                                                      time:self.time];
 }
 
 @end
