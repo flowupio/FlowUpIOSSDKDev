@@ -21,7 +21,7 @@
     self = [super init];
     if (self) {
         _isEnabled = YES;
-        _queue = dispatch_queue_create("DISPATCH_QUEUE_CONCURRENT", DISPATCH_QUEUE_CONCURRENT);
+        _queue = dispatch_queue_create("Collector Scheduler Queue", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }

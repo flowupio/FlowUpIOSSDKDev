@@ -40,6 +40,8 @@
 		4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0871ED5EFCB00148A4E /* FlowUp.m */; };
 		4983806F1ED48D6B003BCFB0 /* CpuUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */; };
 		498380761ED48F5C003BCFB0 /* CpuUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49D839CC1ED81B10004F47C6 /* ReportsStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 49D839CA1ED81B10004F47C6 /* ReportsStorage.h */; };
+		49D839CD1ED81B10004F47C6 /* ReportsStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D839CB1ED81B10004F47C6 /* ReportsStorage.m */; };
 		DB17F9F44D210DA36877F0A1 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F782FFAC96EACD8B18099F /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +108,8 @@
 		4983803C1ED48C7A003BCFB0 /* libSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CpuUsageCollector.h; sourceTree = "<group>"; };
 		4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CpuUsageCollector.m; sourceTree = "<group>"; };
+		49D839CA1ED81B10004F47C6 /* ReportsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportsStorage.h; sourceTree = "<group>"; };
+		49D839CB1ED81B10004F47C6 /* ReportsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportsStorage.m; sourceTree = "<group>"; };
 		72868C35D70EF8DC403575B2 /* Pods-SDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SDK/Pods-SDK.debug.xcconfig"; sourceTree = "<group>"; };
 		A38916CCADBAE09EDE316A98 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A635D7B39C8E4A9C416BE063 /* libPods-SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +138,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4905E4D51ED81AAB00E95C65 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				49D839CA1ED81B10004F47C6 /* ReportsStorage.h */,
+				49D839CB1ED81B10004F47C6 /* ReportsStorage.m */,
+			);
+			name = Storage;
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		4909E6221ED5F17C0009FBA9 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +234,7 @@
 			children = (
 				4978C0811ED5EBF100148A4E /* API Client */,
 				4978C07B1ED5E7D600148A4E /* Model */,
+				4905E4D51ED81AAB00E95C65 /* Storage */,
 			);
 			path = Reporter;
 			sourceTree = "<group>";
@@ -328,6 +343,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49D839CC1ED81B10004F47C6 /* ReportsStorage.h in Headers */,
 				4978C0841ED5EC0100148A4E /* ApiClient.h in Headers */,
 				4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */,
 				4909F5C51ED713AA00825B0B /* ReportScheduler.h in Headers */,
@@ -533,6 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4909F5A81ED6C10100825B0B /* Metric.m in Sources */,
+				49D839CD1ED81B10004F47C6 /* ReportsStorage.m in Sources */,
 				4909F5C61ED713AA00825B0B /* ReportScheduler.m in Sources */,
 				4909F5C11ED70E9E00825B0B /* UuidGenerator.m in Sources */,
 				4983806F1ED48D6B003BCFB0 /* CpuUsageCollector.m in Sources */,
