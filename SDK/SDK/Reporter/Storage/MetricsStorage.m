@@ -49,4 +49,9 @@
     });
 }
 
+- (BOOL)hasReports
+{
+    return self.storedCpuMetrics.count > 0;
+}
+
 @end

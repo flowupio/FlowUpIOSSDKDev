@@ -11,6 +11,8 @@
 
 @interface MetricsStorage : NSObject
 
+@property (readonly, nonatomic) BOOL hasReports;
+
 - (void)storeCpuMetric:(CpuMetric *)cpuMetric;
 - (NSArray<CpuMetric *> *)cpuMetricsAtMost:(NSInteger)numberOfCpuMetrics;
 - (void)removeNumberOfCpuMetrics:(NSInteger)numberOfCpuMetrics;

@@ -110,6 +110,7 @@
 		4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CpuUsageCollector.m; sourceTree = "<group>"; };
 		49D839CA1ED81B10004F47C6 /* MetricsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricsStorage.h; sourceTree = "<group>"; };
 		49D839CB1ED81B10004F47C6 /* MetricsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricsStorage.m; sourceTree = "<group>"; };
+		49D839D51ED826FF004F47C6 /* TimeIntervalUnits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeIntervalUnits.h; sourceTree = "<group>"; };
 		72868C35D70EF8DC403575B2 /* Pods-SDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SDK/Pods-SDK.debug.xcconfig"; sourceTree = "<group>"; };
 		A38916CCADBAE09EDE316A98 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A635D7B39C8E4A9C416BE063 /* libPods-SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +223,7 @@
 		4909F5D01ED737E100825B0B /* Time */ = {
 			isa = PBXGroup;
 			children = (
+				49D839D51ED826FF004F47C6 /* TimeIntervalUnits.h */,
 				4909F5D11ED73AA900825B0B /* TimeProvider.h */,
 				4909F5D21ED73AA900825B0B /* TimeProvider.m */,
 			);

@@ -17,8 +17,9 @@
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithMetricsStorage:(MetricsStorage *)metricsStorage
-                                device:(Device*)device
-                       reportApiClient:(ReportApiClient *)reportApiClient;
+                       reportApiClient:(ReportApiClient *)reportApiClient
+                                device:(Device *)device
+                                  time:(TimeProvider *)time;
 
 - (void)start;
 

@@ -41,8 +41,9 @@
 
     dispatch_once(&onceToken, ^{
         _scheduler = [[ReportScheduler alloc] initWithMetricsStorage:[DIContainer metricsStorage]
+                                                     reportApiClient:[DIContainer reportApiClientWithApiKey:apiKey]
                                                               device:[DIContainer device]
-                                                     reportApiClient:[DIContainer reportApiClientWithApiKey:apiKey]];
+                                                                time:[DIContainer time]];
     });
 
     return _scheduler;
