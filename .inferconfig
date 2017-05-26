@@ -1,0 +1,5 @@
+{
+    "checkers-blacklist-path-regex": [".*Pods.*"],
+    "infer-blacklist-path-regex": [".*Pods.*"],
+    "linters-blacklist-path-regex": [".*Pods.*"]
+}

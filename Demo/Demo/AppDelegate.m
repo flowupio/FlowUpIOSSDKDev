@@ -15,8 +15,9 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [FlowUp application:application didFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
-
 @end
