@@ -17,7 +17,8 @@
 
     dispatch_once(&onceToken, ^{
         _scheduler = [[ReportScheduler alloc] initWithDevice:[DIContainer device]
-                                             reportApiClient:[DIContainer reportApiClientWithApiKey:apiKey]];
+                                             reportApiClient:[DIContainer reportApiClientWithApiKey:apiKey]
+                                                        time:[DIContainer time]];
     });
 
     return _scheduler;
@@ -48,5 +49,9 @@
     return [[UuidGenerator alloc] init];
 }
 
++ (TimeProvider *)time
+{
+    return [[TimeProvider alloc] init];
+}
 
 @end

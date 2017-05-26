@@ -8,36 +8,49 @@
 
 #import "ReportScheduler.h"
 
+@interface ReportScheduler ()
+
+@property (readonly, nonatomic) Device *device;
+@property (readonly, nonatomic) ReportApiClient *reportApiClient;
+@property (readonly, nonatomic) TimeProvider *time;
+
+@end
+
 @implementation ReportScheduler
 
 - (instancetype)initWithDevice:(Device*)device
                reportApiClient:(ReportApiClient *)reportApiClient
+                          time:(TimeProvider *)time
 {
     self = [super init];
     if (self) {
         _device = device;
         _reportApiClient = reportApiClient;
+        _time = time;
     }
     return self;
 }
 
 - (void)start
 {
-    [NSTimer scheduledTimerWithTimeInterval:1.0f repeats:YES block:^(NSTimer * _Nonnull timer) {
+    [NSTimer scheduledTimerWithTimeInterval:1.0f repeats:YES block:^(NSTimer *timer) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            float cpuUsage = [[CpuUsageCollector alloc] init].cpuUsage;
-
-            CpuMetric *cpuMetric = [[CpuMetric alloc] initWithTimestamp:0
-                                                         appVersionName:@""
-                                                              osVersion:@""
-                                                  isLowPowerModeEnabled:NO
-                                                               cpuUsage:cpuUsage * 100];
-
+            CpuMetric *cpuMetric = [self cpuMetric];
             Reports *reports = [self reportsWithCpuMetrics:@[cpuMetric]];
 
             [self.reportApiClient sendReports:reports completion:^(BOOL success) {}];
         });
     }];
+}
+
+- (CpuMetric *)cpuMetric
+{
+    float cpuUsage = [[CpuUsageCollector alloc] init].cpuUsage;
+    return [[CpuMetric alloc] initWithTimestamp:self.time.nowAsInt
+                                 appVersionName:self.device.appVersionName
+                                      osVersion:self.device.osVersion
+                          isLowPowerModeEnabled:self.device.isLowPowerModeEnabled
+                                       cpuUsage:cpuUsage * 100];
 }
 
 - (Reports *)reportsWithCpuMetrics:(NSArray<CpuMetric *> *)cpuMetrics

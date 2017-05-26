@@ -10,15 +10,14 @@
 #import "Device.h"
 #import "ReportApiClient.h"
 #import "CpuUsageCollector.h"
+#import "TimeProvider.h"
 
 @interface ReportScheduler : NSObject
 
-@property (readonly, nonatomic) Device *device;
-@property (readonly, nonatomic) ReportApiClient *reportApiClient;
-
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithDevice:(Device*)device
-               reportApiClient:(ReportApiClient *)reportApiClient;
+               reportApiClient:(ReportApiClient *)reportApiClient
+                          time:(TimeProvider *)time;
 
 - (void)start;
 
