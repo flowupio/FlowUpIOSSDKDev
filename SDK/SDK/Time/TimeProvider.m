@@ -10,14 +10,14 @@
 
 @implementation TimeProvider
 
-- (NSTimeInterval) now
+- (NSTimeInterval)now
 {
     return [[NSDate alloc] init].timeIntervalSince1970;
 }
 
-- (NSInteger) nowAsInt
+- (NSInteger)nowAsInt
 {
-    return roundf([self now]);
+    return [self now];
 }
 
 @end

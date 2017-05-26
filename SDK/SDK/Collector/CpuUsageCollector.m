@@ -34,7 +34,7 @@
 - (void)collect
 {
     float cpuUsage = self.cpuUsage;
-    CpuMetric *metric = [[CpuMetric alloc] initWithTimestamp:self.time.nowAsInt
+    CpuMetric *metric = [[CpuMetric alloc] initWithTimestamp:[self.time nowAsInt]
                                               appVersionName:self.device.appVersionName
                                                    osVersion:self.device.osVersion
                                        isLowPowerModeEnabled:self.device.isLowPowerModeEnabled

@@ -29,11 +29,14 @@
 - (void)addCollectors:(NSArray<id<Collector>> *)collectors
          timeInterval:(NSTimeInterval)timeInterval
 {
+    NSLog(@"[CollectorScheduler] Start");
     for (id<Collector> collector in collectors) {
         [NSTimer scheduledTimerWithTimeInterval:timeInterval repeats:YES block:^(NSTimer *timer) {
             if (self.isEnabled) {
-                dispatch_async(self.queue, ^{ [collector collect]; });
+                NSLog(@"[CollectorScheduler] Collect");
+                async(self.queue, ^{ [collector collect]; });
             } else {
+                NSLog(@"[CollectorScheduler] Disabled");
                 [timer invalidate];
             }
         }];
