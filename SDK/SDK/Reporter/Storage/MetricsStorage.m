@@ -1,21 +1,21 @@
 //
-//  ReportsStorage.m
+//  MetricsStorage.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 26/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "ReportsStorage.h"
+#import "MetricsStorage.h"
 
-@interface ReportsStorage ()
+@interface MetricsStorage ()
 
 @property (readonly, nonatomic) dispatch_queue_t writeQueue;
 @property (readonly, nonatomic) NSMutableArray<CpuMetric *> *storedCpuMetrics;
 
 @end
 
-@implementation ReportsStorage
+@implementation MetricsStorage
 
 
 - (instancetype)init

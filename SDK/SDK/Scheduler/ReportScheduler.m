@@ -35,22 +35,12 @@
 {
     [NSTimer scheduledTimerWithTimeInterval:1.0f repeats:YES block:^(NSTimer *timer) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            CpuMetric *cpuMetric = [self cpuMetric];
-            Reports *reports = [self reportsWithCpuMetrics:@[cpuMetric]];
-
-            [self.reportApiClient sendReports:reports completion:^(BOOL success) {}];
+//            CpuMetric *cpuMetric = [self cpuMetric];
+//            Reports *reports = [self reportsWithCpuMetrics:@[cpuMetric]];
+//
+//            [self.reportApiClient sendReports:reports completion:^(BOOL success) {}];
         });
     }];
-}
-
-- (CpuMetric *)cpuMetric
-{
-    float cpuUsage = [[CpuUsageCollector alloc] init].cpuUsage;
-    return [[CpuMetric alloc] initWithTimestamp:self.time.nowAsInt
-                                 appVersionName:self.device.appVersionName
-                                      osVersion:self.device.osVersion
-                          isLowPowerModeEnabled:self.device.isLowPowerModeEnabled
-                                       cpuUsage:cpuUsage * 100];
 }
 
 - (Reports *)reportsWithCpuMetrics:(NSArray<CpuMetric *> *)cpuMetrics

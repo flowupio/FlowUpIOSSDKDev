@@ -18,6 +18,7 @@
 
     [collectorScheduler addCollectors:@[[DIContainer cpuUsageCollector]]
                          timeInterval: SamplingTimeInterval];
+
     [reportScheduler start];
 }
 

@@ -24,7 +24,14 @@
 
 + (CpuUsageCollector *)cpuUsageCollector
 {
-    return [[CpuUsageCollector alloc] init];
+    return [[CpuUsageCollector alloc] initWithMetricsStorage:[DIContainer metricsStorage]
+                                                      device:[DIContainer device]
+                                                        time:[DIContainer time]];
+}
+
++ (MetricsStorage *)metricsStorage
+{
+    return [[MetricsStorage alloc] init];
 }
 
 + (ReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey
