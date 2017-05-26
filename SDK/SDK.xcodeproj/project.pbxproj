@@ -40,6 +40,7 @@
 		4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0871ED5EFCB00148A4E /* FlowUp.m */; };
 		4983806F1ED48D6B003BCFB0 /* CpuUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */; };
 		498380761ED48F5C003BCFB0 /* CpuUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		499E717D1ED82FF300AD80C3 /* ReportSchedulerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E717C1ED82FF300AD80C3 /* ReportSchedulerTests.m */; };
 		49D839CC1ED81B10004F47C6 /* MetricsStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 49D839CA1ED81B10004F47C6 /* MetricsStorage.h */; };
 		49D839CD1ED81B10004F47C6 /* MetricsStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D839CB1ED81B10004F47C6 /* MetricsStorage.m */; };
 		DB17F9F44D210DA36877F0A1 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F782FFAC96EACD8B18099F /* Pods_Tests.framework */; };
@@ -108,6 +109,7 @@
 		4983803C1ED48C7A003BCFB0 /* libSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CpuUsageCollector.h; sourceTree = "<group>"; };
 		4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CpuUsageCollector.m; sourceTree = "<group>"; };
+		499E717C1ED82FF300AD80C3 /* ReportSchedulerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportSchedulerTests.m; sourceTree = "<group>"; };
 		49D839CA1ED81B10004F47C6 /* MetricsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricsStorage.h; sourceTree = "<group>"; };
 		49D839CB1ED81B10004F47C6 /* MetricsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricsStorage.m; sourceTree = "<group>"; };
 		49D839D51ED826FF004F47C6 /* TimeIntervalUnits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeIntervalUnits.h; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			children = (
 				4909F5B81ED7084A00825B0B /* Nocilla */,
 				4909F5A91ED6E1EA00825B0B /* Reporter */,
+				499E717A1ED82FE300AD80C3 /* Scheduler */,
 				4909F5AE1ED6EBC600825B0B /* ApiClientTests.h */,
 				4909F5AF1ED6EBC600825B0B /* ApiClientTests.m */,
 				4909E6251ED5F17C0009FBA9 /* Info.plist */,
@@ -315,6 +318,15 @@
 				4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */,
 			);
 			path = Collector;
+			sourceTree = "<group>";
+		};
+		499E717A1ED82FE300AD80C3 /* Scheduler */ = {
+			isa = PBXGroup;
+			children = (
+				499E717C1ED82FF300AD80C3 /* ReportSchedulerTests.m */,
+			);
+			name = Scheduler;
+			path = Scheduler;
 			sourceTree = "<group>";
 		};
 		71E50B7189EC0D979241ECB1 /* Frameworks */ = {
@@ -542,6 +554,7 @@
 				4909F5B41ED7040600825B0B /* JsonMatcher.m in Sources */,
 				4909E6241ED5F17C0009FBA9 /* ReportApiClientTests.m in Sources */,
 				4909F5B01ED6EBC600825B0B /* ApiClientTests.m in Sources */,
+				499E717D1ED82FF300AD80C3 /* ReportSchedulerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

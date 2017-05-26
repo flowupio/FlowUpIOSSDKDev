@@ -15,6 +15,7 @@ end
 def sdk_test_pods
   pod 'Nocilla', '~> 0.11.0'
   pod 'Nimble', '~> 7.0.0'
+  pod 'OCMockito', '~> 4.1.0'
 end
 
 target 'SDK' do
