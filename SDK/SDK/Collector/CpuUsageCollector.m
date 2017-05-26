@@ -1,14 +1,14 @@
 //
-//  CPUUsageCollector.m
+//  CpuUsageCollector.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 23/05/17.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "CPUUsageCollector.h"
+#import "CpuUsageCollector.h"
 
-@implementation CPUUsageCollector
+@implementation CpuUsageCollector
 
 - (instancetype)init
 {

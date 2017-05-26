@@ -41,10 +41,10 @@
     return serializedReports;
 }
 
-- (NSArray *)serializeCpuReports:(NSArray<CPUMetric *> *)cpuMetrics
+- (NSArray *)serializeCpuReports:(NSArray<CpuMetric *> *)cpuMetrics
 {
     NSMutableArray *cpuSerializedReports = [[NSMutableArray alloc] init];
-    for (CPUMetric *cpuMetric in cpuMetrics) {
+    for (CpuMetric *cpuMetric in cpuMetrics) {
         [cpuSerializedReports addObject:@{@"consumption": [NSNumber numberWithInt:cpuMetric.cpuUsage],
                                           @"timestamp": [NSNumber numberWithDouble:cpuMetric.timestamp],
                                           @"appVersionName": cpuMetric.appVersionName,

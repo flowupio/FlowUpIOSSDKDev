@@ -16,7 +16,7 @@
                      screenDensity:(NSString *)screenDensity
                         screenSize:(NSString *)screenSize
                      numberOfCores:(NSInteger)numberOfCores
-                        cpuMetrics:(NSArray<CPUMetric *> *)cpuMetrics
+                        cpuMetrics:(NSArray<CpuMetric *> *)cpuMetrics
 {
     self = [super init];
     if (self) {

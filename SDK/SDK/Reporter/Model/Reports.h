@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CPUMetric.h"
+#import "CpuMetric.h"
 
 @interface Reports : NSObject
 
@@ -17,7 +17,7 @@
 @property (readonly, nonatomic, copy) NSString *screenDensity;
 @property (readonly, nonatomic, copy) NSString *screenSize;
 @property (readonly, nonatomic) NSInteger numberOfCores;
-@property (readonly, nonatomic, copy) NSArray<CPUMetric *> *cpuMetrics;
+@property (readonly, nonatomic, copy) NSArray<CpuMetric *> *cpuMetrics;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithAppPackage:(NSString *)appPackage
@@ -26,6 +26,6 @@
                      screenDensity:(NSString *)screenDensity
                         screenSize:(NSString *)screenSize
                      numberOfCores:(NSInteger)numberOfCores
-                        cpuMetrics:(NSArray<CPUMetric *> *)cpuMetrics;
+                        cpuMetrics:(NSArray<CpuMetric *> *)cpuMetrics;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  CPUMetric.h
+//  CpuMetric.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 24/05/2017.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Metric.h"
 
-@interface CPUMetric : Metric
+@interface CpuMetric : Metric
 
 @property (readonly, nonatomic) NSInteger cpuUsage;
 
