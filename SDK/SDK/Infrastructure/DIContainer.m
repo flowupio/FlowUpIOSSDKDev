@@ -40,9 +40,9 @@
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        _scheduler = [[ReportScheduler alloc] initWithDevice:[DIContainer device]
-                                             reportApiClient:[DIContainer reportApiClientWithApiKey:apiKey]
-                                                        time:[DIContainer time]];
+        _scheduler = [[ReportScheduler alloc] initWithMetricsStorage:[DIContainer metricsStorage]
+                                                              device:[DIContainer device]
+                                                     reportApiClient:[DIContainer reportApiClientWithApiKey:apiKey]];
     });
 
     return _scheduler;

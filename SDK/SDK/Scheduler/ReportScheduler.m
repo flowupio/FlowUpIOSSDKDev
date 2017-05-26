@@ -10,23 +10,23 @@
 
 @interface ReportScheduler ()
 
+@property (readonly, nonatomic) MetricsStorage *storage;
 @property (readonly, nonatomic) Device *device;
 @property (readonly, nonatomic) ReportApiClient *reportApiClient;
-@property (readonly, nonatomic) TimeProvider *time;
 
 @end
 
 @implementation ReportScheduler
 
-- (instancetype)initWithDevice:(Device*)device
-               reportApiClient:(ReportApiClient *)reportApiClient
-                          time:(TimeProvider *)time
+- (instancetype)initWithMetricsStorage:(MetricsStorage *)metricsStorage
+                                device:(Device*)device
+                       reportApiClient:(ReportApiClient *)reportApiClient
 {
     self = [super init];
     if (self) {
+        _storage = metricsStorage;
         _device = device;
         _reportApiClient = reportApiClient;
-        _time = time;
     }
     return self;
 }
@@ -35,10 +35,15 @@
 {
     [NSTimer scheduledTimerWithTimeInterval:1.0f repeats:YES block:^(NSTimer *timer) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            CpuMetric *cpuMetric = [self cpuMetric];
-//            Reports *reports = [self reportsWithCpuMetrics:@[cpuMetric]];
-//
-//            [self.reportApiClient sendReports:reports completion:^(BOOL success) {}];
+            NSArray<CpuMetric *> *cpuMetrics = [self.storage cpuMetricsAtMost:MaxNumberOfReportsPerRequest];
+            Reports *reports = [self reportsWithCpuMetrics:cpuMetrics];
+            [self.reportApiClient sendReports:reports completion:^(BOOL success) {
+                if (success) {
+                    [self.storage removeNumberOfCpuMetrics:cpuMetrics.count];
+                } else {
+                    NSLog(@"There was an error while reporting metrics");
+                }
+            }];
         });
     }];
 }
