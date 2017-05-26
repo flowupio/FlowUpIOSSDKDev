@@ -8,6 +8,8 @@
 
 #import "ReportScheduler.h"
 
+static NSTimeInterval const NeverReported = -1;
+
 @interface ReportScheduler ()
 
 @property (readonly, nonatomic) MetricsStorage *storage;
@@ -38,7 +40,7 @@
         _reportApiClient = reportApiClient;
         _firstReportDelayTimeInterval = firstReportDelayTimeInterval;
         _reportingTimeInterval = reportingTimeInterval;
-        _lastReportTimeInterval = 0;
+        _lastReportTimeInterval = NeverReported;
     }
     return self;
 }
@@ -56,7 +58,7 @@
 
 - (void)reportMetrics
 {
-    if ([self.time now] - self.lastReportTimeInterval < ReportSchedulerTimeBetweenReportsTimeInterval) {
+    if (self.lastReportTimeInterval != NeverReported && [self.time now] - self.lastReportTimeInterval < ReportSchedulerTimeBetweenReportsTimeInterval) {
         return;
     }
 
@@ -69,6 +71,7 @@
     [self.reportApiClient sendReports:reports completion:^(BOOL success) {
         if (success) {
             [self.storage removeNumberOfCpuMetrics:cpuMetrics.count];
+            self.lastReportTimeInterval = [self.time now];
         } else {
             NSLog(@"There was an error while reporting metrics");
         }

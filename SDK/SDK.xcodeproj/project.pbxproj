@@ -113,6 +113,8 @@
 		499E717C1ED82FF300AD80C3 /* ReportSchedulerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportSchedulerTests.m; sourceTree = "<group>"; };
 		499E717F1ED8341100AD80C3 /* CpuMetricMother.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CpuMetricMother.h; sourceTree = "<group>"; };
 		499E71801ED8341100AD80C3 /* CpuMetricMother.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CpuMetricMother.m; sourceTree = "<group>"; };
+		499E71821ED838A800AD80C3 /* Async.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Async.h; sourceTree = "<group>"; };
+		499E71841ED838FD00AD80C3 /* TestAsync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAsync.h; sourceTree = "<group>"; };
 		49D839CA1ED81B10004F47C6 /* MetricsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricsStorage.h; sourceTree = "<group>"; };
 		49D839CB1ED81B10004F47C6 /* MetricsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricsStorage.m; sourceTree = "<group>"; };
 		49D839D51ED826FF004F47C6 /* TimeIntervalUnits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeIntervalUnits.h; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		4909E6221ED5F17C0009FBA9 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				499E71831ED838F500AD80C3 /* Infrastructure */,
 				499E717E1ED833F300AD80C3 /* Mother */,
 				4909F5B81ED7084A00825B0B /* Nocilla */,
 				4909F5A91ED6E1EA00825B0B /* Reporter */,
@@ -187,6 +190,7 @@
 		4909F5AD1ED6EA9C00825B0B /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				499E71821ED838A800AD80C3 /* Async.h */,
 				4909F5CB1ED726AB00825B0B /* Configuration.h */,
 				4909F5CC1ED72A1D00825B0B /* DIContainer.h */,
 				4909F5CD1ED72A1D00825B0B /* DIContainer.m */,
@@ -338,8 +342,16 @@
 				499E717F1ED8341100AD80C3 /* CpuMetricMother.h */,
 				499E71801ED8341100AD80C3 /* CpuMetricMother.m */,
 			);
-			name = Mother;
 			path = Mother;
+			sourceTree = "<group>";
+		};
+		499E71831ED838F500AD80C3 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				499E71841ED838FD00AD80C3 /* TestAsync.h */,
+			);
+			name = Infrastructure;
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 		71E50B7189EC0D979241ECB1 /* Frameworks */ = {

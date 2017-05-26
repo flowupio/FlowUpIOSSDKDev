@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "TestAsync.h"
 #import "ReportScheduler.h"
 #import "CpuMetricMother.h"
 #import <Nimble/Nimble.h>
@@ -35,65 +36,117 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
     self.apiClient = [self reportApiClient];
     self.storage = [self metricsStorage];
     self.device = [self device];
+    self.time = [self timeProvider];
     self.apiClient = [self reportApiClient];
     self.scheduler = [self reportScheduler];
+    [self.storage removeNumberOfCpuMetrics:1000];
 }
 
 - (void)testScheduler_WontReport_IfNoMetrics
 {
-    [self.scheduler start];
+    [self givenWeAreNow];
+    [self givenApiClientReportsSuccessfully];
+    [self.scheduler reportMetrics];
 
     [verifyCount(self.apiClient, never()) sendReports:anything() completion:anything()];
 }
 
 - (void)testScheduler_WontReport_IfNotEnoughTimeSinceLastReport
 {
+    [self givenNotEnoughTimePassedToReportTheSecondTime];
+    [self givenApiClientReportsSuccessfully];
     [self.storage storeCpuMetric:[CpuMetricMother any]];
-    [self.scheduler start];
+    [self.scheduler reportMetrics];
     [self.storage storeCpuMetric:[CpuMetricMother any]];
-    [self givenNotEnoughTimePassedToReport];
-    [self.scheduler start];
+
+    [self.scheduler reportMetrics];
 
     [verifyCount(self.apiClient, times(1)) sendReports:anything() completion:anything()];
 }
 
 - (void)testScheduler_Reports_IfItsTheFirstTime
 {
+    [self givenWeAreNow];
+    [self givenApiClientReportsSuccessfully];
     [self.storage storeCpuMetric:[CpuMetricMother any]];
 
-    [self.scheduler start];
+    [self.scheduler reportMetrics];
 
     [verify(self.apiClient) sendReports:anything() completion:anything()];
 }
 
 - (void)testScheduler_Reports_IfThereAreMetricsAndHasPassedEnoughTimeSinceLastReport
 {
+    [self givenEnoughTimePassedToReportTheSecondTime];
+    [self givenApiClientReportsSuccessfully];
     [self.storage storeCpuMetric:[CpuMetricMother any]];
-    [self.scheduler start];
+    [self.scheduler reportMetrics];
     [self.storage storeCpuMetric:[CpuMetricMother any]];
-    [self givenEnoughTimePassedToReport];
-    [self.scheduler start];
+
+    [self.scheduler reportMetrics];
 
     [verifyCount(self.apiClient, times(2)) sendReports:anything() completion:anything()];
 }
 
 - (void)testScheduler_RemovesMetrics_IfTheyHaveBeenSuccessfullyReported
 {
+    [self givenWeAreNow];
+    [self givenApiClientReportsSuccessfully];
     [self.storage storeCpuMetric:[CpuMetricMother any]];
 
-    [self.scheduler start];
+    [self.scheduler reportMetrics];
 
     expect(self.storage.hasReports).to(equal(NO));
 }
 
-- (void)givenNotEnoughTimePassedToReport
+- (void)testScheduler_DontRemoveMetrics_IfThereWasAnErrorReporting
 {
-    [given([self.time now]) willReturnInt: RightAfterNow];
+    [self givenWeAreNow];
+    [self givenApiClientReportsAnError];
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+
+    [self.scheduler reportMetrics];
+
+    expect(self.storage.hasReports).to(equal(YES));
 }
 
-- (void)givenEnoughTimePassedToReport
+- (void)givenApiClientReportsSuccessfully
 {
-    [given([self.time now]) willReturnInt: LongTimeSinceNow];
+    [self givenApiClientReports:YES];
+}
+
+- (void)givenApiClientReportsAnError
+{
+    [self givenApiClientReports:NO];
+}
+
+- (void)givenApiClientReports:(BOOL)success
+{
+    [givenVoid([self.apiClient sendReports:anything() completion:anything()]) willDo:^id (NSInvocation *invocation){
+        NSArray *args = [invocation mkt_arguments];
+        ((id(^)())(args[1]))(success);
+        return nil;
+    }];
+}
+
+- (void)givenWeAreNow
+{
+    [given([self.time now]) willReturnInt: Now];
+}
+
+- (void)givenNotEnoughTimePassedToReportTheSecondTime
+{
+    [[[given([self.time now])
+       willReturnInt:Now]
+      willReturnInt:Now]
+     willReturnInt:RightAfterNow];
+}
+
+- (void)givenEnoughTimePassedToReportTheSecondTime
+{
+    [[given([self.time now])
+      willReturnInt:Now]
+     willReturnInt:LongTimeSinceNow];
 }
 
 - (MetricsStorage *)metricsStorage
@@ -113,9 +166,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 
 - (TimeProvider *)timeProvider
 {
-    TimeProvider *timeProvider = mock([TimeProvider class]);
-    [given([timeProvider now]) willReturnInt: Now];
-    return timeProvider;
+    return mock([TimeProvider class]);
 }
 
 - (ReportScheduler *)reportScheduler
@@ -124,8 +175,8 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
                                            reportApiClient:self.apiClient
                                                     device:self.device
                                                       time:self.time
-                              firstReportDelayTimeInterval:0
-                                     reportingTimeInterval:0];
+                              firstReportDelayTimeInterval:1000
+                                     reportingTimeInterval:1000];
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Reports.h"
+#import "Async.h"
 
 @interface MetricsStorage : NSObject
 

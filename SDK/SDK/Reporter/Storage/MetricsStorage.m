@@ -30,7 +30,7 @@
 
 - (void)storeCpuMetric:(CpuMetric *)cpuMetric
 {
-    dispatch_async(self.writeQueue, ^{
+    async(self.writeQueue, ^{
         [self.storedCpuMetrics addObject:cpuMetric];
     });
 }
@@ -44,7 +44,7 @@
 - (void)removeNumberOfCpuMetrics:(NSInteger)numberOfCpuMetrics
 {
     NSRange range = NSMakeRange(0, MIN(numberOfCpuMetrics, [self.storedCpuMetrics count]));
-    dispatch_async(self.writeQueue, ^{
+    async(self.writeQueue, ^{
         [self.storedCpuMetrics removeObjectsInRange:range];
     });
 }

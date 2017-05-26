@@ -24,5 +24,6 @@
                  reportingTimeInterval:(NSTimeInterval) reportingTimeInterval;
 
 - (void)start;
+- (void)reportMetrics;
 
 @end
