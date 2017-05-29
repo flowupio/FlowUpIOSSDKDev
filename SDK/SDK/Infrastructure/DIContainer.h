@@ -10,6 +10,7 @@
 #import "ReportScheduler.h"
 #import "CollectorScheduler.h"
 #import "FUPConfigApiClient.h"
+#import "FUPConfigSyncScheduler.h"
 #import "FUPFlowUpConfig.h"
 #import "ReportApiClient.h"
 #import "Configuration.h"
@@ -19,6 +20,7 @@
 + (CollectorScheduler *)collectorScheduler;
 + (CpuUsageCollector *)cpuUsageCollector;
 + (ReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey;
-+ (FUPFlowUpConfig *)configWithApiKey:(NSString *)apiKey;
++ (FUPConfigSyncScheduler *)configSyncSchedulerWithApiKey:(NSString *)apiKey;
++ (FUPConfigStorage *)configStorage;
 
 @end

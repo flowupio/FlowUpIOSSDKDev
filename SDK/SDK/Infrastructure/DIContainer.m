@@ -23,6 +23,12 @@
                                                       time:[DIContainer time]];
 }
 
++ (FUPConfigSyncScheduler *)configSyncSchedulerWithApiKey:(NSString *)apiKey
+{
+    return [[FUPConfigSyncScheduler alloc] initWithConfig:[DIContainer configWithApiKey:apiKey]
+                                                     time:[DIContainer time]];
+}
+
 + (FUPFlowUpConfig *)configWithApiKey:(NSString *)apiKey
 {
     return [[FUPFlowUpConfig alloc] initWithApiClient:[DIContainer configApiClientWithApiKey:apiKey]
