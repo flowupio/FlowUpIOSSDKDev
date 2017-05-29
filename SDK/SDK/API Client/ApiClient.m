@@ -8,6 +8,11 @@
 
 #import "ApiClient.h"
 
+static NSInteger const FUPUnauthorizedStatusCode = 401;
+static NSInteger const FUPForbiddenStatusCode = 403;
+static NSInteger const FUPPreconditionFailedStatusCode = 412;
+static NSInteger const FUPServerErrorStatusCode = 500;
+
 @interface ApiClient ()
 
 @property (readonly, nonatomic, copy) NSString *baseUrl;
@@ -52,6 +57,22 @@
 - (NSString *)userAgent
 {
     return [NSString stringWithFormat:@"FlowUpIOSSDK/%@", SDKVersion];
+}
+
+- (FUPApiClientError *)mapError:(NSError *)error
+{
+    NSHTTPURLResponse *response = error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey];
+    switch (response.statusCode) {
+        case FUPUnauthorizedStatusCode:
+        case FUPForbiddenStatusCode:
+            return [FUPApiClientError unauthorized];
+        case FUPPreconditionFailedStatusCode:
+            return [FUPApiClientError clientDisabled];
+        case FUPServerErrorStatusCode:
+            return [FUPApiClientError serverError];
+        default:
+            return [FUPApiClientError unknown];
+    }
 }
 
 @end
