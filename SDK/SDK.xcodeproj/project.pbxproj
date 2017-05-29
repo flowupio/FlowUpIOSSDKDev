@@ -42,6 +42,8 @@
 		498380761ED48F5C003BCFB0 /* CpuUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		499E717D1ED82FF300AD80C3 /* ReportSchedulerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E717C1ED82FF300AD80C3 /* ReportSchedulerTests.m */; };
 		499E71811ED8341100AD80C3 /* CpuMetricMother.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E71801ED8341100AD80C3 /* CpuMetricMother.m */; };
+		49B8DEE61EDC23D400C8A9F5 /* FUPConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B8DEE41EDC23D400C8A9F5 /* FUPConfig.h */; };
+		49B8DEE71EDC23D400C8A9F5 /* FUPConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B8DEE51EDC23D400C8A9F5 /* FUPConfig.m */; };
 		49D839CC1ED81B10004F47C6 /* MetricsStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 49D839CA1ED81B10004F47C6 /* MetricsStorage.h */; };
 		49D839CD1ED81B10004F47C6 /* MetricsStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D839CB1ED81B10004F47C6 /* MetricsStorage.m */; };
 		DB17F9F44D210DA36877F0A1 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F782FFAC96EACD8B18099F /* Pods_Tests.framework */; };
@@ -115,6 +117,8 @@
 		499E71801ED8341100AD80C3 /* CpuMetricMother.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CpuMetricMother.m; sourceTree = "<group>"; };
 		499E71821ED838A800AD80C3 /* Async.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Async.h; sourceTree = "<group>"; };
 		499E71841ED838FD00AD80C3 /* TestAsync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAsync.h; sourceTree = "<group>"; };
+		49B8DEE41EDC23D400C8A9F5 /* FUPConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPConfig.h; sourceTree = "<group>"; };
+		49B8DEE51EDC23D400C8A9F5 /* FUPConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPConfig.m; sourceTree = "<group>"; };
 		49D839CA1ED81B10004F47C6 /* MetricsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricsStorage.h; sourceTree = "<group>"; };
 		49D839CB1ED81B10004F47C6 /* MetricsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricsStorage.m; sourceTree = "<group>"; };
 		49D839D51ED826FF004F47C6 /* TimeIntervalUnits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeIntervalUnits.h; sourceTree = "<group>"; };
@@ -307,6 +311,7 @@
 			children = (
 				4978C0801ED5EBE500148A4E /* API Client */,
 				4983806B1ED48D10003BCFB0 /* Collector */,
+				49B8DEE21EDC239700C8A9F5 /* Config */,
 				4909F5B91ED7090400825B0B /* Device */,
 				4909F5AD1ED6EA9C00825B0B /* Infrastructure */,
 				4978C0641ED5C36800148A4E /* Reporter */,
@@ -353,6 +358,25 @@
 			path = Infrastructure;
 			sourceTree = "<group>";
 		};
+		49B8DEE21EDC239700C8A9F5 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				49B8DEE31EDC23B100C8A9F5 /* Model */,
+			);
+			name = Config;
+			path = Config;
+			sourceTree = "<group>";
+		};
+		49B8DEE31EDC23B100C8A9F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				49B8DEE41EDC23D400C8A9F5 /* FUPConfig.h */,
+				49B8DEE51EDC23D400C8A9F5 /* FUPConfig.m */,
+			);
+			name = Model;
+			path = Model;
+			sourceTree = "<group>";
+		};
 		71E50B7189EC0D979241ECB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49D839CC1ED81B10004F47C6 /* MetricsStorage.h in Headers */,
+				49B8DEE61EDC23D400C8A9F5 /* FUPConfig.h in Headers */,
 				4978C0841ED5EC0100148A4E /* ApiClient.h in Headers */,
 				4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */,
 				4909F5C51ED713AA00825B0B /* ReportScheduler.h in Headers */,
@@ -588,6 +613,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4909F5A81ED6C10100825B0B /* Metric.m in Sources */,
+				49B8DEE71EDC23D400C8A9F5 /* FUPConfig.m in Sources */,
 				49D839CD1ED81B10004F47C6 /* MetricsStorage.m in Sources */,
 				4909F5C61ED713AA00825B0B /* ReportScheduler.m in Sources */,
 				4909F5C11ED70E9E00825B0B /* UuidGenerator.m in Sources */,
