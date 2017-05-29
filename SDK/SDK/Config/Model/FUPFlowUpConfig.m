@@ -28,7 +28,7 @@
     return self;
 }
 
-- (BOOL)isEnabled
+- (BOOL)enabled
 {
     return self.storage.config.isEnabled;
 }
