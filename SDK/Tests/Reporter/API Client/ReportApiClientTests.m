@@ -16,9 +16,6 @@
 #import <Nocilla/Nocilla.h>
 @import Nimble.Swift;
 
-static NSString *const ApiKey = @"This is my Api Key";
-static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
-
 @interface ReportApiClientTests : ApiClientTests
 
 @property (readwrite, nonatomic) ReportApiClient *reportApiClient;
@@ -30,13 +27,6 @@ static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
 - (void)setUp {
     [super setUp];
     self.reportApiClient = [self reportApiClient];
-    [[LSNocilla sharedInstance] start];
-}
-
-- (void)tearDown {
-    [super tearDown];
-    [[LSNocilla sharedInstance] clearStubs];
-    [[LSNocilla sharedInstance] stop];
 }
 
 - (void)testAcceptJsonHeaderIsBeingSent {

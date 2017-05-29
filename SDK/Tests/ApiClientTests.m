@@ -10,6 +10,17 @@
 
 @implementation ApiClientTests
 
+- (void)setUp {
+    [super setUp];
+    [[LSNocilla sharedInstance] start];
+}
+
+- (void)tearDown {
+    [super tearDown];
+    [[LSNocilla sharedInstance] clearStubs];
+    [[LSNocilla sharedInstance] stop];
+}
+
 - (NSDictionary *)fromJsonFileWithName:(NSString *)fileName
 {
     NSBundle *bundle = [NSBundle bundleForClass:self.classForCoder];
