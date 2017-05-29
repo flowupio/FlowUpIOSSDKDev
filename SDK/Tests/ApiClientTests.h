@@ -14,6 +14,7 @@ static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
 
 @interface ApiClientTests : XCTestCase
 
-- (NSDictionary *)fromJsonFileWithName:(NSString *)fileName;
+- (NSDictionary *)dictionaryFromJsonFileWithName:(NSString *)fileName;
+- (NSString *)stringFromJsonFileWithName:(NSString *)fileName;
 
 @end

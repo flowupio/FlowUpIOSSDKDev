@@ -12,7 +12,11 @@
 
 + (FUPConfig *)configFromApiResponse:(id)apiResponse
 {
-    return [[FUPConfig alloc] initWithIsEnabled:[apiResponse[@"enabled"] boolValue]];
+    if (apiResponse[@"enabled"] != nil) {
+        return [[FUPConfig alloc] initWithIsEnabled:[apiResponse[@"enabled"] boolValue]];
+    } else {
+        return [[FUPConfig alloc] initWithIsEnabled:YES];
+    }
 }
 
 @end

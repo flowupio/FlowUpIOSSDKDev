@@ -21,12 +21,20 @@
     [[LSNocilla sharedInstance] stop];
 }
 
-- (NSDictionary *)fromJsonFileWithName:(NSString *)fileName
+- (NSDictionary *)dictionaryFromJsonFileWithName:(NSString *)fileName
 {
     NSBundle *bundle = [NSBundle bundleForClass:self.classForCoder];
     NSString *path = [bundle pathForResource:fileName ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path options:0 error:nil];
     return [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 }
+
+- (NSString *)stringFromJsonFileWithName:(NSString *)fileName
+{
+    NSBundle *bundle = [NSBundle bundleForClass:self.classForCoder];
+    NSString *path = [bundle pathForResource:fileName ofType:@"json"];
+    return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+}
+
 
 @end
