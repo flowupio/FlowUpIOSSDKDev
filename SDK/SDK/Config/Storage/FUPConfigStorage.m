@@ -10,18 +10,9 @@
 
 @implementation FUPConfigStorage
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        _config = [[FUPConfig alloc] initWithIsEnabled:YES];
-    }
-    return self;
-}
-
 - (void)clear
 {
-    self.config = nil;
+    self.config = [[FUPConfig alloc] initWithIsEnabled:YES];
 }
 
 @end

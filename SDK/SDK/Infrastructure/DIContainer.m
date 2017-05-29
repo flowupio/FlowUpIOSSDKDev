@@ -12,42 +12,21 @@
 
 + (CollectorScheduler *)collectorScheduler
 {
-    static CollectorScheduler *_scheduler;
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
-        _scheduler = [[CollectorScheduler alloc] init];
-    });
-
-    return _scheduler;
+    return [[CollectorScheduler alloc] init];
 }
 
 + (ReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey
 {
-    static ReportScheduler *_scheduler;
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
-        _scheduler = [[ReportScheduler alloc] initWithMetricsStorage:[DIContainer metricsStorage]
-                                                     reportApiClient:[DIContainer reportApiClientWithApiKey:apiKey]
-                                                              device:[DIContainer device]
-                                                                time:[DIContainer time]];
-    });
-
-    return _scheduler;
+    return [[ReportScheduler alloc] initWithMetricsStorage:[DIContainer metricsStorage]
+                                           reportApiClient:[DIContainer reportApiClientWithApiKey:apiKey]
+                                                    device:[DIContainer device]
+                                                      time:[DIContainer time]];
 }
 
 + (FUPFlowUpConfig *)configWithApiKey:(NSString *)apiKey
 {
-    static FUPFlowUpConfig *_scheduler;
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
-        _scheduler = [[FUPFlowUpConfig alloc] initWithApiClient:[DIContainer configApiClientWithApiKey:apiKey]
-                                                        storage:[DIContainer configStorage]];
-    });
-
-    return _scheduler;
+    return [[FUPFlowUpConfig alloc] initWithApiClient:[DIContainer configApiClientWithApiKey:apiKey]
+                                              storage:[DIContainer configStorage]];
 }
 
 + (CpuUsageCollector *)cpuUsageCollector
@@ -83,32 +62,19 @@
 
 + (FUPConfigApiClient *)configApiClientWithApiKey:(NSString *)apiKey
 {
-    static FUPConfigApiClient *_apiClient;
-    static dispatch_once_t onceToken;
 
-    dispatch_once(&onceToken, ^{
-        NSString *uuid = [DIContainer uuidGenerator].uuid;
-        _apiClient = [[FUPConfigApiClient alloc] initWithBaseUrl:ApiBaseUrl
-                                                       apiKey:apiKey
-                                                         uuid:uuid];
-    });
-
-    return _apiClient;
+    NSString *uuid = [DIContainer uuidGenerator].uuid;
+    return [[FUPConfigApiClient alloc] initWithBaseUrl:ApiBaseUrl
+                                                apiKey:apiKey
+                                                  uuid:uuid];
 }
 
 + (ReportApiClient *)reportApiClientWithApiKey:(NSString *)apiKey
 {
-    static ReportApiClient *_apiClient;
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
-        NSString *uuid = [DIContainer uuidGenerator].uuid;
-        _apiClient = [[ReportApiClient alloc] initWithBaseUrl:ApiBaseUrl
-                                                       apiKey:apiKey
-                                                         uuid:uuid];
-    });
-
-    return _apiClient;
+    NSString *uuid = [DIContainer uuidGenerator].uuid;
+    return [[ReportApiClient alloc] initWithBaseUrl:ApiBaseUrl
+                                             apiKey:apiKey
+                                               uuid:uuid];
 }
 
 + (Device *)device

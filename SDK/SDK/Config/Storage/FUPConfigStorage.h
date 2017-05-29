@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FUPConfig.h"
+#import "TimeProvider.h"
 
 @interface FUPConfigStorage : NSObject
 
