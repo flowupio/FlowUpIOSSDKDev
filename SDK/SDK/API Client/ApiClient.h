@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "AFNetworkActivityLogger.h"
 #import "Configuration.h"
+#import "FUPApiClientError.h"
 
 @interface ApiClient : NSObject
 
