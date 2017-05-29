@@ -22,5 +22,6 @@
                            uuid:(NSString *)uuid;
 
 - (NSString *)urlStringWithEndpoint:(NSString *)endpoint;
+- (FUPApiClientError *)mapError:(NSError *)error;
 
 @end

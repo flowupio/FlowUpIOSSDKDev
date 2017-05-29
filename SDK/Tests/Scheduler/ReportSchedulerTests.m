@@ -133,7 +133,11 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 {
     [givenVoid([self.apiClient sendReports:anything() completion:anything()]) willDo:^id (NSInvocation *invocation){
         NSArray *args = [invocation mkt_arguments];
-        ((id(^)())(args[1]))(success);
+        if (success) {
+            ((id(^)())(args[1]))(nil);
+        } else {
+            ((id(^)())(args[1]))([FUPApiClientError unknown]);
+        }
         return nil;
     }];
 }

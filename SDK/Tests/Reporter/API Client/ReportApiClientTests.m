@@ -36,7 +36,7 @@
 
     __block BOOL didSendReport = NO;
     [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(BOOL success) { didSendReport = success; }];
+                           completion:^(FUPApiClientError *error) { didSendReport = YES; }];
 
     expect(didSendReport).toEventually(equal(YES));
 }
@@ -48,7 +48,7 @@
 
     __block BOOL didSendReport = NO;
     [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(BOOL success) { didSendReport = success; }];
+                           completion:^(FUPApiClientError *error) { didSendReport = YES; }];
 
     expect(didSendReport).toEventually(equal(YES));
 }
@@ -60,7 +60,7 @@
 
     __block BOOL didSendReport = NO;
     [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(BOOL success) { didSendReport = success; }];
+                           completion:^(FUPApiClientError *error) { didSendReport = YES; }];
 
     expect(didSendReport).toEventually(equal(YES));
 }
@@ -72,7 +72,7 @@
 
     __block BOOL didSendReport = NO;
     [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(BOOL success) { didSendReport = success; }];
+                           completion:^(FUPApiClientError *error) { didSendReport = YES; }];
 
     expect(didSendReport).toEventually(equal(YES));
 }
@@ -84,7 +84,7 @@
 
     __block BOOL didSendReport = NO;
     [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(BOOL success) { didSendReport = success; }];
+                           completion:^(FUPApiClientError *error) { didSendReport = YES; }];
 
     expect(didSendReport).toEventually(equal(YES));
 }
@@ -96,7 +96,7 @@
 
     __block BOOL didSendReport = NO;
     [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(BOOL success) { didSendReport = success; }];
+                           completion:^(FUPApiClientError *error) { didSendReport = YES; }];
 
     expect(didSendReport).toEventually(equal(YES));
 }

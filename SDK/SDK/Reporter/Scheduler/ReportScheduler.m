@@ -73,15 +73,33 @@ static NSTimeInterval const NeverReported = -1;
 
     NSArray<CpuMetric *> *cpuMetrics = [self.storage cpuMetricsAtMost:MaxNumberOfReportsPerRequest];
     Reports *reports = [self reportsWithCpuMetrics:cpuMetrics];
-    [self.reportApiClient sendReports:reports completion:^(BOOL success) {
-        if (success) {
+    [self.reportApiClient sendReports:reports completion:^(FUPApiClientError *error) {
+        if (error == nil) {
             NSLog(@"[ReportScheduler] Reports successfully sent");
-            [self.storage removeNumberOfCpuMetrics:cpuMetrics.count];
-            self.lastReportTimeInterval = [self.time now];
+            [self removeReportedMetricsCount:cpuMetrics.count];
+        } else if (error.code == FUPApiClientErrorCodeUnauthorized || error.code == FUPApiClientErrorCodeServerError) {
+            NSLog(@"[ReportScheduler] There was an error sending the reports: Unauthorized OR Server error");
+            [self removeReportedMetricsCount:cpuMetrics.count];
+            [self disableSdk];
+        } else if (error.code == FUPApiClientErrorCodeClientDisabled) {
+            NSLog(@"[ReportScheduler] There was an error sending the reports: Client Disabled");
+            [self.storage clear];
+            [self disableSdk];
         } else {
-            NSLog(@"[ReportScheduler] There was an error sending the reports");
+            NSLog(@"[ReportScheduler] There was an error sending the reports: Unknown");
         }
     }];
+}
+
+- (void)removeReportedMetricsCount:(NSInteger)metricsCount
+{
+    [self.storage removeNumberOfCpuMetrics:metricsCount];
+    self.lastReportTimeInterval = [self.time now];
+}
+
+- (void)disableSdk
+{
+    [self.config disable];
 }
 
 - (Reports *)reportsWithCpuMetrics:(NSArray<CpuMetric *> *)cpuMetrics

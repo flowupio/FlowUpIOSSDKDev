@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Reports.h"
 #import "AFNetworking.h"
+#import "FUPResult.h"
+#import "FUPApiClientError.h"
 #import "ApiClient.h"
 #import "Device.h"
 
@@ -16,6 +18,6 @@
 
 - (instancetype)init NS_UNAVAILABLE;
 
-- (void)sendReports:(Reports *)reports completion:(void (^)(BOOL))completion;
+- (void)sendReports:(Reports *)reports completion:(void (^)(FUPApiClientError *))completion;
 
 @end

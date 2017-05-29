@@ -38,6 +38,22 @@ static NSInteger const FUPServerErrorStatusCode = 500;
     return [NSString stringWithFormat:@"%@/%@", self.baseUrl, endpoint];
 }
 
+- (FUPApiClientError *)mapError:(NSError *)error
+{
+    NSHTTPURLResponse *response = error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey];
+    switch (response.statusCode) {
+        case FUPUnauthorizedStatusCode:
+        case FUPForbiddenStatusCode:
+            return [FUPApiClientError unauthorized];
+        case FUPPreconditionFailedStatusCode:
+            return [FUPApiClientError clientDisabled];
+        case FUPServerErrorStatusCode:
+            return [FUPApiClientError serverError];
+        default:
+            return [FUPApiClientError unknown];
+    }
+}
+
 - (AFHTTPSessionManager *)sessionManagerWithApiKey:(NSString *)apiKey uuid:(NSString *)uuid
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -57,22 +73,6 @@ static NSInteger const FUPServerErrorStatusCode = 500;
 - (NSString *)userAgent
 {
     return [NSString stringWithFormat:@"FlowUpIOSSDK/%@", SDKVersion];
-}
-
-- (FUPApiClientError *)mapError:(NSError *)error
-{
-    NSHTTPURLResponse *response = error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey];
-    switch (response.statusCode) {
-        case FUPUnauthorizedStatusCode:
-        case FUPForbiddenStatusCode:
-            return [FUPApiClientError unauthorized];
-        case FUPPreconditionFailedStatusCode:
-            return [FUPApiClientError clientDisabled];
-        case FUPServerErrorStatusCode:
-            return [FUPApiClientError serverError];
-        default:
-            return [FUPApiClientError unknown];
-    }
 }
 
 @end
