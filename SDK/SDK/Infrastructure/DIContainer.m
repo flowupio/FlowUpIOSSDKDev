@@ -37,6 +37,19 @@
     return _scheduler;
 }
 
++ (FUPFlowUpConfig *)configWithApiKey:(NSString *)apiKey
+{
+    static FUPFlowUpConfig *_scheduler;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        _scheduler = [[FUPFlowUpConfig alloc] initWithApiClient:[DIContainer configApiClientWithApiKey:apiKey]
+                                                        storage:[DIContainer configStorage]];
+    });
+
+    return _scheduler;
+}
+
 + (CpuUsageCollector *)cpuUsageCollector
 {
     return [[CpuUsageCollector alloc] initWithMetricsStorage:[DIContainer metricsStorage]
@@ -51,6 +64,18 @@
 
     dispatch_once(&onceToken, ^{
         _storage = [[MetricsStorage alloc] init];
+    });
+
+    return _storage;
+}
+
++ (FUPConfigStorage *)configStorage
+{
+    static FUPConfigStorage *_storage;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        _storage = [[FUPConfigStorage alloc] init];
     });
 
     return _storage;

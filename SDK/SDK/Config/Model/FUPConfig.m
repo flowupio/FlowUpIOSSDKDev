@@ -19,4 +19,9 @@
     return self;
 }
 
+- (FUPConfig *)disable
+{
+    return [[FUPConfig alloc] initWithIsEnabled:NO];
+}
+
 @end

@@ -52,6 +52,10 @@
 		49B8DEF61EDC293700C8A9F5 /* FUPApiClientError.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B8DEF41EDC293700C8A9F5 /* FUPApiClientError.m */; };
 		49B8DEFE1EDC30BB00C8A9F5 /* FUPConfigApiMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B8DEFC1EDC30BB00C8A9F5 /* FUPConfigApiMapper.h */; };
 		49B8DEFF1EDC30BB00C8A9F5 /* FUPConfigApiMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B8DEFD1EDC30BB00C8A9F5 /* FUPConfigApiMapper.m */; };
+		49B8DF031EDC347500C8A9F5 /* FUPConfigStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B8DF011EDC347500C8A9F5 /* FUPConfigStorage.h */; };
+		49B8DF041EDC347500C8A9F5 /* FUPConfigStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B8DF021EDC347500C8A9F5 /* FUPConfigStorage.m */; };
+		49B8DF0B1EDC35BF00C8A9F5 /* FUPFlowUpConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B8DF091EDC35BF00C8A9F5 /* FUPFlowUpConfig.h */; };
+		49B8DF0C1EDC35BF00C8A9F5 /* FUPFlowUpConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B8DF0A1EDC35BF00C8A9F5 /* FUPFlowUpConfig.m */; };
 		49D839CC1ED81B10004F47C6 /* MetricsStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 49D839CA1ED81B10004F47C6 /* MetricsStorage.h */; };
 		49D839CD1ED81B10004F47C6 /* MetricsStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D839CB1ED81B10004F47C6 /* MetricsStorage.m */; };
 		DB17F9F44D210DA36877F0A1 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F782FFAC96EACD8B18099F /* Pods_Tests.framework */; };
@@ -135,6 +139,10 @@
 		49B8DEF41EDC293700C8A9F5 /* FUPApiClientError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPApiClientError.m; sourceTree = "<group>"; };
 		49B8DEFC1EDC30BB00C8A9F5 /* FUPConfigApiMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPConfigApiMapper.h; sourceTree = "<group>"; };
 		49B8DEFD1EDC30BB00C8A9F5 /* FUPConfigApiMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPConfigApiMapper.m; sourceTree = "<group>"; };
+		49B8DF011EDC347500C8A9F5 /* FUPConfigStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPConfigStorage.h; sourceTree = "<group>"; };
+		49B8DF021EDC347500C8A9F5 /* FUPConfigStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPConfigStorage.m; sourceTree = "<group>"; };
+		49B8DF091EDC35BF00C8A9F5 /* FUPFlowUpConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPFlowUpConfig.h; sourceTree = "<group>"; };
+		49B8DF0A1EDC35BF00C8A9F5 /* FUPFlowUpConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPFlowUpConfig.m; sourceTree = "<group>"; };
 		49D839CA1ED81B10004F47C6 /* MetricsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricsStorage.h; sourceTree = "<group>"; };
 		49D839CB1ED81B10004F47C6 /* MetricsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricsStorage.m; sourceTree = "<group>"; };
 		49D839D51ED826FF004F47C6 /* TimeIntervalUnits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeIntervalUnits.h; sourceTree = "<group>"; };
@@ -382,6 +390,7 @@
 			children = (
 				49B8DEE81EDC245400C8A9F5 /* API Client */,
 				49B8DEE31EDC23B100C8A9F5 /* Model */,
+				49B8DF001EDC33F500C8A9F5 /* Storage */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -391,6 +400,8 @@
 			children = (
 				49B8DEE41EDC23D400C8A9F5 /* FUPConfig.h */,
 				49B8DEE51EDC23D400C8A9F5 /* FUPConfig.m */,
+				49B8DF091EDC35BF00C8A9F5 /* FUPFlowUpConfig.h */,
+				49B8DF0A1EDC35BF00C8A9F5 /* FUPFlowUpConfig.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -420,8 +431,17 @@
 				49B8DEFC1EDC30BB00C8A9F5 /* FUPConfigApiMapper.h */,
 				49B8DEFD1EDC30BB00C8A9F5 /* FUPConfigApiMapper.m */,
 			);
-			name = Mapper;
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		49B8DF001EDC33F500C8A9F5 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				49B8DF011EDC347500C8A9F5 /* FUPConfigStorage.h */,
+				49B8DF021EDC347500C8A9F5 /* FUPConfigStorage.m */,
+			);
+			name = Storage;
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		71E50B7189EC0D979241ECB1 /* Frameworks */ = {
@@ -461,10 +481,12 @@
 				4909F5C51ED713AA00825B0B /* ReportScheduler.h in Headers */,
 				4909F5A71ED6C10100825B0B /* Metric.h in Headers */,
 				4909F5C01ED70E9E00825B0B /* UuidGenerator.h in Headers */,
+				49B8DF0B1EDC35BF00C8A9F5 /* FUPFlowUpConfig.h in Headers */,
 				4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */,
 				4909F5BC1ED7090E00825B0B /* Device.h in Headers */,
 				4909F5D31ED73AA900825B0B /* TimeProvider.h in Headers */,
 				4909F5D71ED742DA00825B0B /* CollectorScheduler.h in Headers */,
+				49B8DF031EDC347500C8A9F5 /* FUPConfigStorage.h in Headers */,
 				4978C0791ED5E71400148A4E /* Reports.h in Headers */,
 				4978C07E1ED5E7E600148A4E /* CpuMetric.h in Headers */,
 				4909F5CE1ED72A1D00825B0B /* DIContainer.h in Headers */,
@@ -670,6 +692,7 @@
 				4909F5C11ED70E9E00825B0B /* UuidGenerator.m in Sources */,
 				4983806F1ED48D6B003BCFB0 /* CpuUsageCollector.m in Sources */,
 				4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */,
+				49B8DF0C1EDC35BF00C8A9F5 /* FUPFlowUpConfig.m in Sources */,
 				4909F5BD1ED7090E00825B0B /* Device.m in Sources */,
 				49B8DEFF1EDC30BB00C8A9F5 /* FUPConfigApiMapper.m in Sources */,
 				4909F5D81ED742DA00825B0B /* CollectorScheduler.m in Sources */,
@@ -682,6 +705,7 @@
 				4978C0851ED5EC0100148A4E /* ApiClient.m in Sources */,
 				4978C07A1ED5E71400148A4E /* Reports.m in Sources */,
 				4909F5CF1ED72A1D00825B0B /* DIContainer.m in Sources */,
+				49B8DF041EDC347500C8A9F5 /* FUPConfigStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,4 +15,6 @@
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithIsEnabled:(BOOL)isEnabled;
 
+- (FUPConfig *)disable;
+
 @end

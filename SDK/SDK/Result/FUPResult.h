@@ -16,5 +16,7 @@
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithValue:(Value)value;
 - (instancetype)initWithError:(Error)error;
+- (BOOL)hasValue;
+- (BOOL)hasError;
 
 @end

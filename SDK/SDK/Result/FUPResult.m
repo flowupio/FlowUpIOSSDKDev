@@ -10,6 +10,16 @@
 
 @implementation FUPResult
 
+- (BOOL)hasValue
+{
+    return self.value != nil;
+}
+
+- (BOOL)hasError
+{
+    return self.error != nil;
+}
+
 - (instancetype)initWithValue:(id)value
 {
     self = [super init];
