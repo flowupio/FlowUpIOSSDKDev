@@ -10,6 +10,11 @@
 
 @implementation FUPApiClientError
 
++ (instancetype)unknown
+{
+    return [[FUPApiClientError alloc] initWithCode:FUPApiClientErrorCodeUnknown];
+}
+
 - (instancetype)initWithCode:(FUPApiClientErrorCode)code
 {
     self = [super init];

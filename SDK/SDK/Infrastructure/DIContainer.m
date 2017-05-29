@@ -56,6 +56,21 @@
     return _storage;
 }
 
++ (FUPConfigApiClient *)configApiClientWithApiKey:(NSString *)apiKey
+{
+    static FUPConfigApiClient *_apiClient;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        NSString *uuid = [DIContainer uuidGenerator].uuid;
+        _apiClient = [[FUPConfigApiClient alloc] initWithBaseUrl:ApiBaseUrl
+                                                       apiKey:apiKey
+                                                         uuid:uuid];
+    });
+
+    return _apiClient;
+}
+
 + (ReportApiClient *)reportApiClientWithApiKey:(NSString *)apiKey
 {
     static ReportApiClient *_apiClient;

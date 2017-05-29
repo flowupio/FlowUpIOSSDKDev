@@ -13,13 +13,18 @@
 
 + (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions apiKey:(NSString *)apiKey
 {
-    CollectorScheduler *collectorScheduler = [DIContainer collectorScheduler];
-    ReportScheduler *reportScheduler = [DIContainer reportSchedulerWithApiKey:apiKey];
+    FUPConfigApiClient *apiClient = [DIContainer configApiClientWithApiKey:apiKey];
+    [apiClient getConfigWithCompletion:^(FUPResult<FUPConfig *,FUPApiClientError *> *result) {
 
-    [collectorScheduler addCollectors:@[[DIContainer cpuUsageCollector]]
-                         timeInterval: SamplingTimeInterval];
-
-    [reportScheduler start];
+    }];
+//    CollectorScheduler *collectorScheduler = [DIContainer collectorScheduler];
+//    ReportScheduler *reportScheduler = [DIContainer reportSchedulerWithApiKey:apiKey];
+//
+//
+//    [collectorScheduler addCollectors:@[[DIContainer cpuUsageCollector]]
+//                         timeInterval: SamplingTimeInterval];
+//
+//    [reportScheduler start];
 }
 
 @end

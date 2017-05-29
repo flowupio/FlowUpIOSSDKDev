@@ -17,6 +17,6 @@ typedef enum : NSUInteger {
 @property (readonly, nonatomic) FUPApiClientErrorCode code;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithCode:(FUPApiClientErrorCode)code;
++ (instancetype)unknown;
 
 @end
