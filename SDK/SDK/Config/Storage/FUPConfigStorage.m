@@ -8,7 +8,27 @@
 
 #import "FUPConfigStorage.h"
 
+@interface FUPConfigStorage ()
+
+@property (readwrite, nonatomic) FUPConfig *storedConfig;
+
+@end
+
 @implementation FUPConfigStorage
+
+- (FUPConfig *)config
+{
+    if (self.storedConfig == nil) {
+        return [[FUPConfig alloc] initWithIsEnabled:YES];
+    } else {
+        return self.storedConfig;
+    }
+}
+
+- (void)setConfig:(FUPConfig *)config
+{
+    self.storedConfig = config;
+}
 
 - (void)clear
 {

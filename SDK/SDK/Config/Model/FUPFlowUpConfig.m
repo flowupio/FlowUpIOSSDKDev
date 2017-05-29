@@ -33,11 +33,15 @@
     return self.storage.config.isEnabled;
 }
 
-- (void)update
+- (void)updateWithCompletion:(void (^)(BOOL))completion
 {
     [self.apiClient getConfigWithCompletion:^(FUPResult<FUPConfig *,FUPApiClientError *> *result) {
         if ([result hasValue]) {
             self.storage.config = result.value;
+        }
+
+        if (completion != nil) {
+            completion(!result.hasError);
         }
     }];
 }

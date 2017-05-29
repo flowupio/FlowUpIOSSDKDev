@@ -18,7 +18,7 @@
 - (instancetype)initWithApiClient:(FUPConfigApiClient *)apiClient
                           storage:(FUPConfigStorage *)storage;
 
-- (void)update;
+- (void)updateWithCompletion:(void (^)(BOOL))completion;
 - (void)disable;
 
 @end

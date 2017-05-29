@@ -50,7 +50,11 @@ static NSTimeInterval const NeverSynced = -1;
         return;
     }
 
-    [self.config update];
+    [self.config updateWithCompletion:^(BOOL success) {
+        if (success) {
+            self.lastSyncTimeInterval = [self.time now];
+        }
+    }];
 }
 
 @end

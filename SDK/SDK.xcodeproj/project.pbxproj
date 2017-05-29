@@ -61,6 +61,7 @@
 		49B8DF171EDC601F00C8A9F5 /* FUPConfigApiClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B8DF161EDC601F00C8A9F5 /* FUPConfigApiClientTests.m */; };
 		49B8DF191EDC63B400C8A9F5 /* getConfigResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 49B8DF181EDC63B400C8A9F5 /* getConfigResponse.json */; };
 		49B8DF1B1EDC655300C8A9F5 /* emptyConfigResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 49B8DF1A1EDC655300C8A9F5 /* emptyConfigResponse.json */; };
+		49B8DF1E1EDC71CA00C8A9F5 /* FUPFlowUpConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B8DF1D1EDC71CA00C8A9F5 /* FUPFlowUpConfigTests.m */; };
 		49D839CC1ED81B10004F47C6 /* MetricsStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 49D839CA1ED81B10004F47C6 /* MetricsStorage.h */; };
 		49D839CD1ED81B10004F47C6 /* MetricsStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D839CB1ED81B10004F47C6 /* MetricsStorage.m */; };
 		DB17F9F44D210DA36877F0A1 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F782FFAC96EACD8B18099F /* Pods_Tests.framework */; };
@@ -153,6 +154,7 @@
 		49B8DF161EDC601F00C8A9F5 /* FUPConfigApiClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPConfigApiClientTests.m; sourceTree = "<group>"; };
 		49B8DF181EDC63B400C8A9F5 /* getConfigResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = getConfigResponse.json; sourceTree = "<group>"; };
 		49B8DF1A1EDC655300C8A9F5 /* emptyConfigResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emptyConfigResponse.json; sourceTree = "<group>"; };
+		49B8DF1D1EDC71CA00C8A9F5 /* FUPFlowUpConfigTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPFlowUpConfigTests.m; sourceTree = "<group>"; };
 		49D839CA1ED81B10004F47C6 /* MetricsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricsStorage.h; sourceTree = "<group>"; };
 		49D839CB1ED81B10004F47C6 /* MetricsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricsStorage.m; sourceTree = "<group>"; };
 		49D839D51ED826FF004F47C6 /* TimeIntervalUnits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeIntervalUnits.h; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				49B8DF151EDC5FFE00C8A9F5 /* API Client */,
+				49B8DF1C1EDC71AE00C8A9F5 /* Model */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -488,6 +491,15 @@
 				49B8DF181EDC63B400C8A9F5 /* getConfigResponse.json */,
 			);
 			path = "API Client";
+			sourceTree = "<group>";
+		};
+		49B8DF1C1EDC71AE00C8A9F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				49B8DF1D1EDC71CA00C8A9F5 /* FUPFlowUpConfigTests.m */,
+			);
+			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		71E50B7189EC0D979241ECB1 /* Frameworks */ = {
@@ -723,6 +735,7 @@
 			files = (
 				4909F5B71ED7076800825B0B /* NSDictionary+Matcheable.m in Sources */,
 				49B8DF171EDC601F00C8A9F5 /* FUPConfigApiClientTests.m in Sources */,
+				49B8DF1E1EDC71CA00C8A9F5 /* FUPFlowUpConfigTests.m in Sources */,
 				4909F5B41ED7040600825B0B /* JsonMatcher.m in Sources */,
 				4909E6241ED5F17C0009FBA9 /* ReportApiClientTests.m in Sources */,
 				4909F5B01ED6EBC600825B0B /* ApiClientTests.m in Sources */,
