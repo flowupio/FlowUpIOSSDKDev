@@ -17,13 +17,18 @@
 
 @implementation FlowUp
 
+static BOOL isInitialized = NO;
+
 + (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions apiKey:(NSString *)apiKey
 {
+    if (isInitialized) {
+        return;
+    }
+
     CollectorScheduler *collectorScheduler = [DIContainer collectorScheduler];
     ReportScheduler *reportScheduler = [DIContainer reportSchedulerWithApiKey:apiKey];
     FUPConfigSyncScheduler *configSyncScheduler = [DIContainer configSyncSchedulerWithApiKey:apiKey];
     FUPConfigStorage *configStorage = [DIContainer configStorage];
-
 
     [configSyncScheduler start];
 
@@ -35,6 +40,7 @@
     [collectorScheduler addCollectors:@[[DIContainer cpuUsageCollector]]
                          timeInterval: CollectorSchedulerSamplingTimeInterval];
     [reportScheduler start];
+    isInitialized = YES;
 }
 
 @end
