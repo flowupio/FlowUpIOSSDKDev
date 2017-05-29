@@ -29,7 +29,7 @@
     self.reportApiClient = [self reportApiClient];
 }
 
-- (void)testAcceptJsonHeader_IsBeingSent_Always {
+- (void)testApiClient_SendsAcceptJsonHeader_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
     withHeader(@"Accept", @"application/json").
     andReturn(200);
@@ -41,7 +41,7 @@
     expect(didSendReport).toEventually(equal(YES));
 }
 
-- (void)testContentTypeJsonHeader_IsBeingSent_Always {
+- (void)testApiClient_SendsContentTypeJsonHeader_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
     withHeader(@"Content-Type", @"application/json; charset=utf-8").
     andReturn(200);
@@ -53,7 +53,7 @@
     expect(didSendReport).toEventually(equal(YES));
 }
 
-- (void)testApiKeyHeader_IsBeingSent_Always {
+- (void)testApiClient_SendsApiKeyHeader_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
     withHeader(@"X-Api-Key", ApiKey).
     andReturn(200);
@@ -65,7 +65,7 @@
     expect(didSendReport).toEventually(equal(YES));
 }
 
-- (void)testUuidHeader_IsBeingSent_Always {
+- (void)testApiClient_SendsUuidHeader_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
     withHeader(@"X-UUID", Uuid).
     andReturn(200);
@@ -77,7 +77,7 @@
     expect(didSendReport).toEventually(equal(YES));
 }
 
-- (void)testUserAgentHeader_IsBeingSent_Always {
+- (void)testApiClient_SendsUserAgentHeader_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
     withHeader(@"User-Agent", [NSString stringWithFormat:@"FlowUpIOSSDK/%@", SDKVersion]).
     andReturn(200);
@@ -89,7 +89,7 @@
     expect(didSendReport).toEventually(equal(YES));
 }
 
-- (void)testReports_AreBeingSent_Always {
+- (void)testApiClient_SendReports_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
     withBody([self dictionaryFromJsonFileWithName:@"reportApiRequest"]).
     andReturn(200);

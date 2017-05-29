@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, FUPApiClientErrorCode) {
     FUPApiClientErrorCodeUnknown,
-} FUPApiClientErrorCode;
+};
 
 @interface FUPApiClientError : NSObject
 

@@ -26,7 +26,7 @@
     self.apiClient = [self apiClient];
 }
 
-- (void)testAcceptJsonHeader_IsBeingSent_Always {
+- (void)testApiClient_SendsAcceptJsonHeader_Always {
     stubRequest(@"GET", @"https://www.testingflowup.com/config").
     withHeader(@"Accept", @"application/json").
     andReturn(200);
@@ -37,7 +37,7 @@
     expect(didGetConfig).toEventually(equal(YES));
 }
 
-- (void)testContentTypeJsonHeader_IsBeingSent_Always {
+- (void)testApiClient_SendsContentTypeJsonHeader_Always {
     stubRequest(@"GET", @"https://www.testingflowup.com/config").
     withHeader(@"Content-Type", @"application/json; charset=utf-8").
     andReturn(200);
@@ -48,7 +48,7 @@
     expect(didGetConfig).toEventually(equal(YES));
 }
 
-- (void)testApiKeyHeader_IsBeingSent_Always {
+- (void)testApiClient_SendsApiKeyHeader_Always {
     stubRequest(@"GET", @"https://www.testingflowup.com/config").
     withHeader(@"X-Api-Key", ApiKey).
     andReturn(200);
@@ -59,7 +59,7 @@
     expect(didGetConfig).toEventually(equal(YES));
 }
 
-- (void)testUuidHeader_IsBeingSent_Always {
+- (void)testApiClient_SendsUuidHeader_Always {
     stubRequest(@"GET", @"https://www.testingflowup.com/config").
     withHeader(@"X-UUID", Uuid).
     andReturn(200);
@@ -70,7 +70,7 @@
     expect(didGetConfig).toEventually(equal(YES));
 }
 
-- (void)testUserAgentHeader_IsBeingSent_Always {
+- (void)testApiClient_SendsUserAgentHeader_Always {
     stubRequest(@"GET", @"https://www.testingflowup.com/config").
     withHeader(@"User-Agent", [NSString stringWithFormat:@"FlowUpIOSSDK/%@", SDKVersion]).
     andReturn(200);
@@ -81,7 +81,33 @@
     expect(didGetConfig).toEventually(equal(YES));
 }
 
-- (void)testConfigResponse_IsReturned_Always {
+- (void)testApiClient_ReturnsUnknownError_IfThereIsAServerError {
+    stubRequest(@"GET", @"https://www.testingflowup.com/config").
+    withHeader(@"User-Agent", [NSString stringWithFormat:@"FlowUpIOSSDK/%@", SDKVersion]).
+    andReturn(500);
+
+    __block FUPApiClientError *error = NO;
+    [self.apiClient getConfigWithCompletion:^(FUPResult<FUPConfig *,FUPApiClientError *> *response) { error = response.error; }];
+
+
+    expect(error).toEventuallyNot(beNil());
+    XCTAssertEqual(error.code, FUPApiClientErrorCodeUnknown);
+}
+
+- (void)testApiClient_ReturnsUnknownError_IfServerReturnsUnauthorized {
+    stubRequest(@"GET", @"https://www.testingflowup.com/config").
+    withHeader(@"User-Agent", [NSString stringWithFormat:@"FlowUpIOSSDK/%@", SDKVersion]).
+    andReturn(401);
+
+    __block FUPApiClientError *error = NO;
+    [self.apiClient getConfigWithCompletion:^(FUPResult<FUPConfig *,FUPApiClientError *> *response) { error = response.error; }];
+
+
+    expect(error).toEventuallyNot(beNil());
+    XCTAssertEqual(error.code, FUPApiClientErrorCodeUnknown);
+}
+
+- (void)testApiClient_ReturnsConfigResponse_IfSuccess {
     stubRequest(@"GET", @"https://www.testingflowup.com/config").
     withHeader(@"User-Agent", [NSString stringWithFormat:@"FlowUpIOSSDK/%@", SDKVersion]).
     andReturn(200).
@@ -95,7 +121,7 @@
     expect(config.isEnabled).to(beFalse());
 }
 
-- (void)testConfigEnabled_IsReturned_IfNoEnabledFieldInResponse {
+- (void)testApiClient_ReturnsConfigEnabled_IfNoEnabledFieldInResponse {
     stubRequest(@"GET", @"https://www.testingflowup.com/config").
     withHeader(@"User-Agent", [NSString stringWithFormat:@"FlowUpIOSSDK/%@", SDKVersion]).
     andReturn(200).
