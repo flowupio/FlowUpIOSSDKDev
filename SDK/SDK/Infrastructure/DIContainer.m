@@ -20,6 +20,7 @@
     return [[ReportScheduler alloc] initWithMetricsStorage:[DIContainer metricsStorage]
                                            reportApiClient:[DIContainer reportApiClientWithApiKey:apiKey]
                                                     device:[DIContainer device]
+                                                    config:[DIContainer configWithApiKey:apiKey]
                                                       time:[DIContainer time]];
 }
 

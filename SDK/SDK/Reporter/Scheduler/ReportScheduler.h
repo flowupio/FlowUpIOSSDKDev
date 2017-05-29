@@ -10,6 +10,7 @@
 #import "Device.h"
 #import "ReportApiClient.h"
 #import "CpuUsageCollector.h"
+#import "FUPFlowUpConfig.h"
 #import "TimeProvider.h"
 #import "MetricsStorage.h"
 
@@ -25,6 +26,7 @@
 - (instancetype)initWithMetricsStorage:(MetricsStorage *)metricsStorage
                        reportApiClient:(ReportApiClient *)reportApiClient
                                 device:(Device *)device
+                                config:(FUPFlowUpConfig *)config
                                   time:(TimeProvider *)time;
 
 - (void)start;
