@@ -19,6 +19,6 @@
                           storage:(FUPConfigStorage *)storage;
 
 - (void)updateWithCompletion:(void (^)(BOOL))completion;
-- (void)disable;
+- (FUPConfig *)disable;
 
 @end

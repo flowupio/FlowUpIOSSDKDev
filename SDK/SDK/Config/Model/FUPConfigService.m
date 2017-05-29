@@ -46,9 +46,10 @@
     }];
 }
 
-- (void)disable
+- (FUPConfig *)disable
 {
     self.storage.config = [self.storage.config disable];
+    return self.storage.config;
 }
 
 @end

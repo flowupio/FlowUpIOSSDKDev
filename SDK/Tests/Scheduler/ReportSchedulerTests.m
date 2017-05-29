@@ -109,9 +109,9 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
     expect(self.storage.hasReports).to(equal(NO));
 }
 
-- (void)testScheduler_DontRemoveMetrics_IfThereWasAnErrorReporting
+- (void)testScheduler_DontRemoveMetrics_IfThereWasAnUnknownErrorReporting
 {
-    [self givenApiClientReportsAnError];
+    [self givenApiClientReports:[FUPApiClientError unknown]];
     [self.storage storeCpuMetric:[CpuMetricMother any]];
 
     [self.scheduler reportMetrics];
@@ -119,25 +119,86 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
     expect(self.storage.hasReports).to(equal(YES));
 }
 
+- (void)testScheduler_RemoveMetrics_IfThereWasAServerErrorReporting
+{
+    [self givenApiClientReports:[FUPApiClientError serverError]];
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+
+    [self.scheduler reportMetrics];
+
+    expect(self.storage.hasReports).to(equal(NO));
+}
+
+- (void)testScheduler_RemoveMetrics_IfThereWasAnUnauthorizedErrorReporting
+{
+    [self givenApiClientReports:[FUPApiClientError unauthorized]];
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+
+    [self.scheduler reportMetrics];
+
+    expect(self.storage.hasReports).to(equal(NO));
+}
+
+- (void)testScheduler_RemoveMetrics_IfThereWasAClientDisabledErrorReporting
+{
+    [self givenApiClientReports:[FUPApiClientError clientDisabled]];
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+
+    [self.scheduler reportMetrics];
+
+    expect(self.storage.hasReports).to(equal(NO));
+}
+
+- (void)testScheduler_DisablesSdk_IfThereWasAServerErrorReporting
+{
+    [self givenApiClientReports:[FUPApiClientError serverError]];
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+
+    [self.scheduler reportMetrics];
+
+    [verify(self.config) disable];
+}
+
+- (void)testScheduler_DisablesSdk_IfThereWasAnUnauthorizedErrorReporting
+{
+    [self givenApiClientReports:[FUPApiClientError unauthorized]];
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+
+    [self.scheduler reportMetrics];
+
+    [verify(self.config) disable];
+}
+
+- (void)testScheduler_DisablesSdk_IfThereWasAClientDisabledErrorReporting
+{
+    [self givenApiClientReports:[FUPApiClientError clientDisabled]];
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+
+    [self.scheduler reportMetrics];
+
+    [verify(self.config) disable];
+}
+
+- (void)testScheduler_DoesNotDisableSdk_IfThereWasAnUnknownError
+{
+    [self givenApiClientReports:[FUPApiClientError unknown]];
+    [self.storage storeCpuMetric:[CpuMetricMother any]];
+
+    [self.scheduler reportMetrics];
+
+    [verifyCount(self.config, never()) disable];
+}
+
 - (void)givenApiClientReportsSuccessfully
 {
-    [self givenApiClientReports:YES];
+    [self givenApiClientReports:nil];
 }
 
-- (void)givenApiClientReportsAnError
-{
-    [self givenApiClientReports:NO];
-}
-
-- (void)givenApiClientReports:(BOOL)success
+- (void)givenApiClientReports:(FUPApiClientError *)error
 {
     [givenVoid([self.apiClient sendReports:anything() completion:anything()]) willDo:^id (NSInvocation *invocation){
         NSArray *args = [invocation mkt_arguments];
-        if (success) {
-            ((id(^)())(args[1]))(nil);
-        } else {
-            ((id(^)())(args[1]))([FUPApiClientError unknown]);
-        }
+        ((id(^)())(args[1]))(error);
         return nil;
     }];
 }
