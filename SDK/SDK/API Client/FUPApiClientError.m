@@ -10,6 +10,21 @@
 
 @implementation FUPApiClientError
 
++ (instancetype)unauthorized
+{
+    return [[FUPApiClientError alloc] initWithCode:FUPApiClientErrorCodeUnauthorized];
+}
+
++ (instancetype)serverError
+{
+    return [[FUPApiClientError alloc] initWithCode:FUPApiClientErrorCodeServerError];
+}
+
++ (instancetype)clientDisabled
+{
+    return [[FUPApiClientError alloc] initWithCode:FUPApiClientErrorCodeClientDisabled];
+}
+
 + (instancetype)unknown
 {
     return [[FUPApiClientError alloc] initWithCode:FUPApiClientErrorCodeUnknown];
