@@ -10,6 +10,7 @@
 #import "ApiClient.h"
 #import "FUPConfig.h"
 #import "FUPResult.h"
+#import "FUPConfigApiMapper.h"
 
 @interface FUPConfigApiClient : ApiClient
 

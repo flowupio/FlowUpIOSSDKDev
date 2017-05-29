@@ -15,7 +15,9 @@
             parameters:nil
               progress:nil
                success:^(NSURLSessionDataTask *task, id responseObject) {
-                   NSLog(@"CONFIG: %@", responseObject);
+                   FUPConfig *config = [FUPConfigApiMapper configFromApiResponse:responseObject];
+                   FUPResult *result = [[FUPResult alloc] initWithValue:config];
+                   completion(result);
                }
                failure:^(NSURLSessionDataTask *task, NSError *error) {
                    FUPResult *result = [[FUPResult alloc] initWithError:FUPApiClientError.unknown];
