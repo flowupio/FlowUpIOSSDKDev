@@ -1,11 +1,6 @@
 workspace 'FlowUpIOSSDK'
-platform :ios, '7.0'
+platform :ios, '8.0'
 inhibit_all_warnings!
-
-target 'Demo' do
-  project 'Demo/Demo.xcodeproj'
-  pod 'FlowUpIOSSDK', :path => 'SDK'
-end
 
 def sdk_pods
   pod 'AFNetworking', '= 3.1.0'
@@ -15,6 +10,12 @@ def sdk_test_pods
   pod 'Nocilla', '~> 0.11.0'
   pod 'Nimble', '~> 7.0.0'
   pod 'OCMockito', '~> 4.1.0'
+end
+
+target 'Demo' do
+  project 'Demo/Demo.xcodeproj'
+  pod 'FlowUpIOSSDK', :path => 'SDK'
+  sdk_pods
 end
 
 target 'Tests' do
