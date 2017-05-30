@@ -15,9 +15,9 @@
     return [[NSDate alloc] init].timeIntervalSince1970;
 }
 
-- (NSInteger)nowAsInt
+- (int64_t)nowInMillis
 {
-    return [self now];
+    return MILLIS_IN_ONE_SECOND * [self now];
 }
 
 @end

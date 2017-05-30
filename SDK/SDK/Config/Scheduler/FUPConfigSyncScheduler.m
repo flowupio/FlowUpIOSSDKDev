@@ -34,6 +34,12 @@ static NSTimeInterval const NeverSynced = -1;
 - (void)start
 {
     NSLog(@"[FUPConfigSyncScheduler] Start");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ConfigSyncSchedulerFirstReportDelayTimeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self sync];
+        });
+    });
+
     [NSTimer scheduledTimerWithTimeInterval:ConfigSyncSchedulerSyncingTimeInterval repeats:YES block:^(NSTimer *timer) {
         async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [self sync];

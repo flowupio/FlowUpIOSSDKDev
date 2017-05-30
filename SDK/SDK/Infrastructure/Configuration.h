@@ -12,6 +12,7 @@
 #import "TimeIntervalUnits.h"
 
 static NSTimeInterval const CollectorSchedulerSamplingTimeInterval = 10;
+static NSTimeInterval const ConfigSyncSchedulerFirstReportDelayTimeInterval = 5;
 static NSTimeInterval const ConfigSyncSchedulerTimeBetweenSyncsTimeInterval = HOURS(10);
 static NSTimeInterval const ConfigSyncSchedulerSyncingTimeInterval = MINUTES(5);
 static NSTimeInterval const ReportSchedulerFirstReportDelayTimeInterval = 15;
