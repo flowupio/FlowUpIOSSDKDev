@@ -99,7 +99,7 @@ static NSTimeInterval const NeverReported = -1;
 
 - (void)disableSdk
 {
-    [self.config disable];
+    [self.configService disable];
 }
 
 - (Reports *)reportsWithCpuMetrics:(NSArray<CpuMetric *> *)cpuMetrics

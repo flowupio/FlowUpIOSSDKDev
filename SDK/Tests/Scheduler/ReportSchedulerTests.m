@@ -156,7 +156,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 
     [self.scheduler reportMetrics];
 
-    [verify(self.config) disable];
+    [verify(self.configService) disable];
 }
 
 - (void)testScheduler_DisablesSdk_IfThereWasAnUnauthorizedErrorReporting
@@ -166,7 +166,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 
     [self.scheduler reportMetrics];
 
-    [verify(self.config) disable];
+    [verify(self.configService) disable];
 }
 
 - (void)testScheduler_DisablesSdk_IfThereWasAClientDisabledErrorReporting
@@ -176,7 +176,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 
     [self.scheduler reportMetrics];
 
-    [verify(self.config) disable];
+    [verify(self.configService) disable];
 }
 
 - (void)testScheduler_DoesNotDisableSdk_IfThereWasAnUnknownError
@@ -186,7 +186,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 
     [self.scheduler reportMetrics];
 
-    [verifyCount(self.config, never()) disable];
+    [verifyCount(self.configService, never()) disable];
 }
 
 - (void)givenApiClientReportsSuccessfully
