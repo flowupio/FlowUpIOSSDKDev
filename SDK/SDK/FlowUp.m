@@ -13,7 +13,13 @@
 
 + (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions apiKey:(NSString *)apiKey
 {
-    [[DIContainer reportSchedulerWithApiKey:apiKey] start];
+    CollectorScheduler *collectorScheduler = [DIContainer collectorScheduler];
+    ReportScheduler *reportScheduler = [DIContainer reportSchedulerWithApiKey:apiKey];
+
+    [collectorScheduler addCollectors:@[[DIContainer cpuUsageCollector]]
+                         timeInterval: SamplingTimeInterval];
+
+    [reportScheduler start];
 }
 
 @end

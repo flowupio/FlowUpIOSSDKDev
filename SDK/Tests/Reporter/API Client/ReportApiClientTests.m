@@ -10,9 +10,11 @@
 #import "ReportApiClient.h"
 #import "ApiClientTests.h"
 #import "NSDictionary+Matcheable.h"
+#import "CpuMetricMother.h"
 #import "Configuration.h"
-@import Nimble;
-@import Nocilla;
+#import <Nimble/Nimble.h>
+#import <Nocilla/Nocilla.h>
+@import Nimble.Swift;
 
 static NSString *const ApiKey = @"This is my Api Key";
 static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
@@ -124,16 +126,7 @@ static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
                                  screenDensity:@"Screen Density"
                                     screenSize:@"Screen Size"
                                  numberOfCores:4
-                                    cpuMetrics:@[[self anyCpuMetric]]];
-}
-
-- (CpuMetric *)anyCpuMetric
-{
-    return [[CpuMetric alloc] initWithTimestamp:1234
-                                 appVersionName:@"App Version Name"
-                                      osVersion:@"OS Version"
-                          isLowPowerModeEnabled:NO
-                                       cpuUsage:23];
+                                    cpuMetrics:@[[CpuMetricMother any]]];
 }
 
 @end

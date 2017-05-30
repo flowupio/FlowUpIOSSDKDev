@@ -26,6 +26,8 @@
 		4909F5CF1ED72A1D00825B0B /* DIContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5CD1ED72A1D00825B0B /* DIContainer.m */; };
 		4909F5D31ED73AA900825B0B /* TimeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5D11ED73AA900825B0B /* TimeProvider.h */; };
 		4909F5D41ED73AA900825B0B /* TimeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5D21ED73AA900825B0B /* TimeProvider.m */; };
+		4909F5D71ED742DA00825B0B /* CollectorScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5D51ED742DA00825B0B /* CollectorScheduler.h */; };
+		4909F5D81ED742DA00825B0B /* CollectorScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5D61ED742DA00825B0B /* CollectorScheduler.m */; };
 		4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0731ED5E71400148A4E /* ReportApiClient.h */; };
 		4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0741ED5E71400148A4E /* ReportApiClient.m */; };
 		4978C0791ED5E71400148A4E /* Reports.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0751ED5E71400148A4E /* Reports.h */; };
@@ -38,6 +40,10 @@
 		4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0871ED5EFCB00148A4E /* FlowUp.m */; };
 		4983806F1ED48D6B003BCFB0 /* CpuUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */; };
 		498380761ED48F5C003BCFB0 /* CpuUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		499E717D1ED82FF300AD80C3 /* ReportSchedulerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E717C1ED82FF300AD80C3 /* ReportSchedulerTests.m */; };
+		499E71811ED8341100AD80C3 /* CpuMetricMother.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E71801ED8341100AD80C3 /* CpuMetricMother.m */; };
+		49D839CC1ED81B10004F47C6 /* MetricsStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 49D839CA1ED81B10004F47C6 /* MetricsStorage.h */; };
+		49D839CD1ED81B10004F47C6 /* MetricsStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D839CB1ED81B10004F47C6 /* MetricsStorage.m */; };
 		DB17F9F44D210DA36877F0A1 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F782FFAC96EACD8B18099F /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +94,9 @@
 		4909F5CD1ED72A1D00825B0B /* DIContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIContainer.m; sourceTree = "<group>"; };
 		4909F5D11ED73AA900825B0B /* TimeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeProvider.h; sourceTree = "<group>"; };
 		4909F5D21ED73AA900825B0B /* TimeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeProvider.m; sourceTree = "<group>"; };
+		4909F5D51ED742DA00825B0B /* CollectorScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectorScheduler.h; sourceTree = "<group>"; };
+		4909F5D61ED742DA00825B0B /* CollectorScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectorScheduler.m; sourceTree = "<group>"; };
+		4909F5D91ED748CB00825B0B /* Collector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Collector.h; sourceTree = "<group>"; };
 		4978C0731ED5E71400148A4E /* ReportApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportApiClient.h; sourceTree = "<group>"; };
 		4978C0741ED5E71400148A4E /* ReportApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportApiClient.m; sourceTree = "<group>"; };
 		4978C0751ED5E71400148A4E /* Reports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reports.h; sourceTree = "<group>"; };
@@ -101,6 +110,14 @@
 		4983803C1ED48C7A003BCFB0 /* libSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CpuUsageCollector.h; sourceTree = "<group>"; };
 		4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CpuUsageCollector.m; sourceTree = "<group>"; };
+		499E717C1ED82FF300AD80C3 /* ReportSchedulerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportSchedulerTests.m; sourceTree = "<group>"; };
+		499E717F1ED8341100AD80C3 /* CpuMetricMother.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CpuMetricMother.h; sourceTree = "<group>"; };
+		499E71801ED8341100AD80C3 /* CpuMetricMother.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CpuMetricMother.m; sourceTree = "<group>"; };
+		499E71821ED838A800AD80C3 /* Async.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Async.h; sourceTree = "<group>"; };
+		499E71841ED838FD00AD80C3 /* TestAsync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAsync.h; sourceTree = "<group>"; };
+		49D839CA1ED81B10004F47C6 /* MetricsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricsStorage.h; sourceTree = "<group>"; };
+		49D839CB1ED81B10004F47C6 /* MetricsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricsStorage.m; sourceTree = "<group>"; };
+		49D839D51ED826FF004F47C6 /* TimeIntervalUnits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeIntervalUnits.h; sourceTree = "<group>"; };
 		72868C35D70EF8DC403575B2 /* Pods-SDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDK.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SDK/Pods-SDK.debug.xcconfig"; sourceTree = "<group>"; };
 		A38916CCADBAE09EDE316A98 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A635D7B39C8E4A9C416BE063 /* libPods-SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,11 +146,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4905E4D51ED81AAB00E95C65 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				49D839CA1ED81B10004F47C6 /* MetricsStorage.h */,
+				49D839CB1ED81B10004F47C6 /* MetricsStorage.m */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		4909E6221ED5F17C0009FBA9 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				499E71831ED838F500AD80C3 /* Infrastructure */,
+				499E717E1ED833F300AD80C3 /* Mother */,
 				4909F5B81ED7084A00825B0B /* Nocilla */,
 				4909F5A91ED6E1EA00825B0B /* Reporter */,
+				499E717A1ED82FE300AD80C3 /* Scheduler */,
 				4909F5AE1ED6EBC600825B0B /* ApiClientTests.h */,
 				4909F5AF1ED6EBC600825B0B /* ApiClientTests.m */,
 				4909E6251ED5F17C0009FBA9 /* Info.plist */,
@@ -161,6 +190,7 @@
 		4909F5AD1ED6EA9C00825B0B /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				499E71821ED838A800AD80C3 /* Async.h */,
 				4909F5CB1ED726AB00825B0B /* Configuration.h */,
 				4909F5CC1ED72A1D00825B0B /* DIContainer.h */,
 				4909F5CD1ED72A1D00825B0B /* DIContainer.m */,
@@ -193,6 +223,8 @@
 		4909F5C21ED7139800825B0B /* Scheduler */ = {
 			isa = PBXGroup;
 			children = (
+				4909F5D51ED742DA00825B0B /* CollectorScheduler.h */,
+				4909F5D61ED742DA00825B0B /* CollectorScheduler.m */,
 				4909F5C31ED713AA00825B0B /* ReportScheduler.h */,
 				4909F5C41ED713AA00825B0B /* ReportScheduler.m */,
 			);
@@ -202,6 +234,7 @@
 		4909F5D01ED737E100825B0B /* Time */ = {
 			isa = PBXGroup;
 			children = (
+				49D839D51ED826FF004F47C6 /* TimeIntervalUnits.h */,
 				4909F5D11ED73AA900825B0B /* TimeProvider.h */,
 				4909F5D21ED73AA900825B0B /* TimeProvider.m */,
 			);
@@ -213,6 +246,7 @@
 			children = (
 				4978C0811ED5EBF100148A4E /* API Client */,
 				4978C07B1ED5E7D600148A4E /* Model */,
+				4905E4D51ED81AAB00E95C65 /* Storage */,
 			);
 			path = Reporter;
 			sourceTree = "<group>";
@@ -287,10 +321,36 @@
 		4983806B1ED48D10003BCFB0 /* Collector */ = {
 			isa = PBXGroup;
 			children = (
+				4909F5D91ED748CB00825B0B /* Collector.h */,
 				4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */,
 				4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */,
 			);
 			path = Collector;
+			sourceTree = "<group>";
+		};
+		499E717A1ED82FE300AD80C3 /* Scheduler */ = {
+			isa = PBXGroup;
+			children = (
+				499E717C1ED82FF300AD80C3 /* ReportSchedulerTests.m */,
+			);
+			path = Scheduler;
+			sourceTree = "<group>";
+		};
+		499E717E1ED833F300AD80C3 /* Mother */ = {
+			isa = PBXGroup;
+			children = (
+				499E717F1ED8341100AD80C3 /* CpuMetricMother.h */,
+				499E71801ED8341100AD80C3 /* CpuMetricMother.m */,
+			);
+			path = Mother;
+			sourceTree = "<group>";
+		};
+		499E71831ED838F500AD80C3 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				499E71841ED838FD00AD80C3 /* TestAsync.h */,
+			);
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 		71E50B7189EC0D979241ECB1 /* Frameworks */ = {
@@ -320,6 +380,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49D839CC1ED81B10004F47C6 /* MetricsStorage.h in Headers */,
 				4978C0841ED5EC0100148A4E /* ApiClient.h in Headers */,
 				4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */,
 				4909F5C51ED713AA00825B0B /* ReportScheduler.h in Headers */,
@@ -328,6 +389,7 @@
 				4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */,
 				4909F5BC1ED7090E00825B0B /* Device.h in Headers */,
 				4909F5D31ED73AA900825B0B /* TimeProvider.h in Headers */,
+				4909F5D71ED742DA00825B0B /* CollectorScheduler.h in Headers */,
 				4978C0791ED5E71400148A4E /* Reports.h in Headers */,
 				4978C07E1ED5E7E600148A4E /* CpuMetric.h in Headers */,
 				4909F5CE1ED72A1D00825B0B /* DIContainer.h in Headers */,
@@ -516,6 +578,8 @@
 				4909F5B41ED7040600825B0B /* JsonMatcher.m in Sources */,
 				4909E6241ED5F17C0009FBA9 /* ReportApiClientTests.m in Sources */,
 				4909F5B01ED6EBC600825B0B /* ApiClientTests.m in Sources */,
+				499E717D1ED82FF300AD80C3 /* ReportSchedulerTests.m in Sources */,
+				499E71811ED8341100AD80C3 /* CpuMetricMother.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,11 +588,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4909F5A81ED6C10100825B0B /* Metric.m in Sources */,
+				49D839CD1ED81B10004F47C6 /* MetricsStorage.m in Sources */,
 				4909F5C61ED713AA00825B0B /* ReportScheduler.m in Sources */,
 				4909F5C11ED70E9E00825B0B /* UuidGenerator.m in Sources */,
 				4983806F1ED48D6B003BCFB0 /* CpuUsageCollector.m in Sources */,
 				4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */,
 				4909F5BD1ED7090E00825B0B /* Device.m in Sources */,
+				4909F5D81ED742DA00825B0B /* CollectorScheduler.m in Sources */,
 				4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */,
 				4978C07F1ED5E7E600148A4E /* CpuMetric.m in Sources */,
 				4909F5D41ED73AA900825B0B /* TimeProvider.m in Sources */,

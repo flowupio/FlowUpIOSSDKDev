@@ -8,13 +8,38 @@
 
 #import "CpuUsageCollector.h"
 
+@interface CpuUsageCollector ()
+
+@property (readonly, nonatomic) MetricsStorage *storage;
+@property (readonly, nonatomic) Device *device;
+@property (readonly, nonatomic) TimeProvider *time;
+
+@end
+
 @implementation CpuUsageCollector
 
-- (instancetype)init
+- (instancetype)initWithMetricsStorage:(MetricsStorage *)metricsStorage
+                                device:(Device *)device
+                                  time:(TimeProvider *)time
 {
     self = [super init];
-    if (self) {}
+    if (self) {
+        _storage = metricsStorage;
+        _device = device;
+        _time = time;
+    }
     return self;
+}
+
+- (void)collect
+{
+    float cpuUsage = self.cpuUsage;
+    CpuMetric *metric = [[CpuMetric alloc] initWithTimestamp:[self.time nowAsInt]
+                                              appVersionName:self.device.appVersionName
+                                                   osVersion:self.device.osVersion
+                                       isLowPowerModeEnabled:self.device.isLowPowerModeEnabled
+                                                    cpuUsage:cpuUsage * 100];
+    [self.storage storeCpuMetric:metric];
 }
 
 - (float)cpuUsage

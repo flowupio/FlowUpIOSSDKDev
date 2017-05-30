@@ -21,6 +21,9 @@ PODS:
     - AFNetworking
   - Nimble (7.0.0)
   - Nocilla (0.11.0)
+  - OCHamcrest (6.1.1)
+  - OCMockito (4.1.0):
+    - OCHamcrest (~> 6.0)
 
 DEPENDENCIES:
   - AFNetworkActivityLogger (from `https://github.com/AFNetworking/AFNetworkActivityLogger.git`, branch `3_0_0`)
@@ -28,6 +31,7 @@ DEPENDENCIES:
   - FlowUpIOSSDK (from `SDK`)
   - Nimble (~> 7.0.0)
   - Nocilla (~> 0.11.0)
+  - OCMockito (~> 4.1.0)
 
 EXTERNAL SOURCES:
   AFNetworkActivityLogger:
@@ -47,7 +51,9 @@ SPEC CHECKSUMS:
   FlowUpIOSSDK: 4d3a32c46b6b9ef491bc8569be13cddb88466ee0
   Nimble: 874982b605d4d752fcac6be695d13c502de84b1b
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
+  OCHamcrest: 363e1bf738c3e8a94abe7c2c415f70d671adde38
+  OCMockito: bceefcd365252bcdf8b59c1b2bd23890805fc0d8
 
-PODFILE CHECKSUM: 771938b84366adbb010e83a4f29aa5be85c90642
+PODFILE CHECKSUM: e279d4f4d4ceeff1eae8934f8a010137b835d228
 
 COCOAPODS: 1.2.0

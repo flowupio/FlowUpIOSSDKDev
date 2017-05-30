@@ -10,18 +10,50 @@
 
 @implementation DIContainer
 
++ (CollectorScheduler *)collectorScheduler
+{
+    static CollectorScheduler *_scheduler;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        _scheduler = [[CollectorScheduler alloc] init];
+    });
+
+    return _scheduler;
+}
+
 + (ReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey
 {
     static ReportScheduler *_scheduler;
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        _scheduler = [[ReportScheduler alloc] initWithDevice:[DIContainer device]
-                                             reportApiClient:[DIContainer reportApiClientWithApiKey:apiKey]
-                                                        time:[DIContainer time]];
+        _scheduler = [[ReportScheduler alloc] initWithMetricsStorage:[DIContainer metricsStorage]
+                                                     reportApiClient:[DIContainer reportApiClientWithApiKey:apiKey]
+                                                              device:[DIContainer device]
+                                                                time:[DIContainer time]];
     });
 
     return _scheduler;
+}
+
++ (CpuUsageCollector *)cpuUsageCollector
+{
+    return [[CpuUsageCollector alloc] initWithMetricsStorage:[DIContainer metricsStorage]
+                                                      device:[DIContainer device]
+                                                        time:[DIContainer time]];
+}
+
++ (MetricsStorage *)metricsStorage
+{
+    static MetricsStorage *_storage;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        _storage = [[MetricsStorage alloc] init];
+    });
+
+    return _storage;
 }
 
 + (ReportApiClient *)reportApiClientWithApiKey:(NSString *)apiKey
