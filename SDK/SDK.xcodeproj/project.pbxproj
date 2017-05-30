@@ -726,7 +726,7 @@
 				498380381ED48C7A003BCFB0 /* Sources */,
 				498380391ED48C7A003BCFB0 /* Frameworks */,
 				498380741ED48F55003BCFB0 /* Headers */,
-				4913101D1EDD7946000B41A8 /* ShellScript */,
+				4913101D1EDD7946000B41A8 /* Copy library to SDK source directory */,
 			);
 			buildRules = (
 			);
@@ -790,18 +790,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4913101D1EDD7946000B41A8 /* ShellScript */ = {
+		4913101D1EDD7946000B41A8 /* Copy library to SDK source directory */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Copy library to SDK source directory";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../build/copy_static_lib.sh\"";
+			shellScript = "\"${SRCROOT}/../scripts/build/copy_static_lib.sh\"";
 		};
 		708A829B4DA0E48A4FA787A0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

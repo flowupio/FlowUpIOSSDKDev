@@ -8,6 +8,13 @@ The project is in a workspace composed of two projects, the `Demo` project and t
 
 To build the SDK, open the `FlowUpIOSSDK.xcworkspace` file with XCode, select the SDK target and press the build button. The output static library is located at `DerivedData/FlowUpIOSSDK/Build/Products/*/libSDK.a`.
 
+## Making a release
+
+1. Update podspec version number.
+2. Build the library in `Release` mode.
+3. Run `./scripts/build/prepare_release.sh`.
+4. Run `pod trunk push FlowUpIOSSDK.podspec`.
+
 ## Adding a 3rd party library
 
 Given we are distributing a static library we need to follow some special steps to include 3rd party libraries inside the application. The target is to bundle every single dependency in the SDK so that our users don't have to load our own dependencies (including a matching version).

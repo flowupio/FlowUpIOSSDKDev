@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/Karumi/FlowUpIOSSDK"
   s.license      = 'Karumi'
   s.author       = { "FlowUp" => "flowup@karumi.com" }
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '10.3'
   s.source       = { :path => '.' }
   s.framework    = 'SystemConfiguration'
   s.source_files = 'SDK/FlowUp.h'
