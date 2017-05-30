@@ -28,6 +28,7 @@
 		4909F5D41ED73AA900825B0B /* TimeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5D21ED73AA900825B0B /* TimeProvider.m */; };
 		4909F5D71ED742DA00825B0B /* CollectorScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5D51ED742DA00825B0B /* CollectorScheduler.h */; };
 		4909F5D81ED742DA00825B0B /* CollectorScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5D61ED742DA00825B0B /* CollectorScheduler.m */; };
+		4913101B1EDD7297000B41A8 /* libSDK.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4983803C1ED48C7A003BCFB0 /* libSDK.a */; };
 		4978C0771ED5E71400148A4E /* ReportApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0731ED5E71400148A4E /* ReportApiClient.h */; };
 		4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0741ED5E71400148A4E /* ReportApiClient.m */; };
 		4978C0791ED5E71400148A4E /* Reports.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0751ED5E71400148A4E /* Reports.h */; };
@@ -84,6 +85,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				4913101B1EDD7297000B41A8 /* libSDK.a in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +589,7 @@
 				4983803A1ED48C7A003BCFB0 /* CopyFiles */,
 				498380741ED48F55003BCFB0 /* Headers */,
 				EB6E7EAB979AF60E8E7018A4 /* [CP] Copy Pods Resources */,
+				4913101D1EDD7946000B41A8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -650,6 +653,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4913101D1EDD7946000B41A8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../build/copy_static_lib.sh\"";
+		};
 		708A829B4DA0E48A4FA787A0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
