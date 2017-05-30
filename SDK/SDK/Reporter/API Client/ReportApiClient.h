@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "Reports.h"
-#import "AFNetworking.h"
 #import "FUPResult.h"
 #import "FUPApiClientError.h"
 #import "ApiClient.h"

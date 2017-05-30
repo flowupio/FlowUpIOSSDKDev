@@ -1,6 +1,4 @@
 PODS:
-  - AFNetworkActivityLogger (3.0.0):
-    - AFNetworking/NSURLSession (~> 3.0)
   - AFNetworking (3.1.0):
     - AFNetworking/NSURLSession (= 3.1.0)
     - AFNetworking/Reachability (= 3.1.0)
@@ -16,9 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - FlowUpIOSSDK (0.0.1):
-    - AFNetworkActivityLogger
-    - AFNetworking
+  - FlowUpIOSSDK (0.0.1)
   - Nimble (7.0.0)
   - Nocilla (0.11.0)
   - OCHamcrest (6.1.1)
@@ -26,34 +22,24 @@ PODS:
     - OCHamcrest (~> 6.0)
 
 DEPENDENCIES:
-  - AFNetworkActivityLogger (from `https://github.com/AFNetworking/AFNetworkActivityLogger.git`, branch `3_0_0`)
-  - AFNetworking (~> 3.1.0)
+  - AFNetworking (= 3.1.0)
   - FlowUpIOSSDK (from `SDK`)
   - Nimble (~> 7.0.0)
   - Nocilla (~> 0.11.0)
   - OCMockito (~> 4.1.0)
 
 EXTERNAL SOURCES:
-  AFNetworkActivityLogger:
-    :branch: '3_0_0'
-    :git: https://github.com/AFNetworking/AFNetworkActivityLogger.git
   FlowUpIOSSDK:
     :path: SDK
 
-CHECKOUT OPTIONS:
-  AFNetworkActivityLogger:
-    :commit: abc565fe804f210dfda3b028c9a64e7c32e44600
-    :git: https://github.com/AFNetworking/AFNetworkActivityLogger.git
-
 SPEC CHECKSUMS:
-  AFNetworkActivityLogger: e77f68d014becb33c4306a23f56a64906ff72670
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  FlowUpIOSSDK: 69a5dd8b8cb421f32176dffb9a8b35bb5ec273ed
+  FlowUpIOSSDK: 5d0c48dcff30f38ed4c60966dc8b8a549b497dc7
   Nimble: 874982b605d4d752fcac6be695d13c502de84b1b
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
   OCHamcrest: 363e1bf738c3e8a94abe7c2c415f70d671adde38
   OCMockito: bceefcd365252bcdf8b59c1b2bd23890805fc0d8
 
-PODFILE CHECKSUM: e279d4f4d4ceeff1eae8934f8a010137b835d228
+PODFILE CHECKSUM: 05fd1f5cb99845e4267a70811c4e49fa961ac092
 
 COCOAPODS: 1.2.0

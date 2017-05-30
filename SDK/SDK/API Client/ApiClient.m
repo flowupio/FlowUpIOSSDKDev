@@ -57,10 +57,6 @@ static NSInteger const FUPServerErrorStatusCode = 500;
 - (AFHTTPSessionManager *)sessionManagerWithApiKey:(NSString *)apiKey uuid:(NSString *)uuid
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [[AFNetworkActivityLogger sharedLogger] startLogging];
-    for (id<AFNetworkActivityLoggerProtocol> logger in [[AFNetworkActivityLogger sharedLogger] loggers]) {
-        [logger setLevel:AFLoggerLevelDebug];
-    }
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
