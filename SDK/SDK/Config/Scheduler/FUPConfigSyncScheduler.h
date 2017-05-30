@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FUPFlowUpConfig.h"
+#import "FUPConfigService.h"
 #import "TimeProvider.h"
 #import "Async.h"
 
@@ -20,8 +20,8 @@
 @interface FUPConfigSyncScheduler : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithConfig:(FUPFlowUpConfig *)config
-                          time:(TimeProvider *)time;
+- (instancetype)initWithConfigService:(FUPConfigService *)configService
+                                 time:(TimeProvider *)time;
 
 - (void)start;
 

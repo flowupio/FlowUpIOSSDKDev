@@ -1,5 +1,5 @@
 //
-//  FUPFlowUpConfigTests.m
+//  FUPConfigServiceTests.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 29/05/2017.
@@ -7,28 +7,28 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "FUPFlowUpConfig.h"
+#import "FUPConfigService.h"
 #import <Nimble/Nimble.h>
 #import <OCHamcrest/OCHamcrest.h>
 #import <OCMockito/OCMockito.h>
 @import Nimble.Swift;
 
-@interface FUPFlowUpConfigTests : XCTestCase
+@interface FUPConfigServiceTests : XCTestCase
 
 @property (readwrite, nonatomic) FUPConfigApiClient *apiClient;
 @property (readwrite, nonatomic) FUPConfigStorage *storage;
-@property (readwrite, nonatomic) FUPFlowUpConfig *config;
+@property (readwrite, nonatomic) FUPConfigService *service;
 
 @end
 
-@implementation FUPFlowUpConfigTests
+@implementation FUPConfigServiceTests
 
 - (void)setUp {
     [super setUp];
     self.apiClient = mock([FUPConfigApiClient class]);
     self.storage = mock([FUPConfigStorage class]);
-    self.config = [[FUPFlowUpConfig alloc] initWithApiClient:self.apiClient
-                                                     storage:self.storage];
+    self.service = [[FUPConfigService alloc] initWithApiClient:self.apiClient
+                                                       storage:self.storage];
 }
 
 - (void)testConfig_ReturnsFalse_IfApiClientReturnsError
@@ -36,7 +36,7 @@
     [self givenApiClientReturnsError];
 
     __block BOOL didUpdateConfig = YES;
-    [self.config updateWithCompletion:^(BOOL success) { didUpdateConfig = success; }];
+    [self.service updateWithCompletion:^(BOOL success) { didUpdateConfig = success; }];
 
     expect(didUpdateConfig).to(beFalse());
 }
@@ -46,7 +46,7 @@
     [self givenApiClientReturnsConfig];
 
     __block BOOL didUpdateConfig = YES;
-    [self.config updateWithCompletion:^(BOOL success) { didUpdateConfig = success; }];
+    [self.service updateWithCompletion:^(BOOL success) { didUpdateConfig = success; }];
 
     expect(didUpdateConfig).to(beTrue());
 }
@@ -55,7 +55,7 @@
 {
     [self givenApiClientReturnsConfig];
 
-    [self.config updateWithCompletion:^(BOOL success) {}];
+    [self.service updateWithCompletion:^(BOOL success) {}];
 
     [verify(self.storage) setConfig:anything()];
 }
@@ -64,7 +64,7 @@
 {
     FUPConfig *config = [self givenAPersistedConfig];
 
-    BOOL isEnabled = self.config.enabled;
+    BOOL isEnabled = self.service.enabled;
 
     expect(isEnabled).to(equal(config.isEnabled));
 }
@@ -73,7 +73,7 @@
 {
     [self givenAPersistedConfig];
 
-    [self.config disable];
+    [self.service disable];
 
     [self thenConfigWithIsEnabledValueIsStored:NO];
 }

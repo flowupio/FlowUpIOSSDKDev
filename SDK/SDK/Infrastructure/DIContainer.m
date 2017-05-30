@@ -20,20 +20,20 @@
     return [[ReportScheduler alloc] initWithMetricsStorage:[DIContainer metricsStorage]
                                            reportApiClient:[DIContainer reportApiClientWithApiKey:apiKey]
                                                     device:[DIContainer device]
-                                                    config:[DIContainer configWithApiKey:apiKey]
+                                             configService:[DIContainer configServiceWithApiKey:apiKey]
                                                       time:[DIContainer time]];
 }
 
 + (FUPConfigSyncScheduler *)configSyncSchedulerWithApiKey:(NSString *)apiKey
 {
-    return [[FUPConfigSyncScheduler alloc] initWithConfig:[DIContainer configWithApiKey:apiKey]
-                                                     time:[DIContainer time]];
+    return [[FUPConfigSyncScheduler alloc] initWithConfigService:[DIContainer configServiceWithApiKey:apiKey]
+                                                            time:[DIContainer time]];
 }
 
-+ (FUPFlowUpConfig *)configWithApiKey:(NSString *)apiKey
++ (FUPConfigService *)configServiceWithApiKey:(NSString *)apiKey
 {
-    return [[FUPFlowUpConfig alloc] initWithApiClient:[DIContainer configApiClientWithApiKey:apiKey]
-                                              storage:[DIContainer configStorage]];
+    return [[FUPConfigService alloc] initWithApiClient:[DIContainer configApiClientWithApiKey:apiKey]
+                                               storage:[DIContainer configStorage]];
 }
 
 + (CpuUsageCollector *)cpuUsageCollector

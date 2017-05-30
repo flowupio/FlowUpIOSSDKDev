@@ -12,7 +12,7 @@ static NSTimeInterval const NeverSynced = -1;
 
 @interface FUPConfigSyncScheduler ()
 
-@property (readonly, nonatomic) FUPFlowUpConfig *config;
+@property (readonly, nonatomic) FUPConfigService *configService;
 @property (readonly, nonatomic) TimeProvider *time;
 @property (readwrite, nonatomic) NSTimeInterval lastSyncTimeInterval;
 
@@ -20,12 +20,12 @@ static NSTimeInterval const NeverSynced = -1;
 
 @implementation FUPConfigSyncScheduler
 
-- (instancetype)initWithConfig:(FUPFlowUpConfig *)config
-                          time:(TimeProvider *)time
+- (instancetype)initWithConfigService:(FUPConfigService *)configService
+                                 time:(TimeProvider *)time
 {
     self = [super init];
     if (self) {
-        _config = config;
+        _configService = configService;
         _time = time;
     }
     return self;
@@ -50,7 +50,7 @@ static NSTimeInterval const NeverSynced = -1;
         return;
     }
 
-    [self.config updateWithCompletion:^(BOOL success) {
+    [self.configService updateWithCompletion:^(BOOL success) {
         if (success) {
             self.lastSyncTimeInterval = [self.time now];
         }

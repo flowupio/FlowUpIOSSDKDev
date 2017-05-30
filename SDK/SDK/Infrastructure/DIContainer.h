@@ -11,7 +11,7 @@
 #import "CollectorScheduler.h"
 #import "FUPConfigApiClient.h"
 #import "FUPConfigSyncScheduler.h"
-#import "FUPFlowUpConfig.h"
+#import "FUPConfigService.h"
 #import "ReportApiClient.h"
 #import "Configuration.h"
 

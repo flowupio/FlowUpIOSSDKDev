@@ -1,5 +1,5 @@
 //
-//  FUPFlowUpConfig.h
+//  FUPConfigService.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 29/05/2017.
@@ -10,7 +10,7 @@
 #import "FUPConfigApiClient.h"
 #import "FUPConfigStorage.h"
 
-@interface FUPFlowUpConfig : NSObject
+@interface FUPConfigService : NSObject
 
 @property (readonly, nonatomic) BOOL enabled;
 

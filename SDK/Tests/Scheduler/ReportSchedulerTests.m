@@ -25,7 +25,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 @property (readwrite, nonatomic) ReportScheduler *scheduler;
 @property (readwrite, nonatomic) ReportApiClient *apiClient;
 @property (readwrite, nonatomic) Device *device;
-@property (readwrite, nonatomic) FUPFlowUpConfig *config;
+@property (readwrite, nonatomic) FUPConfigService *configService;
 @property (readwrite, nonatomic) TimeProvider *time;
 
 @end
@@ -37,7 +37,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
     self.apiClient = mock([ReportApiClient class]);
     self.storage = [[MetricsStorage alloc] init];
     self.device = mock([Device class]);
-    self.config = mock([FUPFlowUpConfig class]);
+    self.configService = mock([FUPConfigService class]);
     self.time = mock([TimeProvider class]);
     self.scheduler = [self reportScheduler];
 
@@ -160,12 +160,12 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 
 - (void)givenSdkIsEnabled
 {
-    [given([self.config enabled]) willReturnBool:YES];
+    [given([self.configService enabled]) willReturnBool:YES];
 }
 
 - (void)givenSdkIsDisabled
 {
-    [given([self.config enabled]) willReturnBool:NO];
+    [given([self.configService enabled]) willReturnBool:NO];
 }
 
 - (ReportScheduler *)reportScheduler
@@ -173,7 +173,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
     return [[ReportScheduler alloc] initWithMetricsStorage:self.storage
                                            reportApiClient:self.apiClient
                                                     device:self.device
-                                                    config:self.config
+                                             configService:self.configService
                                                       time:self.time];
 }
 

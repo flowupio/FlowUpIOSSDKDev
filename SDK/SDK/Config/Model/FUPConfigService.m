@@ -1,21 +1,21 @@
 //
-//  FUPFlowUpConfig.m
+//  FUPConfigService.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 29/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "FUPFlowUpConfig.h"
+#import "FUPConfigService.h"
 
-@interface FUPFlowUpConfig ()
+@interface FUPConfigService ()
 
 @property (readonly, nonatomic) FUPConfigApiClient *apiClient;
 @property (readonly, nonatomic) FUPConfigStorage *storage;
 
 @end
 
-@implementation FUPFlowUpConfig
+@implementation FUPConfigService
 
 - (instancetype)initWithApiClient:(FUPConfigApiClient *)apiClient
                           storage:(FUPConfigStorage *)storage

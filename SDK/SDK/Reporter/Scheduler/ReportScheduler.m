@@ -16,7 +16,7 @@ static NSTimeInterval const NeverReported = -1;
 @property (readonly, nonatomic) ReportApiClient *reportApiClient;
 @property (readonly, nonatomic) Device *device;
 @property (readonly, nonatomic) TimeProvider *time;
-@property (readonly, nonatomic) FUPFlowUpConfig *config;
+@property (readonly, nonatomic) FUPConfigService *configService;
 @property (readwrite, nonatomic) NSTimeInterval lastReportTimeInterval;
 
 @end
@@ -26,7 +26,7 @@ static NSTimeInterval const NeverReported = -1;
 - (instancetype)initWithMetricsStorage:(MetricsStorage *)metricsStorage
                        reportApiClient:(ReportApiClient *)reportApiClient
                                 device:(Device *)device
-                                config:(FUPFlowUpConfig *)config
+                         configService:(FUPConfigService *)configService
                                   time:(TimeProvider *)time
 {
     self = [super init];
@@ -34,7 +34,7 @@ static NSTimeInterval const NeverReported = -1;
         _storage = metricsStorage;
         _reportApiClient = reportApiClient;
         _device = device;
-        _config = config;
+        _configService = configService;
         _time = time;
         _lastReportTimeInterval = NeverReported;
     }
@@ -56,7 +56,7 @@ static NSTimeInterval const NeverReported = -1;
 - (void)reportMetrics
 {
     NSLog(@"[ReportScheduler] Report metrics");
-    if (!self.config.enabled) {
+    if (!self.configService.enabled) {
         NSLog(@"[ReportScheduler] FlowUp is disabled for this device");
         return;
     }
