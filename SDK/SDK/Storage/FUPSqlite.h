@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Async.h"
 #import <sqlite3.h>
 
 @interface FUPSqlite : NSObject
-
-@property (readonly, nonatomic) sqlite3 *db;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithFileName:(NSString *)fileName;

@@ -10,6 +10,7 @@
 
 @interface FUPSqlite ()
 
+@property (readonly, nonatomic) dispatch_queue_t queue;
 @property (readonly, nonatomic) NSString *fileName;
 
 @end
@@ -20,6 +21,7 @@
 {
     self = [super init];
     if (self) {
+        _queue = dispatch_queue_create("SQLit access Queue", DISPATCH_QUEUE_SERIAL);
         _fileName = fileName;
     }
     return self;
@@ -42,38 +44,48 @@
 
 - (BOOL)runStatement:(NSString *)statement
 {
-    char *error;
-    BOOL success = sqlite3_exec(self.db, [statement UTF8String], nil, nil, &error) == SQLITE_OK;
+    __block BOOL success;
 
-    if (!success) {
-        NSLog(@"[FUPSqlite] There was an error running \"%@\" in SQLite: %s", statement, error);
-        sqlite3_free(error);
-    }
+    async(self.queue, ^{
+        char *error;
+        success = sqlite3_exec(self.db, [statement UTF8String], nil, nil, &error) == SQLITE_OK;
+
+        if (!success) {
+            NSLog(@"[FUPSqlite] There was an error running \"%@\" in SQLite: %s", statement, error);
+            sqlite3_free(error);
+        }
+    });
 
     return success;
 }
 
 - (BOOL)runQuery:(NSString *)query block:(BOOL (^)(sqlite3_stmt *))block
 {
-    sqlite3_stmt *statement = nil;
+    __block BOOL success = YES;
 
-    if (sqlite3_prepare_v2(self.db, [query UTF8String], -1, &statement, nil) != SQLITE_OK) {
-        NSLog(@"[FUPSqlite] There was an error performing query \"%@\"", query);
-        return NO;
-    }
+    dispatch_sync(self.queue, ^{
+        sqlite3_stmt *statement = nil;
 
-    if (sqlite3_step(statement) != SQLITE_ROW) {
-        NSLog(@"[FUPSqlite] There was no item stored for query \"%@\"", query);
-        return NO;
-    }
+        if (sqlite3_prepare_v2(self.db, [query UTF8String], -1, &statement, nil) != SQLITE_OK) {
+            NSLog(@"[FUPSqlite] There was an error performing query \"%@\"", query);
+            success = NO;
+            return;
+        }
 
-    BOOL shouldGoToNext;
-    do {
-        shouldGoToNext = block(statement);
-        shouldGoToNext &= sqlite3_step(statement) == SQLITE_ROW;
-    } while (shouldGoToNext);
+        if (sqlite3_step(statement) != SQLITE_ROW) {
+            NSLog(@"[FUPSqlite] There was no item stored for query \"%@\"", query);
+            success = NO;
+            return;
+        }
 
-    return YES;
+        BOOL shouldGoToNext;
+        do {
+            shouldGoToNext = block(statement);
+            shouldGoToNext &= sqlite3_step(statement) == SQLITE_ROW;
+        } while (shouldGoToNext);
+    });
+
+    return success;
 }
 
 - (NSString *)databasePath

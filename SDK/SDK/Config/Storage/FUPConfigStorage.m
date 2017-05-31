@@ -12,7 +12,6 @@ static NSString *const TableCreatedKey = @"FlowUp.ConfigTableCreated";
 
 @interface FUPConfigStorage ()
 
-@property (readonly, nonatomic) dispatch_queue_t queue;
 @property (readonly, nonatomic) FUPSqlite *sqlite;
 
 @end
@@ -23,7 +22,6 @@ static NSString *const TableCreatedKey = @"FlowUp.ConfigTableCreated";
 {
     self = [super init];
     if (self) {
-        _queue = dispatch_queue_create("Config Storage Queue", DISPATCH_QUEUE_SERIAL);
         _sqlite = sqlite;
     }
     return self;
@@ -31,61 +29,49 @@ static NSString *const TableCreatedKey = @"FlowUp.ConfigTableCreated";
 
 - (FUPConfig *)config
 {
-    __block FUPConfig *config;
-    dispatch_sync(self.queue, ^{
-        [self createTable];
-        config = [self readConfigFromDatabase];
-    });
-    return config;
+    FUPConfig *config = [self readConfigFromDatabase];
+    return config != nil ? config : [[FUPConfig alloc] initWithIsEnabled:YES];
 }
 
 - (void)setConfig:(FUPConfig *)config
 {
-    async(self.queue, ^{
-        [self createTable];
-        NSString *insertStatement = [NSString stringWithFormat:
-                                     @"INSERT OR REPLACE INTO config\
-                                        (id, enabled) \
-                                        values ('UNIQUE_ID', \"%@\")", [NSNumber numberWithBool:config.isEnabled]];
-        BOOL success = [self.sqlite runStatement:insertStatement];
-        if (success) {
-            NSLog(@"[FUPConfigStorage] Config stored");
-        } else {
-            NSLog(@"[FUPConfigStorage] There was an error inserting a new config value");
-        }
-    });
+    [self createTable];
+    NSString *insertStatement = [NSString stringWithFormat:
+                                 @"INSERT OR REPLACE INTO config\
+                                 (id, enabled) \
+                                 values ('UNIQUE_ID', \"%@\")",
+                                 [NSNumber numberWithBool:config.isEnabled]];
+    BOOL success = [self.sqlite runStatement:insertStatement];
+    if (success) {
+        NSLog(@"[FUPConfigStorage] Config stored [%@]", config.isEnabled ? @"YES" : @"NO");
+    } else {
+        NSLog(@"[FUPConfigStorage] There was an error inserting a new config value");
+    }
 }
 
 - (void)clear
 {
-    async(self.queue, ^{
-        [self createTable];
-        BOOL success = [self.sqlite runStatement:@"DELETE FROM config WHERE id = 'UNIQUE_ID')"];
-        if (success) {
-            NSLog(@"[FUPConfigStorage] Config deleted");
-        } else {
-            NSLog(@"[FUPConfigStorage] There was an error deleting the stored config");
-        }
-    });
+    [self createTable];
+    BOOL success = [self.sqlite runStatement:@"DELETE FROM config WHERE id = 'UNIQUE_ID')"];
+    if (success) {
+        NSLog(@"[FUPConfigStorage] Config deleted");
+    } else {
+        NSLog(@"[FUPConfigStorage] There was an error deleting the stored config");
+    }
 }
 
 - (FUPConfig *)readConfigFromDatabase
 {
-    __block FUPConfig *config;
+    __block FUPConfig *config = nil;
     NSString *query = @"SELECT * FROM config";
 
-    BOOL success = [self.sqlite runQuery:query block:^BOOL(sqlite3_stmt *statement) {
+    [self.sqlite runQuery:query block:^BOOL(sqlite3_stmt *statement) {
         int rawValue = sqlite3_column_int(statement, 1);
-        BOOL isEnabled = [[NSNumber numberWithInt:rawValue] boolValue];
-        config = [[FUPConfig alloc] initWithIsEnabled:isEnabled];
+        config = [[FUPConfig alloc] initWithIsEnabled:[[NSNumber numberWithInt:rawValue] boolValue]];
         return NO;
     }];
 
-    if (success) {
-        return config;
-    } else {
-        return [[FUPConfig alloc] initWithIsEnabled:YES];
-    }
+    return config;
 }
 
 - (void)createTable
@@ -94,9 +80,10 @@ static NSString *const TableCreatedKey = @"FlowUp.ConfigTableCreated";
 
     if (!isTableCreated) {
         NSString *createTableStatement =
-            @"CREATE TABLE IF NOT EXISTS config(\
-                id TEXT NOT NULL PRIMARY KEY DEFAULT 'UNIQUE_ID', \
-                enabled INTEGER DEFAULT 1)";
+        @"CREATE TABLE IF NOT EXISTS config(\
+        id TEXT NOT NULL PRIMARY KEY DEFAULT 'UNIQUE_ID', \
+        enabled INTEGER DEFAULT 1)";
+
         [self.sqlite runStatement:createTableStatement];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:TableCreatedKey];
     }
