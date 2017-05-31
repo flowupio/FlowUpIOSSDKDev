@@ -9,3 +9,4 @@
 #import <Foundation/Foundation.h>
 
 #define MINUTES(x) ((x) * 60)
+#define HOURS(x) ((x) * 3600)

@@ -25,6 +25,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 @property (readwrite, nonatomic) ReportScheduler *scheduler;
 @property (readwrite, nonatomic) ReportApiClient *apiClient;
 @property (readwrite, nonatomic) Device *device;
+@property (readwrite, nonatomic) FUPConfigService *configService;
 @property (readwrite, nonatomic) TimeProvider *time;
 
 @end
@@ -33,18 +34,29 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 
 - (void)setUp {
     [super setUp];
-    self.apiClient = [self reportApiClient];
-    self.storage = [self metricsStorage];
-    self.device = [self device];
-    self.time = [self timeProvider];
-    self.apiClient = [self reportApiClient];
+    self.apiClient = mock([ReportApiClient class]);
+    self.storage = [[MetricsStorage alloc] init];
+    self.device = mock([Device class]);
+    self.configService = mock([FUPConfigService class]);
+    self.time = mock([TimeProvider class]);
     self.scheduler = [self reportScheduler];
+
     [self.storage removeNumberOfCpuMetrics:1000];
+    [self givenSdkIsEnabled];
+    [self givenWeAreNow];
 }
 
 - (void)testScheduler_WontReport_IfNoMetrics
 {
-    [self givenWeAreNow];
+    [self givenApiClientReportsSuccessfully];
+    [self.scheduler reportMetrics];
+
+    [verifyCount(self.apiClient, never()) sendReports:anything() completion:anything()];
+}
+
+- (void)testScheduler_WontReport_IfSdkIsDisabled
+{
+    [self givenSdkIsDisabled];
     [self givenApiClientReportsSuccessfully];
     [self.scheduler reportMetrics];
 
@@ -66,7 +78,6 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 
 - (void)testScheduler_Reports_IfItsTheFirstTime
 {
-    [self givenWeAreNow];
     [self givenApiClientReportsSuccessfully];
     [self.storage storeCpuMetric:[CpuMetricMother any]];
 
@@ -90,7 +101,6 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 
 - (void)testScheduler_RemovesMetrics_IfTheyHaveBeenSuccessfullyReported
 {
-    [self givenWeAreNow];
     [self givenApiClientReportsSuccessfully];
     [self.storage storeCpuMetric:[CpuMetricMother any]];
 
@@ -101,7 +111,6 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 
 - (void)testScheduler_DontRemoveMetrics_IfThereWasAnErrorReporting
 {
-    [self givenWeAreNow];
     [self givenApiClientReportsAnError];
     [self.storage storeCpuMetric:[CpuMetricMother any]];
 
@@ -149,24 +158,14 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
      willReturnInt:LongTimeSinceNow];
 }
 
-- (MetricsStorage *)metricsStorage
+- (void)givenSdkIsEnabled
 {
-    return [[MetricsStorage alloc] init];
+    [given([self.configService enabled]) willReturnBool:YES];
 }
 
-- (ReportApiClient *)reportApiClient
+- (void)givenSdkIsDisabled
 {
-    return mock([ReportApiClient class]);
-}
-
-- (Device *)device
-{
-    return mock([Device class]);
-}
-
-- (TimeProvider *)timeProvider
-{
-    return mock([TimeProvider class]);
+    [given([self.configService enabled]) willReturnBool:NO];
 }
 
 - (ReportScheduler *)reportScheduler
@@ -174,6 +173,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
     return [[ReportScheduler alloc] initWithMetricsStorage:self.storage
                                            reportApiClient:self.apiClient
                                                     device:self.device
+                                             configService:self.configService
                                                       time:self.time];
 }
 

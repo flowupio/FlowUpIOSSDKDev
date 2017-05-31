@@ -16,9 +16,6 @@
 #import <Nocilla/Nocilla.h>
 @import Nimble.Swift;
 
-static NSString *const ApiKey = @"This is my Api Key";
-static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
-
 @interface ReportApiClientTests : ApiClientTests
 
 @property (readwrite, nonatomic) ReportApiClient *reportApiClient;
@@ -30,16 +27,9 @@ static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
 - (void)setUp {
     [super setUp];
     self.reportApiClient = [self reportApiClient];
-    [[LSNocilla sharedInstance] start];
 }
 
-- (void)tearDown {
-    [super tearDown];
-    [[LSNocilla sharedInstance] clearStubs];
-    [[LSNocilla sharedInstance] stop];
-}
-
-- (void)testAcceptJsonHeaderIsBeingSent {
+- (void)testApiClient_SendsAcceptJsonHeader_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
     withHeader(@"Accept", @"application/json").
     andReturn(200);
@@ -51,7 +41,7 @@ static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
     expect(didSendReport).toEventually(equal(YES));
 }
 
-- (void)testContentTypeJsonHeaderIsBeingSent {
+- (void)testApiClient_SendsContentTypeJsonHeader_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
     withHeader(@"Content-Type", @"application/json; charset=utf-8").
     andReturn(200);
@@ -63,7 +53,7 @@ static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
     expect(didSendReport).toEventually(equal(YES));
 }
 
-- (void)testApiKeyHeaderIsBeingSent {
+- (void)testApiClient_SendsApiKeyHeader_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
     withHeader(@"X-Api-Key", ApiKey).
     andReturn(200);
@@ -75,7 +65,7 @@ static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
     expect(didSendReport).toEventually(equal(YES));
 }
 
-- (void)testUuidHeaderIsBeingSent {
+- (void)testApiClient_SendsUuidHeader_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
     withHeader(@"X-UUID", Uuid).
     andReturn(200);
@@ -87,7 +77,7 @@ static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
     expect(didSendReport).toEventually(equal(YES));
 }
 
-- (void)testUserAgentHeaderIsBeingSent {
+- (void)testApiClient_SendsUserAgentHeader_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
     withHeader(@"User-Agent", [NSString stringWithFormat:@"FlowUpIOSSDK/%@", SDKVersion]).
     andReturn(200);
@@ -99,9 +89,9 @@ static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
     expect(didSendReport).toEventually(equal(YES));
 }
 
-- (void)testReportsAreBeingSent {
+- (void)testApiClient_SendReports_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
-    withBody([self fromJsonFileWithName:@"reportApiRequest"]).
+    withBody([self dictionaryFromJsonFileWithName:@"reportApiRequest"]).
     andReturn(200);
 
     __block BOOL didSendReport = NO;

@@ -17,7 +17,6 @@
 
 @implementation MetricsStorage
 
-
 - (instancetype)init
 {
     self = [super init];

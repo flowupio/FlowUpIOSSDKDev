@@ -9,17 +9,38 @@
 #import "FlowUp.h"
 #import "DIContainer.h"
 
+#ifdef DEBUG
+#   define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#   define NSLog(...) (void)0
+#endif
+
 @implementation FlowUp
+
+static BOOL isInitialized = NO;
 
 + (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions apiKey:(NSString *)apiKey
 {
+    if (isInitialized) {
+        return;
+    }
+
     CollectorScheduler *collectorScheduler = [DIContainer collectorScheduler];
     ReportScheduler *reportScheduler = [DIContainer reportSchedulerWithApiKey:apiKey];
+    FUPConfigSyncScheduler *configSyncScheduler = [DIContainer configSyncSchedulerWithApiKey:apiKey];
+    FUPConfigStorage *configStorage = [DIContainer configStorage];
+
+    [configSyncScheduler start];
+
+    if (!configStorage.config.isEnabled) {
+        NSLog(@"FlowUp is disabled for this device");
+        return;
+    }
 
     [collectorScheduler addCollectors:@[[DIContainer cpuUsageCollector]]
-                         timeInterval: SamplingTimeInterval];
-
+                         timeInterval: CollectorSchedulerSamplingTimeInterval];
     [reportScheduler start];
+    isInitialized = YES;
 }
 
 @end
