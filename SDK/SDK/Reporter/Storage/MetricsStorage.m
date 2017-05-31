@@ -8,7 +8,15 @@
 
 #import "MetricsStorage.h"
 
-static NSString *const TableCreatedKey = @"FlowUp.MetricsTableCreated";
+static NSString *const CreateTableStatement =
+@"CREATE TABLE IF NOT EXISTS metrics( \
+_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
+timestamp INTEGER NOT NULL, \
+metric_name TEXT NOT NULL, \
+app_version_name TEXT NOT NULL, \
+os_version TEXT NOT NULL, \
+is_low_power_enabled INTEGER NOT NULL, \
+value INTEGER)";
 
 @interface MetricsStorage ()
 
@@ -29,7 +37,7 @@ static NSString *const TableCreatedKey = @"FlowUp.MetricsTableCreated";
 
 - (void)storeCpuMetric:(CpuMetric *)cpuMetric
 {
-    [self createTable];
+    [self.sqlite createTable:@"metrics" withStatement:CreateTableStatement];
     NSString *insertStatement = [NSString stringWithFormat:
                                  @"INSERT INTO metrics \
                                  (timestamp, metric_name, app_version_name, os_version, is_low_power_enabled, value) \
@@ -50,6 +58,7 @@ static NSString *const TableCreatedKey = @"FlowUp.MetricsTableCreated";
 
 - (NSArray<CpuMetric *> *)cpuMetricsAtMost:(NSInteger)numberOfCpuMetrics
 {
+    [self.sqlite createTable:@"metrics" withStatement:CreateTableStatement];
     NSMutableArray *metrics = [[NSMutableArray alloc] initWithCapacity:numberOfCpuMetrics];
     NSString *query = [NSString stringWithFormat:
                        @"SELECT * FROM metrics \
@@ -69,6 +78,7 @@ static NSString *const TableCreatedKey = @"FlowUp.MetricsTableCreated";
 
 - (void)removeNumberOfCpuMetrics:(NSInteger)numberOfCpuMetrics
 {
+    [self.sqlite createTable:@"metrics" withStatement:CreateTableStatement];
     NSString *deleteStatement = [NSString stringWithFormat: @"DELETE FROM metrics \
                                  WHERE _id IN ( \
                                  SELECT _id FROM metrics \
@@ -83,6 +93,7 @@ static NSString *const TableCreatedKey = @"FlowUp.MetricsTableCreated";
 
 - (void)clear
 {
+    [self.sqlite createTable:@"metrics" withStatement:CreateTableStatement];
     NSString *deleteStatement = @"DELETE * FROM metrics";
     BOOL success = [self.sqlite runStatement:deleteStatement];
 
@@ -93,6 +104,7 @@ static NSString *const TableCreatedKey = @"FlowUp.MetricsTableCreated";
 
 - (BOOL)hasReports
 {
+    [self.sqlite createTable:@"metrics" withStatement:CreateTableStatement];
     __block BOOL hasReports = NO;
     NSString *query = @"SELECT COUNT(*) FROM metrics";
     [self.sqlite runQuery:query block:^BOOL(sqlite3_stmt *statement) {
@@ -100,26 +112,6 @@ static NSString *const TableCreatedKey = @"FlowUp.MetricsTableCreated";
         return NO;
     }];
     return hasReports;
-}
-
-- (void)createTable
-{
-    BOOL isTableCreated = [[NSUserDefaults standardUserDefaults] boolForKey:TableCreatedKey];
-
-    if (!isTableCreated) {
-        NSString *createTableStatement =
-        @"CREATE TABLE IF NOT EXISTS metrics( \
-        _id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
-        timestamp INTEGER NOT NULL, \
-        metric_name TEXT NOT NULL, \
-        app_version_name TEXT NOT NULL, \
-        os_version TEXT NOT NULL, \
-        is_low_power_enabled INTEGER NOT NULL, \
-        value INTEGER)";
-
-        [self.sqlite runStatement:createTableStatement];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:TableCreatedKey];
-    }
 }
 
 @end

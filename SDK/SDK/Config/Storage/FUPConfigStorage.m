@@ -8,7 +8,10 @@
 
 #import "FUPConfigStorage.h"
 
-static NSString *const TableCreatedKey = @"FlowUp.ConfigTableCreated";
+static NSString *const CreateTableStatement =
+@"CREATE TABLE IF NOT EXISTS config(\
+id TEXT NOT NULL PRIMARY KEY DEFAULT 'UNIQUE_ID', \
+enabled INTEGER DEFAULT 1)";
 
 @interface FUPConfigStorage ()
 
@@ -35,7 +38,7 @@ static NSString *const TableCreatedKey = @"FlowUp.ConfigTableCreated";
 
 - (void)setConfig:(FUPConfig *)config
 {
-    [self createTable];
+    [self.sqlite createTable:@"config" withStatement:CreateTableStatement];
     NSString *insertStatement = [NSString stringWithFormat:
                                  @"INSERT OR REPLACE INTO config\
                                  (id, enabled) \
@@ -51,7 +54,7 @@ static NSString *const TableCreatedKey = @"FlowUp.ConfigTableCreated";
 
 - (void)clear
 {
-    [self createTable];
+    [self.sqlite createTable:@"config" withStatement:CreateTableStatement];
     BOOL success = [self.sqlite runStatement:@"DELETE FROM config WHERE id = 'UNIQUE_ID')"];
     if (success) {
         NSLog(@"[FUPConfigStorage] Config deleted");
@@ -62,6 +65,7 @@ static NSString *const TableCreatedKey = @"FlowUp.ConfigTableCreated";
 
 - (FUPConfig *)readConfigFromDatabase
 {
+    [self.sqlite createTable:@"config" withStatement:CreateTableStatement];
     __block FUPConfig *config = nil;
     NSString *query = @"SELECT * FROM config";
 
@@ -72,21 +76,6 @@ static NSString *const TableCreatedKey = @"FlowUp.ConfigTableCreated";
     }];
 
     return config;
-}
-
-- (void)createTable
-{
-    BOOL isTableCreated = [[NSUserDefaults standardUserDefaults] boolForKey:TableCreatedKey];
-
-    if (!isTableCreated) {
-        NSString *createTableStatement =
-        @"CREATE TABLE IF NOT EXISTS config(\
-        id TEXT NOT NULL PRIMARY KEY DEFAULT 'UNIQUE_ID', \
-        enabled INTEGER DEFAULT 1)";
-
-        [self.sqlite runStatement:createTableStatement];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:TableCreatedKey];
-    }
 }
 
 @end

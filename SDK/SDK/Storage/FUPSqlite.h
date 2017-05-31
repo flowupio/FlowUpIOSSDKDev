@@ -17,5 +17,6 @@
 
 - (BOOL)runStatement:(NSString *)statement;
 - (BOOL)runQuery:(NSString *)query block:(BOOL (^)(sqlite3_stmt *))block;
+- (void)createTable:(NSString *)tableName withStatement:(NSString *)statement;
 
 @end

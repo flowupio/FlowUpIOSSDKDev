@@ -8,6 +8,8 @@
 
 #import "FUPSqlite.h"
 
+static NSString *const TableCreatedKeyFormat = @"FlowUp.%@TableCreated";
+
 @interface FUPSqlite ()
 
 @property (readonly, nonatomic) dispatch_queue_t queue;
@@ -86,6 +88,17 @@
     });
 
     return success;
+}
+
+- (void)createTable:(NSString *)tableName withStatement:(NSString *)statement
+{
+    NSString *tableCreatedKey = [NSString stringWithFormat:TableCreatedKeyFormat, tableName];
+    BOOL isTableCreated = [[NSUserDefaults standardUserDefaults] boolForKey:tableCreatedKey];
+
+    if (!isTableCreated) {
+        [self runStatement:statement];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:tableCreatedKey];
+    }
 }
 
 - (NSString *)databasePath
