@@ -41,9 +41,12 @@ static NSString *const TableCreatedKey = @"FlowUp.ConfigTableCreated";
 
 - (void)setConfig:(FUPConfig *)config
 {
-    dispatch_sync(self.queue, ^{
+    async(self.queue, ^{
         [self createTable];
-        NSString *insertStatement = [NSString stringWithFormat:@"INSERT OR REPLACE INTO config (id, enabled) values ('UNIQUE_ID', \"%@\")", [NSNumber numberWithBool:config.isEnabled]];
+        NSString *insertStatement = [NSString stringWithFormat:
+                                     @"INSERT OR REPLACE INTO config\
+                                        (id, enabled) \
+                                        values ('UNIQUE_ID', \"%@\")", [NSNumber numberWithBool:config.isEnabled]];
         BOOL success = [self.sqlite runStatement:insertStatement];
         if (success) {
             NSLog(@"[FUPConfigStorage] Config stored");
@@ -55,7 +58,7 @@ static NSString *const TableCreatedKey = @"FlowUp.ConfigTableCreated";
 
 - (void)clear
 {
-    dispatch_sync(self.queue, ^{
+    async(self.queue, ^{
         [self createTable];
         BOOL success = [self.sqlite runStatement:@"DELETE FROM config WHERE id = 'UNIQUE_ID')"];
         if (success) {
@@ -90,7 +93,10 @@ static NSString *const TableCreatedKey = @"FlowUp.ConfigTableCreated";
     BOOL isTableCreated = [[NSUserDefaults standardUserDefaults] boolForKey:TableCreatedKey];
 
     if (!isTableCreated) {
-        NSString *createTableStatement = @"CREATE TABLE IF NOT EXISTS config (id TEXT NOT NULL PRIMARY KEY DEFAULT 'UNIQUE_ID', enabled INTEGER DEFAULT 1)";
+        NSString *createTableStatement =
+            @"CREATE TABLE IF NOT EXISTS config(\
+                id TEXT NOT NULL PRIMARY KEY DEFAULT 'UNIQUE_ID', \
+                enabled INTEGER DEFAULT 1)";
         [self.sqlite runStatement:createTableStatement];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:TableCreatedKey];
     }

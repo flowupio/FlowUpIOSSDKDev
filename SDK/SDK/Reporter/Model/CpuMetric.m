@@ -17,6 +17,7 @@
                          cpuUsage:(NSInteger)cpuUsage
 {
     self = [super initWithTimestamp:timestamp
+                               name:@"CPU"
                      appVersionName:appVersionName
                           osVersion:osVersion
               isLowPowerModeEnabled:isLowPowerModeEnabled];

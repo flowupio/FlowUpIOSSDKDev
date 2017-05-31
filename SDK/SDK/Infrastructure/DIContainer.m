@@ -49,7 +49,7 @@
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        _storage = [[MetricsStorage alloc] init];
+        _storage = [[MetricsStorage alloc] initWithSqlite:[DIContainer sqlite]];
     });
 
     return _storage;

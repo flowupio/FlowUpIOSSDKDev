@@ -16,9 +16,9 @@
 
 @property (readwrite, nonatomic) FUPConfig *config;
 
-- (void)clear;
-
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithSqlite:(FUPSqlite *)sqlite;
+
+- (void)clear;
 
 @end

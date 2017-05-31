@@ -11,12 +11,14 @@
 @interface Metric : NSObject
 
 @property (readonly, nonatomic) NSTimeInterval timestamp;
+@property (readonly, nonatomic, copy) NSString *name;
 @property (readonly, nonatomic, copy) NSString *appVersionName;
 @property (readonly, nonatomic, copy) NSString *osVersion;
 @property (readonly, nonatomic) BOOL isLowPowerModeEnabled;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
+                             name:(NSString *)name
                    appVersionName:(NSString *)appVersionName
                         osVersion:(NSString *)osVersion
             isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled;
