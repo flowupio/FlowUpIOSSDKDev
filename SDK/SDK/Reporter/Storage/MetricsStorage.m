@@ -10,7 +10,7 @@
 
 @interface MetricsStorage ()
 
-@property (readonly, nonatomic) dispatch_queue_t writeQueue;
+@property (readonly, nonatomic) dispatch_queue_t queue;
 @property (readonly, nonatomic) NSMutableArray<CpuMetric *> *storedCpuMetrics;
 
 @end
@@ -21,7 +21,7 @@
 {
     self = [super init];
     if (self) {
-        _writeQueue = dispatch_queue_create("Reports Storage Write Queue", DISPATCH_QUEUE_SERIAL);
+        _queue = dispatch_queue_create("Reports Storage Write Queue", DISPATCH_QUEUE_SERIAL);
         _storedCpuMetrics = [[NSMutableArray alloc] init];
     }
     return self;
@@ -29,7 +29,7 @@
 
 - (void)storeCpuMetric:(CpuMetric *)cpuMetric
 {
-    async(self.writeQueue, ^{
+    async(self.queue, ^{
         [self.storedCpuMetrics addObject:cpuMetric];
     });
 }
@@ -43,7 +43,7 @@
 - (void)removeNumberOfCpuMetrics:(NSInteger)numberOfCpuMetrics
 {
     NSRange range = NSMakeRange(0, MIN(numberOfCpuMetrics, [self.storedCpuMetrics count]));
-    async(self.writeQueue, ^{
+    async(self.queue, ^{
         [self.storedCpuMetrics removeObjectsInRange:range];
     });
 }

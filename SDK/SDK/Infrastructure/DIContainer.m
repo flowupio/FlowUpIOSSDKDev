@@ -61,7 +61,7 @@
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        _storage = [[FUPConfigStorage alloc] init];
+        _storage = [[FUPConfigStorage alloc] initWithSqlite:[DIContainer sqlite]];
     });
 
     return _storage;
@@ -97,6 +97,11 @@
 + (TimeProvider *)time
 {
     return [[TimeProvider alloc] init];
+}
+
++ (FUPSqlite *)sqlite
+{
+    return [[FUPSqlite alloc] initWithFileName:@"flowupdb.sqlite"];
 }
 
 @end
