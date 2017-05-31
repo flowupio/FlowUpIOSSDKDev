@@ -94,7 +94,7 @@ value INTEGER)";
 - (void)clear
 {
     [self.sqlite createTable:@"metrics" withStatement:CreateTableStatement];
-    NSString *deleteStatement = @"DELETE * FROM metrics";
+    NSString *deleteStatement = @"DELETE FROM metrics";
     BOOL success = [self.sqlite runStatement:deleteStatement];
 
     if (!success) {

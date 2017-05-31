@@ -101,6 +101,7 @@
 		49B8DF1E1EDC71CA00C8A9F5 /* FUPConfigServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B8DF1D1EDC71CA00C8A9F5 /* FUPConfigServiceTests.m */; };
 		49D839CC1ED81B10004F47C6 /* MetricsStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 49D839CA1ED81B10004F47C6 /* MetricsStorage.h */; };
 		49D839CD1ED81B10004F47C6 /* MetricsStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D839CB1ED81B10004F47C6 /* MetricsStorage.m */; };
+		49DB72A41EDEDFCE00487567 /* FUPConfigStorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DB72A31EDEDFCE00487567 /* FUPConfigStorageTests.m */; };
 		F4C0D097D59C6DCF030DA67E /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75735534527A138165403C6A /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -222,6 +223,7 @@
 		49D839CA1ED81B10004F47C6 /* MetricsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricsStorage.h; sourceTree = "<group>"; };
 		49D839CB1ED81B10004F47C6 /* MetricsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricsStorage.m; sourceTree = "<group>"; };
 		49D839D51ED826FF004F47C6 /* TimeIntervalUnits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeIntervalUnits.h; sourceTree = "<group>"; };
+		49DB72A31EDEDFCE00487567 /* FUPConfigStorageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPConfigStorageTests.m; sourceTree = "<group>"; };
 		49E08AB21EDDDD97000A3CB0 /* libtclsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtclsqlite3.dylib; path = ../../../../../System/Library/Tcl/sqlite3/libtclsqlite3.dylib; sourceTree = "<group>"; };
 		75735534527A138165403C6A /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38916CCADBAE09EDE316A98 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -349,7 +351,6 @@
 				491BECBD1EDEB3B800BB77A3 /* FUPSqlite.h */,
 				491BECBE1EDEB3B800BB77A3 /* FUPSqlite.m */,
 			);
-			name = Storage;
 			path = Storage;
 			sourceTree = "<group>";
 		};
@@ -631,6 +632,7 @@
 			children = (
 				49B8DF151EDC5FFE00C8A9F5 /* API Client */,
 				49B8DF1C1EDC71AE00C8A9F5 /* Model */,
+				49DB72A21EDEDF0700487567 /* Storage */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -651,6 +653,15 @@
 				49B8DF1D1EDC71CA00C8A9F5 /* FUPConfigServiceTests.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		49DB72A21EDEDF0700487567 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				49DB72A31EDEDFCE00487567 /* FUPConfigStorageTests.m */,
+			);
+			name = Storage;
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		724DB15A5A1C3057621E7E6F /* Pods */ = {
@@ -877,6 +888,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4909F5B71ED7076800825B0B /* NSDictionary+Matcheable.m in Sources */,
+				49DB72A41EDEDFCE00487567 /* FUPConfigStorageTests.m in Sources */,
 				49B8DF171EDC601F00C8A9F5 /* FUPConfigApiClientTests.m in Sources */,
 				49B8DF1E1EDC71CA00C8A9F5 /* FUPConfigServiceTests.m in Sources */,
 				4909F5B41ED7040600825B0B /* JsonMatcher.m in Sources */,
@@ -954,6 +966,20 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"Nimble\"",
+					"-framework",
+					"\"Nocilla\"",
+					"-framework",
+					"\"OCHamcrest\"",
+					"-framework",
+					"\"OCMockito\"",
+					"-lsqlite3",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.flowup.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -969,6 +995,20 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"Nimble\"",
+					"-framework",
+					"\"Nocilla\"",
+					"-framework",
+					"\"OCHamcrest\"",
+					"-framework",
+					"\"OCMockito\"",
+					"-lsqlite3",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.flowup.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
