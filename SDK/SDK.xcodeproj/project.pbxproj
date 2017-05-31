@@ -102,6 +102,7 @@
 		49D839CC1ED81B10004F47C6 /* MetricsStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 49D839CA1ED81B10004F47C6 /* MetricsStorage.h */; };
 		49D839CD1ED81B10004F47C6 /* MetricsStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D839CB1ED81B10004F47C6 /* MetricsStorage.m */; };
 		49DB72A41EDEDFCE00487567 /* FUPConfigStorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DB72A31EDEDFCE00487567 /* FUPConfigStorageTests.m */; };
+		49DB72A71EDEEE2300487567 /* FUPMetricsStorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DB72A61EDEEE2300487567 /* FUPMetricsStorageTests.m */; };
 		F4C0D097D59C6DCF030DA67E /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75735534527A138165403C6A /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -224,6 +225,7 @@
 		49D839CB1ED81B10004F47C6 /* MetricsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricsStorage.m; sourceTree = "<group>"; };
 		49D839D51ED826FF004F47C6 /* TimeIntervalUnits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeIntervalUnits.h; sourceTree = "<group>"; };
 		49DB72A31EDEDFCE00487567 /* FUPConfigStorageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPConfigStorageTests.m; sourceTree = "<group>"; };
+		49DB72A61EDEEE2300487567 /* FUPMetricsStorageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPMetricsStorageTests.m; sourceTree = "<group>"; };
 		49E08AB21EDDDD97000A3CB0 /* libtclsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtclsqlite3.dylib; path = ../../../../../System/Library/Tcl/sqlite3/libtclsqlite3.dylib; sourceTree = "<group>"; };
 		75735534527A138165403C6A /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38916CCADBAE09EDE316A98 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				4909F5AA1ED6E1EF00825B0B /* API Client */,
+				49DB72A51EDEEE1500487567 /* Storage */,
 			);
 			path = Reporter;
 			sourceTree = "<group>";
@@ -660,6 +663,14 @@
 			children = (
 				49DB72A31EDEDFCE00487567 /* FUPConfigStorageTests.m */,
 			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		49DB72A51EDEEE1500487567 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				49DB72A61EDEEE2300487567 /* FUPMetricsStorageTests.m */,
+			);
 			name = Storage;
 			path = Storage;
 			sourceTree = "<group>";
@@ -894,6 +905,7 @@
 				4909F5B41ED7040600825B0B /* JsonMatcher.m in Sources */,
 				4909E6241ED5F17C0009FBA9 /* ReportApiClientTests.m in Sources */,
 				4909F5B01ED6EBC600825B0B /* ApiClientTests.m in Sources */,
+				49DB72A71EDEEE2300487567 /* FUPMetricsStorageTests.m in Sources */,
 				499E717D1ED82FF300AD80C3 /* ReportSchedulerTests.m in Sources */,
 				499E71811ED8341100AD80C3 /* CpuMetricMother.m in Sources */,
 			);
