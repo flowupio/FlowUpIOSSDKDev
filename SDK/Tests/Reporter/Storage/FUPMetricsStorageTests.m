@@ -31,6 +31,22 @@
     [super tearDown];
 }
 
+- (void)testMetricsStorage_ReturnsMetricsStored_IfRetrievingOneMetric
+{
+    CpuMetric *metric = [self anyCpuMetric];
+    [self.storage storeCpuMetric:metric];
+
+    NSArray<CpuMetric *> *metrics = [self.storage cpuMetricsAtMost:1];
+
+    expect(metrics.count).to(equal(1));
+    expect(metrics[0].timestamp).to(equal(metric.timestamp));
+    expect(metrics[0].appVersionName).to(equal(metric.appVersionName));
+    expect(metrics[0].name).to(equal(metric.name));
+    expect(metrics[0].osVersion).to(equal(metric.osVersion));
+    expect(metrics[0].isLowPowerModeEnabled).to(equal(metric.isLowPowerModeEnabled));
+    expect(metrics[0].cpuUsage).to(equal(metric.cpuUsage));
+}
+
 - (void)testMetricsStorage_ReturnsAllMetricsStored_IfRetrievingAllMetrics
 {
     [self.storage storeCpuMetric:[self cpuMetricWithUsage:100]];
@@ -44,7 +60,6 @@
     expect(metrics[1].cpuUsage).to(equal(101));
     expect(metrics[2].cpuUsage).to(equal(102));
 }
-
 
 - (void)testMetricsStorage_ReturnsOnlyNumberOfMetricsSpecified_IfRetrievingOnlyThatNumberOfMetrics
 {

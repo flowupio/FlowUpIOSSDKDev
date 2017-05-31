@@ -11,7 +11,7 @@
 static NSString *const CreateTableStatement =
 @"CREATE TABLE IF NOT EXISTS metrics( \
 _id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
-timestamp INTEGER NOT NULL, \
+timestamp FLOAT NOT NULL, \
 metric_name TEXT NOT NULL, \
 app_version_name TEXT NOT NULL, \
 os_version TEXT NOT NULL, \
@@ -65,9 +65,9 @@ value INTEGER)";
                        ORDER BY timestamp DESC \
                        LIMIT %d", numberOfCpuMetrics];
     [self.sqlite runQuery:query block:^BOOL(sqlite3_stmt *statement) {
-        CpuMetric *metric = [[CpuMetric alloc] initWithTimestamp:sqlite3_column_double(statement, 0)
-                                                  appVersionName:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 1)]
-                                                       osVersion:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 3)]
+        CpuMetric *metric = [[CpuMetric alloc] initWithTimestamp:sqlite3_column_double(statement, 1)
+                                                  appVersionName:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 3)]
+                                                       osVersion:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 4)]
                                            isLowPowerModeEnabled:[[NSNumber numberWithInt:sqlite3_column_int(statement, 5)] boolValue]
                                                         cpuUsage:sqlite3_column_int(statement, 6)];
         [metrics addObject:metric];
