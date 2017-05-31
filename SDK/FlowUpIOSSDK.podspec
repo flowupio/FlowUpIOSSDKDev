@@ -11,4 +11,5 @@ Pod::Spec.new do |s|
   s.framework    = 'SystemConfiguration'
   s.source_files = 'SDK/FlowUp.h'
   s.vendored_libraries = 'libFlowUpIOSSDK.a'
+  s.library      = 'sqlite3'
 end  

@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [FlowUp application:application didFinishLaunchingWithOptions:launchOptions apiKey:@"NO API KEY YET :("];
+    [FlowUp application:application didFinishLaunchingWithOptions:launchOptions apiKey:@"7ba4c8394bba4420a65973df7e5a2df2"];
     return YES;
 }
 @end

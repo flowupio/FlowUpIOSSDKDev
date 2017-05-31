@@ -38,7 +38,7 @@
 		4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0861ED5EFCB00148A4E /* FlowUp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0871ED5EFCB00148A4E /* FlowUp.m */; };
 		4983806F1ED48D6B003BCFB0 /* CpuUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */; };
-		498380761ED48F5C003BCFB0 /* CpuUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		498380761ED48F5C003BCFB0 /* CpuUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */; };
 		499DEECE1EDD981400BDD763 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 499DEEA41EDD981400BDD763 /* AFHTTPSessionManager.h */; };
 		499DEECF1EDD981400BDD763 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 499DEEA51EDD981400BDD763 /* AFHTTPSessionManager.m */; };
 		499DEED01EDD981400BDD763 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 499DEEA61EDD981400BDD763 /* AFNetworking.h */; };
@@ -189,6 +189,7 @@
 		499DEEC71EDD981400BDD763 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		499DEEF01EDD98EF00BDD763 /* NamespacedDependencies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NamespacedDependencies.h; sourceTree = "<group>"; };
 		499DEEF21EDD98FB00BDD763 /* SDKPrefixHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKPrefixHeader.h; sourceTree = "<group>"; };
+		499DEEF91EDDDB6D00BDD763 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		499E717C1ED82FF300AD80C3 /* ReportSchedulerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportSchedulerTests.m; sourceTree = "<group>"; };
 		499E717F1ED8341100AD80C3 /* CpuMetricMother.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CpuMetricMother.h; sourceTree = "<group>"; };
 		499E71801ED8341100AD80C3 /* CpuMetricMother.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CpuMetricMother.m; sourceTree = "<group>"; };
@@ -217,6 +218,7 @@
 		49D839CA1ED81B10004F47C6 /* MetricsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricsStorage.h; sourceTree = "<group>"; };
 		49D839CB1ED81B10004F47C6 /* MetricsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricsStorage.m; sourceTree = "<group>"; };
 		49D839D51ED826FF004F47C6 /* TimeIntervalUnits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeIntervalUnits.h; sourceTree = "<group>"; };
+		49E08AB21EDDDD97000A3CB0 /* libtclsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtclsqlite3.dylib; path = ../../../../../System/Library/Tcl/sqlite3/libtclsqlite3.dylib; sourceTree = "<group>"; };
 		75735534527A138165403C6A /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38916CCADBAE09EDE316A98 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		AF4BB7C2B5DD8F731BC3FF28 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -245,6 +247,8 @@
 		3DDAD0EFBF31C07E438603B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49E08AB21EDDDD97000A3CB0 /* libtclsqlite3.dylib */,
+				499DEEF91EDDDB6D00BDD763 /* libsqlite3.tbd */,
 				75735534527A138165403C6A /* Pods_Tests.framework */,
 			);
 			name = Frameworks;
@@ -652,6 +656,7 @@
 			files = (
 				499DEED91EDD981400BDD763 /* AFURLSessionManager.h in Headers */,
 				49D839CC1ED81B10004F47C6 /* MetricsStorage.h in Headers */,
+				498380761ED48F5C003BCFB0 /* CpuUsageCollector.h in Headers */,
 				499DEEF11EDD98EF00BDD763 /* NamespacedDependencies.h in Headers */,
 				49B8DEF01EDC270500C8A9F5 /* FUPResult.h in Headers */,
 				49B8DEFE1EDC30BB00C8A9F5 /* FUPConfigApiMapper.h in Headers */,
@@ -688,7 +693,6 @@
 				4909F5CE1ED72A1D00825B0B /* DIContainer.h in Headers */,
 				499DEEE91EDD981400BDD763 /* UIKit+AFNetworking.h in Headers */,
 				49B8DF121EDC3B5300C8A9F5 /* FUPConfigSyncScheduler.h in Headers */,
-				498380761ED48F5C003BCFB0 /* CpuUsageCollector.h in Headers */,
 				499DEEE41EDD981400BDD763 /* UIButton+AFNetworking.h in Headers */,
 				49B8DEF51EDC293700C8A9F5 /* FUPApiClientError.h in Headers */,
 				499DEEE01EDD981400BDD763 /* AFNetworkActivityIndicatorManager.h in Headers */,
@@ -1048,10 +1052,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SDK/SDKPrefixHeader.h;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1064,10 +1066,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SDK/SDKPrefixHeader.h;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

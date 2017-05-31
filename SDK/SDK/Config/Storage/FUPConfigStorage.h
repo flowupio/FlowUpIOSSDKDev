@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "FUPConfig.h"
-#import "TimeProvider.h"
+#import "Async.h"
+#import <sqlite3.h>
 
 @interface FUPConfigStorage : NSObject
 
