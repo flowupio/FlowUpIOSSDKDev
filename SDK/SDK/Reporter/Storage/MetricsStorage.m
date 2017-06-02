@@ -41,7 +41,7 @@ value INTEGER)";
     NSString *insertStatement = [NSString stringWithFormat:
                                  @"INSERT INTO metrics \
                                  (timestamp, metric_name, app_version_name, os_version, is_low_power_enabled, value) \
-                                 values (%f, \"%@\", \"%@\", \"%@\", %@, %d)",
+                                 values (%f, \"%@\", \"%@\", \"%@\", %@, %ld)",
                                  cpuMetric.timestamp,
                                  cpuMetric.name,
                                  cpuMetric.appVersionName,
@@ -63,7 +63,7 @@ value INTEGER)";
     NSString *query = [NSString stringWithFormat:
                        @"SELECT * FROM metrics \
                        ORDER BY timestamp DESC \
-                       LIMIT %d", numberOfCpuMetrics];
+                       LIMIT %ld", numberOfCpuMetrics];
     [self.sqlite runQuery:query block:^BOOL(sqlite3_stmt *statement) {
         CpuMetric *metric = [[CpuMetric alloc] initWithTimestamp:sqlite3_column_double(statement, 1)
                                                   appVersionName:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 3)]
@@ -83,7 +83,7 @@ value INTEGER)";
                                  WHERE _id IN ( \
                                  SELECT _id FROM metrics \
                                  ORDER BY timestamp DESC \
-                                 LIMIT %d)", numberOfCpuMetrics];
+                                 LIMIT %ld)", numberOfCpuMetrics];
     BOOL success = [self.sqlite runStatement:deleteStatement];
 
     if (!success) {
