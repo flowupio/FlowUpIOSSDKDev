@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.license      = 'Karumi'
   s.author       = { "FlowUp" => "flowup@karumi.com" }
   s.platform     = :ios, '8.0'
-  s.source       = { :path => '.' }
+  s.source       = { :git => 'git@github.com:Karumi/FlowUpIOSSDKDev', :tag => s.version.to_s}
   s.framework    = 'SystemConfiguration'
   s.source_files = 'SDK/FlowUp.h'
   s.vendored_libraries = 'libFlowUpIOSSDK.a'
