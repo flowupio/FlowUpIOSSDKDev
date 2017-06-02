@@ -16,6 +16,7 @@ cp SDK/libFlowUpIOSSDK.a release
 cp SDK/FlowUpIOSSDK.podspec release
 mkdir -p release/SDK
 cp SDK/SDK/FlowUp.h release/SDK
+cp SDK/SDK/module.modulemap release/SDK
 
 echo "Linting project"
 cd release
