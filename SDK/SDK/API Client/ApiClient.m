@@ -8,6 +8,11 @@
 
 #import "ApiClient.h"
 
+static NSInteger const FUPUnauthorizedStatusCode = 401;
+static NSInteger const FUPForbiddenStatusCode = 403;
+static NSInteger const FUPPreconditionFailedStatusCode = 412;
+static NSInteger const FUPServerErrorStatusCode = 500;
+
 @interface ApiClient ()
 
 @property (readonly, nonatomic, copy) NSString *baseUrl;
@@ -31,6 +36,22 @@
 - (NSString *)urlStringWithEndpoint:(NSString *)endpoint
 {
     return [NSString stringWithFormat:@"%@/%@", self.baseUrl, endpoint];
+}
+
+- (FUPApiClientError *)mapError:(NSError *)error
+{
+    NSHTTPURLResponse *response = error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey];
+    switch (response.statusCode) {
+        case FUPUnauthorizedStatusCode:
+        case FUPForbiddenStatusCode:
+            return [FUPApiClientError unauthorized];
+        case FUPPreconditionFailedStatusCode:
+            return [FUPApiClientError clientDisabled];
+        case FUPServerErrorStatusCode:
+            return [FUPApiClientError serverError];
+        default:
+            return [FUPApiClientError unknown];
+    }
 }
 
 - (AFHTTPSessionManager *)sessionManagerWithApiKey:(NSString *)apiKey uuid:(NSString *)uuid

@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TimeIntervalUnits.h"
 
 @interface TimeProvider : NSObject
 
 @property (readonly, nonatomic) NSTimeInterval now;
-@property (readonly, nonatomic) NSInteger nowAsInt;
+@property (readonly, nonatomic) int64_t nowInMillis;
 
 @end

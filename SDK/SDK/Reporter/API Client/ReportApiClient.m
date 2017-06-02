@@ -10,16 +10,17 @@
 
 @implementation ReportApiClient
 
-- (void)sendReports:(Reports *)reports completion:(void (^)(BOOL))completion
+- (void)sendReports:(Reports *)reports completion:(void (^)(FUPApiClientError *))completion
 {
     [self.manager POST:[self urlStringWithEndpoint:@"report"]
             parameters:[self serializeReports:reports]
               progress:nil
                success:^(NSURLSessionDataTask *task, id responseObject) {
-                   completion(YES);
+                   completion(nil);
                }
                failure:^(NSURLSessionDataTask *task, NSError *error) {
-                   completion(NO);
+                   FUPApiClientError *apiClientError = [self mapError:error];
+                   completion(apiClientError);
                }];
 }
 

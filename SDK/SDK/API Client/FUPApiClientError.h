@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, FUPApiClientErrorCode) {
+    FUPApiClientErrorCodeUnauthorized,
+    FUPApiClientErrorCodeServerError,
+    FUPApiClientErrorCodeClientDisabled,
     FUPApiClientErrorCodeUnknown,
 };
 
@@ -17,6 +20,9 @@ typedef NS_ENUM(NSUInteger, FUPApiClientErrorCode) {
 @property (readonly, nonatomic) FUPApiClientErrorCode code;
 
 - (instancetype)init NS_UNAVAILABLE;
++ (instancetype)unauthorized;
++ (instancetype)serverError;
++ (instancetype)clientDisabled;
 + (instancetype)unknown;
 
 @end

@@ -17,5 +17,6 @@
 - (void)storeCpuMetric:(CpuMetric *)cpuMetric;
 - (NSArray<CpuMetric *> *)cpuMetricsAtMost:(NSInteger)numberOfCpuMetrics;
 - (void)removeNumberOfCpuMetrics:(NSInteger)numberOfCpuMetrics;
+- (void)clear;
 
 @end
