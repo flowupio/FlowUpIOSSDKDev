@@ -3,10 +3,10 @@
 PODSPEC_VERSION=$(cat SDK/FlowUpIOSSDK.podspec | grep s.version | awk '{print $3}' | tr -d '"')
 
 echo "Building library for iphone"
-xcodebuild -workspace FlowUpIOSSDK.xcworkspace -scheme 'SDK' -configuration Release -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk "iphoneos"
+xcodebuild -workspace FlowUpIOSSDK.xcworkspace -scheme 'SDK' -configuration Release -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk "iphoneos" clean build
 
 echo "Building library for simulator"
-xcodebuild -workspace FlowUpIOSSDK.xcworkspace -scheme 'SDK' -configuration Release -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk "iphonesimulator"
+xcodebuild -workspace FlowUpIOSSDK.xcworkspace -scheme 'SDK' -configuration Release -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk "iphonesimulator" clean build
 
 echo "Merging both iphone & simulator libraries" 
 lipo -create -output "SDK/libFlowUpIOSSDK.a" "DerivedData/FlowUpIOSSDK/Build/Products/Release-iphoneos/libSDK.a" "DerivedData/FlowUpIOSSDK/Build/Products/Release-iphonesimulator/libSDK.a"
