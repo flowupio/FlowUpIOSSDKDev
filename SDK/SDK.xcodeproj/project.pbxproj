@@ -383,11 +383,11 @@
 			isa = PBXGroup;
 			children = (
 				499DEE981EDD97BC00BDD763 /* Dependencies */,
+				3DDAD0EFBF31C07E438603B7 /* Frameworks */,
 				724DB15A5A1C3057621E7E6F /* Pods */,
 				4983803D1ED48C7A003BCFB0 /* Products */,
 				4983803E1ED48C7A003BCFB0 /* SDK */,
 				4909E6221ED5F17C0009FBA9 /* Tests */,
-				3DDAD0EFBF31C07E438603B7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
