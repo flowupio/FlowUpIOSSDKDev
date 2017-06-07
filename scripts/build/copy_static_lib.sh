@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cp ${TARGET_BUILD_DIR}/${EXECUTABLE_NAME} ${SRCROOT}/libFlowUpIOSSDK.a

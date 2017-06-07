@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
-#import "AFNetworkActivityLogger.h"
 #import "Configuration.h"
 #import "FUPApiClientError.h"
 

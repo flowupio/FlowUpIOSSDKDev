@@ -139,7 +139,7 @@
 				TargetAttributes = {
 					498380501ED48CD1003BCFB0 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 2Z9R68TU59;
+						DevelopmentTeam = BD48FG9BMV;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -357,7 +357,7 @@
 			baseConfigurationReference = 94EC2E6DA2CF40C14EEF060A /* Pods-Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2Z9R68TU59;
+				DEVELOPMENT_TEAM = BD48FG9BMV;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -372,7 +372,7 @@
 			baseConfigurationReference = 58942AD325CDC4A8D72131EA /* Pods-Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2Z9R68TU59;
+				DEVELOPMENT_TEAM = BD48FG9BMV;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

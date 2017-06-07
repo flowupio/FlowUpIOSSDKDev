@@ -1,15 +1,9 @@
 workspace 'FlowUpIOSSDK'
-platform :ios, '7.0'
+platform :ios, '8.0'
 inhibit_all_warnings!
 
-target 'Demo' do
-  project 'Demo/Demo.xcodeproj'
-  pod 'FlowUpIOSSDK', :path => 'SDK'
-end
-
 def sdk_pods
-  pod 'AFNetworking', '~> 3.1.0'
-  pod 'AFNetworkActivityLogger', :git => 'https://github.com/AFNetworking/AFNetworkActivityLogger.git', :branch => '3_0_0'
+  pod 'AFNetworking', '= 3.1.0'
 end
 
 def sdk_test_pods
@@ -18,8 +12,9 @@ def sdk_test_pods
   pod 'OCMockito', '~> 4.1.0'
 end
 
-target 'SDK' do
-  project 'SDK/SDK.xcodeproj'
+target 'Demo' do
+  project 'Demo/Demo.xcodeproj'
+  pod 'FlowUpIOSSDK', :path => 'SDK'
   sdk_pods
 end
 
