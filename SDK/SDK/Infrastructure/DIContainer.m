@@ -67,13 +67,26 @@
     return _storage;
 }
 
++ (FUPDebugModeStorage *)debugModeStorage
+{
+    static FUPDebugModeStorage *_storage;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        _storage = [[FUPDebugModeStorage alloc] init];
+    });
+
+    return _storage;
+}
+
 + (FUPConfigApiClient *)configApiClientWithApiKey:(NSString *)apiKey
 {
 
     NSString *uuid = [DIContainer uuidGenerator].uuid;
     return [[FUPConfigApiClient alloc] initWithBaseUrl:ApiBaseUrl
                                                 apiKey:apiKey
-                                                  uuid:uuid];
+                                                  uuid:uuid
+                                      debugModeStorage:[DIContainer debugModeStorage]];
 }
 
 + (ReportApiClient *)reportApiClientWithApiKey:(NSString *)apiKey
@@ -81,7 +94,8 @@
     NSString *uuid = [DIContainer uuidGenerator].uuid;
     return [[ReportApiClient alloc] initWithBaseUrl:ApiBaseUrl
                                              apiKey:apiKey
-                                               uuid:uuid];
+                                               uuid:uuid
+                                   debugModeStorage:[DIContainer debugModeStorage]];
 }
 
 + (Device *)device

@@ -13,11 +13,16 @@
 
 static BOOL isInitialized = NO;
 
-+ (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions apiKey:(NSString *)apiKey
++ (void)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+             apiKey:(NSString *)apiKey
+ isDebugModeEnabled:(BOOL)isDebugModeEnabled
 {
     if (isInitialized) {
         return;
     }
+
+    [DIContainer debugModeStorage].isDebugModeEnabled = isDebugModeEnabled;
 
     CollectorScheduler *collectorScheduler = [DIContainer collectorScheduler];
     ReportScheduler *reportScheduler = [DIContainer reportSchedulerWithApiKey:apiKey];

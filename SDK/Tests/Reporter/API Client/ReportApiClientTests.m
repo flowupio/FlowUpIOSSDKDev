@@ -18,16 +18,9 @@
 
 @interface ReportApiClientTests : ApiClientTests
 
-@property (readwrite, nonatomic) ReportApiClient *reportApiClient;
-
 @end
 
 @implementation ReportApiClientTests
-
-- (void)setUp {
-    [super setUp];
-    self.reportApiClient = [self reportApiClient];
-}
 
 - (void)testApiClient_SendsAcceptJsonHeader_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
@@ -35,8 +28,8 @@
     andReturn(200);
 
     __block BOOL didSendReport = NO;
-    [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(FUPApiClientError *error) { didSendReport = YES; }];
+    [[self apiClient] sendReports:[self anyReports]
+                       completion:^(FUPApiClientError *error) { didSendReport = YES; }];
 
     expect(didSendReport).toEventually(equal(YES));
 }
@@ -47,8 +40,8 @@
     andReturn(200);
 
     __block BOOL didSendReport = NO;
-    [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(FUPApiClientError *error) { didSendReport = YES; }];
+    [[self apiClient] sendReports:[self anyReports]
+                       completion:^(FUPApiClientError *error) { didSendReport = YES; }];
 
     expect(didSendReport).toEventually(equal(YES));
 }
@@ -59,8 +52,8 @@
     andReturn(200);
 
     __block BOOL didSendReport = NO;
-    [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(FUPApiClientError *error) { didSendReport = YES; }];
+    [[self apiClient] sendReports:[self anyReports]
+                       completion:^(FUPApiClientError *error) { didSendReport = YES; }];
 
     expect(didSendReport).toEventually(equal(YES));
 }
@@ -71,8 +64,8 @@
     andReturn(200);
 
     __block BOOL didSendReport = NO;
-    [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(FUPApiClientError *error) { didSendReport = YES; }];
+    [[self apiClient] sendReports:[self anyReports]
+                       completion:^(FUPApiClientError *error) { didSendReport = YES; }];
 
     expect(didSendReport).toEventually(equal(YES));
 }
@@ -83,11 +76,48 @@
     andReturn(200);
 
     __block BOOL didSendReport = NO;
-    [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(FUPApiClientError *error) { didSendReport = YES; }];
+    [[self apiClient] sendReports:[self anyReports]
+                       completion:^(FUPApiClientError *error) { didSendReport = YES; }];
 
     expect(didSendReport).toEventually(equal(YES));
 }
+
+- (void)testApiClient_SendsUserAgentHeaderWithDebugMode_IfDebugModeIsEnabled {
+    stubRequest(@"POST", @"https://www.testingflowup.com/report").
+    withHeader(@"User-Agent", [NSString stringWithFormat:@"FlowUpIOSSDK/%@-DEBUG", SDKVersion]).
+    andReturn(200);
+
+    __block BOOL didSendReport = NO;
+    [[self apiClientWithDebugModeEnabled:YES] sendReports:[self anyReports]
+                                               completion:^(FUPApiClientError *error) { didSendReport = YES; }];
+
+    expect(didSendReport).toEventually(equal(YES));
+}
+
+- (void)testApiClient_SendsDebugHeaderAsTrue_IfDebugModeIsEnabled {
+    stubRequest(@"POST", @"https://www.testingflowup.com/report").
+    withHeader(@"X-Debug-Mode", [NSString stringWithFormat:@"true"]).
+    andReturn(200);
+
+    __block BOOL didSendReport = NO;
+    [[self apiClientWithDebugModeEnabled:YES] sendReports:[self anyReports]
+                                               completion:^(FUPApiClientError *error) { didSendReport = YES; }];
+
+    expect(didSendReport).toEventually(equal(YES));
+}
+
+- (void)testApiClient_SendsDebugHeaderAsFalse_IfDebugModeIsDisabled {
+    stubRequest(@"POST", @"https://www.testingflowup.com/report").
+    withHeader(@"X-Debug-Mode", [NSString stringWithFormat:@"false"]).
+    andReturn(200);
+
+    __block BOOL didSendReport = NO;
+    [[self apiClient] sendReports:[self anyReports]
+                       completion:^(FUPApiClientError *error) { didSendReport = YES; }];
+
+    expect(didSendReport).toEventually(equal(YES));
+}
+
 
 - (void)testApiClient_SendReports_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
@@ -95,8 +125,8 @@
     andReturn(200);
 
     __block BOOL didSendReport = NO;
-    [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(FUPApiClientError *error) { didSendReport = YES; }];
+    [[self apiClient] sendReports:[self anyReports]
+                       completion:^(FUPApiClientError *error) { didSendReport = YES; }];
 
     expect(didSendReport).toEventually(equal(YES));
 }
@@ -107,8 +137,8 @@
     andReturn(200);
 
     __block BOOL success = NO;
-    [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(FUPApiClientError *error) { success = error == nil; }];
+    [[self apiClient] sendReports:[self anyReports]
+                       completion:^(FUPApiClientError *error) { success = error == nil; }];
 
     expect(success).toEventually(equal(YES));
 }
@@ -119,8 +149,8 @@
     andReturn(500);
 
     __block FUPApiClientError *returnedError = nil;
-    [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(FUPApiClientError *error) { returnedError = error; }];
+    [[self apiClient] sendReports:[self anyReports]
+                       completion:^(FUPApiClientError *error) { returnedError = error; }];
 
     expect(returnedError).toEventuallyNot(beNil());
     XCTAssertEqual(returnedError.code, FUPApiClientErrorCodeServerError);
@@ -132,8 +162,8 @@
     andReturn(401);
 
     __block FUPApiClientError *returnedError = nil;
-    [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(FUPApiClientError *error) { returnedError = error; }];
+    [[self apiClient] sendReports:[self anyReports]
+                       completion:^(FUPApiClientError *error) { returnedError = error; }];
 
     expect(returnedError).toEventuallyNot(beNil());
     XCTAssertEqual(returnedError.code, FUPApiClientErrorCodeUnauthorized);
@@ -145,8 +175,8 @@
     andReturn(403);
 
     __block FUPApiClientError *returnedError = nil;
-    [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(FUPApiClientError *error) { returnedError = error; }];
+    [[self apiClient] sendReports:[self anyReports]
+                       completion:^(FUPApiClientError *error) { returnedError = error; }];
 
     expect(returnedError).toEventuallyNot(beNil());
     XCTAssertEqual(returnedError.code, FUPApiClientErrorCodeUnauthorized);
@@ -158,19 +188,28 @@
     andReturn(412);
 
     __block FUPApiClientError *returnedError = nil;
-    [self.reportApiClient sendReports:[self anyReports]
-                           completion:^(FUPApiClientError *error) { returnedError = error; }];
+    [[self apiClient] sendReports:[self anyReports]
+                       completion:^(FUPApiClientError *error) { returnedError = error; }];
 
     expect(returnedError).toEventuallyNot(beNil());
     XCTAssertEqual(returnedError.code, FUPApiClientErrorCodeClientDisabled);
 }
 
 
-- (ReportApiClient *)reportApiClient
+- (ReportApiClient *)apiClient
 {
+    return [self apiClientWithDebugModeEnabled:NO];
+}
+
+- (ReportApiClient *)apiClientWithDebugModeEnabled:(BOOL)isDebugModeEnabled
+{
+    FUPDebugModeStorage *debugModeStorage = [[FUPDebugModeStorage alloc] init];
+    debugModeStorage.isDebugModeEnabled = isDebugModeEnabled;
+
     return [[ReportApiClient alloc] initWithBaseUrl:@"https://www.testingflowup.com"
                                              apiKey:ApiKey
-                                               uuid:Uuid];
+                                               uuid:Uuid
+                                   debugModeStorage:debugModeStorage];
 }
 
 - (Reports *)anyReports
