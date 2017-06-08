@@ -1,5 +1,5 @@
 //
-//  CpuUsageCollector.h
+//  FUPCpuUsageCollector.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 23/05/17.
@@ -12,12 +12,12 @@
 #include <mach/mach.h>
 #include <mach/processor_info.h>
 #include <mach/mach_host.h>
-#import "Collector.h"
+#import "FUPCollector.h"
 #import "MetricsStorage.h"
 #import "Device.h"
 #import "TimeProvider.h"
 
-@interface CpuUsageCollector : NSObject <Collector>
+@interface FUPCpuUsageCollector : NSObject <FUPCollector>
 
 @property (readonly, nonatomic) float cpuUsage;
 

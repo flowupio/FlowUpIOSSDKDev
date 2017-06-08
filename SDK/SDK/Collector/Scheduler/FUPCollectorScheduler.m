@@ -1,20 +1,20 @@
 //
-//  CollectorScheduler.m
+//  FUPCollectorScheduler.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "CollectorScheduler.h"
+#import "FUPCollectorScheduler.h"
 
-@interface CollectorScheduler ()
+@interface FUPCollectorScheduler ()
 
 @property (readonly, nonatomic) dispatch_queue_t queue;
 
 @end
 
-@implementation CollectorScheduler
+@implementation FUPCollectorScheduler
 
 - (instancetype)init
 {
@@ -26,11 +26,11 @@
     return self;
 }
 
-- (void)addCollectors:(NSArray<id<Collector>> *)collectors
+- (void)addCollectors:(NSArray<id<FUPCollector>> *)collectors
          timeInterval:(NSTimeInterval)timeInterval
 {
     NSLog(@"[CollectorScheduler] Start");
-    for (id<Collector> collector in collectors) {
+    for (id<FUPCollector> collector in collectors) {
         [NSTimer scheduledTimerWithTimeInterval:timeInterval repeats:YES block:^(NSTimer *timer) {
             if (self.isEnabled) {
                 NSLog(@"[CollectorScheduler] Collect");

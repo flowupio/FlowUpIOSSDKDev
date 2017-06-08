@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "ReportApiClient.h"
-#import "ApiClientTests.h"
+#import "FUPApiClientTests.h"
 #import "NSDictionary+Matcheable.h"
 #import "CpuMetricMother.h"
 #import "Configuration.h"
@@ -16,7 +16,7 @@
 #import <Nocilla/Nocilla.h>
 @import Nimble.Swift;
 
-@interface ReportApiClientTests : ApiClientTests
+@interface ReportApiClientTests : FUPApiClientTests
 
 @end
 

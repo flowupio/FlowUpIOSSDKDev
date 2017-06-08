@@ -1,14 +1,14 @@
 //
-//  CpuUsageCollector.m
+//  FUPCpuUsageCollector.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 23/05/17.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "CpuUsageCollector.h"
+#import "FUPCpuUsageCollector.h"
 
-@interface CpuUsageCollector ()
+@interface FUPCpuUsageCollector ()
 
 @property (readonly, nonatomic) MetricsStorage *storage;
 @property (readonly, nonatomic) Device *device;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation CpuUsageCollector
+@implementation FUPCpuUsageCollector
 
 - (instancetype)initWithMetricsStorage:(MetricsStorage *)metricsStorage
                                 device:(Device *)device

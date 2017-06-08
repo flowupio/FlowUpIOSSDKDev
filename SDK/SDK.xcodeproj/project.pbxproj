@@ -12,7 +12,7 @@
 		4909F5A71ED6C10100825B0B /* Metric.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5A51ED6C10100825B0B /* Metric.h */; };
 		4909F5A81ED6C10100825B0B /* Metric.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5A61ED6C10100825B0B /* Metric.m */; };
 		4909F5AC1ED6E50D00825B0B /* reportApiRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = 4909F5AB1ED6E50D00825B0B /* reportApiRequest.json */; };
-		4909F5B01ED6EBC600825B0B /* ApiClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5AF1ED6EBC600825B0B /* ApiClientTests.m */; };
+		4909F5B01ED6EBC600825B0B /* FUPApiClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5AF1ED6EBC600825B0B /* FUPApiClientTests.m */; };
 		4909F5B41ED7040600825B0B /* JsonMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5B31ED7040600825B0B /* JsonMatcher.m */; };
 		4909F5B71ED7076800825B0B /* NSDictionary+Matcheable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5B61ED7076800825B0B /* NSDictionary+Matcheable.m */; };
 		4909F5BC1ED7090E00825B0B /* Device.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5BA1ED7090E00825B0B /* Device.h */; };
@@ -25,8 +25,8 @@
 		4909F5CF1ED72A1D00825B0B /* DIContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5CD1ED72A1D00825B0B /* DIContainer.m */; };
 		4909F5D31ED73AA900825B0B /* TimeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5D11ED73AA900825B0B /* TimeProvider.h */; };
 		4909F5D41ED73AA900825B0B /* TimeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5D21ED73AA900825B0B /* TimeProvider.m */; };
-		4909F5D71ED742DA00825B0B /* CollectorScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5D51ED742DA00825B0B /* CollectorScheduler.h */; };
-		4909F5D81ED742DA00825B0B /* CollectorScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5D61ED742DA00825B0B /* CollectorScheduler.m */; };
+		4909F5D71ED742DA00825B0B /* FUPCollectorScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5D51ED742DA00825B0B /* FUPCollectorScheduler.h */; };
+		4909F5D81ED742DA00825B0B /* FUPCollectorScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5D61ED742DA00825B0B /* FUPCollectorScheduler.m */; };
 		491BECBF1EDEB3B800BB77A3 /* FUPSqlite.h in Headers */ = {isa = PBXBuildFile; fileRef = 491BECBD1EDEB3B800BB77A3 /* FUPSqlite.h */; };
 		491BECC01EDEB3B800BB77A3 /* FUPSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 491BECBE1EDEB3B800BB77A3 /* FUPSqlite.m */; };
 		496E20DE1EE87155006196F5 /* FUPDebugModeStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 496E20DC1EE87155006196F5 /* FUPDebugModeStorage.h */; };
@@ -41,8 +41,8 @@
 		4978C0851ED5EC0100148A4E /* FUPApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0831ED5EC0100148A4E /* FUPApiClient.m */; };
 		4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0861ED5EFCB00148A4E /* FlowUp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0871ED5EFCB00148A4E /* FlowUp.m */; };
-		4983806F1ED48D6B003BCFB0 /* CpuUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */; };
-		498380761ED48F5C003BCFB0 /* CpuUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */; };
+		4983806F1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983806E1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m */; };
+		498380761ED48F5C003BCFB0 /* FUPCpuUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* FUPCpuUsageCollector.h */; };
 		499DEECE1EDD981400BDD763 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 499DEEA41EDD981400BDD763 /* AFHTTPSessionManager.h */; };
 		499DEECF1EDD981400BDD763 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 499DEEA51EDD981400BDD763 /* AFHTTPSessionManager.m */; };
 		499DEED01EDD981400BDD763 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 499DEEA61EDD981400BDD763 /* AFNetworking.h */; };
@@ -125,8 +125,8 @@
 		4909F5A51ED6C10100825B0B /* Metric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Metric.h; sourceTree = "<group>"; };
 		4909F5A61ED6C10100825B0B /* Metric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Metric.m; sourceTree = "<group>"; };
 		4909F5AB1ED6E50D00825B0B /* reportApiRequest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reportApiRequest.json; sourceTree = "<group>"; };
-		4909F5AE1ED6EBC600825B0B /* ApiClientTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiClientTests.h; sourceTree = "<group>"; };
-		4909F5AF1ED6EBC600825B0B /* ApiClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiClientTests.m; sourceTree = "<group>"; };
+		4909F5AE1ED6EBC600825B0B /* FUPApiClientTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPApiClientTests.h; sourceTree = "<group>"; };
+		4909F5AF1ED6EBC600825B0B /* FUPApiClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPApiClientTests.m; sourceTree = "<group>"; };
 		4909F5B21ED7040600825B0B /* JsonMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonMatcher.h; sourceTree = "<group>"; };
 		4909F5B31ED7040600825B0B /* JsonMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonMatcher.m; sourceTree = "<group>"; };
 		4909F5B51ED7076800825B0B /* NSDictionary+Matcheable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Matcheable.h"; sourceTree = "<group>"; };
@@ -142,9 +142,9 @@
 		4909F5CD1ED72A1D00825B0B /* DIContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIContainer.m; sourceTree = "<group>"; };
 		4909F5D11ED73AA900825B0B /* TimeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeProvider.h; sourceTree = "<group>"; };
 		4909F5D21ED73AA900825B0B /* TimeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeProvider.m; sourceTree = "<group>"; };
-		4909F5D51ED742DA00825B0B /* CollectorScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectorScheduler.h; sourceTree = "<group>"; };
-		4909F5D61ED742DA00825B0B /* CollectorScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectorScheduler.m; sourceTree = "<group>"; };
-		4909F5D91ED748CB00825B0B /* Collector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Collector.h; sourceTree = "<group>"; };
+		4909F5D51ED742DA00825B0B /* FUPCollectorScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPCollectorScheduler.h; sourceTree = "<group>"; };
+		4909F5D61ED742DA00825B0B /* FUPCollectorScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCollectorScheduler.m; sourceTree = "<group>"; };
+		4909F5D91ED748CB00825B0B /* FUPCollector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUPCollector.h; sourceTree = "<group>"; };
 		491BECBD1EDEB3B800BB77A3 /* FUPSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPSqlite.h; sourceTree = "<group>"; };
 		491BECBE1EDEB3B800BB77A3 /* FUPSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPSqlite.m; sourceTree = "<group>"; };
 		494E911B1EE183E100943D96 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
@@ -161,8 +161,8 @@
 		4978C0861ED5EFCB00148A4E /* FlowUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowUp.h; sourceTree = "<group>"; };
 		4978C0871ED5EFCB00148A4E /* FlowUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowUp.m; sourceTree = "<group>"; };
 		4983803C1ED48C7A003BCFB0 /* libSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CpuUsageCollector.h; sourceTree = "<group>"; };
-		4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CpuUsageCollector.m; sourceTree = "<group>"; };
+		4983806D1ED48D6B003BCFB0 /* FUPCpuUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPCpuUsageCollector.h; sourceTree = "<group>"; };
+		4983806E1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCpuUsageCollector.m; sourceTree = "<group>"; };
 		499DEEA41EDD981400BDD763 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		499DEEA51EDD981400BDD763 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		499DEEA61EDD981400BDD763 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -285,8 +285,8 @@
 				4909F5B81ED7084A00825B0B /* Nocilla */,
 				4909F5A91ED6E1EA00825B0B /* Reporter */,
 				499E717A1ED82FE300AD80C3 /* Scheduler */,
-				4909F5AE1ED6EBC600825B0B /* ApiClientTests.h */,
-				4909F5AF1ED6EBC600825B0B /* ApiClientTests.m */,
+				4909F5AE1ED6EBC600825B0B /* FUPApiClientTests.h */,
+				4909F5AF1ED6EBC600825B0B /* FUPApiClientTests.m */,
 				4909E6251ED5F17C0009FBA9 /* Info.plist */,
 			);
 			path = Tests;
@@ -470,9 +470,9 @@
 			isa = PBXGroup;
 			children = (
 				49B8DF0D1EDC3A8C00C8A9F5 /* Scheduler */,
-				4909F5D91ED748CB00825B0B /* Collector.h */,
-				4983806D1ED48D6B003BCFB0 /* CpuUsageCollector.h */,
-				4983806E1ED48D6B003BCFB0 /* CpuUsageCollector.m */,
+				4909F5D91ED748CB00825B0B /* FUPCollector.h */,
+				4983806D1ED48D6B003BCFB0 /* FUPCpuUsageCollector.h */,
+				4983806E1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m */,
 			);
 			path = Collector;
 			sourceTree = "<group>";
@@ -630,8 +630,8 @@
 		49B8DF0D1EDC3A8C00C8A9F5 /* Scheduler */ = {
 			isa = PBXGroup;
 			children = (
-				4909F5D51ED742DA00825B0B /* CollectorScheduler.h */,
-				4909F5D61ED742DA00825B0B /* CollectorScheduler.m */,
+				4909F5D51ED742DA00825B0B /* FUPCollectorScheduler.h */,
+				4909F5D61ED742DA00825B0B /* FUPCollectorScheduler.m */,
 			);
 			path = Scheduler;
 			sourceTree = "<group>";
@@ -716,7 +716,7 @@
 			files = (
 				499DEED91EDD981400BDD763 /* AFURLSessionManager.h in Headers */,
 				49D839CC1ED81B10004F47C6 /* MetricsStorage.h in Headers */,
-				498380761ED48F5C003BCFB0 /* CpuUsageCollector.h in Headers */,
+				498380761ED48F5C003BCFB0 /* FUPCpuUsageCollector.h in Headers */,
 				499DEEF11EDD98EF00BDD763 /* NamespacedDependencies.h in Headers */,
 				49B8DEF01EDC270500C8A9F5 /* FUPResult.h in Headers */,
 				49B8DEFE1EDC30BB00C8A9F5 /* FUPConfigApiMapper.h in Headers */,
@@ -741,7 +741,7 @@
 				499DEEE21EDD981400BDD763 /* UIActivityIndicatorView+AFNetworking.h in Headers */,
 				491BECBF1EDEB3B800BB77A3 /* FUPSqlite.h in Headers */,
 				4909F5D31ED73AA900825B0B /* TimeProvider.h in Headers */,
-				4909F5D71ED742DA00825B0B /* CollectorScheduler.h in Headers */,
+				4909F5D71ED742DA00825B0B /* FUPCollectorScheduler.h in Headers */,
 				49B8DF031EDC347500C8A9F5 /* FUPConfigStorage.h in Headers */,
 				499DEECE1EDD981400BDD763 /* AFHTTPSessionManager.h in Headers */,
 				4978C0791ED5E71400148A4E /* Reports.h in Headers */,
@@ -928,7 +928,7 @@
 				49B8DF1E1EDC71CA00C8A9F5 /* FUPConfigServiceTests.m in Sources */,
 				4909F5B41ED7040600825B0B /* JsonMatcher.m in Sources */,
 				4909E6241ED5F17C0009FBA9 /* ReportApiClientTests.m in Sources */,
-				4909F5B01ED6EBC600825B0B /* ApiClientTests.m in Sources */,
+				4909F5B01ED6EBC600825B0B /* FUPApiClientTests.m in Sources */,
 				49DB72A71EDEEE2300487567 /* FUPMetricsStorageTests.m in Sources */,
 				499E717D1ED82FF300AD80C3 /* ReportSchedulerTests.m in Sources */,
 				499E71811ED8341100AD80C3 /* CpuMetricMother.m in Sources */,
@@ -951,7 +951,7 @@
 				4909F5C61ED713AA00825B0B /* ReportScheduler.m in Sources */,
 				4909F5C11ED70E9E00825B0B /* UuidGenerator.m in Sources */,
 				499DEEE81EDD981400BDD763 /* UIImageView+AFNetworking.m in Sources */,
-				4983806F1ED48D6B003BCFB0 /* CpuUsageCollector.m in Sources */,
+				4983806F1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m in Sources */,
 				4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */,
 				49B8DF0C1EDC35BF00C8A9F5 /* FUPConfigService.m in Sources */,
 				4909F5BD1ED7090E00825B0B /* Device.m in Sources */,
@@ -959,7 +959,7 @@
 				49B8DEFF1EDC30BB00C8A9F5 /* FUPConfigApiMapper.m in Sources */,
 				499DEEDA1EDD981400BDD763 /* AFURLSessionManager.m in Sources */,
 				499DEEEF1EDD981400BDD763 /* UIWebView+AFNetworking.m in Sources */,
-				4909F5D81ED742DA00825B0B /* CollectorScheduler.m in Sources */,
+				4909F5D81ED742DA00825B0B /* FUPCollectorScheduler.m in Sources */,
 				49B8DEEC1EDC246900C8A9F5 /* FUPConfigApiClient.m in Sources */,
 				4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */,
 				499DEEE11EDD981400BDD763 /* AFNetworkActivityIndicatorManager.m in Sources */,

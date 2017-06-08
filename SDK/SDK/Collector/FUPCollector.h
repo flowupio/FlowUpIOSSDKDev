@@ -1,5 +1,5 @@
 //
-//  Collector.h
+//  FUPCollector.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Collector
+@protocol FUPCollector
 - (void)collect;
 @end

@@ -1,5 +1,5 @@
 //
-//  CollectorScheduler.h
+//  FUPCollectorScheduler.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Collector.h"
+#import "FUPCollector.h"
 #import "Async.h"
 
-@interface CollectorScheduler : NSObject
+@interface FUPCollectorScheduler : NSObject
 
 @property (readwrite, nonatomic) BOOL isEnabled;
 
-- (void)addCollectors:(NSArray<id<Collector>> *)collectors
+- (void)addCollectors:(NSArray<id<FUPCollector>> *)collectors
          timeInterval:(NSTimeInterval)timeInterval;
 
 @end

@@ -10,9 +10,9 @@
 
 @implementation DIContainer
 
-+ (CollectorScheduler *)collectorScheduler
++ (FUPCollectorScheduler *)collectorScheduler
 {
-    return [[CollectorScheduler alloc] init];
+    return [[FUPCollectorScheduler alloc] init];
 }
 
 + (ReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey
@@ -36,9 +36,9 @@
                                                storage:[DIContainer configStorage]];
 }
 
-+ (CpuUsageCollector *)cpuUsageCollector
++ (FUPCpuUsageCollector *)cpuUsageCollector
 {
-    return [[CpuUsageCollector alloc] initWithMetricsStorage:[DIContainer metricsStorage]
+    return [[FUPCpuUsageCollector alloc] initWithMetricsStorage:[DIContainer metricsStorage]
                                                       device:[DIContainer device]
                                                         time:[DIContainer time]];
 }

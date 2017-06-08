@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Device.h"
 #import "ReportApiClient.h"
-#import "CpuUsageCollector.h"
+#import "FUPCpuUsageCollector.h"
 #import "FUPConfigService.h"
 #import "TimeProvider.h"
 #import "MetricsStorage.h"

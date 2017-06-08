@@ -7,13 +7,13 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ApiClientTests.h"
+#import "FUPApiClientTests.h"
 #import "FUPConfigApiClient.h"
 #import <Nimble/Nimble.h>
 #import <Nocilla/Nocilla.h>
 @import Nimble.Swift;
 
-@interface FUPConfigApiClientTests : ApiClientTests
+@interface FUPConfigApiClientTests : FUPApiClientTests
 
 @end
 

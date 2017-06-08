@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ReportScheduler.h"
-#import "CollectorScheduler.h"
+#import "FUPCollectorScheduler.h"
 #import "FUPConfigApiClient.h"
 #import "FUPConfigSyncScheduler.h"
 #import "FUPConfigService.h"
@@ -18,8 +18,8 @@
 
 @interface DIContainer : NSObject
 
-+ (CollectorScheduler *)collectorScheduler;
-+ (CpuUsageCollector *)cpuUsageCollector;
++ (FUPCollectorScheduler *)collectorScheduler;
++ (FUPCpuUsageCollector *)cpuUsageCollector;
 + (ReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey;
 + (FUPConfigSyncScheduler *)configSyncSchedulerWithApiKey:(NSString *)apiKey;
 + (FUPConfigStorage *)configStorage;
