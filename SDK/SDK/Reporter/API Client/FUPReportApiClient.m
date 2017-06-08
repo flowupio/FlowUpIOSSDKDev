@@ -35,26 +35,32 @@
                                                   @"screenSize": reports.screenSize,
                                                   @"numberOfCores": [NSNumber numberWithLong:reports.numberOfCores]}];
 
-    NSArray *cpuSerializedReports = [self serializeCpuReports:reports.cpuMetrics];
+    NSArray *cpuSerializedReports = [self serializeMetrics:reports.cpuMetrics];
     if (cpuSerializedReports.count > 0) {
         [serializedReports setValue:cpuSerializedReports forKey:@"cpu"];
+    }
+
+    NSArray *uiSerializedReports = [self serializeMetrics:reports.uiMetrics];
+    if (cpuSerializedReports.count > 0) {
+        [serializedReports setValue:uiSerializedReports forKey:@"ui"];
     }
 
     return serializedReports;
 }
 
-- (NSArray *)serializeCpuReports:(NSArray<FUPCpuMetric *> *)cpuMetrics
+- (NSArray *)serializeMetrics:(NSArray<FUPMetric *> *)metrics
 {
-    NSMutableArray *cpuSerializedReports = [[NSMutableArray alloc] init];
-    for (FUPCpuMetric *cpuMetric in cpuMetrics) {
-        [cpuSerializedReports addObject:@{@"consumption": [NSNumber numberWithLong:cpuMetric.cpuUsage],
-                                          @"timestamp": [NSNumber numberWithDouble:cpuMetric.timestamp],
-                                          @"appVersionName": cpuMetric.appVersionName,
-                                          @"iOSVersion": cpuMetric.osVersion,
-                                          @"batterySaverOn": [NSNumber numberWithBool:cpuMetric.isLowPowerModeEnabled],
-                                          @"isInBackground": @NO}];
+    NSMutableArray *serializedReports = [[NSMutableArray alloc] init];
+    for (FUPMetric *metric in metrics) {
+        NSMutableDictionary *serializedReport = [[NSMutableDictionary alloc] initWithDictionary:metric.values];
+        [serializedReport setValue:[NSNumber numberWithDouble:metric.timestamp] forKey:@"timestamp"];
+        [serializedReport setValue:metric.appVersionName forKey:@"appVersionName"];
+        [serializedReport setValue:metric.osVersion forKey:@"iOSVersion"];
+        [serializedReport setValue:[NSNumber numberWithBool:metric.isLowPowerModeEnabled] forKey:@"batterySaverOn"];
+        [serializedReport setValue:@NO forKey:@"isInBackground"];
+        [serializedReports addObject:serializedReport];
     }
-    return cpuSerializedReports;
+    return serializedReports;
 }
 
 @end

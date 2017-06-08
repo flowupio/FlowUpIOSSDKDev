@@ -34,12 +34,12 @@
 - (void)collect
 {
     float cpuUsage = self.cpuUsage;
-    FUPCpuMetric *metric = [[FUPCpuMetric alloc] initWithTimestamp:[self.time nowInMillis]
-                                                    appVersionName:self.device.appVersionName
-                                                         osVersion:self.device.osVersion
-                                             isLowPowerModeEnabled:self.device.isLowPowerModeEnabled
-                                                          cpuUsage:cpuUsage * 100];
-    [self.storage storeCpuMetric:metric];
+    FUPMetric *metric = [[FUPMetric alloc] initWithTimestamp:[self.time nowInMillis]
+                                              appVersionName:self.device.appVersionName
+                                                   osVersion:self.device.osVersion
+                                       isLowPowerModeEnabled:self.device.isLowPowerModeEnabled
+                                                    cpuUsage:cpuUsage * 100];
+    [self.storage storeMetric:metric];
 }
 
 - (float)cpuUsage
@@ -98,7 +98,7 @@
     for (int i = 0; i < count; i++) {
         [threadsAct addObject:[NSNumber numberWithInt:threadsArray[i]]];
     }
-
+    
     return threadsAct;
 }
 

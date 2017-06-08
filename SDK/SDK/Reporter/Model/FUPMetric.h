@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FUPStatisticalValue.h"
 
 @interface FUPMetric : NSObject
 
@@ -15,12 +16,20 @@
 @property (readonly, nonatomic, copy) NSString *appVersionName;
 @property (readonly, nonatomic, copy) NSString *osVersion;
 @property (readonly, nonatomic) BOOL isLowPowerModeEnabled;
+@property (readonly, nonatomic) NSDictionary *values;
 
 - (instancetype)init NS_UNAVAILABLE;
+
 - (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
-                             name:(NSString *)name
                    appVersionName:(NSString *)appVersionName
                         osVersion:(NSString *)osVersion
-            isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled;
+            isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled
+                         cpuUsage:(NSInteger)cpuUsage;
+
+- (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
+                   appVersionName:(NSString *)appVersionName
+                        osVersion:(NSString *)osVersion
+            isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled
+                        frameTime:(FUPStatisticalValue *)frameTime;
 
 @end

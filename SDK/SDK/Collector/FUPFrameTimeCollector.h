@@ -12,6 +12,7 @@
 #import "FUPMetricsStorage.h"
 #import "FUPTime.h"
 #import "FUPCalculator.h"
+#import "FUPMetric.h"
 
 @interface FUPFrameTimeCollector : NSObject <FUPCollector>
 

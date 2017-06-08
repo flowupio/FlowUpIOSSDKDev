@@ -16,7 +16,8 @@
                      screenDensity:(NSString *)screenDensity
                         screenSize:(NSString *)screenSize
                      numberOfCores:(NSInteger)numberOfCores
-                        cpuMetrics:(NSArray<FUPCpuMetric *> *)cpuMetrics
+                        cpuMetrics:(NSArray<FUPMetric *> *)cpuMetrics
+                         uiMetrics:(NSArray<FUPMetric *> *)uiMetrics
 {
     self = [super init];
     if (self) {
@@ -27,6 +28,7 @@
         _screenSize = screenSize;
         _numberOfCores = numberOfCores;
         _cpuMetrics = cpuMetrics;
+        _uiMetrics = uiMetrics;
     }
     return self;
 }

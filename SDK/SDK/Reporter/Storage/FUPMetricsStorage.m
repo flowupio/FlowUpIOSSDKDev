@@ -16,74 +16,80 @@ metric_name TEXT NOT NULL, \
 app_version_name TEXT NOT NULL, \
 os_version TEXT NOT NULL, \
 is_low_power_enabled INTEGER NOT NULL, \
-value INTEGER)";
+additional_values TEXT NOT NULL)";
+
+static NSUInteger const TableVersion = 1;
 
 @interface FUPMetricsStorage ()
 
 @property (readonly, nonatomic) FUPSqlite *sqlite;
+@property (readonly, nonatomic) FUPMetricsStorageMapper *mapper;
 
 @end
 
 @implementation FUPMetricsStorage
 
 - (instancetype)initWithSqlite:(FUPSqlite *)sqlite
+                        mapper:(FUPMetricsStorageMapper *)mapper
 {
     self = [super init];
     if (self) {
         _sqlite = sqlite;
+        _mapper = mapper;
     }
     return self;
 }
 
-- (void)storeCpuMetric:(FUPCpuMetric *)cpuMetric
+- (void)storeMetric:(FUPMetric *)metric
 {
-    [self.sqlite createTable:@"metrics" withStatement:CreateTableStatement];
+    [self.sqlite createTable:@"metrics" withVersion:TableVersion withStatement:CreateTableStatement];
     NSString *insertStatement = [NSString stringWithFormat:
                                  @"INSERT INTO metrics \
-                                 (timestamp, metric_name, app_version_name, os_version, is_low_power_enabled, value) \
-                                 values (%f, \"%@\", \"%@\", \"%@\", %@, %ld)",
-                                 cpuMetric.timestamp,
-                                 cpuMetric.name,
-                                 cpuMetric.appVersionName,
-                                 cpuMetric.osVersion,
-                                 [NSNumber numberWithBool:cpuMetric.isLowPowerModeEnabled],
-                                 cpuMetric.cpuUsage];
+                                 (timestamp, metric_name, app_version_name, os_version, is_low_power_enabled, additional_values) \
+                                 values (%f, \"%@\", \"%@\", \"%@\", %@, \"%@\")",
+                                 metric.timestamp,
+                                 metric.name,
+                                 metric.appVersionName,
+                                 metric.osVersion,
+                                 [NSNumber numberWithBool:metric.isLowPowerModeEnabled],
+                                 [self.mapper stringFromMetricValues:metric.values]];
     BOOL success = [self.sqlite runStatement:insertStatement];
     if (success) {
         NSLog(@"[MetricsStorage] Metrics stored");
     } else {
         NSLog(@"[MetricsStorage] There was an error inserting new metrics");
     }
+
 }
 
-- (NSArray<FUPCpuMetric *> *)cpuMetricsAtMost:(NSInteger)numberOfCpuMetrics
+- (NSArray<FUPMetric *> *)metricsAtMost:(NSInteger)numberOfCpuMetrics
 {
-    [self.sqlite createTable:@"metrics" withStatement:CreateTableStatement];
+    [self.sqlite createTable:@"metrics" withVersion:TableVersion withStatement:CreateTableStatement];
     NSMutableArray *metrics = [[NSMutableArray alloc] initWithCapacity:numberOfCpuMetrics];
     NSString *query = [NSString stringWithFormat:
                        @"SELECT * FROM metrics \
                        ORDER BY timestamp DESC \
                        LIMIT %ld", numberOfCpuMetrics];
     [self.sqlite runQuery:query block:^BOOL(sqlite3_stmt *statement) {
-        FUPCpuMetric *metric = [[FUPCpuMetric alloc] initWithTimestamp:sqlite3_column_double(statement, 1)
-                                                        appVersionName:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 3)]
-                                                             osVersion:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 4)]
-                                                 isLowPowerModeEnabled:[[NSNumber numberWithInt:sqlite3_column_int(statement, 5)] boolValue]
-                                                              cpuUsage:sqlite3_column_int(statement, 6)];
+        FUPMetric *metric = [[FUPMetric alloc] initWithTimestamp:sqlite3_column_double(statement, 1)
+                                                  appVersionName:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 3)]
+                                                       osVersion:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 4)]
+                                           isLowPowerModeEnabled:[[NSNumber numberWithInt:sqlite3_column_int(statement, 5)] boolValue]
+                                                        cpuUsage:sqlite3_column_int(statement, 6)];
         [metrics addObject:metric];
         return YES;
     }];
     return metrics;
 }
 
-- (void)removeNumberOfCpuMetrics:(NSInteger)numberOfCpuMetrics
+- (void)removeNumberOfMetrics:(NSInteger)numberOfMetrics
 {
-    [self.sqlite createTable:@"metrics" withStatement:CreateTableStatement];
+    [self.sqlite createTable:@"metrics" withVersion:TableVersion withStatement:CreateTableStatement];
     NSString *deleteStatement = [NSString stringWithFormat: @"DELETE FROM metrics \
                                  WHERE _id IN ( \
                                  SELECT _id FROM metrics \
                                  ORDER BY timestamp DESC \
-                                 LIMIT %ld)", numberOfCpuMetrics];
+                                 LIMIT %ld)", numberOfMetrics];
     BOOL success = [self.sqlite runStatement:deleteStatement];
 
     if (!success) {
@@ -93,7 +99,7 @@ value INTEGER)";
 
 - (void)clear
 {
-    [self.sqlite createTable:@"metrics" withStatement:CreateTableStatement];
+    [self.sqlite createTable:@"metrics" withVersion:TableVersion withStatement:CreateTableStatement];
     NSString *deleteStatement = @"DELETE FROM metrics";
     BOOL success = [self.sqlite runStatement:deleteStatement];
 
@@ -104,7 +110,7 @@ value INTEGER)";
 
 - (BOOL)hasReports
 {
-    [self.sqlite createTable:@"metrics" withStatement:CreateTableStatement];
+    [self.sqlite createTable:@"metrics" withVersion:TableVersion withStatement:CreateTableStatement];
     __block BOOL hasReports = NO;
     NSString *query = @"SELECT COUNT(*) FROM metrics";
     [self.sqlite runQuery:query block:^BOOL(sqlite3_stmt *statement) {

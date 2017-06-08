@@ -9,6 +9,7 @@
 #import "FUPSqlite.h"
 
 static NSString *const TableCreatedKeyFormat = @"FlowUp.%@TableCreated";
+static NSString *const TableVersionKeyFormat = @"FlowUp.%@TableVersion";
 
 @interface FUPSqlite ()
 
@@ -90,14 +91,21 @@ static NSString *const TableCreatedKeyFormat = @"FlowUp.%@TableCreated";
     return success;
 }
 
-- (void)createTable:(NSString *)tableName withStatement:(NSString *)statement
+- (void)createTable:(NSString *)tableName withVersion:(NSUInteger)version withStatement:(NSString *)statement
 {
     NSString *tableCreatedKey = [NSString stringWithFormat:TableCreatedKeyFormat, tableName];
     BOOL isTableCreated = [[NSUserDefaults standardUserDefaults] boolForKey:tableCreatedKey];
+    NSString *tableVersionKey = [NSString stringWithFormat:TableVersionKeyFormat, tableName];
+    BOOL storedTableVersion = [[NSUserDefaults standardUserDefaults] integerForKey:tableVersionKey];
 
     if (!isTableCreated) {
         [self runStatement:statement];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:tableCreatedKey];
+        [[NSUserDefaults standardUserDefaults] setInteger:version forKey:tableVersionKey];
+    } else if (storedTableVersion < version) {
+        [self runStatement:[NSString stringWithFormat:@"DROP TABLE %@", tableName]];
+        [self runStatement:statement];
+        [[NSUserDefaults standardUserDefaults] setInteger:version forKey:tableVersionKey];
     }
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FUPCpuMetric.h"
+#import "FUPMetric.h"
 
 @interface FUPReports : NSObject
 
@@ -17,7 +17,8 @@
 @property (readonly, nonatomic, copy) NSString *screenDensity;
 @property (readonly, nonatomic, copy) NSString *screenSize;
 @property (readonly, nonatomic) NSInteger numberOfCores;
-@property (readonly, nonatomic, copy) NSArray<FUPCpuMetric *> *cpuMetrics;
+@property (readonly, nonatomic, copy) NSArray<FUPMetric *> *cpuMetrics;
+@property (readonly, nonatomic, copy) NSArray<FUPMetric *> *uiMetrics;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithAppPackage:(NSString *)appPackage
@@ -26,6 +27,7 @@
                      screenDensity:(NSString *)screenDensity
                         screenSize:(NSString *)screenSize
                      numberOfCores:(NSInteger)numberOfCores
-                        cpuMetrics:(NSArray<FUPCpuMetric *> *)cpuMetrics;
+                        cpuMetrics:(NSArray<FUPMetric *> *)cpuMetrics
+                         uiMetrics:(NSArray<FUPMetric *> *)uiMetrics;
 
 @end

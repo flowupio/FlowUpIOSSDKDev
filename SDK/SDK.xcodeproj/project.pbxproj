@@ -35,16 +35,14 @@
 		4978BC211EE95B96005EF4E4 /* FUPFrameTimeCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978BC1F1EE95B96005EF4E4 /* FUPFrameTimeCollector.m */; };
 		4978BC251EE9678F005EF4E4 /* FUPCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978BC231EE9678F005EF4E4 /* FUPCalculator.h */; };
 		4978BC261EE9678F005EF4E4 /* FUPCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978BC241EE9678F005EF4E4 /* FUPCalculator.m */; };
-		4978BC291EE98038005EF4E4 /* FUPUiMetric.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978BC271EE98038005EF4E4 /* FUPUiMetric.h */; };
-		4978BC2A1EE98038005EF4E4 /* FUPUiMetric.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978BC281EE98038005EF4E4 /* FUPUiMetric.m */; };
 		4978BC2D1EE9804C005EF4E4 /* FUPStatisticalValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978BC2B1EE9804C005EF4E4 /* FUPStatisticalValue.h */; };
 		4978BC2E1EE9804C005EF4E4 /* FUPStatisticalValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978BC2C1EE9804C005EF4E4 /* FUPStatisticalValue.m */; };
+		4978BC311EE98B4A005EF4E4 /* FUPMetricsStorageMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978BC2F1EE98B4A005EF4E4 /* FUPMetricsStorageMapper.h */; };
+		4978BC321EE98B4A005EF4E4 /* FUPMetricsStorageMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978BC301EE98B4A005EF4E4 /* FUPMetricsStorageMapper.m */; };
 		4978C0771ED5E71400148A4E /* FUPReportApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0731ED5E71400148A4E /* FUPReportApiClient.h */; };
 		4978C0781ED5E71400148A4E /* FUPReportApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0741ED5E71400148A4E /* FUPReportApiClient.m */; };
 		4978C0791ED5E71400148A4E /* FUPReports.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0751ED5E71400148A4E /* FUPReports.h */; };
 		4978C07A1ED5E71400148A4E /* FUPReports.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0761ED5E71400148A4E /* FUPReports.m */; };
-		4978C07E1ED5E7E600148A4E /* FUPCpuMetric.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C07C1ED5E7E600148A4E /* FUPCpuMetric.h */; };
-		4978C07F1ED5E7E600148A4E /* FUPCpuMetric.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C07D1ED5E7E600148A4E /* FUPCpuMetric.m */; };
 		4978C0841ED5EC0100148A4E /* FUPApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0821ED5EC0100148A4E /* FUPApiClient.h */; };
 		4978C0851ED5EC0100148A4E /* FUPApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0831ED5EC0100148A4E /* FUPApiClient.m */; };
 		4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978C0861ED5EFCB00148A4E /* FlowUp.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -162,16 +160,14 @@
 		4978BC1F1EE95B96005EF4E4 /* FUPFrameTimeCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPFrameTimeCollector.m; sourceTree = "<group>"; };
 		4978BC231EE9678F005EF4E4 /* FUPCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPCalculator.h; sourceTree = "<group>"; };
 		4978BC241EE9678F005EF4E4 /* FUPCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCalculator.m; sourceTree = "<group>"; };
-		4978BC271EE98038005EF4E4 /* FUPUiMetric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPUiMetric.h; sourceTree = "<group>"; };
-		4978BC281EE98038005EF4E4 /* FUPUiMetric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPUiMetric.m; sourceTree = "<group>"; };
 		4978BC2B1EE9804C005EF4E4 /* FUPStatisticalValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPStatisticalValue.h; sourceTree = "<group>"; };
 		4978BC2C1EE9804C005EF4E4 /* FUPStatisticalValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPStatisticalValue.m; sourceTree = "<group>"; };
+		4978BC2F1EE98B4A005EF4E4 /* FUPMetricsStorageMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPMetricsStorageMapper.h; sourceTree = "<group>"; };
+		4978BC301EE98B4A005EF4E4 /* FUPMetricsStorageMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPMetricsStorageMapper.m; sourceTree = "<group>"; };
 		4978C0731ED5E71400148A4E /* FUPReportApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPReportApiClient.h; sourceTree = "<group>"; };
 		4978C0741ED5E71400148A4E /* FUPReportApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPReportApiClient.m; sourceTree = "<group>"; };
 		4978C0751ED5E71400148A4E /* FUPReports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPReports.h; sourceTree = "<group>"; };
 		4978C0761ED5E71400148A4E /* FUPReports.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPReports.m; sourceTree = "<group>"; };
-		4978C07C1ED5E7E600148A4E /* FUPCpuMetric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPCpuMetric.h; sourceTree = "<group>"; };
-		4978C07D1ED5E7E600148A4E /* FUPCpuMetric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCpuMetric.m; sourceTree = "<group>"; };
 		4978C0821ED5EC0100148A4E /* FUPApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPApiClient.h; sourceTree = "<group>"; };
 		4978C0831ED5EC0100148A4E /* FUPApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPApiClient.m; sourceTree = "<group>"; };
 		4978C0861ED5EFCB00148A4E /* FlowUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowUp.h; sourceTree = "<group>"; };
@@ -288,6 +284,8 @@
 			children = (
 				49D839CA1ED81B10004F47C6 /* FUPMetricsStorage.h */,
 				49D839CB1ED81B10004F47C6 /* FUPMetricsStorage.m */,
+				4978BC2F1EE98B4A005EF4E4 /* FUPMetricsStorageMapper.h */,
+				4978BC301EE98B4A005EF4E4 /* FUPMetricsStorageMapper.m */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -418,16 +416,12 @@
 		4978C07B1ED5E7D600148A4E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4978C07C1ED5E7E600148A4E /* FUPCpuMetric.h */,
-				4978C07D1ED5E7E600148A4E /* FUPCpuMetric.m */,
 				4909F5A51ED6C10100825B0B /* FUPMetric.h */,
 				4909F5A61ED6C10100825B0B /* FUPMetric.m */,
 				4978C0751ED5E71400148A4E /* FUPReports.h */,
 				4978C0761ED5E71400148A4E /* FUPReports.m */,
 				4978BC2B1EE9804C005EF4E4 /* FUPStatisticalValue.h */,
 				4978BC2C1EE9804C005EF4E4 /* FUPStatisticalValue.m */,
-				4978BC271EE98038005EF4E4 /* FUPUiMetric.h */,
-				4978BC281EE98038005EF4E4 /* FUPUiMetric.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -760,7 +754,6 @@
 				499DEED51EDD981400BDD763 /* AFURLRequestSerialization.h in Headers */,
 				499DEEE61EDD981400BDD763 /* UIImage+AFNetworking.h in Headers */,
 				4978C0771ED5E71400148A4E /* FUPReportApiClient.h in Headers */,
-				4978BC291EE98038005EF4E4 /* FUPUiMetric.h in Headers */,
 				499DEED01EDD981400BDD763 /* AFNetworking.h in Headers */,
 				49B8DEEB1EDC246900C8A9F5 /* FUPConfigApiClient.h in Headers */,
 				496E20DE1EE87155006196F5 /* FUPDebugModeStorage.h in Headers */,
@@ -769,6 +762,7 @@
 				4909F5A71ED6C10100825B0B /* FUPMetric.h in Headers */,
 				4909F5C01ED70E9E00825B0B /* FUPUuidGenerator.h in Headers */,
 				49B8DF0B1EDC35BF00C8A9F5 /* FUPConfigService.h in Headers */,
+				4978BC311EE98B4A005EF4E4 /* FUPMetricsStorageMapper.h in Headers */,
 				4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */,
 				4978BC2D1EE9804C005EF4E4 /* FUPStatisticalValue.h in Headers */,
 				499DEEEE1EDD981400BDD763 /* UIWebView+AFNetworking.h in Headers */,
@@ -782,7 +776,6 @@
 				499DEECE1EDD981400BDD763 /* AFHTTPSessionManager.h in Headers */,
 				4978C0791ED5E71400148A4E /* FUPReports.h in Headers */,
 				499DEEF31EDD98FB00BDD763 /* SDKPrefixHeader.h in Headers */,
-				4978C07E1ED5E7E600148A4E /* FUPCpuMetric.h in Headers */,
 				499DEED31EDD981400BDD763 /* AFSecurityPolicy.h in Headers */,
 				499DEEEC1EDD981400BDD763 /* UIRefreshControl+AFNetworking.h in Headers */,
 				499DEED11EDD981400BDD763 /* AFNetworkReachabilityManager.h in Headers */,
@@ -980,7 +973,6 @@
 				499DEEED1EDD981400BDD763 /* UIRefreshControl+AFNetworking.m in Sources */,
 				49B8DEE71EDC23D400C8A9F5 /* FUPConfig.m in Sources */,
 				496E20DF1EE87155006196F5 /* FUPDebugModeStorage.m in Sources */,
-				4978BC2A1EE98038005EF4E4 /* FUPUiMetric.m in Sources */,
 				499DEEDF1EDD981400BDD763 /* AFImageDownloader.m in Sources */,
 				49D839CD1ED81B10004F47C6 /* FUPMetricsStorage.m in Sources */,
 				499DEED81EDD981400BDD763 /* AFURLResponseSerialization.m in Sources */,
@@ -1001,7 +993,7 @@
 				49B8DEEC1EDC246900C8A9F5 /* FUPConfigApiClient.m in Sources */,
 				4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */,
 				499DEEE11EDD981400BDD763 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				4978C07F1ED5E7E600148A4E /* FUPCpuMetric.m in Sources */,
+				4978BC321EE98B4A005EF4E4 /* FUPMetricsStorageMapper.m in Sources */,
 				499DEEE51EDD981400BDD763 /* UIButton+AFNetworking.m in Sources */,
 				49B8DEF11EDC270500C8A9F5 /* FUPResult.m in Sources */,
 				499DEEEB1EDD981400BDD763 /* UIProgressView+AFNetworking.m in Sources */,

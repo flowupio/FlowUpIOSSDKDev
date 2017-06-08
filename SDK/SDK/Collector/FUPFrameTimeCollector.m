@@ -45,6 +45,15 @@ static NSTimeInterval const NoTimeReported = -1;
     [self displayLink].paused = NO;
 
     if (self.values.count > 0) {
+        FUPStatisticalValue *frameTime = [[FUPStatisticalValue alloc] initWithMean:[self.calculator meanOf:self.values]
+                                                                      percentile10:[self.calculator percentile10Of:self.values]
+                                                                      percentile90:[self.calculator percentile90Of:self.values]];
+        FUPMetric *metric = [[FUPMetric alloc] initWithTimestamp:[self.time nowInMillis]
+                                                  appVersionName:self.device.appVersionName
+                                                       osVersion:self.device.osVersion
+                                           isLowPowerModeEnabled:self.device.isLowPowerModeEnabled
+                                                       frameTime:frameTime];
+        [self.storage storeMetric:metric];
         NSLog(@"Collecting frame time metrics: %lu, %f %f %f",
               (unsigned long)self.values.count,
               [self.calculator meanOf:self.values].doubleValue,

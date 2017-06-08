@@ -57,7 +57,8 @@
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        _storage = [[FUPMetricsStorage alloc] initWithSqlite:[FUPDiContainer sqlite]];
+        _storage = [[FUPMetricsStorage alloc] initWithSqlite:[FUPDiContainer sqlite]
+                                                      mapper:[FUPDiContainer metricsStorageMapper]];
     });
 
     return _storage;
@@ -104,6 +105,11 @@
                                                 apiKey:apiKey
                                                   uuid:uuid
                                       debugModeStorage:[FUPDiContainer debugModeStorage]];
+}
+
++ (FUPMetricsStorageMapper *)metricsStorageMapper
+{
+    return [[FUPMetricsStorageMapper alloc] init];
 }
 
 + (FUPDevice *)device
