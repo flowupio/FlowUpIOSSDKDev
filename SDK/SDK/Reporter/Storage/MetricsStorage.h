@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Reports.h"
-#import "Async.h"
+#import "FUPAsync.h"
 #import "FUPSqlite.h"
 
 @interface MetricsStorage : NSObject

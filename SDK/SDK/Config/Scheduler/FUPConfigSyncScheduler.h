@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FUPConfigService.h"
 #import "TimeProvider.h"
-#import "Async.h"
+#import "FUPAsync.h"
 
 @interface FUPConfigSyncScheduler : NSObject
 

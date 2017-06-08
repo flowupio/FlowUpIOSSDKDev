@@ -11,7 +11,7 @@
 #import "FUPApiClientTests.h"
 #import "NSDictionary+Matcheable.h"
 #import "CpuMetricMother.h"
-#import "Configuration.h"
+#import "FUPConfiguration.h"
 #import <Nimble/Nimble.h>
 #import <Nocilla/Nocilla.h>
 @import Nimble.Swift;

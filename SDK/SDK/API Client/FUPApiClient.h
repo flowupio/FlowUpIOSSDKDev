@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
-#import "Configuration.h"
+#import "FUPConfiguration.h"
 #import "FUPApiClientError.h"
 #import "FUPDebugModeStorage.h"
 

@@ -1,5 +1,5 @@
 //
-//  DIContainer.h
+//  FUPDiContainer.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
@@ -13,10 +13,10 @@
 #import "FUPConfigSyncScheduler.h"
 #import "FUPConfigService.h"
 #import "ReportApiClient.h"
-#import "Configuration.h"
+#import "FUPConfiguration.h"
 #import "FUPDebugModeStorage.h"
 
-@interface DIContainer : NSObject
+@interface FUPDiContainer : NSObject
 
 + (FUPCollectorScheduler *)collectorScheduler;
 + (FUPCpuUsageCollector *)cpuUsageCollector;

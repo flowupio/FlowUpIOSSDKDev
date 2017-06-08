@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FUPCollector.h"
-#import "Async.h"
+#import "FUPAsync.h"
 
 @interface FUPCollectorScheduler : NSObject
 
