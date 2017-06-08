@@ -346,9 +346,9 @@
 		4909F5D01ED737E100825B0B /* Time */ = {
 			isa = PBXGroup;
 			children = (
-				49D839D51ED826FF004F47C6 /* FUPTimeIntervalUnits.h */,
 				4909F5D11ED73AA900825B0B /* FUPTime.h */,
 				4909F5D21ED73AA900825B0B /* FUPTime.m */,
+				49D839D51ED826FF004F47C6 /* FUPTimeIntervalUnits.h */,
 			);
 			path = Time;
 			sourceTree = "<group>";
