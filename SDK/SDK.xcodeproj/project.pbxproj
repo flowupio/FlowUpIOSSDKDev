@@ -86,7 +86,7 @@
 		499DEEF11EDD98EF00BDD763 /* NamespacedDependencies.h in Headers */ = {isa = PBXBuildFile; fileRef = 499DEEF01EDD98EF00BDD763 /* NamespacedDependencies.h */; };
 		499DEEF31EDD98FB00BDD763 /* SDKPrefixHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 499DEEF21EDD98FB00BDD763 /* SDKPrefixHeader.h */; };
 		499E717D1ED82FF300AD80C3 /* FUPReportSchedulerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E717C1ED82FF300AD80C3 /* FUPReportSchedulerTests.m */; };
-		499E71811ED8341100AD80C3 /* FUPCpuMetricMother.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E71801ED8341100AD80C3 /* FUPCpuMetricMother.m */; };
+		499E71811ED8341100AD80C3 /* FUPMetricMother.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E71801ED8341100AD80C3 /* FUPMetricMother.m */; };
 		49B8DEE61EDC23D400C8A9F5 /* FUPConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B8DEE41EDC23D400C8A9F5 /* FUPConfig.h */; };
 		49B8DEE71EDC23D400C8A9F5 /* FUPConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B8DEE51EDC23D400C8A9F5 /* FUPConfig.m */; };
 		49B8DEEB1EDC246900C8A9F5 /* FUPConfigApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B8DEE91EDC246900C8A9F5 /* FUPConfigApiClient.h */; };
@@ -214,8 +214,8 @@
 		499DEEF21EDD98FB00BDD763 /* SDKPrefixHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKPrefixHeader.h; sourceTree = "<group>"; };
 		499DEEF91EDDDB6D00BDD763 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		499E717C1ED82FF300AD80C3 /* FUPReportSchedulerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPReportSchedulerTests.m; sourceTree = "<group>"; };
-		499E717F1ED8341100AD80C3 /* FUPCpuMetricMother.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPCpuMetricMother.h; sourceTree = "<group>"; };
-		499E71801ED8341100AD80C3 /* FUPCpuMetricMother.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCpuMetricMother.m; sourceTree = "<group>"; };
+		499E717F1ED8341100AD80C3 /* FUPMetricMother.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPMetricMother.h; sourceTree = "<group>"; };
+		499E71801ED8341100AD80C3 /* FUPMetricMother.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPMetricMother.m; sourceTree = "<group>"; };
 		499E71821ED838A800AD80C3 /* FUPAsync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUPAsync.h; sourceTree = "<group>"; };
 		499E71841ED838FD00AD80C3 /* FUPTestAsync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUPTestAsync.h; sourceTree = "<group>"; };
 		49B8DEE41EDC23D400C8A9F5 /* FUPConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPConfig.h; sourceTree = "<group>"; };
@@ -580,8 +580,8 @@
 		499E717E1ED833F300AD80C3 /* Mother */ = {
 			isa = PBXGroup;
 			children = (
-				499E717F1ED8341100AD80C3 /* FUPCpuMetricMother.h */,
-				499E71801ED8341100AD80C3 /* FUPCpuMetricMother.m */,
+				499E717F1ED8341100AD80C3 /* FUPMetricMother.h */,
+				499E71801ED8341100AD80C3 /* FUPMetricMother.m */,
 			);
 			path = Mother;
 			sourceTree = "<group>";
@@ -960,7 +960,7 @@
 				4909F5B01ED6EBC600825B0B /* FUPApiClientTests.m in Sources */,
 				49DB72A71EDEEE2300487567 /* FUPMetricsStorageTests.m in Sources */,
 				499E717D1ED82FF300AD80C3 /* FUPReportSchedulerTests.m in Sources */,
-				499E71811ED8341100AD80C3 /* FUPCpuMetricMother.m in Sources */,
+				499E71811ED8341100AD80C3 /* FUPMetricMother.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

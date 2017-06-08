@@ -21,7 +21,7 @@
                     appVersionName:appVersionName
                          osVersion:osVersion
              isLowPowerModeEnabled:isLowPowerModeEnabled
-                            values:@{@"cpuUsage": [NSNumber numberWithLong:cpuUsage]}];
+                            values:@{@"consumption": [NSNumber numberWithLong:cpuUsage]}];
 }
 
 - (instancetype)initWithTimestamp:(NSTimeInterval)timestamp

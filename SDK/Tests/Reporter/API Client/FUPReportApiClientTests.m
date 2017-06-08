@@ -10,7 +10,7 @@
 #import "FUPReportApiClient.h"
 #import "FUPApiClientTests.h"
 #import "NSDictionary+Matcheable.h"
-#import "FUPCpuMetricMother.h"
+#import "FUPMetricMother.h"
 #import "FUPConfiguration.h"
 #import <Nimble/Nimble.h>
 #import <Nocilla/Nocilla.h>
@@ -220,7 +220,8 @@
                                     screenDensity:@"Screen Density"
                                        screenSize:@"Screen Size"
                                     numberOfCores:4
-                                       cpuMetrics:@[[FUPCpuMetricMother any]]];
+                                       cpuMetrics:@[[FUPMetricMother any]]
+                                        uiMetrics:@[]];
 }
 
 @end

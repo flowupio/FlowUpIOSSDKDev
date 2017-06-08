@@ -41,7 +41,7 @@
     }
 
     NSArray *uiSerializedReports = [self serializeMetrics:reports.uiMetrics];
-    if (cpuSerializedReports.count > 0) {
+    if (uiSerializedReports.count > 0) {
         [serializedReports setValue:uiSerializedReports forKey:@"ui"];
     }
 

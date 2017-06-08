@@ -22,8 +22,10 @@
 
 - (void)setUp {
     [super setUp];
+    FUPMetricsStorageMapper *mapper = [[FUPMetricsStorageMapper alloc] init];
     self.sqlite = [[FUPSqlite alloc] initWithFileName:@"testingdb.sqlite"];
-    self.storage = [[FUPMetricsStorage alloc] initWithSqlite:self.sqlite];
+    self.storage = [[FUPMetricsStorage alloc] initWithSqlite:self.sqlite
+                                                      mapper:mapper];
 }
 
 - (void)tearDown {
@@ -33,10 +35,10 @@
 
 - (void)testMetricsStorage_ReturnsMetricsStored_IfRetrievingOneMetric
 {
-    FUPCpuMetric *metric = [self anyCpuMetric];
-    [self.storage storeCpuMetric:metric];
+    FUPMetric *metric = [self anyMetric];
+    [self.storage storeMetric:metric];
 
-    NSArray<FUPCpuMetric *> *metrics = [self.storage cpuMetricsAtMost:1];
+    NSArray<FUPMetric *> *metrics = [self.storage metricsAtMost:1];
 
     expect(metrics.count).to(equal(1));
     expect(metrics[0].timestamp).to(equal(metric.timestamp));
@@ -44,46 +46,46 @@
     expect(metrics[0].name).to(equal(metric.name));
     expect(metrics[0].osVersion).to(equal(metric.osVersion));
     expect(metrics[0].isLowPowerModeEnabled).to(equal(metric.isLowPowerModeEnabled));
-    expect(metrics[0].cpuUsage).to(equal(metric.cpuUsage));
+    expect(metrics[0].values).to(equal(metric.values));
 }
 
 - (void)testMetricsStorage_ReturnsAllMetricsStored_IfRetrievingAllMetrics
 {
-    [self.storage storeCpuMetric:[self cpuMetricWithUsage:100]];
-    [self.storage storeCpuMetric:[self cpuMetricWithUsage:101]];
-    [self.storage storeCpuMetric:[self cpuMetricWithUsage:102]];
+    [self.storage storeMetric:[self cpuMetricWithUsage:100]];
+    [self.storage storeMetric:[self cpuMetricWithUsage:101]];
+    [self.storage storeMetric:[self cpuMetricWithUsage:102]];
 
-    NSArray<FUPCpuMetric *> *metrics = [self.storage cpuMetricsAtMost:3];
+    NSArray<FUPMetric *> *metrics = [self.storage metricsAtMost:3];
 
     expect(metrics.count).to(equal(3));
-    expect(metrics[0].cpuUsage).to(equal(100));
-    expect(metrics[1].cpuUsage).to(equal(101));
-    expect(metrics[2].cpuUsage).to(equal(102));
+    expect(metrics[0].values).to(equal(@{@"consumption": @100}));
+    expect(metrics[1].values).to(equal(@{@"consumption": @101}));
+    expect(metrics[2].values).to(equal(@{@"consumption": @102}));
 }
 
 - (void)testMetricsStorage_ReturnsOnlyNumberOfMetricsSpecified_IfRetrievingOnlyThatNumberOfMetrics
 {
-    [self.storage storeCpuMetric:[self anyCpuMetric]];
-    [self.storage storeCpuMetric:[self anyCpuMetric]];
-    [self.storage storeCpuMetric:[self anyCpuMetric]];
+    [self.storage storeMetric:[self anyMetric]];
+    [self.storage storeMetric:[self anyMetric]];
+    [self.storage storeMetric:[self anyMetric]];
 
-    NSArray<FUPCpuMetric *> *metrics = [self.storage cpuMetricsAtMost:1];
+    NSArray<FUPMetric *> *metrics = [self.storage metricsAtMost:1];
 
     expect(metrics.count).to(equal(1));
 }
 
 - (void)testMetricsStorage_ReturnsAllMetricsStored_IfRetrievingMoreThanStoredMetrics
 {
-    [self.storage storeCpuMetric:[self anyCpuMetric]];
+    [self.storage storeMetric:[self anyMetric]];
 
-    NSArray<FUPCpuMetric *> *metrics = [self.storage cpuMetricsAtMost:5];
+    NSArray<FUPMetric *> *metrics = [self.storage metricsAtMost:5];
 
     expect(metrics.count).to(equal(1));
 }
 
 - (void)testMetricsStorage_DeletesMetrics_IfCleared
 {
-    [self.storage storeCpuMetric:[self anyCpuMetric]];
+    [self.storage storeMetric:[self anyMetric]];
 
     [self.storage clear];
 
@@ -92,53 +94,53 @@
 
 - (void)testMetricsStorage_DeletesMetrics_IfRemoved
 {
-    [self.storage storeCpuMetric:[self anyCpuMetric]];
+    [self.storage storeMetric:[self anyMetric]];
 
-    [self.storage removeNumberOfCpuMetrics:1];
+    [self.storage removeNumberOfMetrics:1];
 
     expect(self.storage.hasReports).to(beFalse());
 }
 
 - (void)testMetricsStorage_DeletesOnlyNumberOfMetricsSpecified_IfRemoveThatNumberOfMetrics
 {
-    [self.storage storeCpuMetric:[self anyCpuMetric]];
-    [self.storage storeCpuMetric:[self anyCpuMetric]];
-    [self.storage storeCpuMetric:[self anyCpuMetric]];
+    [self.storage storeMetric:[self anyMetric]];
+    [self.storage storeMetric:[self anyMetric]];
+    [self.storage storeMetric:[self anyMetric]];
 
-    [self.storage removeNumberOfCpuMetrics:1];
+    [self.storage removeNumberOfMetrics:1];
 
-    NSArray<FUPCpuMetric *> *metrics = [self.storage cpuMetricsAtMost:2];
+    NSArray<FUPMetric *> *metrics = [self.storage metricsAtMost:2];
     expect(metrics.count).to(equal(2));
 }
 
 - (void)testMetricsStorage_DeletesAllMetricsStored_IfRemovingMoreThanStoredMetrics
 {
-    [self.storage storeCpuMetric:[self anyCpuMetric]];
+    [self.storage storeMetric:[self anyMetric]];
 
-    [self.storage removeNumberOfCpuMetrics:5];
+    [self.storage removeNumberOfMetrics:5];
 
     expect(self.storage.hasReports).to(beFalse());
 }
 
 - (void)testMetricsStorage_ReportsThatHasMetrics_IfPreviouslyStoredMetrics
 {
-    [self.storage storeCpuMetric:[self anyCpuMetric]];
+    [self.storage storeMetric:[self anyMetric]];
 
     expect(self.storage.hasReports).to(beTrue());
 }
 
-- (FUPCpuMetric *)anyCpuMetric
+- (FUPMetric *)anyMetric
 {
     return [self cpuMetricWithUsage:12];
 }
 
-- (FUPCpuMetric *)cpuMetricWithUsage:(NSInteger)cpuUsage
+- (FUPMetric *)cpuMetricWithUsage:(NSInteger)cpuUsage
 {
-    return [[FUPCpuMetric alloc] initWithTimestamp:1234
-                                    appVersionName:@"Testing App"
-                                         osVersion:@"10.0.0"
-                             isLowPowerModeEnabled:NO
-                                          cpuUsage:cpuUsage];
+    return [[FUPMetric alloc] initWithTimestamp:1234
+                                 appVersionName:@"Testing App"
+                                      osVersion:@"10.0.0"
+                          isLowPowerModeEnabled:NO
+                                       cpuUsage:cpuUsage];
 }
 
 @end
