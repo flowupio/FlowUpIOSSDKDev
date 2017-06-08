@@ -45,7 +45,7 @@
         [serializedReports setValue:uiSerializedReports forKey:@"ui"];
     }
 
-    NSLog(@"Reporting... %@", serializedReports);
+    NSLog(@"[FUPReportApiClient] Reporting... %@", serializedReports);
 
     return serializedReports;
 }
