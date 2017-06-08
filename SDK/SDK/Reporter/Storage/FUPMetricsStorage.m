@@ -6,7 +6,7 @@
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "MetricsStorage.h"
+#import "FUPMetricsStorage.h"
 
 static NSString *const CreateTableStatement =
 @"CREATE TABLE IF NOT EXISTS metrics( \
@@ -18,13 +18,13 @@ os_version TEXT NOT NULL, \
 is_low_power_enabled INTEGER NOT NULL, \
 value INTEGER)";
 
-@interface MetricsStorage ()
+@interface FUPMetricsStorage ()
 
 @property (readonly, nonatomic) FUPSqlite *sqlite;
 
 @end
 
-@implementation MetricsStorage
+@implementation FUPMetricsStorage
 
 - (instancetype)initWithSqlite:(FUPSqlite *)sqlite
 {
@@ -35,7 +35,7 @@ value INTEGER)";
     return self;
 }
 
-- (void)storeCpuMetric:(CpuMetric *)cpuMetric
+- (void)storeCpuMetric:(FUPCpuMetric *)cpuMetric
 {
     [self.sqlite createTable:@"metrics" withStatement:CreateTableStatement];
     NSString *insertStatement = [NSString stringWithFormat:
@@ -56,7 +56,7 @@ value INTEGER)";
     }
 }
 
-- (NSArray<CpuMetric *> *)cpuMetricsAtMost:(NSInteger)numberOfCpuMetrics
+- (NSArray<FUPCpuMetric *> *)cpuMetricsAtMost:(NSInteger)numberOfCpuMetrics
 {
     [self.sqlite createTable:@"metrics" withStatement:CreateTableStatement];
     NSMutableArray *metrics = [[NSMutableArray alloc] initWithCapacity:numberOfCpuMetrics];
@@ -65,11 +65,11 @@ value INTEGER)";
                        ORDER BY timestamp DESC \
                        LIMIT %ld", numberOfCpuMetrics];
     [self.sqlite runQuery:query block:^BOOL(sqlite3_stmt *statement) {
-        CpuMetric *metric = [[CpuMetric alloc] initWithTimestamp:sqlite3_column_double(statement, 1)
-                                                  appVersionName:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 3)]
-                                                       osVersion:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 4)]
-                                           isLowPowerModeEnabled:[[NSNumber numberWithInt:sqlite3_column_int(statement, 5)] boolValue]
-                                                        cpuUsage:sqlite3_column_int(statement, 6)];
+        FUPCpuMetric *metric = [[FUPCpuMetric alloc] initWithTimestamp:sqlite3_column_double(statement, 1)
+                                                        appVersionName:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 3)]
+                                                             osVersion:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 4)]
+                                                 isLowPowerModeEnabled:[[NSNumber numberWithInt:sqlite3_column_int(statement, 5)] boolValue]
+                                                              cpuUsage:sqlite3_column_int(statement, 6)];
         [metrics addObject:metric];
         return YES;
     }];

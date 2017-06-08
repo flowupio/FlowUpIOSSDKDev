@@ -1,16 +1,17 @@
 //
-//  ReportApiClient.m
+//  FUPReportApiClient.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 24/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "ReportApiClient.h"
+#import "FUPReportApiClient.h"
 
-@implementation ReportApiClient
+@implementation FUPReportApiClient
 
-- (void)sendReports:(Reports *)reports completion:(void (^)(FUPApiClientError *))completion
+- (void)sendReports:(FUPReports *)reports
+         completion:(void (^)(FUPApiClientError *))completion
 {
     [self.manager POST:[self urlStringWithEndpoint:@"report"]
             parameters:[self serializeReports:reports]
@@ -24,7 +25,7 @@
                }];
 }
 
-- (NSDictionary *)serializeReports:(Reports *)reports
+- (NSDictionary *)serializeReports:(FUPReports *)reports
 {
     NSMutableDictionary *serializedReports = [[NSMutableDictionary alloc] init];
     [serializedReports addEntriesFromDictionary:@{@"appPackage": reports.appPackage,
@@ -42,10 +43,10 @@
     return serializedReports;
 }
 
-- (NSArray *)serializeCpuReports:(NSArray<CpuMetric *> *)cpuMetrics
+- (NSArray *)serializeCpuReports:(NSArray<FUPCpuMetric *> *)cpuMetrics
 {
     NSMutableArray *cpuSerializedReports = [[NSMutableArray alloc] init];
-    for (CpuMetric *cpuMetric in cpuMetrics) {
+    for (FUPCpuMetric *cpuMetric in cpuMetrics) {
         [cpuSerializedReports addObject:@{@"consumption": [NSNumber numberWithLong:cpuMetric.cpuUsage],
                                           @"timestamp": [NSNumber numberWithDouble:cpuMetric.timestamp],
                                           @"appVersionName": cpuMetric.appVersionName,

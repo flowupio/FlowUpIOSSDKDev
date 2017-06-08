@@ -1,5 +1,5 @@
 //
-//  ReportApiClient.h
+//  FUPReportApiClient.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 24/05/2017.
@@ -7,16 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Reports.h"
+#import "FUPReports.h"
 #import "FUPResult.h"
 #import "FUPApiClientError.h"
 #import "FUPApiClient.h"
 #import "FUPDevice.h"
 
-@interface ReportApiClient : FUPApiClient
+@interface FUPReportApiClient : FUPApiClient
 
 - (instancetype)init NS_UNAVAILABLE;
 
-- (void)sendReports:(Reports *)reports completion:(void (^)(FUPApiClientError *))completion;
+- (void)sendReports:(FUPReports *)reports
+         completion:(void (^)(FUPApiClientError *))completion;
 
 @end

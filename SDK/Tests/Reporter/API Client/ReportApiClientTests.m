@@ -7,10 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ReportApiClient.h"
+#import "FUPReportApiClient.h"
 #import "FUPApiClientTests.h"
 #import "NSDictionary+Matcheable.h"
-#import "CpuMetricMother.h"
+#import "FUPCpuMetricMother.h"
 #import "FUPConfiguration.h"
 #import <Nimble/Nimble.h>
 #import <Nocilla/Nocilla.h>
@@ -196,31 +196,31 @@
 }
 
 
-- (ReportApiClient *)apiClient
+- (FUPReportApiClient *)apiClient
 {
     return [self apiClientWithDebugModeEnabled:NO];
 }
 
-- (ReportApiClient *)apiClientWithDebugModeEnabled:(BOOL)isDebugModeEnabled
+- (FUPReportApiClient *)apiClientWithDebugModeEnabled:(BOOL)isDebugModeEnabled
 {
     FUPDebugModeStorage *debugModeStorage = [[FUPDebugModeStorage alloc] init];
     debugModeStorage.isDebugModeEnabled = isDebugModeEnabled;
 
-    return [[ReportApiClient alloc] initWithBaseUrl:@"https://www.testingflowup.com"
-                                             apiKey:ApiKey
-                                               uuid:Uuid
-                                   debugModeStorage:debugModeStorage];
+    return [[FUPReportApiClient alloc] initWithBaseUrl:@"https://www.testingflowup.com"
+                                                apiKey:ApiKey
+                                                  uuid:Uuid
+                                      debugModeStorage:debugModeStorage];
 }
 
-- (Reports *)anyReports
+- (FUPReports *)anyReports
 {
-    return [[Reports alloc] initWithAppPackage:@"App package"
-                              installationUuid:@"Installation UUID"
-                                   deviceModel:@"Device model"
-                                 screenDensity:@"Screen Density"
-                                    screenSize:@"Screen Size"
-                                 numberOfCores:4
-                                    cpuMetrics:@[[CpuMetricMother any]]];
+    return [[FUPReports alloc] initWithAppPackage:@"App package"
+                                 installationUuid:@"Installation UUID"
+                                      deviceModel:@"Device model"
+                                    screenDensity:@"Screen Density"
+                                       screenSize:@"Screen Size"
+                                    numberOfCores:4
+                                       cpuMetrics:@[[FUPCpuMetricMother any]]];
 }
 
 @end

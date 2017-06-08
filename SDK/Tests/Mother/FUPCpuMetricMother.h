@@ -1,5 +1,5 @@
 //
-//  CpuMetricMother.h
+//  FUPCpuMetricMother.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 26/05/2017.
@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CpuMetric.h"
+#import "FUPCpuMetric.h"
 
-@interface CpuMetricMother : NSObject
+@interface FUPCpuMetricMother : NSObject
 
-+ (CpuMetric *)any;
++ (FUPCpuMetric *)any;
 
 @end

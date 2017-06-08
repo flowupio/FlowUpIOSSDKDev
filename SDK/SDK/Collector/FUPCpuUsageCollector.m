@@ -10,7 +10,7 @@
 
 @interface FUPCpuUsageCollector ()
 
-@property (readonly, nonatomic) MetricsStorage *storage;
+@property (readonly, nonatomic) FUPMetricsStorage *storage;
 @property (readonly, nonatomic) FUPDevice *device;
 @property (readonly, nonatomic) TimeProvider *time;
 
@@ -18,7 +18,7 @@
 
 @implementation FUPCpuUsageCollector
 
-- (instancetype)initWithMetricsStorage:(MetricsStorage *)metricsStorage
+- (instancetype)initWithMetricsStorage:(FUPMetricsStorage *)metricsStorage
                                 device:(FUPDevice *)device
                                   time:(TimeProvider *)time
 {
@@ -34,11 +34,11 @@
 - (void)collect
 {
     float cpuUsage = self.cpuUsage;
-    CpuMetric *metric = [[CpuMetric alloc] initWithTimestamp:[self.time nowInMillis]
-                                              appVersionName:self.device.appVersionName
-                                                   osVersion:self.device.osVersion
-                                       isLowPowerModeEnabled:self.device.isLowPowerModeEnabled
-                                                    cpuUsage:cpuUsage * 100];
+    FUPCpuMetric *metric = [[FUPCpuMetric alloc] initWithTimestamp:[self.time nowInMillis]
+                                                    appVersionName:self.device.appVersionName
+                                                         osVersion:self.device.osVersion
+                                             isLowPowerModeEnabled:self.device.isLowPowerModeEnabled
+                                                          cpuUsage:cpuUsage * 100];
     [self.storage storeCpuMetric:metric];
 }
 

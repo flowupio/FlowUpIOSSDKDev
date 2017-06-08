@@ -1,19 +1,19 @@
 //
-//  ReportScheduler.m
+//  FUPReportScheduler.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "ReportScheduler.h"
+#import "FUPReportScheduler.h"
 
 static NSTimeInterval const NeverReported = -1;
 
-@interface ReportScheduler ()
+@interface FUPReportScheduler ()
 
-@property (readonly, nonatomic) MetricsStorage *storage;
-@property (readonly, nonatomic) ReportApiClient *reportApiClient;
+@property (readonly, nonatomic) FUPMetricsStorage *storage;
+@property (readonly, nonatomic) FUPReportApiClient *reportApiClient;
 @property (readonly, nonatomic) FUPDevice *device;
 @property (readonly, nonatomic) TimeProvider *time;
 @property (readonly, nonatomic) FUPConfigService *configService;
@@ -21,10 +21,10 @@ static NSTimeInterval const NeverReported = -1;
 
 @end
 
-@implementation ReportScheduler
+@implementation FUPReportScheduler
 
-- (instancetype)initWithMetricsStorage:(MetricsStorage *)metricsStorage
-                       reportApiClient:(ReportApiClient *)reportApiClient
+- (instancetype)initWithMetricsStorage:(FUPMetricsStorage *)metricsStorage
+                       reportApiClient:(FUPReportApiClient *)reportApiClient
                                 device:(FUPDevice *)device
                          configService:(FUPConfigService *)configService
                                   time:(TimeProvider *)time
@@ -71,8 +71,8 @@ static NSTimeInterval const NeverReported = -1;
         return;
     }
 
-    NSArray<CpuMetric *> *cpuMetrics = [self.storage cpuMetricsAtMost:MaxNumberOfReportsPerRequest];
-    Reports *reports = [self reportsWithCpuMetrics:cpuMetrics];
+    NSArray<FUPCpuMetric *> *cpuMetrics = [self.storage cpuMetricsAtMost:MaxNumberOfReportsPerRequest];
+    FUPReports *reports = [self reportsWithCpuMetrics:cpuMetrics];
     [self.reportApiClient sendReports:reports completion:^(FUPApiClientError *error) {
         if (error == nil) {
             NSLog(@"[ReportScheduler] Reports successfully sent [%ld]", cpuMetrics.count);
@@ -102,15 +102,15 @@ static NSTimeInterval const NeverReported = -1;
     [self.configService disable];
 }
 
-- (Reports *)reportsWithCpuMetrics:(NSArray<CpuMetric *> *)cpuMetrics
+- (FUPReports *)reportsWithCpuMetrics:(NSArray<FUPCpuMetric *> *)cpuMetrics
 {
-    return [[Reports alloc] initWithAppPackage:self.device.appPackage
-                              installationUuid:self.device.installationUuid
-                                   deviceModel:self.device.deviceModel
-                                 screenDensity:self.device.screenDensity
-                                    screenSize:self.device.screenSize
-                                 numberOfCores:self.device.numberOfCores
-                                    cpuMetrics:cpuMetrics];
+    return [[FUPReports alloc] initWithAppPackage:self.device.appPackage
+                                 installationUuid:self.device.installationUuid
+                                      deviceModel:self.device.deviceModel
+                                    screenDensity:self.device.screenDensity
+                                       screenSize:self.device.screenSize
+                                    numberOfCores:self.device.numberOfCores
+                                       cpuMetrics:cpuMetrics];
 }
 
 @end

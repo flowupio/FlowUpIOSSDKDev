@@ -1,5 +1,5 @@
 //
-//  MetricsStorage.h
+//  FUPMetricsStorage.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 26/05/2017.
@@ -7,19 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Reports.h"
+#import "FUPReports.h"
 #import "FUPAsync.h"
 #import "FUPSqlite.h"
 
-@interface MetricsStorage : NSObject
+@interface FUPMetricsStorage : NSObject
 
 @property (readonly, nonatomic) BOOL hasReports;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithSqlite:(FUPSqlite *)sqlite;
 
-- (void)storeCpuMetric:(CpuMetric *)cpuMetric;
-- (NSArray<CpuMetric *> *)cpuMetricsAtMost:(NSInteger)numberOfCpuMetrics;
+- (void)storeCpuMetric:(FUPCpuMetric *)cpuMetric;
+- (NSArray<FUPCpuMetric *> *)cpuMetricsAtMost:(NSInteger)numberOfCpuMetrics;
 - (void)removeNumberOfCpuMetrics:(NSInteger)numberOfCpuMetrics;
 - (void)clear;
 

@@ -1,14 +1,14 @@
 //
-//  CpuMetric.m
+//  FUPCpuMetric.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 24/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "CpuMetric.h"
+#import "FUPCpuMetric.h"
 
-@implementation CpuMetric
+@implementation FUPCpuMetric
 
 - (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
                    appVersionName:(NSString *)appVersionName

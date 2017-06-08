@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ReportScheduler.h"
+#import "FUPReportScheduler.h"
 #import "FUPCollectorScheduler.h"
 #import "FUPConfigApiClient.h"
 #import "FUPConfigSyncScheduler.h"
 #import "FUPConfigService.h"
-#import "ReportApiClient.h"
+#import "FUPReportApiClient.h"
 #import "FUPConfiguration.h"
 #import "FUPDebugModeStorage.h"
 
@@ -20,7 +20,7 @@
 
 + (FUPCollectorScheduler *)collectorScheduler;
 + (FUPCpuUsageCollector *)cpuUsageCollector;
-+ (ReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey;
++ (FUPReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey;
 + (FUPConfigSyncScheduler *)configSyncSchedulerWithApiKey:(NSString *)apiKey;
 + (FUPConfigStorage *)configStorage;
 + (FUPDebugModeStorage *)debugModeStorage;

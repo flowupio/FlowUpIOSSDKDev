@@ -15,13 +15,13 @@
     return [[FUPCollectorScheduler alloc] init];
 }
 
-+ (ReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey
++ (FUPReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey
 {
-    return [[ReportScheduler alloc] initWithMetricsStorage:[FUPDiContainer metricsStorage]
-                                           reportApiClient:[FUPDiContainer reportApiClientWithApiKey:apiKey]
-                                                    device:[FUPDiContainer device]
-                                             configService:[FUPDiContainer configServiceWithApiKey:apiKey]
-                                                      time:[FUPDiContainer time]];
+    return [[FUPReportScheduler alloc] initWithMetricsStorage:[FUPDiContainer metricsStorage]
+                                              reportApiClient:[FUPDiContainer reportApiClientWithApiKey:apiKey]
+                                                       device:[FUPDiContainer device]
+                                                configService:[FUPDiContainer configServiceWithApiKey:apiKey]
+                                                         time:[FUPDiContainer time]];
 }
 
 + (FUPConfigSyncScheduler *)configSyncSchedulerWithApiKey:(NSString *)apiKey
@@ -43,13 +43,13 @@
                                                         time:[FUPDiContainer time]];
 }
 
-+ (MetricsStorage *)metricsStorage
++ (FUPMetricsStorage *)metricsStorage
 {
-    static MetricsStorage *_storage;
+    static FUPMetricsStorage *_storage;
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        _storage = [[MetricsStorage alloc] initWithSqlite:[FUPDiContainer sqlite]];
+        _storage = [[FUPMetricsStorage alloc] initWithSqlite:[FUPDiContainer sqlite]];
     });
 
     return _storage;
@@ -89,13 +89,13 @@
                                       debugModeStorage:[FUPDiContainer debugModeStorage]];
 }
 
-+ (ReportApiClient *)reportApiClientWithApiKey:(NSString *)apiKey
++ (FUPReportApiClient *)reportApiClientWithApiKey:(NSString *)apiKey
 {
     NSString *uuid = [FUPDiContainer uuidGenerator].uuid;
-    return [[ReportApiClient alloc] initWithBaseUrl:ApiBaseUrl
-                                             apiKey:apiKey
-                                               uuid:uuid
-                                   debugModeStorage:[FUPDiContainer debugModeStorage]];
+    return [[FUPReportApiClient alloc] initWithBaseUrl:ApiBaseUrl
+                                                apiKey:apiKey
+                                                  uuid:uuid
+                                      debugModeStorage:[FUPDiContainer debugModeStorage]];
 }
 
 + (FUPDevice *)device

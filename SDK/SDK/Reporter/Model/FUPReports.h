@@ -1,5 +1,5 @@
 //
-//  Reports.h
+//  FUPReports.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 24/05/2017.
@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CpuMetric.h"
+#import "FUPCpuMetric.h"
 
-@interface Reports : NSObject
+@interface FUPReports : NSObject
 
 @property (readonly, nonatomic, copy) NSString *appPackage;
 @property (readonly, nonatomic, copy) NSString *installationUuid;
@@ -17,7 +17,7 @@
 @property (readonly, nonatomic, copy) NSString *screenDensity;
 @property (readonly, nonatomic, copy) NSString *screenSize;
 @property (readonly, nonatomic) NSInteger numberOfCores;
-@property (readonly, nonatomic, copy) NSArray<CpuMetric *> *cpuMetrics;
+@property (readonly, nonatomic, copy) NSArray<FUPCpuMetric *> *cpuMetrics;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithAppPackage:(NSString *)appPackage
@@ -26,6 +26,6 @@
                      screenDensity:(NSString *)screenDensity
                         screenSize:(NSString *)screenSize
                      numberOfCores:(NSInteger)numberOfCores
-                        cpuMetrics:(NSArray<CpuMetric *> *)cpuMetrics;
+                        cpuMetrics:(NSArray<FUPCpuMetric *> *)cpuMetrics;
 
 @end

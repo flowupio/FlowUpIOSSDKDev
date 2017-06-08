@@ -1,14 +1,14 @@
 //
-//  Reports.m
+//  FUPReports.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 24/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "Reports.h"
+#import "FUPReports.h"
 
-@implementation Reports
+@implementation FUPReports
 
 - (instancetype)initWithAppPackage:(NSString *)appPackage
                   installationUuid:(NSString *)installationUuid
@@ -16,7 +16,7 @@
                      screenDensity:(NSString *)screenDensity
                         screenSize:(NSString *)screenSize
                      numberOfCores:(NSInteger)numberOfCores
-                        cpuMetrics:(NSArray<CpuMetric *> *)cpuMetrics
+                        cpuMetrics:(NSArray<FUPCpuMetric *> *)cpuMetrics
 {
     self = [super init];
     if (self) {

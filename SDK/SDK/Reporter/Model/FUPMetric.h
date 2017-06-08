@@ -1,5 +1,5 @@
 //
-//  Metric.h
+//  FUPMetric.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Metric : NSObject
+@interface FUPMetric : NSObject
 
 @property (readonly, nonatomic) NSTimeInterval timestamp;
 @property (readonly, nonatomic, copy) NSString *name;

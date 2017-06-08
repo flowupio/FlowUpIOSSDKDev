@@ -13,7 +13,7 @@
 #include <mach/processor_info.h>
 #include <mach/mach_host.h>
 #import "FUPCollector.h"
-#import "MetricsStorage.h"
+#import "FUPMetricsStorage.h"
 #import "FUPDevice.h"
 #import "TimeProvider.h"
 
@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) float cpuUsage;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithMetricsStorage:(MetricsStorage *)metricsStorage
+- (instancetype)initWithMetricsStorage:(FUPMetricsStorage *)metricsStorage
                                 device:(FUPDevice *)device
                                   time:(TimeProvider *)time;
 

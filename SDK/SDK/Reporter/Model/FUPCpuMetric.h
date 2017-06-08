@@ -1,5 +1,5 @@
 //
-//  CpuMetric.h
+//  FUPCpuMetric.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 24/05/2017.
@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Metric.h"
+#import "FUPMetric.h"
 
-@interface CpuMetric : Metric
+@interface FUPCpuMetric : FUPMetric
 
 @property (readonly, nonatomic) NSInteger cpuUsage;
 

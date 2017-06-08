@@ -1,14 +1,14 @@
 //
-//  Metric.m
+//  FUPMetric.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "Metric.h"
+#import "FUPMetric.h"
 
-@implementation Metric
+@implementation FUPMetric
 
 - (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
                              name:(NSString *)name
