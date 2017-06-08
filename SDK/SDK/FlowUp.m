@@ -31,12 +31,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
     [configSyncScheduler start];
 
-    if (!configStorage.config.isEnabled) {
-        NSLog(@"FlowUp is disabled for this device");
-        return;
-    }
+//    if (!configStorage.config.isEnabled) {
+//        NSLog(@"FlowUp is disabled for this device");
+//        return;
+//    }
 
-    [collectorScheduler addCollectors:@[[FUPDiContainer cpuUsageCollector]]
+    [collectorScheduler addCollectors:@[[FUPDiContainer cpuUsageCollector],
+                                        [FUPDiContainer frameTimeCollector]]
                          timeInterval: CollectorSchedulerSamplingTimeInterval];
     [reportScheduler start];
     isInitialized = YES;

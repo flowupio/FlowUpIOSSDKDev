@@ -11,13 +11,15 @@
 #import "FUPDevice.h"
 #import "FUPMetricsStorage.h"
 #import "FUPTime.h"
+#import "FUPCalculator.h"
 
 @interface FUPFrameTimeCollector : NSObject <FUPCollector>
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithMetricsStorage:(FUPMetricsStorage *)metricsStorage
                                 device:(FUPDevice *)device
-                                  time:(FUPTime *)time;
+                                  time:(FUPTime *)time
+                            calculator:(FUPCalculator *)calculator;
 
 
 @end

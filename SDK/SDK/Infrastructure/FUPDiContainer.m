@@ -43,6 +43,14 @@
                                                         time:[FUPDiContainer time]];
 }
 
++ (FUPFrameTimeCollector *)frameTimeCollector
+{
+    return [[FUPFrameTimeCollector alloc] initWithMetricsStorage:[FUPDiContainer metricsStorage]
+                                                          device:[FUPDiContainer device]
+                                                            time:[FUPDiContainer time]
+                                                      calculator:[FUPDiContainer calculator]];
+}
+
 + (FUPMetricsStorage *)metricsStorage
 {
     static FUPMetricsStorage *_storage;
@@ -111,6 +119,11 @@
 + (FUPTime *)time
 {
     return [[FUPTime alloc] init];
+}
+
++ (FUPCalculator *)calculator
+{
+    return [[FUPCalculator alloc] init];
 }
 
 + (FUPSqlite *)sqlite

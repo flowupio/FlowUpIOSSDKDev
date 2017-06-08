@@ -15,6 +15,7 @@ static NSTimeInterval const NoTimeReported = -1;
 @property (readonly, nonatomic) FUPMetricsStorage *storage;
 @property (readonly, nonatomic) FUPDevice *device;
 @property (readonly, nonatomic) FUPTime *time;
+@property (readonly, nonatomic) FUPCalculator *calculator;
 @property (readonly, nonatomic) NSMutableArray<NSNumber *> *values;
 @property (readwrite, nonatomic) NSTimeInterval lastReportedTime;
 
@@ -25,12 +26,14 @@ static NSTimeInterval const NoTimeReported = -1;
 - (instancetype)initWithMetricsStorage:(FUPMetricsStorage *)metricsStorage
                                 device:(FUPDevice *)device
                                   time:(FUPTime *)time
+                            calculator:(FUPCalculator *)calculator
 {
     self = [super init];
     if (self) {
         _storage = metricsStorage;
         _device = device;
         _time = time;
+        _calculator = calculator;
         _values = [[NSMutableArray alloc] init];
         _lastReportedTime = NoTimeReported;
     }
@@ -42,9 +45,12 @@ static NSTimeInterval const NoTimeReported = -1;
     [self displayLink].paused = NO;
 
     if (self.values.count > 0) {
-        NSLog(@"Collecting frame time metrics: %lu", (unsigned long)self.values.count);
+        NSLog(@"Collecting frame time metrics: %lu, %f %f %f",
+              (unsigned long)self.values.count,
+              [self.calculator meanOf:self.values].doubleValue,
+              [self.calculator percentile10Of:self.values].doubleValue,
+              [self.calculator percentile90Of:self.values].doubleValue);
         [self.values removeAllObjects];
-        // TODO Store metric
     }
 }
 
