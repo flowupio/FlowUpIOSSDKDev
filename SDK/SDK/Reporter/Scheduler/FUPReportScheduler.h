@@ -11,7 +11,7 @@
 #import "FUPReportApiClient.h"
 #import "FUPCpuUsageCollector.h"
 #import "FUPConfigService.h"
-#import "TimeProvider.h"
+#import "FUPTime.h"
 #import "FUPMetricsStorage.h"
 
 @interface FUPReportScheduler : NSObject
@@ -21,7 +21,7 @@
                        reportApiClient:(FUPReportApiClient *)reportApiClient
                                 device:(FUPDevice *)device
                          configService:(FUPConfigService *)configService
-                                  time:(TimeProvider *)time;
+                                  time:(FUPTime *)time;
 
 - (void)start;
 - (void)reportMetrics;

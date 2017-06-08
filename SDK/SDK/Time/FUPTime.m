@@ -1,14 +1,14 @@
 //
-//  Time.m
+//  FUPTime.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "TimeProvider.h"
+#import "FUPTime.h"
 
-@implementation TimeProvider
+@implementation FUPTime
 
 - (NSTimeInterval)now
 {

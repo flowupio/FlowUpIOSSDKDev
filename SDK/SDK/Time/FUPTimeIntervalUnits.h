@@ -1,5 +1,5 @@
 //
-//  TimeIntervalConversions.h
+//  FUPTimeIntervalConversions.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 26/05/2017.

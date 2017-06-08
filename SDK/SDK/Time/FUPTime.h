@@ -1,5 +1,5 @@
 //
-//  Time.h
+//  FUPTime.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TimeIntervalUnits.h"
+#import "FUPTimeIntervalUnits.h"
 
-@interface TimeProvider : NSObject
+@interface FUPTime : NSObject
 
 @property (readonly, nonatomic) NSTimeInterval now;
 @property (readonly, nonatomic) int64_t nowInMillis;

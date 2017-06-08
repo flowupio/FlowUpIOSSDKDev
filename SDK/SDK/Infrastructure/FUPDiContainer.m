@@ -108,9 +108,9 @@
     return [[FUPUuidGenerator alloc] init];
 }
 
-+ (TimeProvider *)time
++ (FUPTime *)time
 {
-    return [[TimeProvider alloc] init];
+    return [[FUPTime alloc] init];
 }
 
 + (FUPSqlite *)sqlite

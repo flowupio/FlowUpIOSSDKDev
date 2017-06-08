@@ -9,7 +9,7 @@
 #ifndef FUPConfiguration_h
 #define FUPConfiguration_h
 
-#import "TimeIntervalUnits.h"
+#import "FUPTimeIntervalUnits.h"
 
 static NSTimeInterval const CollectorSchedulerSamplingTimeInterval = 10;
 static NSTimeInterval const ConfigSyncSchedulerFirstReportDelayTimeInterval = 5;

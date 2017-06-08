@@ -15,7 +15,7 @@ static NSTimeInterval const NeverReported = -1;
 @property (readonly, nonatomic) FUPMetricsStorage *storage;
 @property (readonly, nonatomic) FUPReportApiClient *reportApiClient;
 @property (readonly, nonatomic) FUPDevice *device;
-@property (readonly, nonatomic) TimeProvider *time;
+@property (readonly, nonatomic) FUPTime *time;
 @property (readonly, nonatomic) FUPConfigService *configService;
 @property (readwrite, nonatomic) NSTimeInterval lastReportTimeInterval;
 
@@ -27,7 +27,7 @@ static NSTimeInterval const NeverReported = -1;
                        reportApiClient:(FUPReportApiClient *)reportApiClient
                                 device:(FUPDevice *)device
                          configService:(FUPConfigService *)configService
-                                  time:(TimeProvider *)time
+                                  time:(FUPTime *)time
 {
     self = [super init];
     if (self) {

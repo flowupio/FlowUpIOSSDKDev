@@ -13,7 +13,7 @@ static NSTimeInterval const NeverSynced = -1;
 @interface FUPConfigSyncScheduler ()
 
 @property (readonly, nonatomic) FUPConfigService *configService;
-@property (readonly, nonatomic) TimeProvider *time;
+@property (readonly, nonatomic) FUPTime *time;
 @property (readwrite, nonatomic) NSTimeInterval lastSyncTimeInterval;
 
 @end
@@ -21,7 +21,7 @@ static NSTimeInterval const NeverSynced = -1;
 @implementation FUPConfigSyncScheduler
 
 - (instancetype)initWithConfigService:(FUPConfigService *)configService
-                                 time:(TimeProvider *)time
+                                 time:(FUPTime *)time
 {
     self = [super init];
     if (self) {

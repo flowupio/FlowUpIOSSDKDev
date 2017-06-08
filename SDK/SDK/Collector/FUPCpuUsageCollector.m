@@ -12,7 +12,7 @@
 
 @property (readonly, nonatomic) FUPMetricsStorage *storage;
 @property (readonly, nonatomic) FUPDevice *device;
-@property (readonly, nonatomic) TimeProvider *time;
+@property (readonly, nonatomic) FUPTime *time;
 
 @end
 
@@ -20,7 +20,7 @@
 
 - (instancetype)initWithMetricsStorage:(FUPMetricsStorage *)metricsStorage
                                 device:(FUPDevice *)device
-                                  time:(TimeProvider *)time
+                                  time:(FUPTime *)time
 {
     self = [super init];
     if (self) {

@@ -26,7 +26,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 @property (readwrite, nonatomic) FUPReportApiClient *apiClient;
 @property (readwrite, nonatomic) FUPDevice *device;
 @property (readwrite, nonatomic) FUPConfigService *configService;
-@property (readwrite, nonatomic) TimeProvider *time;
+@property (readwrite, nonatomic) FUPTime *time;
 
 @end
 
@@ -39,7 +39,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
     self.storage = [[FUPMetricsStorage alloc] initWithSqlite:sqlite];
     self.device = mock([FUPDevice class]);
     self.configService = mock([FUPConfigService class]);
-    self.time = mock([TimeProvider class]);
+    self.time = mock([FUPTime class]);
     self.scheduler = [self reportScheduler];
 
     [self.storage removeNumberOfCpuMetrics:1000];

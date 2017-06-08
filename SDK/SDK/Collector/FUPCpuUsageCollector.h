@@ -15,7 +15,7 @@
 #import "FUPCollector.h"
 #import "FUPMetricsStorage.h"
 #import "FUPDevice.h"
-#import "TimeProvider.h"
+#import "FUPTime.h"
 
 @interface FUPCpuUsageCollector : NSObject <FUPCollector>
 
@@ -24,6 +24,6 @@
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithMetricsStorage:(FUPMetricsStorage *)metricsStorage
                                 device:(FUPDevice *)device
-                                  time:(TimeProvider *)time;
+                                  time:(FUPTime *)time;
 
 @end
