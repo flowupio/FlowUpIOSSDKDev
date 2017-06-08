@@ -12,7 +12,7 @@
 
 - (LSMatcher *)matcher
 {
-    return [[JsonMatcher alloc] initWithJsonObject:self];
+    return [[FUPJsonMatcher alloc] initWithJsonObject:self];
 }
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "TestAsync.h"
+#import "FUPTestAsync.h"
 #import "FUPReportScheduler.h"
 #import "FUPCpuMetricMother.h"
 #import <Nimble/Nimble.h>

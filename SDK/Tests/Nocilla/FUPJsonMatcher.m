@@ -1,20 +1,20 @@
 //
-//  JsonMatcher.m
+//  FUPJsonMatcher.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "JsonMatcher.h"
+#import "FUPJsonMatcher.h"
 
-@interface JsonMatcher ()
+@interface FUPJsonMatcher ()
 
 @property (readonly, nonatomic) NSDictionary *jsonObject;
 
 @end
 
-@implementation JsonMatcher
+@implementation FUPJsonMatcher
 
 - (instancetype)initWithJsonObject:(NSDictionary *)jsonObject
 {

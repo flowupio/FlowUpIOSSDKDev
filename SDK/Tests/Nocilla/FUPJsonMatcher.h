@@ -1,5 +1,5 @@
 //
-//  JsonMatcher.h
+//  FUPJsonMatcher.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @import Nocilla;
 
-@interface JsonMatcher : LSMatcher <LSMatcheable>
+@interface FUPJsonMatcher : LSMatcher <LSMatcheable>
 
 - (instancetype)initWithJsonObject:(NSDictionary *)jsonObject;
 

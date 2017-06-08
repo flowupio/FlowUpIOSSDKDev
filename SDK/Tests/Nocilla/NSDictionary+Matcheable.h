@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "JsonMatcher.h"
+#import "FUPJsonMatcher.h"
 @import Nocilla;
 
 @interface NSDictionary (Matcheable) <LSMatcheable>
