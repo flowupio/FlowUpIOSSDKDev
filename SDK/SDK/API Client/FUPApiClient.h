@@ -1,5 +1,5 @@
 //
-//  ApiClient.h
+//  FUPApiClient.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 24/05/2017.
@@ -12,7 +12,7 @@
 #import "FUPApiClientError.h"
 #import "FUPDebugModeStorage.h"
 
-@interface ApiClient : NSObject
+@interface FUPApiClient : NSObject
 
 @property (readonly, nonatomic, strong) AFHTTPSessionManager *manager;
 

@@ -1,14 +1,14 @@
 //
-//  ApiClientTests.m
+//  FUPApiClientTests.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "ApiClientTests.h"
+#import "FUPApiClientTests.h"
 
-@implementation ApiClientTests
+@implementation FUPApiClientTests
 
 - (void)setUp {
     [super setUp];

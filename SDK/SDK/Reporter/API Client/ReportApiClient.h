@@ -10,10 +10,10 @@
 #import "Reports.h"
 #import "FUPResult.h"
 #import "FUPApiClientError.h"
-#import "ApiClient.h"
+#import "FUPApiClient.h"
 #import "Device.h"
 
-@interface ReportApiClient : ApiClient
+@interface ReportApiClient : FUPApiClient
 
 - (instancetype)init NS_UNAVAILABLE;
 

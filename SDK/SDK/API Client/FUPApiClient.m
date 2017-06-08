@@ -1,26 +1,26 @@
 //
-//  ApiClient.m
+//  FUPApiClient.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 24/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "ApiClient.h"
+#import "FUPApiClient.h"
 
 static NSInteger const FUPUnauthorizedStatusCode = 401;
 static NSInteger const FUPForbiddenStatusCode = 403;
 static NSInteger const FUPPreconditionFailedStatusCode = 412;
 static NSInteger const FUPServerErrorStatusCode = 500;
 
-@interface ApiClient ()
+@interface FUPApiClient ()
 
 @property (readonly, nonatomic, copy) NSString *baseUrl;
 @property (readonly, nonatomic) FUPDebugModeStorage *debugModeStorage;
 
 @end
 
-@implementation ApiClient
+@implementation FUPApiClient
 
 - (instancetype)initWithBaseUrl:(NSString *)baseUrl
                          apiKey:(NSString *)apiKey

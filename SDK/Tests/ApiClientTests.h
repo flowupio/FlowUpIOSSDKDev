@@ -1,5 +1,5 @@
 //
-//  ApiClientTests.h
+//  FUPApiClientTests.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
@@ -12,7 +12,7 @@
 static NSString *const ApiKey = @"This is my Api Key";
 static NSString *const Uuid = @"00ecccb6-415b-11e7-a919-92ebcb67fe33";
 
-@interface ApiClientTests : XCTestCase
+@interface FUPApiClientTests : XCTestCase
 
 - (NSDictionary *)dictionaryFromJsonFileWithName:(NSString *)fileName;
 - (NSString *)stringFromJsonFileWithName:(NSString *)fileName;
