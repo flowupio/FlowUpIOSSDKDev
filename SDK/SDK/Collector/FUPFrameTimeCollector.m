@@ -45,20 +45,18 @@ static NSTimeInterval const NoTimeReported = -1;
     [self displayLink].paused = NO;
 
     if (self.values.count > 0) {
-        FUPStatisticalValue *frameTime = [[FUPStatisticalValue alloc] initWithMean:[self.calculator meanOf:self.values]
-                                                                      percentile10:[self.calculator percentile10Of:self.values]
-                                                                      percentile90:[self.calculator percentile90Of:self.values]];
+        NSNumber *mean = [NSNumber numberWithDouble:NANOS_IN_ONE_SECOND * [self.calculator meanOf:self.values].doubleValue];
+        NSNumber *p10 = [NSNumber numberWithDouble:NANOS_IN_ONE_SECOND * [self.calculator percentile10Of:self.values].doubleValue];
+        NSNumber *p90 = [NSNumber numberWithDouble:NANOS_IN_ONE_SECOND * [self.calculator percentile90Of:self.values].doubleValue];
+        FUPStatisticalValue *frameTime = [[FUPStatisticalValue alloc] initWithMean:mean
+                                                                      percentile10:p10
+                                                                      percentile90:p90];
         FUPMetric *metric = [[FUPMetric alloc] initWithTimestamp:[self.time nowInMillis]
                                                   appVersionName:self.device.appVersionName
                                                        osVersion:self.device.osVersion
                                            isLowPowerModeEnabled:self.device.isLowPowerModeEnabled
                                                        frameTime:frameTime];
         [self.storage storeMetric:metric];
-        NSLog(@"Collecting frame time metrics: %lu, %f %f %f",
-              (unsigned long)self.values.count,
-              [self.calculator meanOf:self.values].doubleValue,
-              [self.calculator percentile10Of:self.values].doubleValue,
-              [self.calculator percentile90Of:self.values].doubleValue);
         [self.values removeAllObjects];
     }
 }

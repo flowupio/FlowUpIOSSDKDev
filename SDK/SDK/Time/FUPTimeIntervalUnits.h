@@ -11,3 +11,4 @@
 #define MINUTES(x) ((x) * 60)
 #define HOURS(x) ((x) * 3600)
 #define MILLIS_IN_ONE_SECOND (1000)
+#define NANOS_IN_ONE_SECOND (1000000)

@@ -13,5 +13,6 @@
 @interface FUPMetricsStorageMapper : NSObject
 
 - (NSString *)stringFromMetricValues:(NSDictionary *)values;
+- (FUPMetric *)metricFromStatement:(sqlite3_stmt *)statement;
 
 @end

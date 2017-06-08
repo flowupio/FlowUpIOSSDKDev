@@ -21,6 +21,13 @@
 - (instancetype)init NS_UNAVAILABLE;
 
 - (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
+                             name:(NSString *)name
+                   appVersionName:(NSString *)appVersionName
+                        osVersion:(NSString *)osVersion
+            isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled
+                           values:(NSDictionary *)values;
+
+- (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
                    appVersionName:(NSString *)appVersionName
                         osVersion:(NSString *)osVersion
             isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled

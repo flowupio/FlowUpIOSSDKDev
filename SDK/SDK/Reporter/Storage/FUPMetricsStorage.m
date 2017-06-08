@@ -71,12 +71,12 @@ static NSUInteger const TableVersion = 1;
                        ORDER BY timestamp DESC \
                        LIMIT %ld", numberOfCpuMetrics];
     [self.sqlite runQuery:query block:^BOOL(sqlite3_stmt *statement) {
-        FUPMetric *metric = [[FUPMetric alloc] initWithTimestamp:sqlite3_column_double(statement, 1)
-                                                  appVersionName:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 3)]
-                                                       osVersion:[NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 4)]
-                                           isLowPowerModeEnabled:[[NSNumber numberWithInt:sqlite3_column_int(statement, 5)] boolValue]
-                                                        cpuUsage:sqlite3_column_int(statement, 6)];
-        [metrics addObject:metric];
+        FUPMetric *metric = [self.mapper metricFromStatement:statement];
+        if (metric != nil) {
+            [metrics addObject:metric];
+        } else {
+            NSLog(@"[MetricsStorage] Unable to read metric from SQL storage");
+        }
         return YES;
     }];
     return metrics;

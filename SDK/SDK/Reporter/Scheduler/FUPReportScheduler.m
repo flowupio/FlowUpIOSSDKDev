@@ -56,10 +56,10 @@ static NSTimeInterval const NeverReported = -1;
 - (void)reportMetrics
 {
     NSLog(@"[ReportScheduler] Report metrics");
-    if (!self.configService.enabled) {
-        NSLog(@"[ReportScheduler] FlowUp is disabled for this device");
-        return;
-    }
+//    if (!self.configService.enabled) {
+//        NSLog(@"[ReportScheduler] FlowUp is disabled for this device");
+//        return;
+//    }
 
     if (self.lastReportTimeInterval != NeverReported && [self.time now] - self.lastReportTimeInterval < ReportSchedulerTimeBetweenReportsTimeInterval) {
         NSLog(@"[ReportScheduler] Did not pass enought time to report");

@@ -45,6 +45,8 @@
         [serializedReports setValue:uiSerializedReports forKey:@"ui"];
     }
 
+    NSLog(@"Reporting... %@", serializedReports);
+
     return serializedReports;
 }
 
