@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Device.h"
+#import "FUPDevice.h"
 #import "ReportApiClient.h"
 #import "FUPCpuUsageCollector.h"
 #import "FUPConfigService.h"
@@ -19,7 +19,7 @@
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithMetricsStorage:(MetricsStorage *)metricsStorage
                        reportApiClient:(ReportApiClient *)reportApiClient
-                                device:(Device *)device
+                                device:(FUPDevice *)device
                          configService:(FUPConfigService *)configService
                                   time:(TimeProvider *)time;
 

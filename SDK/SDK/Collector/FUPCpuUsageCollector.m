@@ -11,7 +11,7 @@
 @interface FUPCpuUsageCollector ()
 
 @property (readonly, nonatomic) MetricsStorage *storage;
-@property (readonly, nonatomic) Device *device;
+@property (readonly, nonatomic) FUPDevice *device;
 @property (readonly, nonatomic) TimeProvider *time;
 
 @end
@@ -19,7 +19,7 @@
 @implementation FUPCpuUsageCollector
 
 - (instancetype)initWithMetricsStorage:(MetricsStorage *)metricsStorage
-                                device:(Device *)device
+                                device:(FUPDevice *)device
                                   time:(TimeProvider *)time
 {
     self = [super init];

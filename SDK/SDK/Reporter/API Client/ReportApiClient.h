@@ -11,7 +11,7 @@
 #import "FUPResult.h"
 #import "FUPApiClientError.h"
 #import "FUPApiClient.h"
-#import "Device.h"
+#import "FUPDevice.h"
 
 @interface ReportApiClient : FUPApiClient
 

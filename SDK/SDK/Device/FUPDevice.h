@@ -1,5 +1,5 @@
 //
-//  Device.h
+//  FUPDevice.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <sys/utsname.h>
-#import "UuidGenerator.h"
+#import "FUPUuidGenerator.h"
 
-@interface Device : NSObject
+@interface FUPDevice : NSObject
 
 @property (readonly, nonatomic, copy) NSString *appPackage;
 @property (readonly, nonatomic, copy) NSString *appVersionName;
@@ -24,6 +24,6 @@
 @property (readonly, nonatomic) BOOL isLowPowerModeEnabled;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithUuidGenerator:(UuidGenerator *)uuidGenerator;
+- (instancetype)initWithUuidGenerator:(FUPUuidGenerator *)uuidGenerator;
 
 @end

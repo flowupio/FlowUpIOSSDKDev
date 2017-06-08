@@ -1,16 +1,16 @@
 //
-//  UuidGenerator.m
+//  FUPUuidGenerator.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "UuidGenerator.h"
+#import "FUPUuidGenerator.h"
 
 static NSString *const UuidKey = @"FlowUp.UUID";
 
-@implementation UuidGenerator
+@implementation FUPUuidGenerator
 
 - (NSString *)uuid
 {

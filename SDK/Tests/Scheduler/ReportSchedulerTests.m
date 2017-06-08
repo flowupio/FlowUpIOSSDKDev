@@ -24,7 +24,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 @property (readwrite, nonatomic) MetricsStorage *storage;
 @property (readwrite, nonatomic) ReportScheduler *scheduler;
 @property (readwrite, nonatomic) ReportApiClient *apiClient;
-@property (readwrite, nonatomic) Device *device;
+@property (readwrite, nonatomic) FUPDevice *device;
 @property (readwrite, nonatomic) FUPConfigService *configService;
 @property (readwrite, nonatomic) TimeProvider *time;
 
@@ -37,7 +37,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
     FUPSqlite *sqlite = [[FUPSqlite alloc] initWithFileName:@"testingdb.sqlite"];
     self.apiClient = mock([ReportApiClient class]);
     self.storage = [[MetricsStorage alloc] initWithSqlite:sqlite];
-    self.device = mock([Device class]);
+    self.device = mock([FUPDevice class]);
     self.configService = mock([FUPConfigService class]);
     self.time = mock([TimeProvider class]);
     self.scheduler = [self reportScheduler];

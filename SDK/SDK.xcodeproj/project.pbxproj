@@ -15,10 +15,10 @@
 		4909F5B01ED6EBC600825B0B /* FUPApiClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5AF1ED6EBC600825B0B /* FUPApiClientTests.m */; };
 		4909F5B41ED7040600825B0B /* JsonMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5B31ED7040600825B0B /* JsonMatcher.m */; };
 		4909F5B71ED7076800825B0B /* NSDictionary+Matcheable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5B61ED7076800825B0B /* NSDictionary+Matcheable.m */; };
-		4909F5BC1ED7090E00825B0B /* Device.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5BA1ED7090E00825B0B /* Device.h */; };
-		4909F5BD1ED7090E00825B0B /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5BB1ED7090E00825B0B /* Device.m */; };
-		4909F5C01ED70E9E00825B0B /* UuidGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5BE1ED70E9E00825B0B /* UuidGenerator.h */; };
-		4909F5C11ED70E9E00825B0B /* UuidGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5BF1ED70E9E00825B0B /* UuidGenerator.m */; };
+		4909F5BC1ED7090E00825B0B /* FUPDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5BA1ED7090E00825B0B /* FUPDevice.h */; };
+		4909F5BD1ED7090E00825B0B /* FUPDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5BB1ED7090E00825B0B /* FUPDevice.m */; };
+		4909F5C01ED70E9E00825B0B /* FUPUuidGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5BE1ED70E9E00825B0B /* FUPUuidGenerator.h */; };
+		4909F5C11ED70E9E00825B0B /* FUPUuidGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5BF1ED70E9E00825B0B /* FUPUuidGenerator.m */; };
 		4909F5C51ED713AA00825B0B /* ReportScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5C31ED713AA00825B0B /* ReportScheduler.h */; };
 		4909F5C61ED713AA00825B0B /* ReportScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5C41ED713AA00825B0B /* ReportScheduler.m */; };
 		4909F5CE1ED72A1D00825B0B /* DIContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4909F5CC1ED72A1D00825B0B /* DIContainer.h */; };
@@ -131,10 +131,10 @@
 		4909F5B31ED7040600825B0B /* JsonMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonMatcher.m; sourceTree = "<group>"; };
 		4909F5B51ED7076800825B0B /* NSDictionary+Matcheable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Matcheable.h"; sourceTree = "<group>"; };
 		4909F5B61ED7076800825B0B /* NSDictionary+Matcheable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Matcheable.m"; sourceTree = "<group>"; };
-		4909F5BA1ED7090E00825B0B /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
-		4909F5BB1ED7090E00825B0B /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
-		4909F5BE1ED70E9E00825B0B /* UuidGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UuidGenerator.h; sourceTree = "<group>"; };
-		4909F5BF1ED70E9E00825B0B /* UuidGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UuidGenerator.m; sourceTree = "<group>"; };
+		4909F5BA1ED7090E00825B0B /* FUPDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPDevice.h; sourceTree = "<group>"; };
+		4909F5BB1ED7090E00825B0B /* FUPDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPDevice.m; sourceTree = "<group>"; };
+		4909F5BE1ED70E9E00825B0B /* FUPUuidGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPUuidGenerator.h; sourceTree = "<group>"; };
+		4909F5BF1ED70E9E00825B0B /* FUPUuidGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPUuidGenerator.m; sourceTree = "<group>"; };
 		4909F5C31ED713AA00825B0B /* ReportScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportScheduler.h; sourceTree = "<group>"; };
 		4909F5C41ED713AA00825B0B /* ReportScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportScheduler.m; sourceTree = "<group>"; };
 		4909F5CB1ED726AB00825B0B /* Configuration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
@@ -335,10 +335,10 @@
 		4909F5B91ED7090400825B0B /* Device */ = {
 			isa = PBXGroup;
 			children = (
-				4909F5BA1ED7090E00825B0B /* Device.h */,
-				4909F5BB1ED7090E00825B0B /* Device.m */,
-				4909F5BE1ED70E9E00825B0B /* UuidGenerator.h */,
-				4909F5BF1ED70E9E00825B0B /* UuidGenerator.m */,
+				4909F5BA1ED7090E00825B0B /* FUPDevice.h */,
+				4909F5BB1ED7090E00825B0B /* FUPDevice.m */,
+				4909F5BE1ED70E9E00825B0B /* FUPUuidGenerator.h */,
+				4909F5BF1ED70E9E00825B0B /* FUPUuidGenerator.m */,
 			);
 			path = Device;
 			sourceTree = "<group>";
@@ -732,12 +732,12 @@
 				496E20DE1EE87155006196F5 /* FUPDebugModeStorage.h in Headers */,
 				4909F5C51ED713AA00825B0B /* ReportScheduler.h in Headers */,
 				4909F5A71ED6C10100825B0B /* Metric.h in Headers */,
-				4909F5C01ED70E9E00825B0B /* UuidGenerator.h in Headers */,
+				4909F5C01ED70E9E00825B0B /* FUPUuidGenerator.h in Headers */,
 				49B8DF0B1EDC35BF00C8A9F5 /* FUPConfigService.h in Headers */,
 				4978C0881ED5EFCB00148A4E /* FlowUp.h in Headers */,
 				499DEEEE1EDD981400BDD763 /* UIWebView+AFNetworking.h in Headers */,
 				499DEEDE1EDD981400BDD763 /* AFImageDownloader.h in Headers */,
-				4909F5BC1ED7090E00825B0B /* Device.h in Headers */,
+				4909F5BC1ED7090E00825B0B /* FUPDevice.h in Headers */,
 				499DEEE21EDD981400BDD763 /* UIActivityIndicatorView+AFNetworking.h in Headers */,
 				491BECBF1EDEB3B800BB77A3 /* FUPSqlite.h in Headers */,
 				4909F5D31ED73AA900825B0B /* TimeProvider.h in Headers */,
@@ -949,12 +949,12 @@
 				499DEED81EDD981400BDD763 /* AFURLResponseSerialization.m in Sources */,
 				499DEEE31EDD981400BDD763 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				4909F5C61ED713AA00825B0B /* ReportScheduler.m in Sources */,
-				4909F5C11ED70E9E00825B0B /* UuidGenerator.m in Sources */,
+				4909F5C11ED70E9E00825B0B /* FUPUuidGenerator.m in Sources */,
 				499DEEE81EDD981400BDD763 /* UIImageView+AFNetworking.m in Sources */,
 				4983806F1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m in Sources */,
 				4978C0781ED5E71400148A4E /* ReportApiClient.m in Sources */,
 				49B8DF0C1EDC35BF00C8A9F5 /* FUPConfigService.m in Sources */,
-				4909F5BD1ED7090E00825B0B /* Device.m in Sources */,
+				4909F5BD1ED7090E00825B0B /* FUPDevice.m in Sources */,
 				491BECC01EDEB3B800BB77A3 /* FUPSqlite.m in Sources */,
 				49B8DEFF1EDC30BB00C8A9F5 /* FUPConfigApiMapper.m in Sources */,
 				499DEEDA1EDD981400BDD763 /* AFURLSessionManager.m in Sources */,

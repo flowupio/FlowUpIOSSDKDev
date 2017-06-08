@@ -1,22 +1,22 @@
 //
-//  Device.m
+//  FUPDevice.m
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
 //  Copyright © 2017 flowup. All rights reserved.
 //
 
-#import "Device.h"
+#import "FUPDevice.h"
 
-@interface Device ()
+@interface FUPDevice ()
 
-@property (readonly, nonatomic) UuidGenerator *uuidGenerator;
+@property (readonly, nonatomic) FUPUuidGenerator *uuidGenerator;
 
 @end
 
-@implementation Device
+@implementation FUPDevice
 
-- (instancetype)initWithUuidGenerator:(UuidGenerator *)uuidGenerator
+- (instancetype)initWithUuidGenerator:(FUPUuidGenerator *)uuidGenerator
 {
     self = [super init];
     if (self) {

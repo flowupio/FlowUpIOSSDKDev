@@ -98,14 +98,14 @@
                                    debugModeStorage:[DIContainer debugModeStorage]];
 }
 
-+ (Device *)device
++ (FUPDevice *)device
 {
-    return [[Device alloc] initWithUuidGenerator:[DIContainer uuidGenerator]];
+    return [[FUPDevice alloc] initWithUuidGenerator:[DIContainer uuidGenerator]];
 }
 
-+ (UuidGenerator *)uuidGenerator
++ (FUPUuidGenerator *)uuidGenerator
 {
-    return [[UuidGenerator alloc] init];
+    return [[FUPUuidGenerator alloc] init];
 }
 
 + (TimeProvider *)time

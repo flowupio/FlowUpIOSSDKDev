@@ -14,7 +14,7 @@
 #include <mach/mach_host.h>
 #import "FUPCollector.h"
 #import "MetricsStorage.h"
-#import "Device.h"
+#import "FUPDevice.h"
 #import "TimeProvider.h"
 
 @interface FUPCpuUsageCollector : NSObject <FUPCollector>
@@ -23,7 +23,7 @@
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithMetricsStorage:(MetricsStorage *)metricsStorage
-                                device:(Device *)device
+                                device:(FUPDevice *)device
                                   time:(TimeProvider *)time;
 
 @end

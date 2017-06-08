@@ -1,5 +1,5 @@
 //
-//  UuidGenerator.h
+//  FUPUuidGenerator.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UuidGenerator : NSObject
+@interface FUPUuidGenerator : NSObject
 
 @property (readonly, nonatomic, copy) NSString *uuid;
 
