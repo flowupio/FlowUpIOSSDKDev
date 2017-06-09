@@ -1,14 +1,39 @@
 {
     "cpu": [
-            {
+        {
             "batterySaverOn": false,
             "consumption": 23,
             "isInBackground": false,
             "appVersionName": "App Version Name",
             "timestamp": 1234,
             "iOSVersion": "OS Version"
-            }
-            ],
+        }
+    ],
+    "disk": [
+        {
+            "batterySaverOn": false,
+            "internalStorageWrittenBytes": 1111,
+            "userDefaultsWrittenBytes": 2222,
+            "isInBackground": false,
+            "appVersionName": "App Version Name",
+            "timestamp": 1234,
+            "iOSVersion": "OS Version"
+        }
+    ],
+    "ui": [
+        {
+            "batterySaverOn": false,
+            "frameTime": {
+                "mean": 16000,
+                "p10": 14000,
+                "p90": 19000
+            },
+            "isInBackground": false,
+            "appVersionName": "App Version Name",
+            "timestamp": 1234,
+            "iOSVersion": "OS Version"
+        }
+    ],
     "screenDensity": "Screen Density",
     "screenSize": "Screen Size",
     "deviceModel": "Device model",
