@@ -30,6 +30,8 @@
 		491BECBF1EDEB3B800BB77A3 /* FUPSqlite.h in Headers */ = {isa = PBXBuildFile; fileRef = 491BECBD1EDEB3B800BB77A3 /* FUPSqlite.h */; };
 		491BECC01EDEB3B800BB77A3 /* FUPSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 491BECBE1EDEB3B800BB77A3 /* FUPSqlite.m */; };
 		4960D64B1EEA862F008A8CDE /* FUPCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4960D64A1EEA862F008A8CDE /* FUPCalculatorTests.m */; };
+		4960D6531EEAAFD7008A8CDE /* FUPDiskUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4960D6511EEAAFD7008A8CDE /* FUPDiskUsageCollector.h */; };
+		4960D6541EEAAFD7008A8CDE /* FUPDiskUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4960D6521EEAAFD7008A8CDE /* FUPDiskUsageCollector.m */; };
 		496E20DE1EE87155006196F5 /* FUPDebugModeStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 496E20DC1EE87155006196F5 /* FUPDebugModeStorage.h */; };
 		496E20DF1EE87155006196F5 /* FUPDebugModeStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 496E20DD1EE87155006196F5 /* FUPDebugModeStorage.m */; };
 		4978BC201EE95B96005EF4E4 /* FUPFrameTimeCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4978BC1E1EE95B96005EF4E4 /* FUPFrameTimeCollector.h */; };
@@ -156,6 +158,8 @@
 		491BECBE1EDEB3B800BB77A3 /* FUPSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPSqlite.m; sourceTree = "<group>"; };
 		494E911B1EE183E100943D96 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		4960D64A1EEA862F008A8CDE /* FUPCalculatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCalculatorTests.m; sourceTree = "<group>"; };
+		4960D6511EEAAFD7008A8CDE /* FUPDiskUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPDiskUsageCollector.h; sourceTree = "<group>"; };
+		4960D6521EEAAFD7008A8CDE /* FUPDiskUsageCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPDiskUsageCollector.m; sourceTree = "<group>"; };
 		496E20DC1EE87155006196F5 /* FUPDebugModeStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPDebugModeStorage.h; sourceTree = "<group>"; };
 		496E20DD1EE87155006196F5 /* FUPDebugModeStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPDebugModeStorage.m; sourceTree = "<group>"; };
 		4978BC1E1EE95B96005EF4E4 /* FUPFrameTimeCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPFrameTimeCollector.h; sourceTree = "<group>"; };
@@ -384,7 +388,6 @@
 			children = (
 				4960D6491EEA861F008A8CDE /* Calculator */,
 			);
-			name = Collector;
 			path = Collector;
 			sourceTree = "<group>";
 		};
@@ -393,7 +396,6 @@
 			children = (
 				4960D64A1EEA862F008A8CDE /* FUPCalculatorTests.m */,
 			);
-			name = Calculator;
 			path = Calculator;
 			sourceTree = "<group>";
 		};
@@ -518,6 +520,8 @@
 				4909F5D91ED748CB00825B0B /* FUPCollector.h */,
 				4983806D1ED48D6B003BCFB0 /* FUPCpuUsageCollector.h */,
 				4983806E1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m */,
+				4960D6511EEAAFD7008A8CDE /* FUPDiskUsageCollector.h */,
+				4960D6521EEAAFD7008A8CDE /* FUPDiskUsageCollector.m */,
 				4978BC1E1EE95B96005EF4E4 /* FUPFrameTimeCollector.h */,
 				4978BC1F1EE95B96005EF4E4 /* FUPFrameTimeCollector.m */,
 			);
@@ -808,6 +812,7 @@
 				499DEEE41EDD981400BDD763 /* UIButton+AFNetworking.h in Headers */,
 				49B8DEF51EDC293700C8A9F5 /* FUPApiClientError.h in Headers */,
 				499DEEE01EDD981400BDD763 /* AFNetworkActivityIndicatorManager.h in Headers */,
+				4960D6531EEAAFD7008A8CDE /* FUPDiskUsageCollector.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,6 +1015,7 @@
 				491BECC01EDEB3B800BB77A3 /* FUPSqlite.m in Sources */,
 				49B8DEFF1EDC30BB00C8A9F5 /* FUPConfigApiMapper.m in Sources */,
 				499DEEDA1EDD981400BDD763 /* AFURLSessionManager.m in Sources */,
+				4960D6541EEAAFD7008A8CDE /* FUPDiskUsageCollector.m in Sources */,
 				499DEEEF1EDD981400BDD763 /* UIWebView+AFNetworking.m in Sources */,
 				4909F5D81ED742DA00825B0B /* FUPCollectorScheduler.m in Sources */,
 				49B8DEEC1EDC246900C8A9F5 /* FUPConfigApiClient.m in Sources */,

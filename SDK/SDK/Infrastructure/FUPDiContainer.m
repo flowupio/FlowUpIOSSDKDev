@@ -51,6 +51,11 @@
                                                       calculator:[FUPDiContainer calculator]];
 }
 
++ (FUPDiskUsageCollector *)diskUsageCollector
+{
+    return [[FUPDiskUsageCollector alloc] init];
+}
+
 + (FUPMetricsStorage *)metricsStorage
 {
     static FUPMetricsStorage *_storage;
