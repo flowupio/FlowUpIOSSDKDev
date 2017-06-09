@@ -28,6 +28,7 @@
 		498380631ED48CD1003BCFB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		498380651ED48CD1003BCFB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		498380711ED48E2C003BCFB0 /* libSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDK.a; path = "../DerivedData/FlowUpIOSSDK/Build/Products/Debug-iphonesimulator/libSDK.a"; sourceTree = "<group>"; };
+		49E08AB41EDDDF30000A3CB0 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		58942AD325CDC4A8D72131EA /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		94EC2E6DA2CF40C14EEF060A /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		F16A70AC64BD7383D5EA0AA0 /* libPods-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +91,7 @@
 		498380701ED48E2B003BCFB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49E08AB41EDDDF30000A3CB0 /* libsqlite3.tbd */,
 				498380711ED48E2C003BCFB0 /* libSDK.a */,
 				F16A70AC64BD7383D5EA0AA0 /* libPods-Demo.a */,
 			);

@@ -57,6 +57,7 @@ static NSTimeInterval const NeverSynced = -1;
     }
 
     [self.configService updateWithCompletion:^(BOOL success) {
+        NSLog(@"[FUPConfigSyncScheduler] Update completed, success? %@", success ? @"YES" : @"NO");
         if (success) {
             self.lastSyncTimeInterval = [self.time now];
         }

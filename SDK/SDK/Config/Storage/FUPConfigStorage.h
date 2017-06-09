@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "FUPConfig.h"
-#import "TimeProvider.h"
+#import "Async.h"
+#import "FUPSqlite.h"
+#import <sqlite3.h>
 
 @interface FUPConfigStorage : NSObject
 
 @property (readwrite, nonatomic) FUPConfig *config;
+
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithSqlite:(FUPSqlite *)sqlite;
 
 - (void)clear;
 

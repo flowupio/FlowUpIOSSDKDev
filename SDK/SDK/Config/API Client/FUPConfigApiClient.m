@@ -12,17 +12,17 @@
 
 - (void)getConfigWithCompletion:(void (^)(FUPResult<FUPConfig *, FUPApiClientError *> *))completion {
     [self.manager GET:[self urlStringWithEndpoint:@"config"]
-            parameters:nil
-              progress:nil
-               success:^(NSURLSessionDataTask *task, id responseObject) {
-                   FUPConfig *config = [FUPConfigApiMapper configFromApiResponse:responseObject];
-                   FUPResult *result = [[FUPResult alloc] initWithValue:config];
-                   completion(result);
-               }
-               failure:^(NSURLSessionDataTask *task, NSError *error) {
-                   FUPResult *result = [[FUPResult alloc] initWithError:FUPApiClientError.unknown];
-                   completion(result);
-               }];
+           parameters:nil
+             progress:nil
+              success:^(NSURLSessionDataTask *task, id responseObject) {
+                  FUPConfig *config = [FUPConfigApiMapper configFromApiResponse:responseObject];
+                  FUPResult *result = [[FUPResult alloc] initWithValue:config];
+                  completion(result);
+              }
+              failure:^(NSURLSessionDataTask *task, NSError *error) {
+                  FUPResult *result = [[FUPResult alloc] initWithError:FUPApiClientError.unknown];
+                  completion(result);
+              }];
 }
 
 @end

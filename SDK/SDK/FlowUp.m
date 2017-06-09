@@ -9,12 +9,6 @@
 #import "FlowUp.h"
 #import "DIContainer.h"
 
-#ifdef DEBUG
-#   define NSLog(...) NSLog(__VA_ARGS__)
-#else
-#   define NSLog(...) (void)0
-#endif
-
 @implementation FlowUp
 
 static BOOL isInitialized = NO;

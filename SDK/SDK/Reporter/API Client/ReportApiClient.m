@@ -32,7 +32,7 @@
                                                   @"deviceModel": reports.deviceModel,
                                                   @"screenDensity": reports.screenDensity,
                                                   @"screenSize": reports.screenSize,
-                                                  @"numberOfCores": [NSNumber numberWithInt:reports.numberOfCores]}];
+                                                  @"numberOfCores": [NSNumber numberWithLong:reports.numberOfCores]}];
 
     NSArray *cpuSerializedReports = [self serializeCpuReports:reports.cpuMetrics];
     if (cpuSerializedReports.count > 0) {
@@ -46,7 +46,7 @@
 {
     NSMutableArray *cpuSerializedReports = [[NSMutableArray alloc] init];
     for (CpuMetric *cpuMetric in cpuMetrics) {
-        [cpuSerializedReports addObject:@{@"consumption": [NSNumber numberWithInt:cpuMetric.cpuUsage],
+        [cpuSerializedReports addObject:@{@"consumption": [NSNumber numberWithLong:cpuMetric.cpuUsage],
                                           @"timestamp": [NSNumber numberWithDouble:cpuMetric.timestamp],
                                           @"appVersionName": cpuMetric.appVersionName,
                                           @"iOSVersion": cpuMetric.osVersion,

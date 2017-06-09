@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "Reports.h"
 #import "Async.h"
+#import "FUPSqlite.h"
 
 @interface MetricsStorage : NSObject
 
 @property (readonly, nonatomic) BOOL hasReports;
+
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithSqlite:(FUPSqlite *)sqlite;
 
 - (void)storeCpuMetric:(CpuMetric *)cpuMetric;
 - (NSArray<CpuMetric *> *)cpuMetricsAtMost:(NSInteger)numberOfCpuMetrics;
