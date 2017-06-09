@@ -195,7 +195,6 @@
     XCTAssertEqual(returnedError.code, FUPApiClientErrorCodeClientDisabled);
 }
 
-
 - (FUPReportApiClient *)apiClient
 {
     return [self apiClientWithDebugModeEnabled:NO];
@@ -220,7 +219,7 @@
                                     screenDensity:@"Screen Density"
                                        screenSize:@"Screen Size"
                                     numberOfCores:4
-                                       cpuMetrics:@[[FUPMetricMother any]]
+                                       cpuMetrics:@[[FUPMetricMother anyCpuWithCpuUsage:23]]
                                         uiMetrics:@[]];
 }
 

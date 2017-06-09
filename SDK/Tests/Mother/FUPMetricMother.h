@@ -12,5 +12,8 @@
 @interface FUPMetricMother : NSObject
 
 + (FUPMetric *)any;
++ (FUPMetric *)anyCpu;
++ (FUPMetric *)anyCpuWithCpuUsage:(NSInteger)cpuUsage;
++ (FUPMetric *)anyUi;
 
 @end

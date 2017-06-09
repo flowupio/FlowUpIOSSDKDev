@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "FUPMetricsStorage.h"
+#import "FUPMetricMother.h"
 #import <Nimble/Nimble.h>
 @import Nimble.Swift;
 
@@ -35,7 +36,7 @@
 
 - (void)testMetricsStorage_ReturnsMetricsStored_IfRetrievingOneMetric
 {
-    FUPMetric *metric = [self anyMetric];
+    FUPMetric *metric = [FUPMetricMother any];
     [self.storage storeMetric:metric];
 
     NSArray<FUPMetric *> *metrics = [self.storage metricsAtMost:1];
@@ -51,9 +52,9 @@
 
 - (void)testMetricsStorage_ReturnsAllMetricsStored_IfRetrievingAllMetrics
 {
-    [self.storage storeMetric:[self cpuMetricWithUsage:100]];
-    [self.storage storeMetric:[self cpuMetricWithUsage:101]];
-    [self.storage storeMetric:[self cpuMetricWithUsage:102]];
+    [self.storage storeMetric:[FUPMetricMother anyCpuWithCpuUsage:100]];
+    [self.storage storeMetric:[FUPMetricMother anyCpuWithCpuUsage:101]];
+    [self.storage storeMetric:[FUPMetricMother anyCpuWithCpuUsage:102]];
 
     NSArray<FUPMetric *> *metrics = [self.storage metricsAtMost:3];
 
@@ -65,9 +66,9 @@
 
 - (void)testMetricsStorage_ReturnsOnlyNumberOfMetricsSpecified_IfRetrievingOnlyThatNumberOfMetrics
 {
-    [self.storage storeMetric:[self anyMetric]];
-    [self.storage storeMetric:[self anyMetric]];
-    [self.storage storeMetric:[self anyMetric]];
+    [self.storage storeMetric:[FUPMetricMother any]];
+    [self.storage storeMetric:[FUPMetricMother any]];
+    [self.storage storeMetric:[FUPMetricMother any]];
 
     NSArray<FUPMetric *> *metrics = [self.storage metricsAtMost:1];
 
@@ -76,7 +77,7 @@
 
 - (void)testMetricsStorage_ReturnsAllMetricsStored_IfRetrievingMoreThanStoredMetrics
 {
-    [self.storage storeMetric:[self anyMetric]];
+    [self.storage storeMetric:[FUPMetricMother any]];
 
     NSArray<FUPMetric *> *metrics = [self.storage metricsAtMost:5];
 
@@ -85,7 +86,7 @@
 
 - (void)testMetricsStorage_DeletesMetrics_IfCleared
 {
-    [self.storage storeMetric:[self anyMetric]];
+    [self.storage storeMetric:[FUPMetricMother any]];
 
     [self.storage clear];
 
@@ -94,7 +95,7 @@
 
 - (void)testMetricsStorage_DeletesMetrics_IfRemoved
 {
-    [self.storage storeMetric:[self anyMetric]];
+    [self.storage storeMetric:[FUPMetricMother any]];
 
     [self.storage removeNumberOfMetrics:1];
 
@@ -103,9 +104,9 @@
 
 - (void)testMetricsStorage_DeletesOnlyNumberOfMetricsSpecified_IfRemoveThatNumberOfMetrics
 {
-    [self.storage storeMetric:[self anyMetric]];
-    [self.storage storeMetric:[self anyMetric]];
-    [self.storage storeMetric:[self anyMetric]];
+    [self.storage storeMetric:[FUPMetricMother any]];
+    [self.storage storeMetric:[FUPMetricMother any]];
+    [self.storage storeMetric:[FUPMetricMother any]];
 
     [self.storage removeNumberOfMetrics:1];
 
@@ -115,7 +116,7 @@
 
 - (void)testMetricsStorage_DeletesAllMetricsStored_IfRemovingMoreThanStoredMetrics
 {
-    [self.storage storeMetric:[self anyMetric]];
+    [self.storage storeMetric:[FUPMetricMother any]];
 
     [self.storage removeNumberOfMetrics:5];
 
@@ -124,23 +125,9 @@
 
 - (void)testMetricsStorage_ReportsThatHasMetrics_IfPreviouslyStoredMetrics
 {
-    [self.storage storeMetric:[self anyMetric]];
+    [self.storage storeMetric:[FUPMetricMother any]];
 
     expect(self.storage.hasReports).to(beTrue());
-}
-
-- (FUPMetric *)anyMetric
-{
-    return [self cpuMetricWithUsage:12];
-}
-
-- (FUPMetric *)cpuMetricWithUsage:(NSInteger)cpuUsage
-{
-    return [[FUPMetric alloc] initWithTimestamp:1234
-                                 appVersionName:@"Testing App"
-                                      osVersion:@"10.0.0"
-                          isLowPowerModeEnabled:NO
-                                       cpuUsage:cpuUsage];
 }
 
 @end
