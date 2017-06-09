@@ -13,7 +13,7 @@ To build the SDK, open the `FlowUpIOSSDK.xcworkspace` file with XCode, select th
 1. Update podspec version number.
 2. Update `FUPConfiguration.h` version number.
 3. Run `./scripts/build/prepare_release.sh`.
-4. Run `pod trunk push FlowUpIOSSDK.podspec` (you might want to add the `--ignore-warnings` flag if there are warnings).
+4. Run `pod trunk push FlowUpIOSSDK.podspec` (you might want to add the `--allow-warnings` flag if there are warnings).
 
 ## Adding a 3rd party library
 
