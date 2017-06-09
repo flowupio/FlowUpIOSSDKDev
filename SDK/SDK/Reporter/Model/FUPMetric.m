@@ -14,14 +14,14 @@
                    appVersionName:(NSString *)appVersionName
                         osVersion:(NSString *)osVersion
             isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled
-                         cpuUsage:(NSInteger)cpuUsage
+                         cpuUsage:(NSUInteger)cpuUsage
 {
     return [self initWithTimestamp:timestamp
                               name:@"CPU"
                     appVersionName:appVersionName
                          osVersion:osVersion
              isLowPowerModeEnabled:isLowPowerModeEnabled
-                            values:@{@"consumption": [NSNumber numberWithLong:cpuUsage]}];
+                            values:@{@"consumption": [NSNumber numberWithUnsignedInteger:cpuUsage]}];
 }
 
 - (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
@@ -39,6 +39,20 @@
                                              @"mean": frameTime.mean,
                                              @"p10": frameTime.percentile10,
                                              @"p90": frameTime.percentile90}}];
+}
+
+- (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
+                   appVersionName:(NSString *)appVersionName
+                        osVersion:(NSString *)osVersion
+            isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled
+                        diskUsage:(NSUInteger)diskUsage
+{
+    return [self initWithTimestamp:timestamp
+                              name:@"Disk"
+                    appVersionName:appVersionName
+                         osVersion:osVersion
+             isLowPowerModeEnabled:isLowPowerModeEnabled
+                            values:@{@"internalStorageWrittenBytes": [NSNumber numberWithUnsignedInteger:diskUsage]}];
 }
 
 - (instancetype)initWithTimestamp:(NSTimeInterval)timestamp

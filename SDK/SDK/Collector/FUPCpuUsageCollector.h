@@ -19,8 +19,6 @@
 
 @interface FUPCpuUsageCollector : NSObject <FUPCollector>
 
-@property (readonly, nonatomic) float cpuUsage;
-
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithMetricsStorage:(FUPMetricsStorage *)metricsStorage
                                 device:(FUPDevice *)device

@@ -8,7 +8,28 @@
 
 #import "FUPDiskUsageCollector.h"
 
+@interface FUPDiskUsageCollector ()
+
+@property (readonly, nonatomic) FUPMetricsStorage *storage;
+@property (readonly, nonatomic) FUPDevice *device;
+@property (readonly, nonatomic) FUPTime *time;
+
+@end
+
 @implementation FUPDiskUsageCollector
+
+- (instancetype)initWithMetricsStorage:(FUPMetricsStorage *)metricsStorage
+                                device:(FUPDevice *)device
+                                  time:(FUPTime *)time
+{
+    self = [super init];
+    if (self) {
+        _storage = metricsStorage;
+        _device = device;
+        _time = time;
+    }
+    return self;
+}
 
 - (void)collect
 {
@@ -19,12 +40,20 @@
     }
 
     NSString *path = paths.lastObject;
-    unsigned long long size = 0;
+    NSUInteger size = 0;
     for (NSString *subpath in [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:path error:nil]) {
-        size += [[[NSFileManager defaultManager] attributesOfItemAtPath:[NSString stringWithFormat:@"%@/%@", path, subpath] error:nil] fileSize];
+        NSString *completeSubpath = [NSString stringWithFormat:@"%@/%@", path, subpath];
+        size += [[[NSFileManager defaultManager] attributesOfItemAtPath:completeSubpath
+                                                                  error:nil]
+                 fileSize];
     }
 
-    NSLog(@"Total size: %llu", size);
+    FUPMetric *metric = [[FUPMetric alloc] initWithTimestamp:[self.time nowInMillis]
+                                              appVersionName:self.device.appVersionName
+                                                   osVersion:self.device.osVersion
+                                       isLowPowerModeEnabled:self.device.isLowPowerModeEnabled
+                                                   diskUsage:size];
+    [self.storage storeMetric:metric];
 }
 
 @end

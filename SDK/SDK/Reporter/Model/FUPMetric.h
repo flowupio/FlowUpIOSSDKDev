@@ -31,12 +31,18 @@
                    appVersionName:(NSString *)appVersionName
                         osVersion:(NSString *)osVersion
             isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled
-                         cpuUsage:(NSInteger)cpuUsage;
+                         cpuUsage:(NSUInteger)cpuUsage;
 
 - (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
                    appVersionName:(NSString *)appVersionName
                         osVersion:(NSString *)osVersion
             isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled
                         frameTime:(FUPStatisticalValue *)frameTime;
+
+- (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
+                   appVersionName:(NSString *)appVersionName
+                        osVersion:(NSString *)osVersion
+            isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled
+                        diskUsage:(NSUInteger)diskUsage;
 
 @end
