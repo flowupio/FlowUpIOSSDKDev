@@ -111,7 +111,8 @@ static NSTimeInterval const NeverReported = -1;
                                        screenSize:self.device.screenSize
                                     numberOfCores:self.device.numberOfCores
                                        cpuMetrics:[self filteredMetrics:metrics byName:@"CPU"]
-                                        uiMetrics:[self filteredMetrics:metrics byName:@"UI"]];
+                                        uiMetrics:[self filteredMetrics:metrics byName:@"UI"]
+                                      diskMetrics:[self filteredMetrics:metrics byName:@"Disk"]];
 }
 
 - (NSArray <FUPMetric *> *)filteredMetrics:(NSArray<FUPMetric *> *)metrics byName:(NSString *)name

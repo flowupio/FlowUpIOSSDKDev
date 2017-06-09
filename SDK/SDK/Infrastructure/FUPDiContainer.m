@@ -53,7 +53,9 @@
 
 + (FUPDiskUsageCollector *)diskUsageCollector
 {
-    return [[FUPDiskUsageCollector alloc] init];
+    return [[FUPDiskUsageCollector alloc] initWithMetricsStorage:[FUPDiContainer metricsStorage]
+                                                          device:[FUPDiContainer device]
+                                                            time:[FUPDiContainer time]];
 }
 
 + (FUPMetricsStorage *)metricsStorage
