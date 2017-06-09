@@ -220,7 +220,8 @@
                                        screenSize:@"Screen Size"
                                     numberOfCores:4
                                        cpuMetrics:@[[FUPMetricMother anyCpuWithCpuUsage:23]]
-                                        uiMetrics:@[]];
+                                        uiMetrics:@[]
+                                      diskMetrics:@[]];
 }
 
 @end
