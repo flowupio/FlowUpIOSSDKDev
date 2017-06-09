@@ -45,14 +45,16 @@
                    appVersionName:(NSString *)appVersionName
                         osVersion:(NSString *)osVersion
             isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled
-                        diskUsage:(NSUInteger)diskUsage
+                 diskUsageInBytes:(NSUInteger)diskUsageInBytes
+          userDefaultsSizeInBytes:(NSUInteger)userDefaultsSizeInBytes
 {
     return [self initWithTimestamp:timestamp
                               name:@"Disk"
                     appVersionName:appVersionName
                          osVersion:osVersion
              isLowPowerModeEnabled:isLowPowerModeEnabled
-                            values:@{@"internalStorageWrittenBytes": [NSNumber numberWithUnsignedInteger:diskUsage]}];
+                            values:@{@"internalStorageWrittenBytes": [NSNumber numberWithUnsignedInteger:diskUsageInBytes],
+                                     @"userDefaultsWrittenBytes": [NSNumber numberWithUnsignedInteger:userDefaultsSizeInBytes]}];
 }
 
 - (instancetype)initWithTimestamp:(NSTimeInterval)timestamp

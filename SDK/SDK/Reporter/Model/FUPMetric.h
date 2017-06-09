@@ -43,6 +43,7 @@
                    appVersionName:(NSString *)appVersionName
                         osVersion:(NSString *)osVersion
             isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled
-                        diskUsage:(NSUInteger)diskUsage;
+                 diskUsageInBytes:(NSUInteger)diskUsageInBytes
+          userDefaultsSizeInBytes:(NSUInteger)userDefaultsSizeInBytes;
 
 @end

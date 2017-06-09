@@ -33,27 +33,47 @@
 
 - (void)collect
 {
-    NSArray<NSString *> *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [self pathAt:NSDocumentDirectory];
+    NSString *libraryPath = [self pathAt:NSLibraryDirectory];
+    NSString *userDefaultsFile = [NSString stringWithFormat:@"%@/Preferences/%@.plist",
+                                  libraryPath,
+                                  [[NSBundle mainBundle] bundleIdentifier]];
 
-    if (paths.count <= 0) {
-        return;
-    }
-
-    NSString *path = paths.lastObject;
-    NSUInteger size = 0;
-    for (NSString *subpath in [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:path error:nil]) {
-        NSString *completeSubpath = [NSString stringWithFormat:@"%@/%@", path, subpath];
-        size += [[[NSFileManager defaultManager] attributesOfItemAtPath:completeSubpath
-                                                                  error:nil]
-                 fileSize];
-    }
+    NSUInteger diskUsageInBytes = [self sizeInBytesOf:documentsPath];
+    NSUInteger userDefaultsUsageInBytes = [self sizeInBytesOfSingleFile:userDefaultsFile];
 
     FUPMetric *metric = [[FUPMetric alloc] initWithTimestamp:[self.time nowInMillis]
                                               appVersionName:self.device.appVersionName
                                                    osVersion:self.device.osVersion
                                        isLowPowerModeEnabled:self.device.isLowPowerModeEnabled
-                                                   diskUsage:size];
+                                            diskUsageInBytes:diskUsageInBytes
+                                     userDefaultsSizeInBytes:userDefaultsUsageInBytes];
+
     [self.storage storeMetric:metric];
+}
+
+- (NSUInteger)sizeInBytesOf:(NSString *)path
+{
+    NSUInteger size = 0;
+
+    for (NSString *subpath in [[NSFileManager defaultManager] subpathsAtPath:path]) {
+        NSString *completeSubpath = [NSString stringWithFormat:@"%@/%@", path, subpath];
+        size += [self sizeInBytesOfSingleFile:completeSubpath];
+    }
+
+    return size;
+}
+
+- (NSUInteger)sizeInBytesOfSingleFile:(NSString *)fileName
+{
+    return [[[NSFileManager defaultManager] attributesOfItemAtPath:fileName
+                                                             error:nil][NSFileSize]
+            unsignedIntegerValue];
+}
+
+- (NSString *)pathAt:(NSSearchPathDirectory)pathDirectory
+{
+    return NSSearchPathForDirectoriesInDomains(pathDirectory, NSUserDomainMask, YES).firstObject;
 }
 
 @end

@@ -31,8 +31,6 @@
     int minStartingValue = 1;
     int maxStartingValue = 40;
     int r = minStartingValue + arc4random_uniform(maxStartingValue - minStartingValue);
-
-    NSLog(@"Fibonacci of %d is %d", r, [self fibonacciOfNumber:r]);
 }
 
 - (int)fibonacciOfNumber: (int)number
