@@ -145,6 +145,7 @@
 		4909F5D91ED748CB00825B0B /* Collector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Collector.h; sourceTree = "<group>"; };
 		491BECBD1EDEB3B800BB77A3 /* FUPSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPSqlite.h; sourceTree = "<group>"; };
 		491BECBE1EDEB3B800BB77A3 /* FUPSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPSqlite.m; sourceTree = "<group>"; };
+		494E911B1EE183E100943D96 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		4978C0731ED5E71400148A4E /* ReportApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportApiClient.h; sourceTree = "<group>"; };
 		4978C0741ED5E71400148A4E /* ReportApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportApiClient.m; sourceTree = "<group>"; };
 		4978C0751ED5E71400148A4E /* Reports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reports.h; sourceTree = "<group>"; };
@@ -438,6 +439,7 @@
 				4978C0871ED5EFCB00148A4E /* FlowUp.m */,
 				499DEEF01EDD98EF00BDD763 /* NamespacedDependencies.h */,
 				499DEEF21EDD98FB00BDD763 /* SDKPrefixHeader.h */,
+				494E911B1EE183E100943D96 /* module.modulemap */,
 			);
 			path = SDK;
 			sourceTree = "<group>";
@@ -671,7 +673,6 @@
 			children = (
 				49DB72A61EDEEE2300487567 /* FUPMetricsStorageTests.m */,
 			);
-			name = Storage;
 			path = Storage;
 			sourceTree = "<group>";
 		};
@@ -1122,6 +1123,7 @@
 				GCC_PREFIX_HEADER = SDK/SDKPrefixHeader.h;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1136,6 +1138,7 @@
 				GCC_PREFIX_HEADER = SDK/SDKPrefixHeader.h;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
