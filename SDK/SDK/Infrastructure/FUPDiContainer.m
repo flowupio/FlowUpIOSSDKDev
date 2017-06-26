@@ -43,13 +43,22 @@
                                                         time:[FUPDiContainer time]];
 }
 
++ (FUPFrameTimeCollector *)frameTimeCollector
+{
+    return [[FUPFrameTimeCollector alloc] initWithMetricsStorage:[FUPDiContainer metricsStorage]
+                                                          device:[FUPDiContainer device]
+                                                            time:[FUPDiContainer time]
+                                                      calculator:[FUPDiContainer calculator]];
+}
+
 + (FUPMetricsStorage *)metricsStorage
 {
     static FUPMetricsStorage *_storage;
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        _storage = [[FUPMetricsStorage alloc] initWithSqlite:[FUPDiContainer sqlite]];
+        _storage = [[FUPMetricsStorage alloc] initWithSqlite:[FUPDiContainer sqlite]
+                                                      mapper:[FUPDiContainer metricsStorageMapper]];
     });
 
     return _storage;
@@ -98,6 +107,11 @@
                                       debugModeStorage:[FUPDiContainer debugModeStorage]];
 }
 
++ (FUPMetricsStorageMapper *)metricsStorageMapper
+{
+    return [[FUPMetricsStorageMapper alloc] init];
+}
+
 + (FUPDevice *)device
 {
     return [[FUPDevice alloc] initWithUuidGenerator:[FUPDiContainer uuidGenerator]];
@@ -111,6 +125,11 @@
 + (FUPTime *)time
 {
     return [[FUPTime alloc] init];
+}
+
++ (FUPCalculator *)calculator
+{
+    return [[FUPCalculator alloc] init];
 }
 
 + (FUPSqlite *)sqlite

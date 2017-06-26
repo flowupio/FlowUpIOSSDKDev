@@ -36,7 +36,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         return;
     }
 
-    [collectorScheduler addCollectors:@[[FUPDiContainer cpuUsageCollector]]
+    [collectorScheduler addCollectors:@[[FUPDiContainer cpuUsageCollector],
+                                        [FUPDiContainer frameTimeCollector]]
                          timeInterval: CollectorSchedulerSamplingTimeInterval];
     [reportScheduler start];
     isInitialized = YES;

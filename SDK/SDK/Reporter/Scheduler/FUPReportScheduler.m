@@ -71,15 +71,15 @@ static NSTimeInterval const NeverReported = -1;
         return;
     }
 
-    NSArray<FUPCpuMetric *> *cpuMetrics = [self.storage cpuMetricsAtMost:MaxNumberOfReportsPerRequest];
-    FUPReports *reports = [self reportsWithCpuMetrics:cpuMetrics];
+    NSArray<FUPMetric *> *metrics = [self.storage metricsAtMost:MaxNumberOfReportsPerRequest];
+    FUPReports *reports = [self reportsWithMetrics:metrics];
     [self.reportApiClient sendReports:reports completion:^(FUPApiClientError *error) {
         if (error == nil) {
-            NSLog(@"[ReportScheduler] Reports successfully sent [%ld]", cpuMetrics.count);
-            [self removeReportedMetricsCount:cpuMetrics.count];
+            NSLog(@"[ReportScheduler] Reports successfully sent [%ld]", metrics.count);
+            [self removeReportedMetricsCount:metrics.count];
         } else if (error.code == FUPApiClientErrorCodeUnauthorized || error.code == FUPApiClientErrorCodeServerError) {
             NSLog(@"[ReportScheduler] There was an error sending the reports: Unauthorized OR Server error");
-            [self removeReportedMetricsCount:cpuMetrics.count];
+            [self removeReportedMetricsCount:metrics.count];
             [self disableSdk];
         } else if (error.code == FUPApiClientErrorCodeClientDisabled) {
             NSLog(@"[ReportScheduler] There was an error sending the reports: Client Disabled");
@@ -93,7 +93,7 @@ static NSTimeInterval const NeverReported = -1;
 
 - (void)removeReportedMetricsCount:(NSInteger)metricsCount
 {
-    [self.storage removeNumberOfCpuMetrics:metricsCount];
+    [self.storage removeNumberOfMetrics:metricsCount];
     self.lastReportTimeInterval = [self.time now];
 }
 
@@ -102,7 +102,7 @@ static NSTimeInterval const NeverReported = -1;
     [self.configService disable];
 }
 
-- (FUPReports *)reportsWithCpuMetrics:(NSArray<FUPCpuMetric *> *)cpuMetrics
+- (FUPReports *)reportsWithMetrics:(NSArray<FUPMetric *> *)metrics
 {
     return [[FUPReports alloc] initWithAppPackage:self.device.appPackage
                                  installationUuid:self.device.installationUuid
@@ -110,7 +110,15 @@ static NSTimeInterval const NeverReported = -1;
                                     screenDensity:self.device.screenDensity
                                        screenSize:self.device.screenSize
                                     numberOfCores:self.device.numberOfCores
-                                       cpuMetrics:cpuMetrics];
+                                       cpuMetrics:[self filteredMetrics:metrics byName:@"CPU"]
+                                        uiMetrics:[self filteredMetrics:metrics byName:@"UI"]];
+}
+
+- (NSArray <FUPMetric *> *)filteredMetrics:(NSArray<FUPMetric *> *)metrics byName:(NSString *)name
+{
+    return [metrics filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return [((FUPMetric *)evaluatedObject).name isEqualToString:name];
+    }]];
 }
 
 @end

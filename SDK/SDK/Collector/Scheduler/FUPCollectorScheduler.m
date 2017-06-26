@@ -32,13 +32,8 @@
     NSLog(@"[CollectorScheduler] Start");
     for (id<FUPCollector> collector in collectors) {
         [NSTimer scheduledTimerWithTimeInterval:timeInterval repeats:YES block:^(NSTimer *timer) {
-            if (self.isEnabled) {
                 NSLog(@"[CollectorScheduler] Collect");
                 async(self.queue, ^{ [collector collect]; });
-            } else {
-                NSLog(@"[CollectorScheduler] Disabled");
-                [timer invalidate];
-            }
         }];
     }
 }

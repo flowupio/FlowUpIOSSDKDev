@@ -10,17 +10,20 @@
 #import "FUPReports.h"
 #import "FUPAsync.h"
 #import "FUPSqlite.h"
+#import "FUPMetric.h"
+#import "FUPMetricsStorageMapper.h"
 
 @interface FUPMetricsStorage : NSObject
 
 @property (readonly, nonatomic) BOOL hasReports;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithSqlite:(FUPSqlite *)sqlite;
+- (instancetype)initWithSqlite:(FUPSqlite *)sqlite
+                        mapper:(FUPMetricsStorageMapper *)mapper;
 
-- (void)storeCpuMetric:(FUPCpuMetric *)cpuMetric;
-- (NSArray<FUPCpuMetric *> *)cpuMetricsAtMost:(NSInteger)numberOfCpuMetrics;
-- (void)removeNumberOfCpuMetrics:(NSInteger)numberOfCpuMetrics;
+- (void)storeMetric:(FUPMetric *)metric;
+- (NSArray<FUPMetric *> *)metricsAtMost:(NSInteger)numberOfMetrics;
+- (void)removeNumberOfMetrics:(NSInteger)numberOfMetrics;
 - (void)clear;
 
 @end

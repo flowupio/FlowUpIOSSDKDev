@@ -13,6 +13,8 @@ static NSString *const CreateTableStatement =
 id TEXT NOT NULL PRIMARY KEY DEFAULT 'UNIQUE_ID', \
 enabled INTEGER DEFAULT 1)";
 
+static NSUInteger const TableVersion = 0;
+
 @interface FUPConfigStorage ()
 
 @property (readonly, nonatomic) FUPSqlite *sqlite;
@@ -38,7 +40,7 @@ enabled INTEGER DEFAULT 1)";
 
 - (void)setConfig:(FUPConfig *)config
 {
-    [self.sqlite createTable:@"config" withStatement:CreateTableStatement];
+    [self.sqlite createTable:@"config" withVersion: TableVersion withStatement:CreateTableStatement];
     NSString *insertStatement = [NSString stringWithFormat:
                                  @"INSERT OR REPLACE INTO config\
                                  (id, enabled) \
@@ -54,7 +56,7 @@ enabled INTEGER DEFAULT 1)";
 
 - (void)clear
 {
-    [self.sqlite createTable:@"config" withStatement:CreateTableStatement];
+    [self.sqlite createTable:@"config" withVersion: TableVersion withStatement:CreateTableStatement];
     BOOL success = [self.sqlite runStatement:@"DELETE FROM config WHERE id = 'UNIQUE_ID')"];
     if (success) {
         NSLog(@"[FUPConfigStorage] Config deleted");
@@ -65,7 +67,7 @@ enabled INTEGER DEFAULT 1)";
 
 - (FUPConfig *)readConfigFromDatabase
 {
-    [self.sqlite createTable:@"config" withStatement:CreateTableStatement];
+    [self.sqlite createTable:@"config" withVersion: TableVersion withStatement:CreateTableStatement];
     __block FUPConfig *config = nil;
     NSString *query = @"SELECT * FROM config";
 

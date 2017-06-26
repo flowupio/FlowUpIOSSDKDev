@@ -10,7 +10,7 @@
 #import "FUPReportApiClient.h"
 #import "FUPApiClientTests.h"
 #import "NSDictionary+Matcheable.h"
-#import "FUPCpuMetricMother.h"
+#import "FUPMetricMother.h"
 #import "FUPConfiguration.h"
 #import <Nimble/Nimble.h>
 #import <Nocilla/Nocilla.h>
@@ -195,7 +195,6 @@
     XCTAssertEqual(returnedError.code, FUPApiClientErrorCodeClientDisabled);
 }
 
-
 - (FUPReportApiClient *)apiClient
 {
     return [self apiClientWithDebugModeEnabled:NO];
@@ -220,7 +219,8 @@
                                     screenDensity:@"Screen Density"
                                        screenSize:@"Screen Size"
                                     numberOfCores:4
-                                       cpuMetrics:@[[FUPCpuMetricMother any]]];
+                                       cpuMetrics:@[[FUPMetricMother anyCpuWithCpuUsage:23]]
+                                        uiMetrics:@[]];
 }
 
 @end
