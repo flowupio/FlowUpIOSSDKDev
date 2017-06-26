@@ -59,7 +59,7 @@ static NSTimeInterval const NeverSynced = -1;
     NSLog(@"[FUPConfigSyncScheduler] Sync'ing config");
 
     if (self.lastSyncTimeInterval != NeverSynced && [self.time now] - self.lastSyncTimeInterval < ConfigSyncSchedulerTimeBetweenSyncsTimeInterval) {
-        NSLog(@"[FUPConfigSyncScheduler] Did not pass enought time to sync");
+        NSLog(@"[FUPConfigSyncScheduler] Did not pass enough time to sync");
         return;
     }
 
