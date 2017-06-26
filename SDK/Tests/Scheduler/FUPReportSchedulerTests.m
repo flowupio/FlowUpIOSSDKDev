@@ -10,6 +10,7 @@
 #import "FUPTestAsync.h"
 #import "FUPReportScheduler.h"
 #import "FUPMetricMother.h"
+#import "FUPFakeSafetyNet.h"
 #import <Nimble/Nimble.h>
 #import <OCHamcrest/OCHamcrest.h>
 #import <OCMockito/OCMockito.h>
@@ -26,6 +27,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 @property (readwrite, nonatomic) FUPReportApiClient *apiClient;
 @property (readwrite, nonatomic) FUPDevice *device;
 @property (readwrite, nonatomic) FUPConfigService *configService;
+@property (readwrite, nonatomic) FUPSafetyNet *safetyNet;
 @property (readwrite, nonatomic) FUPTime *time;
 
 @end
@@ -40,6 +42,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
                                                       mapper:[[FUPMetricsStorageMapper alloc] init]];
     self.device = mock([FUPDevice class]);
     self.configService = mock([FUPConfigService class]);
+    self.safetyNet = [[FUPFakeSafetyNet alloc] init];
     self.time = mock([FUPTime class]);
     self.scheduler = [self reportScheduler];
 
@@ -238,10 +241,11 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 - (FUPReportScheduler *)reportScheduler
 {
     return [[FUPReportScheduler alloc] initWithMetricsStorage:self.storage
-                                           reportApiClient:self.apiClient
-                                                    device:self.device
-                                             configService:self.configService
-                                                      time:self.time];
+                                              reportApiClient:self.apiClient
+                                                       device:self.device
+                                                configService:self.configService
+                                                    safetyNet: self.safetyNet
+                                                         time:self.time];
 }
 
 @end

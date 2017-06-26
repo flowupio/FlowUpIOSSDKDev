@@ -24,7 +24,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
     [FUPDiContainer debugModeStorage].isDebugModeEnabled = isDebugModeEnabled;
 
-    FUPCollectorScheduler *collectorScheduler = [FUPDiContainer collectorScheduler];
+    FUPCollectorScheduler *collectorScheduler = [FUPDiContainer collectorSchedulerWithApiKey:apiKey];
     FUPReportScheduler *reportScheduler = [FUPDiContainer reportSchedulerWithApiKey:apiKey];
     FUPConfigSyncScheduler *configSyncScheduler = [FUPDiContainer configSyncSchedulerWithApiKey:apiKey];
     FUPConfigStorage *configStorage = [FUPDiContainer configStorage];

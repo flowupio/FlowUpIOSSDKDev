@@ -21,7 +21,7 @@
 
 @interface FUPDiContainer : NSObject
 
-+ (FUPCollectorScheduler *)collectorScheduler;
++ (FUPCollectorScheduler *)collectorSchedulerWithApiKey:(NSString *)apiKey;
 + (FUPCpuUsageCollector *)cpuUsageCollector;
 + (FUPFrameTimeCollector *)frameTimeCollector;
 + (FUPDiskUsageCollector *)diskUsageCollector;

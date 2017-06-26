@@ -10,9 +10,9 @@
 
 @implementation FUPDiContainer
 
-+ (FUPCollectorScheduler *)collectorScheduler
++ (FUPCollectorScheduler *)collectorSchedulerWithApiKey:(NSString *)apiKey
 {
-    return [[FUPCollectorScheduler alloc] init];
+    return [[FUPCollectorScheduler alloc] initWithSafetyNet:[FUPDiContainer safetyNetWithApiKey:apiKey]];
 }
 
 + (FUPReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey
@@ -21,12 +21,14 @@
                                               reportApiClient:[FUPDiContainer reportApiClientWithApiKey:apiKey]
                                                        device:[FUPDiContainer device]
                                                 configService:[FUPDiContainer configServiceWithApiKey:apiKey]
+                                                    safetyNet:[FUPDiContainer safetyNetWithApiKey:apiKey]
                                                          time:[FUPDiContainer time]];
 }
 
 + (FUPConfigSyncScheduler *)configSyncSchedulerWithApiKey:(NSString *)apiKey
 {
     return [[FUPConfigSyncScheduler alloc] initWithConfigService:[FUPDiContainer configServiceWithApiKey:apiKey]
+                                                       safetyNet:[FUPDiContainer safetyNetWithApiKey:apiKey]
                                                             time:[FUPDiContainer time]];
 }
 

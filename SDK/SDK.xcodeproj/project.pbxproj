@@ -58,6 +58,7 @@
 		497BBBEB1F0166B000399DB7 /* FUPCrashReport.h in Headers */ = {isa = PBXBuildFile; fileRef = 497BBBE91F0166B000399DB7 /* FUPCrashReport.h */; };
 		497BBBEC1F0166B000399DB7 /* FUPCrashReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 497BBBEA1F0166B000399DB7 /* FUPCrashReport.m */; };
 		497BBBEE1F016B6B00399DB7 /* crashReportApiRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = 497BBBED1F016B6B00399DB7 /* crashReportApiRequest.json */; };
+		497BBBF11F016E2800399DB7 /* FUPFakeSafetyNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 497BBBF01F016E2800399DB7 /* FUPFakeSafetyNet.m */; };
 		4983806F1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983806E1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m */; };
 		498380761ED48F5C003BCFB0 /* FUPCpuUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* FUPCpuUsageCollector.h */; };
 		499DEECE1EDD981400BDD763 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 499DEEA41EDD981400BDD763 /* AFHTTPSessionManager.h */; };
@@ -194,6 +195,8 @@
 		497BBBE91F0166B000399DB7 /* FUPCrashReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPCrashReport.h; sourceTree = "<group>"; };
 		497BBBEA1F0166B000399DB7 /* FUPCrashReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCrashReport.m; sourceTree = "<group>"; };
 		497BBBED1F016B6B00399DB7 /* crashReportApiRequest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crashReportApiRequest.json; sourceTree = "<group>"; };
+		497BBBEF1F016E2800399DB7 /* FUPFakeSafetyNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPFakeSafetyNet.h; sourceTree = "<group>"; };
+		497BBBF01F016E2800399DB7 /* FUPFakeSafetyNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPFakeSafetyNet.m; sourceTree = "<group>"; };
 		4983803C1ED48C7A003BCFB0 /* libSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4983806D1ED48D6B003BCFB0 /* FUPCpuUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPCpuUsageCollector.h; sourceTree = "<group>"; };
 		4983806E1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCpuUsageCollector.m; sourceTree = "<group>"; };
@@ -793,6 +796,8 @@
 			isa = PBXGroup;
 			children = (
 				49B8DF1D1EDC71CA00C8A9F5 /* FUPConfigServiceTests.m */,
+				497BBBEF1F016E2800399DB7 /* FUPFakeSafetyNet.h */,
+				497BBBF01F016E2800399DB7 /* FUPFakeSafetyNet.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1055,6 +1060,7 @@
 				4909F5B01ED6EBC600825B0B /* FUPApiClientTests.m in Sources */,
 				49DB72A71EDEEE2300487567 /* FUPMetricsStorageTests.m in Sources */,
 				499E717D1ED82FF300AD80C3 /* FUPReportSchedulerTests.m in Sources */,
+				497BBBF11F016E2800399DB7 /* FUPFakeSafetyNet.m in Sources */,
 				499E71811ED8341100AD80C3 /* FUPMetricMother.m in Sources */,
 				4960D64B1EEA862F008A8CDE /* FUPCalculatorTests.m in Sources */,
 			);

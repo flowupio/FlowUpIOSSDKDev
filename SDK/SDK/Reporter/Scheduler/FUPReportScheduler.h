@@ -13,6 +13,7 @@
 #import "FUPConfigService.h"
 #import "FUPTime.h"
 #import "FUPMetricsStorage.h"
+#import "FUPSafetyNet.h"
 
 @interface FUPReportScheduler : NSObject
 
@@ -21,6 +22,7 @@
                        reportApiClient:(FUPReportApiClient *)reportApiClient
                                 device:(FUPDevice *)device
                          configService:(FUPConfigService *)configService
+                             safetyNet:(FUPSafetyNet *)safetyNet
                                   time:(FUPTime *)time;
 
 - (void)start;

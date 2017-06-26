@@ -17,6 +17,7 @@ static NSTimeInterval const NeverReported = -1;
 @property (readonly, nonatomic) FUPDevice *device;
 @property (readonly, nonatomic) FUPTime *time;
 @property (readonly, nonatomic) FUPConfigService *configService;
+@property (readonly, nonatomic) FUPSafetyNet *safetyNet;
 @property (readwrite, nonatomic) NSTimeInterval lastReportTimeInterval;
 
 @end
@@ -27,6 +28,7 @@ static NSTimeInterval const NeverReported = -1;
                        reportApiClient:(FUPReportApiClient *)reportApiClient
                                 device:(FUPDevice *)device
                          configService:(FUPConfigService *)configService
+                             safetyNet:(FUPSafetyNet *)safetyNet
                                   time:(FUPTime *)time
 {
     self = [super init];
@@ -35,6 +37,7 @@ static NSTimeInterval const NeverReported = -1;
         _reportApiClient = reportApiClient;
         _device = device;
         _configService = configService;
+        _safetyNet = safetyNet;
         _time = time;
         _lastReportTimeInterval = NeverReported;
     }
@@ -47,7 +50,9 @@ static NSTimeInterval const NeverReported = -1;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ReportSchedulerFirstReportDelayTimeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [NSTimer scheduledTimerWithTimeInterval:ReportSchedulerReportingTimeInterval repeats:YES block:^(NSTimer *timer) {
             async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [self reportMetrics];
+                [self.safetyNet runBlock:^{
+                    [self reportMetrics];
+                }];
             });
         }];        
     });
