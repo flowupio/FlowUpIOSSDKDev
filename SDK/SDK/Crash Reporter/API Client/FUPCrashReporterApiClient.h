@@ -14,6 +14,7 @@
 
 - (instancetype)init NS_UNAVAILABLE;
 
-- (void)sendReport:(FUPCrashReport *)report;
+- (void)sendReport:(FUPCrashReport *)report
+        completion:(void (^)(FUPApiClientError *))completion;
 
 @end

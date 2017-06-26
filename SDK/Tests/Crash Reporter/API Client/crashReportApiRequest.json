@@ -1,0 +1,7 @@
+{
+    "deviceModel": "Device Model",
+    "osVersion": "OS Version",
+    "batterySaverOn": false,
+    "message": "There was an error",
+    "stackTrace": "A\nB\nC"
+}

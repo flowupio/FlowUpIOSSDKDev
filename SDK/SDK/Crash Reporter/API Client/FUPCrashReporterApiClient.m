@@ -11,6 +11,7 @@
 @implementation FUPCrashReporterApiClient
 
 - (void)sendReport:(FUPCrashReport *)report
+        completion:(void (^)(FUPApiClientError *))completion
 {
     NSDictionary *serializedReport = @{@"deviceModel": report.deviceModel,
                                        @"osVersion": report.osVersion,
@@ -22,10 +23,10 @@
             parameters:serializedReport
               progress:nil
                success:^(NSURLSessionDataTask *task, id responseObject) {
-                   NSLog(@"Error reported correctly");
+                   completion(nil);
                }
                failure:^(NSURLSessionDataTask *task, NSError *error) {
-                   NSLog(@"Error while reporting an error: %@", error.description);
+                   completion(FUPApiClientError.unknown);
                }];
 }
 

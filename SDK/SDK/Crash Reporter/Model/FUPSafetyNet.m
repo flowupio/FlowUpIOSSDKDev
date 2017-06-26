@@ -33,7 +33,12 @@
     @try {
         block();
     } @catch (NSException *exception) {
-        [self.apiClient sendReport:[self mapException:exception]];
+        NSLog(@"[FUPSafetyNet] Reporting error");
+        [self.apiClient sendReport:[self mapException:exception] completion:^(FUPApiClientError *error) {
+            if (error != nil) {
+                NSLog(@"[FUPSafetyNet] There was an error reporting a crash: %@", error.description);
+            }
+        }];
     }
 }
 

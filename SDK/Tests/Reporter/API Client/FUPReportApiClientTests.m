@@ -118,7 +118,6 @@
     expect(didSendReport).toEventually(equal(YES));
 }
 
-
 - (void)testApiClient_SendReports_Always {
     stubRequest(@"POST", @"https://www.testingflowup.com/report").
     withBody([self dictionaryFromJsonFileWithName:@"reportApiRequest"]).
