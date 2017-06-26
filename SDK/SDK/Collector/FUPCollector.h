@@ -1,5 +1,5 @@
 //
-//  NSDictionary+Matcheable.h
+//  FUPCollector.h
 //  SDK
 //
 //  Created by Sergio Gutiérrez on 25/05/2017.
@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FUPJsonMatcher.h"
-@import Nocilla;
 
-@interface NSDictionary (Matcheable) <LSMatcheable>
-
+@protocol FUPCollector
+- (void)collect;
 @end

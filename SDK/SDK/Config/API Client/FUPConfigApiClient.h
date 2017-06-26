@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ApiClient.h"
+#import "FUPApiClient.h"
 #import "FUPConfig.h"
 #import "FUPResult.h"
 #import "FUPConfigApiMapper.h"
 
-@interface FUPConfigApiClient : ApiClient
+@interface FUPConfigApiClient : FUPApiClient
 
 - (instancetype)init NS_UNAVAILABLE;
 

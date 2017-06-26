@@ -7,14 +7,14 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "MetricsStorage.h"
+#import "FUPMetricsStorage.h"
 #import <Nimble/Nimble.h>
 @import Nimble.Swift;
 
 @interface FUPMetricsStorageTests : XCTestCase
 
 @property (readwrite, nonatomic) FUPSqlite *sqlite;
-@property (readwrite, nonatomic) MetricsStorage *storage;
+@property (readwrite, nonatomic) FUPMetricsStorage *storage;
 
 @end
 
@@ -23,7 +23,7 @@
 - (void)setUp {
     [super setUp];
     self.sqlite = [[FUPSqlite alloc] initWithFileName:@"testingdb.sqlite"];
-    self.storage = [[MetricsStorage alloc] initWithSqlite:self.sqlite];
+    self.storage = [[FUPMetricsStorage alloc] initWithSqlite:self.sqlite];
 }
 
 - (void)tearDown {
@@ -33,10 +33,10 @@
 
 - (void)testMetricsStorage_ReturnsMetricsStored_IfRetrievingOneMetric
 {
-    CpuMetric *metric = [self anyCpuMetric];
+    FUPCpuMetric *metric = [self anyCpuMetric];
     [self.storage storeCpuMetric:metric];
 
-    NSArray<CpuMetric *> *metrics = [self.storage cpuMetricsAtMost:1];
+    NSArray<FUPCpuMetric *> *metrics = [self.storage cpuMetricsAtMost:1];
 
     expect(metrics.count).to(equal(1));
     expect(metrics[0].timestamp).to(equal(metric.timestamp));
@@ -53,7 +53,7 @@
     [self.storage storeCpuMetric:[self cpuMetricWithUsage:101]];
     [self.storage storeCpuMetric:[self cpuMetricWithUsage:102]];
 
-    NSArray<CpuMetric *> *metrics = [self.storage cpuMetricsAtMost:3];
+    NSArray<FUPCpuMetric *> *metrics = [self.storage cpuMetricsAtMost:3];
 
     expect(metrics.count).to(equal(3));
     expect(metrics[0].cpuUsage).to(equal(100));
@@ -67,7 +67,7 @@
     [self.storage storeCpuMetric:[self anyCpuMetric]];
     [self.storage storeCpuMetric:[self anyCpuMetric]];
 
-    NSArray<CpuMetric *> *metrics = [self.storage cpuMetricsAtMost:1];
+    NSArray<FUPCpuMetric *> *metrics = [self.storage cpuMetricsAtMost:1];
 
     expect(metrics.count).to(equal(1));
 }
@@ -76,7 +76,7 @@
 {
     [self.storage storeCpuMetric:[self anyCpuMetric]];
 
-    NSArray<CpuMetric *> *metrics = [self.storage cpuMetricsAtMost:5];
+    NSArray<FUPCpuMetric *> *metrics = [self.storage cpuMetricsAtMost:5];
 
     expect(metrics.count).to(equal(1));
 }
@@ -107,7 +107,7 @@
 
     [self.storage removeNumberOfCpuMetrics:1];
 
-    NSArray<CpuMetric *> *metrics = [self.storage cpuMetricsAtMost:2];
+    NSArray<FUPCpuMetric *> *metrics = [self.storage cpuMetricsAtMost:2];
     expect(metrics.count).to(equal(2));
 }
 
@@ -127,18 +127,18 @@
     expect(self.storage.hasReports).to(beTrue());
 }
 
-- (CpuMetric *)anyCpuMetric
+- (FUPCpuMetric *)anyCpuMetric
 {
     return [self cpuMetricWithUsage:12];
 }
 
-- (CpuMetric *)cpuMetricWithUsage:(NSInteger)cpuUsage
+- (FUPCpuMetric *)cpuMetricWithUsage:(NSInteger)cpuUsage
 {
-    return [[CpuMetric alloc] initWithTimestamp:1234
-                                 appVersionName:@"Testing App"
-                                      osVersion:@"10.0.0"
-                          isLowPowerModeEnabled:NO
-                                       cpuUsage:cpuUsage];
+    return [[FUPCpuMetric alloc] initWithTimestamp:1234
+                                    appVersionName:@"Testing App"
+                                         osVersion:@"10.0.0"
+                             isLowPowerModeEnabled:NO
+                                          cpuUsage:cpuUsage];
 }
 
 @end

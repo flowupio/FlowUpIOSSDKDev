@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Async.h"
+#import "FUPAsync.h"
 #import <sqlite3.h>
 
 @interface FUPSqlite : NSObject

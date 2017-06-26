@@ -7,7 +7,7 @@
 //
 
 #import "FlowUp.h"
-#import "DIContainer.h"
+#import "FUPDiContainer.h"
 
 @implementation FlowUp
 
@@ -22,12 +22,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         return;
     }
 
-    [DIContainer debugModeStorage].isDebugModeEnabled = isDebugModeEnabled;
+    [FUPDiContainer debugModeStorage].isDebugModeEnabled = isDebugModeEnabled;
 
-    CollectorScheduler *collectorScheduler = [DIContainer collectorScheduler];
-    ReportScheduler *reportScheduler = [DIContainer reportSchedulerWithApiKey:apiKey];
-    FUPConfigSyncScheduler *configSyncScheduler = [DIContainer configSyncSchedulerWithApiKey:apiKey];
-    FUPConfigStorage *configStorage = [DIContainer configStorage];
+    FUPCollectorScheduler *collectorScheduler = [FUPDiContainer collectorScheduler];
+    FUPReportScheduler *reportScheduler = [FUPDiContainer reportSchedulerWithApiKey:apiKey];
+    FUPConfigSyncScheduler *configSyncScheduler = [FUPDiContainer configSyncSchedulerWithApiKey:apiKey];
+    FUPConfigStorage *configStorage = [FUPDiContainer configStorage];
 
     [configSyncScheduler start];
 
@@ -36,7 +36,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         return;
     }
 
-    [collectorScheduler addCollectors:@[[DIContainer cpuUsageCollector]]
+    [collectorScheduler addCollectors:@[[FUPDiContainer cpuUsageCollector]]
                          timeInterval: CollectorSchedulerSamplingTimeInterval];
     [reportScheduler start];
     isInitialized = YES;

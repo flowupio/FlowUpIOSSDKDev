@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FUPConfig.h"
-#import "Async.h"
+#import "FUPAsync.h"
 #import "FUPSqlite.h"
 #import <sqlite3.h>
 
