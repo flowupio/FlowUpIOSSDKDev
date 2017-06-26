@@ -14,6 +14,9 @@
 
 - (instancetype)init NS_UNAVAILABLE;
 
-+ (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions apiKey:(NSString *)apiKey;
++ (void)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+             apiKey:(NSString *)apiKey
+ isDebugModeEnabled:(BOOL)isDebugModeEnabled;
 
 @end

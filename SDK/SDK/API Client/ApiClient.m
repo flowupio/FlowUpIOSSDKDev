@@ -16,6 +16,7 @@ static NSInteger const FUPServerErrorStatusCode = 500;
 @interface ApiClient ()
 
 @property (readonly, nonatomic, copy) NSString *baseUrl;
+@property (readonly, nonatomic) FUPDebugModeStorage *debugModeStorage;
 
 @end
 
@@ -24,9 +25,11 @@ static NSInteger const FUPServerErrorStatusCode = 500;
 - (instancetype)initWithBaseUrl:(NSString *)baseUrl
                          apiKey:(NSString *)apiKey
                            uuid:(NSString *)uuid
+               debugModeStorage:(FUPDebugModeStorage *)debugModeStorage
 {
     self = [super init];
     if (self) {
+        _debugModeStorage = debugModeStorage;
         _manager = [self sessionManagerWithApiKey:apiKey uuid:uuid];
         _baseUrl = baseUrl;
     }
@@ -63,12 +66,19 @@ static NSInteger const FUPServerErrorStatusCode = 500;
     [manager.requestSerializer setValue:[self userAgent] forHTTPHeaderField:@"User-Agent"];
     [manager.requestSerializer setValue:uuid forHTTPHeaderField:@"X-UUID"];
     [manager.requestSerializer setValue:apiKey forHTTPHeaderField:@"X-Api-Key"];
+    [manager.requestSerializer setValue:self.debugModeStorage.isDebugModeEnabled ? @"true" : @"false" forHTTPHeaderField:@"X-Debug-Mode"];
     return manager;
 }
 
 - (NSString *)userAgent
 {
-    return [NSString stringWithFormat:@"FlowUpIOSSDK/%@", SDKVersion];
+    NSString *userAgent = [NSString stringWithFormat:@"FlowUpIOSSDK/%@", SDKVersion];
+
+    if (self.debugModeStorage.isDebugModeEnabled) {
+        userAgent = [userAgent stringByAppendingString:@"-DEBUG"];
+    }
+
+    return userAgent;
 }
 
 @end

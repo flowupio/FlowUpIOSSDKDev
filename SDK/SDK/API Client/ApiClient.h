@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "Configuration.h"
 #import "FUPApiClientError.h"
+#import "FUPDebugModeStorage.h"
 
 @interface ApiClient : NSObject
 
@@ -18,7 +19,8 @@
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithBaseUrl:(NSString *)baseUrl
                          apiKey:(NSString *)apiKey
-                           uuid:(NSString *)uuid;
+                           uuid:(NSString *)uuid
+               debugModeStorage:(FUPDebugModeStorage *)debugModeStorage;
 
 - (NSString *)urlStringWithEndpoint:(NSString *)endpoint;
 - (FUPApiClientError *)mapError:(NSError *)error;

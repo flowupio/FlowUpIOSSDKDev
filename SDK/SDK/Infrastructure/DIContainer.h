@@ -14,6 +14,7 @@
 #import "FUPConfigService.h"
 #import "ReportApiClient.h"
 #import "Configuration.h"
+#import "FUPDebugModeStorage.h"
 
 @interface DIContainer : NSObject
 
@@ -22,5 +23,6 @@
 + (ReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey;
 + (FUPConfigSyncScheduler *)configSyncSchedulerWithApiKey:(NSString *)apiKey;
 + (FUPConfigStorage *)configStorage;
++ (FUPDebugModeStorage *)debugModeStorage;
 
 @end
