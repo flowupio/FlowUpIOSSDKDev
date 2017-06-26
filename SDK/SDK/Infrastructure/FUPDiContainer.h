@@ -17,6 +17,7 @@
 #import "FUPDebugModeStorage.h"
 #import "FUPFrameTimeCollector.h"
 #import "FUPDiskUsageCollector.h"
+#import "FUPSafetyNet.h"
 
 @interface FUPDiContainer : NSObject
 

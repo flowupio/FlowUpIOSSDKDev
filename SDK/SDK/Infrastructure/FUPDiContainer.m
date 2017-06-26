@@ -36,11 +36,16 @@
                                                storage:[FUPDiContainer configStorage]];
 }
 
++ (FUPSafetyNet *)safetyNetWithApiKey:(NSString *)apiKey
+{
+    return [[FUPSafetyNet alloc] initWithCrashReporterApiClient:[FUPDiContainer crashReporterApiClientWithApiKey:apiKey]];
+}
+
 + (FUPCpuUsageCollector *)cpuUsageCollector
 {
     return [[FUPCpuUsageCollector alloc] initWithMetricsStorage:[FUPDiContainer metricsStorage]
-                                                      device:[FUPDiContainer device]
-                                                        time:[FUPDiContainer time]];
+                                                         device:[FUPDiContainer device]
+                                                           time:[FUPDiContainer time]];
 }
 
 + (FUPFrameTimeCollector *)frameTimeCollector
@@ -103,6 +108,17 @@
                                                 apiKey:apiKey
                                                   uuid:uuid
                                       debugModeStorage:[FUPDiContainer debugModeStorage]];
+}
+
++ (FUPCrashReporterApiClient *)crashReporterApiClientWithApiKey:(NSString *)apiKey
+{
+
+    NSString *uuid = [FUPDiContainer uuidGenerator].uuid;
+    return [[FUPCrashReporterApiClient alloc] initWithBaseUrl:ApiBaseUrl
+                                                       apiKey:apiKey
+                                                         uuid:uuid
+                                             debugModeStorage:[FUPDiContainer debugModeStorage]
+                                                       device:[FUPDiContainer device]];
 }
 
 + (FUPReportApiClient *)reportApiClientWithApiKey:(NSString *)apiKey
