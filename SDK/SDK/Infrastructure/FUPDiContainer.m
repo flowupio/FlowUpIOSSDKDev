@@ -38,7 +38,8 @@
 
 + (FUPSafetyNet *)safetyNetWithApiKey:(NSString *)apiKey
 {
-    return [[FUPSafetyNet alloc] initWithCrashReporterApiClient:[FUPDiContainer crashReporterApiClientWithApiKey:apiKey]];
+    return [[FUPSafetyNet alloc] initWithCrashReporterApiClient:[FUPDiContainer crashReporterApiClientWithApiKey:apiKey]
+                                                         device:[FUPDiContainer device]];
 }
 
 + (FUPCpuUsageCollector *)cpuUsageCollector
@@ -117,8 +118,7 @@
     return [[FUPCrashReporterApiClient alloc] initWithBaseUrl:ApiBaseUrl
                                                        apiKey:apiKey
                                                          uuid:uuid
-                                             debugModeStorage:[FUPDiContainer debugModeStorage]
-                                                       device:[FUPDiContainer device]];
+                                             debugModeStorage:[FUPDiContainer debugModeStorage]];
 }
 
 + (FUPReportApiClient *)reportApiClientWithApiKey:(NSString *)apiKey

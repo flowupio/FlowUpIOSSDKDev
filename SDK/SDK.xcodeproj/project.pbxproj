@@ -54,6 +54,9 @@
 		497BBBDE1F015D9F00399DB7 /* FUPCrashReporterApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 497BBBDC1F015D9F00399DB7 /* FUPCrashReporterApiClient.m */; };
 		497BBBE31F0163E300399DB7 /* FUPSafetyNet.h in Headers */ = {isa = PBXBuildFile; fileRef = 497BBBE11F0163E300399DB7 /* FUPSafetyNet.h */; };
 		497BBBE41F0163E300399DB7 /* FUPSafetyNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 497BBBE21F0163E300399DB7 /* FUPSafetyNet.m */; };
+		497BBBE81F0165AB00399DB7 /* FUPCrashReporterApiClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 497BBBE71F0165AB00399DB7 /* FUPCrashReporterApiClientTests.m */; };
+		497BBBEB1F0166B000399DB7 /* FUPCrashReport.h in Headers */ = {isa = PBXBuildFile; fileRef = 497BBBE91F0166B000399DB7 /* FUPCrashReport.h */; };
+		497BBBEC1F0166B000399DB7 /* FUPCrashReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 497BBBEA1F0166B000399DB7 /* FUPCrashReport.m */; };
 		4983806F1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983806E1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m */; };
 		498380761ED48F5C003BCFB0 /* FUPCpuUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* FUPCpuUsageCollector.h */; };
 		499DEECE1EDD981400BDD763 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 499DEEA41EDD981400BDD763 /* AFHTTPSessionManager.h */; };
@@ -184,8 +187,11 @@
 		4978C0871ED5EFCB00148A4E /* FlowUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowUp.m; sourceTree = "<group>"; };
 		497BBBDB1F015D9F00399DB7 /* FUPCrashReporterApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPCrashReporterApiClient.h; sourceTree = "<group>"; };
 		497BBBDC1F015D9F00399DB7 /* FUPCrashReporterApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCrashReporterApiClient.m; sourceTree = "<group>"; };
-		497BBBE11F0163E300399DB7 /* FUPSafetyNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUPSafetyNet.h; path = FUPSafetyNet.h; sourceTree = "<group>"; };
-		497BBBE21F0163E300399DB7 /* FUPSafetyNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUPSafetyNet.m; path = FUPSafetyNet.m; sourceTree = "<group>"; };
+		497BBBE11F0163E300399DB7 /* FUPSafetyNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPSafetyNet.h; sourceTree = "<group>"; };
+		497BBBE21F0163E300399DB7 /* FUPSafetyNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPSafetyNet.m; sourceTree = "<group>"; };
+		497BBBE71F0165AB00399DB7 /* FUPCrashReporterApiClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCrashReporterApiClientTests.m; sourceTree = "<group>"; };
+		497BBBE91F0166B000399DB7 /* FUPCrashReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPCrashReport.h; sourceTree = "<group>"; };
+		497BBBEA1F0166B000399DB7 /* FUPCrashReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCrashReport.m; sourceTree = "<group>"; };
 		4983803C1ED48C7A003BCFB0 /* libSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4983806D1ED48D6B003BCFB0 /* FUPCpuUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPCpuUsageCollector.h; sourceTree = "<group>"; };
 		4983806E1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCpuUsageCollector.m; sourceTree = "<group>"; };
@@ -309,6 +315,7 @@
 			children = (
 				4960D6481EEA8604008A8CDE /* Collector */,
 				49B8DF141EDC5FF800C8A9F5 /* Config */,
+				497BBBE51F01659300399DB7 /* Crash Reporter */,
 				499E71831ED838F500AD80C3 /* Infrastructure */,
 				499E717E1ED833F300AD80C3 /* Mother */,
 				4909F5B81ED7084A00825B0B /* Nocilla */,
@@ -498,10 +505,30 @@
 		497BBBE01F01633400399DB7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				497BBBE91F0166B000399DB7 /* FUPCrashReport.h */,
+				497BBBEA1F0166B000399DB7 /* FUPCrashReport.m */,
 				497BBBE11F0163E300399DB7 /* FUPSafetyNet.h */,
 				497BBBE21F0163E300399DB7 /* FUPSafetyNet.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		497BBBE51F01659300399DB7 /* Crash Reporter */ = {
+			isa = PBXGroup;
+			children = (
+				497BBBE61F01659900399DB7 /* API Client */,
+			);
+			name = "Crash Reporter";
+			path = "Crash Reporter";
+			sourceTree = "<group>";
+		};
+		497BBBE61F01659900399DB7 /* API Client */ = {
+			isa = PBXGroup;
+			children = (
+				497BBBE71F0165AB00399DB7 /* FUPCrashReporterApiClientTests.m */,
+			);
+			name = "API Client";
+			path = "API Client";
 			sourceTree = "<group>";
 		};
 		498380331ED48C7A003BCFB0 = {
@@ -821,6 +848,7 @@
 				496E20DE1EE87155006196F5 /* FUPDebugModeStorage.h in Headers */,
 				4909F5C51ED713AA00825B0B /* FUPReportScheduler.h in Headers */,
 				4978BC201EE95B96005EF4E4 /* FUPFrameTimeCollector.h in Headers */,
+				497BBBEB1F0166B000399DB7 /* FUPCrashReport.h in Headers */,
 				4909F5A71ED6C10100825B0B /* FUPMetric.h in Headers */,
 				4909F5C01ED70E9E00825B0B /* FUPUuidGenerator.h in Headers */,
 				49B8DF0B1EDC35BF00C8A9F5 /* FUPConfigService.h in Headers */,
@@ -1015,6 +1043,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497BBBE81F0165AB00399DB7 /* FUPCrashReporterApiClientTests.m in Sources */,
 				4909F5B71ED7076800825B0B /* NSDictionary+Matcheable.m in Sources */,
 				49DB72A41EDEDFCE00487567 /* FUPConfigStorageTests.m in Sources */,
 				49B8DF171EDC601F00C8A9F5 /* FUPConfigApiClientTests.m in Sources */,
@@ -1076,6 +1105,7 @@
 				4978C0851ED5EC0100148A4E /* FUPApiClient.m in Sources */,
 				4978C07A1ED5E71400148A4E /* FUPReports.m in Sources */,
 				4909F5CF1ED72A1D00825B0B /* FUPDiContainer.m in Sources */,
+				497BBBEC1F0166B000399DB7 /* FUPCrashReport.m in Sources */,
 				4978BC261EE9678F005EF4E4 /* FUPCalculator.m in Sources */,
 				49B8DF041EDC347500C8A9F5 /* FUPConfigStorage.m in Sources */,
 				499DEECF1EDD981400BDD763 /* AFHTTPSessionManager.m in Sources */,

@@ -11,16 +11,19 @@
 @interface FUPSafetyNet ()
 
 @property (readonly, nonatomic) FUPCrashReporterApiClient *apiClient;
+@property (readonly, nonatomic) FUPDevice *device;
 
 @end
 
 @implementation FUPSafetyNet
 
 - (instancetype)initWithCrashReporterApiClient:(FUPCrashReporterApiClient *)apiClient
+                                        device:(FUPDevice *)device
 {
     self = [super init];
     if (self) {
         _apiClient = apiClient;
+        _device = device;
     }
     return self;
 }
@@ -30,8 +33,21 @@
     @try {
         block();
     } @catch (NSException *exception) {
-        [self.apiClient sendException:exception];
+        [self.apiClient sendReport:[self mapException:exception]];
     }
+}
+
+- (FUPCrashReport *)mapException:(NSException *)exception
+{
+    NSMutableString *stackTrace = [[NSMutableString alloc] init];
+    for (NSString *symbol in exception.callStackSymbols) {
+        [stackTrace appendString:symbol];
+    }
+    return [[FUPCrashReport alloc] initWithDeviceModel:self.device.deviceModel
+                                             osVersion:self.device.osVersion
+                                 isLowPowerModeEnabled:self.device.isLowPowerModeEnabled
+                                               message:exception.description
+                                            stackTrace:stackTrace];
 }
 
 @end

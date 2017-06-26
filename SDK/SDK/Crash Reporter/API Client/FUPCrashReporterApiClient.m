@@ -8,38 +8,15 @@
 
 #import "FUPCrashReporterApiClient.h"
 
-@interface FUPCrashReporterApiClient ()
-
-@property (readonly, nonatomic) FUPDevice *device;
-
-@end
-
 @implementation FUPCrashReporterApiClient
 
-- (instancetype)initWithBaseUrl:(NSString *)baseUrl
-                         apiKey:(NSString *)apiKey
-                           uuid:(NSString *)uuid
-               debugModeStorage:(FUPDebugModeStorage *)debugModeStorage
-                         device:(FUPDevice *)device
+- (void)sendReport:(FUPCrashReport *)report
 {
-    self = [super initWithBaseUrl:baseUrl apiKey:apiKey uuid:uuid debugModeStorage:debugModeStorage];
-    if (self) {
-        _device = device;
-    }
-    return self;
-}
-
-- (void)sendException:(NSException *)exception
-{
-    NSMutableString *stackTrace = [[NSMutableString alloc] init];
-    for (NSString *symbol in exception.callStackSymbols) {
-        [stackTrace appendString:symbol];
-    }
-    NSDictionary *serializedReport = @{@"deviceModel": self.device.deviceModel,
-                                       @"osVersion": self.device.osVersion,
-                                       @"batterySaverOn": [NSNumber numberWithBool: self.device.isLowPowerModeEnabled],
-                                       @"message": exception.description,
-                                       @"stackTrace": stackTrace};
+    NSDictionary *serializedReport = @{@"deviceModel": report.deviceModel,
+                                       @"osVersion": report.osVersion,
+                                       @"batterySaverOn": [NSNumber numberWithBool: report.isLowPowerModeEnabled],
+                                       @"message": report.message,
+                                       @"stackTrace": report.stackTrace};
 
     [self.manager POST:[self urlStringWithEndpoint:@"errorReport"]
             parameters:serializedReport

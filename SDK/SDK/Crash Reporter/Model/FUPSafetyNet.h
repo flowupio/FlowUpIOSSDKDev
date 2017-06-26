@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "FUPCrashReporterApiClient.h"
+#import "FUPDevice.h"
 
 @interface FUPSafetyNet : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithCrashReporterApiClient:(FUPCrashReporterApiClient *)apiClient;
+- (instancetype)initWithCrashReporterApiClient:(FUPCrashReporterApiClient *)apiClient
+                                        device:(FUPDevice *)device;
 
 - (void)runBlock:(void (^)(void))block;
 

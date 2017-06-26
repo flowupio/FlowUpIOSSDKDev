@@ -27,10 +27,10 @@
 
 - (void)fib
 {
-
     int minStartingValue = 1;
     int maxStartingValue = 40;
     int r = minStartingValue + arc4random_uniform(maxStartingValue - minStartingValue);
+    [self fibonacciOfNumber:r];
 }
 
 - (int)fibonacciOfNumber: (int)number
