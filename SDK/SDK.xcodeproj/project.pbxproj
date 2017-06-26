@@ -52,6 +52,8 @@
 		4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4978C0871ED5EFCB00148A4E /* FlowUp.m */; };
 		497BBBDD1F015D9F00399DB7 /* FUPCrashReporterApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 497BBBDB1F015D9F00399DB7 /* FUPCrashReporterApiClient.h */; };
 		497BBBDE1F015D9F00399DB7 /* FUPCrashReporterApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 497BBBDC1F015D9F00399DB7 /* FUPCrashReporterApiClient.m */; };
+		497BBBE31F0163E300399DB7 /* FUPSafetyNet.h in Headers */ = {isa = PBXBuildFile; fileRef = 497BBBE11F0163E300399DB7 /* FUPSafetyNet.h */; };
+		497BBBE41F0163E300399DB7 /* FUPSafetyNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 497BBBE21F0163E300399DB7 /* FUPSafetyNet.m */; };
 		4983806F1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4983806E1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m */; };
 		498380761ED48F5C003BCFB0 /* FUPCpuUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4983806D1ED48D6B003BCFB0 /* FUPCpuUsageCollector.h */; };
 		499DEECE1EDD981400BDD763 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 499DEEA41EDD981400BDD763 /* AFHTTPSessionManager.h */; };
@@ -182,6 +184,8 @@
 		4978C0871ED5EFCB00148A4E /* FlowUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowUp.m; sourceTree = "<group>"; };
 		497BBBDB1F015D9F00399DB7 /* FUPCrashReporterApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPCrashReporterApiClient.h; sourceTree = "<group>"; };
 		497BBBDC1F015D9F00399DB7 /* FUPCrashReporterApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCrashReporterApiClient.m; sourceTree = "<group>"; };
+		497BBBE11F0163E300399DB7 /* FUPSafetyNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUPSafetyNet.h; path = FUPSafetyNet.h; sourceTree = "<group>"; };
+		497BBBE21F0163E300399DB7 /* FUPSafetyNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUPSafetyNet.m; path = FUPSafetyNet.m; sourceTree = "<group>"; };
 		4983803C1ED48C7A003BCFB0 /* libSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4983806D1ED48D6B003BCFB0 /* FUPCpuUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPCpuUsageCollector.h; sourceTree = "<group>"; };
 		4983806E1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCpuUsageCollector.m; sourceTree = "<group>"; };
@@ -479,7 +483,6 @@
 				497BBBDA1F015D8B00399DB7 /* API Client */,
 				497BBBE01F01633400399DB7 /* Model */,
 			);
-			name = "Crash Reporter";
 			path = "Crash Reporter";
 			sourceTree = "<group>";
 		};
@@ -489,15 +492,15 @@
 				497BBBDB1F015D9F00399DB7 /* FUPCrashReporterApiClient.h */,
 				497BBBDC1F015D9F00399DB7 /* FUPCrashReporterApiClient.m */,
 			);
-			name = "API Client";
 			path = "API Client";
 			sourceTree = "<group>";
 		};
 		497BBBE01F01633400399DB7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				497BBBE11F0163E300399DB7 /* FUPSafetyNet.h */,
+				497BBBE21F0163E300399DB7 /* FUPSafetyNet.m */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -830,6 +833,7 @@
 				499DEEE21EDD981400BDD763 /* UIActivityIndicatorView+AFNetworking.h in Headers */,
 				491BECBF1EDEB3B800BB77A3 /* FUPSqlite.h in Headers */,
 				4909F5D31ED73AA900825B0B /* FUPTime.h in Headers */,
+				497BBBE31F0163E300399DB7 /* FUPSafetyNet.h in Headers */,
 				4909F5D71ED742DA00825B0B /* FUPCollectorScheduler.h in Headers */,
 				49B8DF031EDC347500C8A9F5 /* FUPConfigStorage.h in Headers */,
 				499DEECE1EDD981400BDD763 /* AFHTTPSessionManager.h in Headers */,
@@ -1060,6 +1064,7 @@
 				499DEEE51EDD981400BDD763 /* UIButton+AFNetworking.m in Sources */,
 				49B8DEF11EDC270500C8A9F5 /* FUPResult.m in Sources */,
 				499DEEEB1EDD981400BDD763 /* UIProgressView+AFNetworking.m in Sources */,
+				497BBBE41F0163E300399DB7 /* FUPSafetyNet.m in Sources */,
 				4909F5D41ED73AA900825B0B /* FUPTime.m in Sources */,
 				499DEEDD1EDD981400BDD763 /* AFAutoPurgingImageCache.m in Sources */,
 				4978BC211EE95B96005EF4E4 /* FUPFrameTimeCollector.m in Sources */,
