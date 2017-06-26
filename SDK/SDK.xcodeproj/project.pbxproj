@@ -477,8 +477,10 @@
 			isa = PBXGroup;
 			children = (
 				497BBBDA1F015D8B00399DB7 /* API Client */,
+				497BBBE01F01633400399DB7 /* Model */,
 			);
 			name = "Crash Reporter";
+			path = "Crash Reporter";
 			sourceTree = "<group>";
 		};
 		497BBBDA1F015D8B00399DB7 /* API Client */ = {
@@ -488,6 +490,15 @@
 				497BBBDC1F015D9F00399DB7 /* FUPCrashReporterApiClient.m */,
 			);
 			name = "API Client";
+			path = "API Client";
+			sourceTree = "<group>";
+		};
+		497BBBE01F01633400399DB7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		498380331ED48C7A003BCFB0 = {
@@ -514,10 +525,10 @@
 		4983803E1ED48C7A003BCFB0 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				497BBBD91F015D6D00399DB7 /* Crash Reporter */,
 				4978C0801ED5EBE500148A4E /* API Client */,
 				4983806B1ED48D10003BCFB0 /* Collector */,
 				49B8DEE21EDC239700C8A9F5 /* Config */,
+				497BBBD91F015D6D00399DB7 /* Crash Reporter */,
 				496E20DA1EE87137006196F5 /* Debug */,
 				4909F5B91ED7090400825B0B /* Device */,
 				4909F5AD1ED6EA9C00825B0B /* Infrastructure */,
