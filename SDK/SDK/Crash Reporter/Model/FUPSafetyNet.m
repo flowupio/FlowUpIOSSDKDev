@@ -46,7 +46,7 @@
 {
     NSMutableString *stackTrace = [[NSMutableString alloc] init];
     for (NSString *symbol in exception.callStackSymbols) {
-        [stackTrace appendString:symbol];
+        [stackTrace appendFormat:@"%@\n", symbol];
     }
     return [[FUPCrashReport alloc] initWithDeviceModel:self.device.deviceModel
                                              osVersion:self.device.osVersion
