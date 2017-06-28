@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) NSInteger numberOfCores;
 @property (readonly, nonatomic, copy) NSArray<FUPMetric *> *cpuMetrics;
 @property (readonly, nonatomic, copy) NSArray<FUPMetric *> *uiMetrics;
+@property (readonly, nonatomic, copy) NSArray<FUPMetric *> *diskMetrics;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithAppPackage:(NSString *)appPackage
@@ -28,6 +29,7 @@
                         screenSize:(NSString *)screenSize
                      numberOfCores:(NSInteger)numberOfCores
                         cpuMetrics:(NSArray<FUPMetric *> *)cpuMetrics
-                         uiMetrics:(NSArray<FUPMetric *> *)uiMetrics;
+                         uiMetrics:(NSArray<FUPMetric *> *)uiMetrics
+                       diskMetrics:(NSArray<FUPMetric *> *)diskMetrics;
 
 @end

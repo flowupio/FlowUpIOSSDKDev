@@ -31,14 +31,37 @@
 
 + (FUPMetric *)anyUi
 {
-    FUPStatisticalValue *frameTime = [[FUPStatisticalValue alloc] initWithMean:[NSNumber numberWithDouble:1.0]
-                                                                  percentile10:[NSNumber numberWithDouble:0.5]
-                                                                  percentile90:[NSNumber numberWithDouble:1.9]];
+    return [FUPMetricMother anyUiWithMeanFrameTime:1.0 p10FrameTime:0.5 p90FrameTime:1.9];
+}
+
++ (FUPMetric *)anyUiWithMeanFrameTime:(double)meanFrameTime
+                         p10FrameTime:(double)p10FrameTime
+                         p90FrameTime:(double)p90FrameTime
+{
+    FUPStatisticalValue *frameTime = [[FUPStatisticalValue alloc] initWithMean:[NSNumber numberWithDouble:meanFrameTime]
+                                                                  percentile10:[NSNumber numberWithDouble:p10FrameTime]
+                                                                  percentile90:[NSNumber numberWithDouble:p90FrameTime]];
     return [[FUPMetric alloc] initWithTimestamp:1234
                                  appVersionName:@"App Version Name"
                                       osVersion:@"OS Version"
                           isLowPowerModeEnabled:NO
-                                       frameTime:frameTime];
+                                      frameTime:frameTime];
+}
+
++ (FUPMetric *)anyDisk
+{
+    return [FUPMetricMother anyDiskWithDiskUsageInBytes:1000 userDefaultsSizeInBytes:2000];
+}
+
++ (FUPMetric *)anyDiskWithDiskUsageInBytes:(NSUInteger)diskUsageInBytes
+                   userDefaultsSizeInBytes:(NSUInteger)userDefaultsSizeInBytes
+{
+    return [[FUPMetric alloc] initWithTimestamp:1234
+                                 appVersionName:@"App Version Name"
+                                      osVersion:@"OS Version"
+                          isLowPowerModeEnabled:NO
+                               diskUsageInBytes:diskUsageInBytes
+                        userDefaultsSizeInBytes:userDefaultsSizeInBytes];
 }
 
 @end

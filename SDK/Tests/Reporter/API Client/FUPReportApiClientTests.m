@@ -220,7 +220,8 @@
                                        screenSize:@"Screen Size"
                                     numberOfCores:4
                                        cpuMetrics:@[[FUPMetricMother anyCpuWithCpuUsage:23]]
-                                        uiMetrics:@[]];
+                                        uiMetrics:@[[FUPMetricMother anyUiWithMeanFrameTime:16000.0 p10FrameTime:14000.0 p90FrameTime:19000.0]]
+                                      diskMetrics:@[[FUPMetricMother anyDiskWithDiskUsageInBytes:1111 userDefaultsSizeInBytes:2222]]];
 }
 
 @end

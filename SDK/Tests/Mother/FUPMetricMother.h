@@ -15,5 +15,11 @@
 + (FUPMetric *)anyCpu;
 + (FUPMetric *)anyCpuWithCpuUsage:(NSInteger)cpuUsage;
 + (FUPMetric *)anyUi;
++ (FUPMetric *)anyUiWithMeanFrameTime:(double)meanFrameTime
+                         p10FrameTime:(double)p10FrameTime
+                         p90FrameTime:(double)p90FrameTime;
++ (FUPMetric *)anyDisk;
++ (FUPMetric *)anyDiskWithDiskUsageInBytes:(NSUInteger)diskUsageInBytes
+                   userDefaultsSizeInBytes:(NSUInteger)userDefaultsSizeInBytes;
 
 @end

@@ -16,12 +16,14 @@
 #import "FUPConfiguration.h"
 #import "FUPDebugModeStorage.h"
 #import "FUPFrameTimeCollector.h"
+#import "FUPDiskUsageCollector.h"
 
 @interface FUPDiContainer : NSObject
 
 + (FUPCollectorScheduler *)collectorScheduler;
 + (FUPCpuUsageCollector *)cpuUsageCollector;
 + (FUPFrameTimeCollector *)frameTimeCollector;
++ (FUPDiskUsageCollector *)diskUsageCollector;
 + (FUPReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey;
 + (FUPConfigSyncScheduler *)configSyncSchedulerWithApiKey:(NSString *)apiKey;
 + (FUPConfigStorage *)configStorage;

@@ -18,6 +18,7 @@
                      numberOfCores:(NSInteger)numberOfCores
                         cpuMetrics:(NSArray<FUPMetric *> *)cpuMetrics
                          uiMetrics:(NSArray<FUPMetric *> *)uiMetrics
+                       diskMetrics:(NSArray<FUPMetric *> *)diskMetrics
 {
     self = [super init];
     if (self) {
@@ -29,6 +30,7 @@
         _numberOfCores = numberOfCores;
         _cpuMetrics = cpuMetrics;
         _uiMetrics = uiMetrics;
+        _diskMetrics = diskMetrics;
     }
     return self;
 }
