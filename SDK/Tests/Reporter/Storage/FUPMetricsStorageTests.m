@@ -130,4 +130,15 @@
     expect(self.storage.hasReports).to(beTrue());
 }
 
+- (void)testMetricsStorage_NeverStoresMoreThanMaximumNumberOfReports
+{
+    for (int i = 0; i < 1001; i++) {
+        [self.storage storeMetric:[FUPMetricMother any]];
+    }
+
+    NSArray<FUPMetric *> *metrics = [self.storage metricsAtMost:1001];
+
+    expect(metrics.count).to(equal(1000));
+}
+
 @end
