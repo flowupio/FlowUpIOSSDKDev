@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FUPConfigService.h"
+#import "FUPSafetyNet.h"
 #import "FUPTime.h"
 #import "FUPAsync.h"
 
@@ -15,6 +16,7 @@
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithConfigService:(FUPConfigService *)configService
+                            safetyNet:(FUPSafetyNet *)safetyNet
                                  time:(FUPTime *)time;
 
 - (void)start;

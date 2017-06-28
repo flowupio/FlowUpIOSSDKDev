@@ -10,9 +10,9 @@
 
 @implementation FUPDiContainer
 
-+ (FUPCollectorScheduler *)collectorScheduler
++ (FUPCollectorScheduler *)collectorSchedulerWithApiKey:(NSString *)apiKey
 {
-    return [[FUPCollectorScheduler alloc] init];
+    return [[FUPCollectorScheduler alloc] initWithSafetyNet:[FUPDiContainer safetyNetWithApiKey:apiKey]];
 }
 
 + (FUPReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey
@@ -21,12 +21,14 @@
                                               reportApiClient:[FUPDiContainer reportApiClientWithApiKey:apiKey]
                                                        device:[FUPDiContainer device]
                                                 configService:[FUPDiContainer configServiceWithApiKey:apiKey]
+                                                    safetyNet:[FUPDiContainer safetyNetWithApiKey:apiKey]
                                                          time:[FUPDiContainer time]];
 }
 
 + (FUPConfigSyncScheduler *)configSyncSchedulerWithApiKey:(NSString *)apiKey
 {
     return [[FUPConfigSyncScheduler alloc] initWithConfigService:[FUPDiContainer configServiceWithApiKey:apiKey]
+                                                       safetyNet:[FUPDiContainer safetyNetWithApiKey:apiKey]
                                                             time:[FUPDiContainer time]];
 }
 
@@ -36,11 +38,17 @@
                                                storage:[FUPDiContainer configStorage]];
 }
 
++ (FUPSafetyNet *)safetyNetWithApiKey:(NSString *)apiKey
+{
+    return [[FUPSafetyNet alloc] initWithCrashReporterApiClient:[FUPDiContainer crashReporterApiClientWithApiKey:apiKey]
+                                                         device:[FUPDiContainer device]];
+}
+
 + (FUPCpuUsageCollector *)cpuUsageCollector
 {
     return [[FUPCpuUsageCollector alloc] initWithMetricsStorage:[FUPDiContainer metricsStorage]
-                                                      device:[FUPDiContainer device]
-                                                        time:[FUPDiContainer time]];
+                                                         device:[FUPDiContainer device]
+                                                           time:[FUPDiContainer time]];
 }
 
 + (FUPFrameTimeCollector *)frameTimeCollector
@@ -103,6 +111,16 @@
                                                 apiKey:apiKey
                                                   uuid:uuid
                                       debugModeStorage:[FUPDiContainer debugModeStorage]];
+}
+
++ (FUPCrashReporterApiClient *)crashReporterApiClientWithApiKey:(NSString *)apiKey
+{
+
+    NSString *uuid = [FUPDiContainer uuidGenerator].uuid;
+    return [[FUPCrashReporterApiClient alloc] initWithBaseUrl:ApiBaseUrl
+                                                       apiKey:apiKey
+                                                         uuid:uuid
+                                             debugModeStorage:[FUPDiContainer debugModeStorage]];
 }
 
 + (FUPReportApiClient *)reportApiClientWithApiKey:(NSString *)apiKey

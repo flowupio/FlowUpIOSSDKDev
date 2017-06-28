@@ -17,10 +17,11 @@
 #import "FUPDebugModeStorage.h"
 #import "FUPFrameTimeCollector.h"
 #import "FUPDiskUsageCollector.h"
+#import "FUPSafetyNet.h"
 
 @interface FUPDiContainer : NSObject
 
-+ (FUPCollectorScheduler *)collectorScheduler;
++ (FUPCollectorScheduler *)collectorSchedulerWithApiKey:(NSString *)apiKey;
 + (FUPCpuUsageCollector *)cpuUsageCollector;
 + (FUPFrameTimeCollector *)frameTimeCollector;
 + (FUPDiskUsageCollector *)diskUsageCollector;
