@@ -80,7 +80,7 @@ static NSTimeInterval const NeverReported = -1;
     FUPReports *reports = [self reportsWithMetrics:metrics];
     [self.reportApiClient sendReports:reports completion:^(FUPApiClientError *error) {
         if (error == nil) {
-            NSLog(@"[ReportScheduler] Reports successfully sent [%ld]", metrics.count);
+            NSLog(@"[ReportScheduler] Reports successfully sent [%ld]", (long)metrics.count);
             [self removeReportedMetricsCount:metrics.count];
         } else if (error.code == FUPApiClientErrorCodeUnauthorized || error.code == FUPApiClientErrorCodeServerError) {
             NSLog(@"[ReportScheduler] There was an error sending the reports: Unauthorized OR Server error");

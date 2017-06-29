@@ -12,6 +12,8 @@
 #import "FUPSqlite.h"
 #import "FUPMetric.h"
 #import "FUPMetricsStorageMapper.h"
+#import "FUPTimeIntervalUnits.h"
+#import "FUPConfiguration.h"
 
 @interface FUPMetricsStorage : NSObject
 

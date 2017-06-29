@@ -20,7 +20,7 @@ additional_values TEXT NOT NULL)";
 
 static NSUInteger const TableVersion = 1;
 
-static NSUInteger const MaxNumberOfStoredReports = 1000;
+static NSUInteger const MaxNumberOfStoredReports = HOURS(4) / CollectorSchedulerSamplingTimeInterval;
 
 @interface FUPMetricsStorage ()
 
@@ -72,7 +72,7 @@ static NSUInteger const MaxNumberOfStoredReports = 1000;
     NSString *query = [NSString stringWithFormat:
                        @"SELECT * FROM metrics \
                        ORDER BY timestamp ASC \
-                       LIMIT %ld", numberOfCpuMetrics];
+                       LIMIT %ld", (long)numberOfCpuMetrics];
     [self.sqlite runQuery:query block:^BOOL(sqlite3_stmt *statement) {
         FUPMetric *metric = [self.mapper metricFromStatement:statement];
         if (metric != nil) {
@@ -92,7 +92,7 @@ static NSUInteger const MaxNumberOfStoredReports = 1000;
                                  WHERE _id IN ( \
                                  SELECT _id FROM metrics \
                                  ORDER BY timestamp ASC \
-                                 LIMIT %ld)", numberOfMetrics];
+                                 LIMIT %ld)", (long)numberOfMetrics];
     BOOL success = [self.sqlite runStatement:deleteStatement];
 
     if (!success) {

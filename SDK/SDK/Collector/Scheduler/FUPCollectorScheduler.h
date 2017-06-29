@@ -10,13 +10,13 @@
 #import "FUPCollector.h"
 #import "FUPAsync.h"
 #import "FUPSafetyNet.h"
+#import "FUPConfigService.h"
 
 @interface FUPCollectorScheduler : NSObject
 
-@property (readwrite, nonatomic) BOOL isEnabled;
-
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithSafetyNet:(FUPSafetyNet *)safetyNet;
+- (instancetype)initWithSafetyNet:(FUPSafetyNet *)safetyNet
+                    configService:(FUPConfigService *)configService;
 
 - (void)addCollectors:(NSArray<id<FUPCollector>> *)collectors
          timeInterval:(NSTimeInterval)timeInterval;
