@@ -11,6 +11,7 @@
 @interface FUPCollectorScheduler ()
 
 @property (readonly, nonatomic) FUPSafetyNet *safetyNet;
+@property (readonly, nonatomic) FUPConfigService *configService;
 @property (readonly, nonatomic) dispatch_queue_t queue;
 
 @end
@@ -18,11 +19,12 @@
 @implementation FUPCollectorScheduler
 
 - (instancetype)initWithSafetyNet:(FUPSafetyNet *)safetyNet
+                    configService:(FUPConfigService *)configService
 {
     self = [super init];
     if (self) {
         _safetyNet = safetyNet;
-        _isEnabled = YES;
+        _configService = configService;
         _queue = dispatch_queue_create("Collector Scheduler Queue", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
@@ -36,7 +38,9 @@
         [NSTimer scheduledTimerWithTimeInterval:timeInterval repeats:YES block:^(NSTimer *timer) {
             NSLog(@"[FUPCollectorScheduler] Collect");
             [self.safetyNet runBlock:^{
-                async(self.queue, ^{ [collector collect]; });
+                if (self.configService.enabled) {
+                    async(self.queue, ^{ [collector collect]; });
+                }
             }];
         }];
     }

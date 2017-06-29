@@ -20,6 +20,8 @@ additional_values TEXT NOT NULL)";
 
 static NSUInteger const TableVersion = 1;
 
+static NSUInteger const MaxNumberOfStoredReports = HOURS(4) / CollectorSchedulerSamplingTimeInterval;
+
 @interface FUPMetricsStorage ()
 
 @property (readonly, nonatomic) FUPSqlite *sqlite;
@@ -54,6 +56,7 @@ static NSUInteger const TableVersion = 1;
                                  [NSNumber numberWithBool:metric.isLowPowerModeEnabled],
                                  [self.mapper stringFromMetricValues:metric.values]];
     BOOL success = [self.sqlite runStatement:insertStatement];
+    [self cleanOldReports];
     if (success) {
         NSLog(@"[MetricsStorage] Metrics stored");
     } else {
@@ -68,8 +71,8 @@ static NSUInteger const TableVersion = 1;
     NSMutableArray *metrics = [[NSMutableArray alloc] initWithCapacity:numberOfCpuMetrics];
     NSString *query = [NSString stringWithFormat:
                        @"SELECT * FROM metrics \
-                       ORDER BY timestamp DESC \
-                       LIMIT %ld", numberOfCpuMetrics];
+                       ORDER BY timestamp ASC \
+                       LIMIT %ld", (long)numberOfCpuMetrics];
     [self.sqlite runQuery:query block:^BOOL(sqlite3_stmt *statement) {
         FUPMetric *metric = [self.mapper metricFromStatement:statement];
         if (metric != nil) {
@@ -88,8 +91,8 @@ static NSUInteger const TableVersion = 1;
     NSString *deleteStatement = [NSString stringWithFormat: @"DELETE FROM metrics \
                                  WHERE _id IN ( \
                                  SELECT _id FROM metrics \
-                                 ORDER BY timestamp DESC \
-                                 LIMIT %ld)", numberOfMetrics];
+                                 ORDER BY timestamp ASC \
+                                 LIMIT %ld)", (long)numberOfMetrics];
     BOOL success = [self.sqlite runStatement:deleteStatement];
 
     if (!success) {
@@ -110,14 +113,28 @@ static NSUInteger const TableVersion = 1;
 
 - (BOOL)hasReports
 {
+    return [self numberOfReports] > 0;
+}
+
+- (int)numberOfReports
+{
     [self.sqlite createTable:@"metrics" withVersion:TableVersion withStatement:CreateTableStatement];
-    __block BOOL hasReports = NO;
+    __block int numberOfReports = 0;
     NSString *query = @"SELECT COUNT(*) FROM metrics";
     [self.sqlite runQuery:query block:^BOOL(sqlite3_stmt *statement) {
-        hasReports = sqlite3_column_int(statement, 0) > 0;
+        numberOfReports = sqlite3_column_int(statement, 0);
         return NO;
     }];
-    return hasReports;
+    return numberOfReports;
+}
+
+- (void)cleanOldReports
+{
+    [self.sqlite createTable:@"metrics" withVersion:TableVersion withStatement:CreateTableStatement];
+    int numberOfReports = [self numberOfReports];
+    if (numberOfReports > MaxNumberOfStoredReports) {
+        [self removeNumberOfMetrics:numberOfReports - MaxNumberOfStoredReports];
+    }
 }
 
 @end

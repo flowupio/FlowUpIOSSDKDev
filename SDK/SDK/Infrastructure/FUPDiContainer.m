@@ -12,7 +12,8 @@
 
 + (FUPCollectorScheduler *)collectorSchedulerWithApiKey:(NSString *)apiKey
 {
-    return [[FUPCollectorScheduler alloc] initWithSafetyNet:[FUPDiContainer safetyNetWithApiKey:apiKey]];
+    return [[FUPCollectorScheduler alloc] initWithSafetyNet:[FUPDiContainer safetyNetWithApiKey:apiKey]
+                                              configService:[FUPDiContainer configServiceWithApiKey:apiKey]];
 }
 
 + (FUPReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey
