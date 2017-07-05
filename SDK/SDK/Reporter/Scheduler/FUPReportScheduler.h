@@ -14,6 +14,7 @@
 #import "FUPTime.h"
 #import "FUPMetricsStorage.h"
 #import "FUPSafetyNet.h"
+#import "FUPReachability.h"
 
 @interface FUPReportScheduler : NSObject
 
