@@ -69,9 +69,8 @@ static NSString *const QueueName = @"Report Scheduler Queue";
                                              selector:@selector(didChangeReachabilityStatus:)
                                                  name:kReachabilityChangedNotification
                                                object:nil];
-    async([self.queueStorage queueWithName:QueueName], ^{
-        [self.reachability startNotifier];
-    });
+
+    [self.reachability startNotifier];
 }
 
 - (void)didChangeReachabilityStatus:(NSNotification *)notification
