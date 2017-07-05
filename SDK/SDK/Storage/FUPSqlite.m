@@ -38,7 +38,7 @@ static NSString *const TableVersionKeyFormat = @"FlowUp.%@TableVersion";
     dispatch_once(&onceToken, ^{
         NSString *dbPath = [self databasePath];
         if (sqlite3_open([dbPath UTF8String], &db) != SQLITE_OK) {
-            NSLog(@"[FUPConfigStorage] Unable to open a database connection");
+            NSLog(@"[FUPSqlite] Unable to open a database connection");
         }
     });
 
@@ -49,7 +49,7 @@ static NSString *const TableVersionKeyFormat = @"FlowUp.%@TableVersion";
 {
     __block BOOL success;
 
-    async(self.queue, ^{
+    dispatch_sync(self.queue, ^{
         char *error;
         success = sqlite3_exec(self.db, [statement UTF8String], nil, nil, &error) == SQLITE_OK;
 

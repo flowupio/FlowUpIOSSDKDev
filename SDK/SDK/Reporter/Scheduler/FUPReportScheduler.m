@@ -17,7 +17,10 @@ static NSTimeInterval const NeverReported = -1;
 @property (readonly, nonatomic) FUPDevice *device;
 @property (readonly, nonatomic) FUPTime *time;
 @property (readonly, nonatomic) FUPConfigService *configService;
+@property (readonly, nonatomic) FUPReachability *reachability;
 @property (readonly, nonatomic) FUPSafetyNet *safetyNet;
+
+@property (readonly, nonatomic) dispatch_queue_t queue;
 @property (readwrite, nonatomic) NSTimeInterval lastReportTimeInterval;
 
 @end
@@ -29,6 +32,7 @@ static NSTimeInterval const NeverReported = -1;
                                 device:(FUPDevice *)device
                          configService:(FUPConfigService *)configService
                              safetyNet:(FUPSafetyNet *)safetyNet
+                          reachability:(FUPReachability *)reachability
                                   time:(FUPTime *)time
 {
     self = [super init];
@@ -38,7 +42,9 @@ static NSTimeInterval const NeverReported = -1;
         _device = device;
         _configService = configService;
         _safetyNet = safetyNet;
+        _reachability = reachability;
         _time = time;
+        _queue = dispatch_queue_create("Report Scheduler Queue", DISPATCH_QUEUE_SERIAL);
         _lastReportTimeInterval = NeverReported;
     }
     return self;
@@ -46,33 +52,62 @@ static NSTimeInterval const NeverReported = -1;
 
 - (void)start
 {
-    NSLog(@"[ReportScheduler] Start");
+    NSLog(@"[FUPReportScheduler] Start");
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ReportSchedulerFirstReportDelayTimeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self registerToReachabilityChanges];
         [NSTimer scheduledTimerWithTimeInterval:ReportSchedulerReportingTimeInterval repeats:YES block:^(NSTimer *timer) {
-            async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [self.safetyNet runBlock:^{
-                    [self reportMetrics];
-                }];
-            });
-        }];        
+            [self reportMetricsSafely];
+        }];
+    });
+}
+
+- (void)registerToReachabilityChanges
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didChangeReachabilityStatus:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
+    async(self.queue, ^{
+        [self.reachability startNotifier];
+    });
+}
+
+- (void)didChangeReachabilityStatus:(NSNotification *)notification
+{
+    if ([notification.name isEqualToString:kReachabilityChangedNotification]) {
+        [self reportMetricsSafely];
+    }
+}
+
+- (void)reportMetricsSafely
+{
+    async(self.queue, ^{
+        [self.safetyNet runBlock:^{
+            [self reportMetrics];
+        }];
     });
 }
 
 - (void)reportMetrics
 {
-    NSLog(@"[ReportScheduler] Report metrics");
+    NSLog(@"[FUPReportScheduler] Report metrics");
     if (!self.configService.enabled) {
-        NSLog(@"[ReportScheduler] FlowUp is disabled for this device");
+        NSLog(@"[FUPReportScheduler] FlowUp is disabled for this device");
         return;
     }
 
     if (self.lastReportTimeInterval != NeverReported && [self.time now] - self.lastReportTimeInterval < ReportSchedulerTimeBetweenReportsTimeInterval) {
-        NSLog(@"[ReportScheduler] Did not pass enought time to report");
+        NSLog(@"[FUPReportScheduler] Did not pass enought time to report");
         return;
     }
 
     if (!self.storage.hasReports) {
-        NSLog(@"[ReportScheduler] Do not have any report to send");
+        NSLog(@"[FUPReportScheduler] Do not have any report to send");
+        return;
+    }
+
+    if ([self.reachability currentReachabilityStatus] != ReachableViaWiFi) {
+        NSLog(@"[FUPReportScheduler] Current internet connection is not a WiFi connection");
         return;
     }
 
@@ -80,18 +115,18 @@ static NSTimeInterval const NeverReported = -1;
     FUPReports *reports = [self reportsWithMetrics:metrics];
     [self.reportApiClient sendReports:reports completion:^(FUPApiClientError *error) {
         if (error == nil) {
-            NSLog(@"[ReportScheduler] Reports successfully sent [%ld]", (long)metrics.count);
+            NSLog(@"[FUPReportScheduler] Reports successfully sent [%ld]", (long)metrics.count);
             [self removeReportedMetricsCount:metrics.count];
         } else if (error.code == FUPApiClientErrorCodeUnauthorized || error.code == FUPApiClientErrorCodeServerError) {
-            NSLog(@"[ReportScheduler] There was an error sending the reports: Unauthorized OR Server error");
+            NSLog(@"[FUPReportScheduler] There was an error sending the reports: Unauthorized OR Server error");
             [self removeReportedMetricsCount:metrics.count];
             [self disableSdk];
         } else if (error.code == FUPApiClientErrorCodeClientDisabled) {
-            NSLog(@"[ReportScheduler] There was an error sending the reports: Client Disabled");
+            NSLog(@"[FUPReportScheduler] There was an error sending the reports: Client Disabled");
             [self.storage clear];
             [self disableSdk];
         } else {
-            NSLog(@"[ReportScheduler] There was an error sending the reports: Unknown");
+            NSLog(@"[FUPReportScheduler] There was an error sending the reports: Unknown");
         }
     }];
 }

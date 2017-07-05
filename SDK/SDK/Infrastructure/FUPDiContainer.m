@@ -18,12 +18,20 @@
 
 + (FUPReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey
 {
-    return [[FUPReportScheduler alloc] initWithMetricsStorage:[FUPDiContainer metricsStorage]
-                                              reportApiClient:[FUPDiContainer reportApiClientWithApiKey:apiKey]
-                                                       device:[FUPDiContainer device]
-                                                configService:[FUPDiContainer configServiceWithApiKey:apiKey]
-                                                    safetyNet:[FUPDiContainer safetyNetWithApiKey:apiKey]
-                                                         time:[FUPDiContainer time]];
+    static FUPReportScheduler *_scheduler;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        _scheduler = [[FUPReportScheduler alloc] initWithMetricsStorage:[FUPDiContainer metricsStorage]
+                                                        reportApiClient:[FUPDiContainer reportApiClientWithApiKey:apiKey]
+                                                                 device:[FUPDiContainer device]
+                                                          configService:[FUPDiContainer configServiceWithApiKey:apiKey]
+                                                              safetyNet:[FUPDiContainer safetyNetWithApiKey:apiKey]
+                                                           reachability:[FUPDiContainer reachability]
+                                                                   time:[FUPDiContainer time]];
+    });
+
+    return _scheduler;
 }
 
 + (FUPConfigSyncScheduler *)configSyncSchedulerWithApiKey:(NSString *)apiKey
@@ -138,6 +146,11 @@
     return [[FUPMetricsStorageMapper alloc] init];
 }
 
++ (FUPReachability *)reachability
+{
+    return [FUPReachability reachabilityForInternetConnection];
+}
+
 + (FUPDevice *)device
 {
     return [[FUPDevice alloc] initWithUuidGenerator:[FUPDiContainer uuidGenerator]];
@@ -160,7 +173,14 @@
 
 + (FUPSqlite *)sqlite
 {
-    return [[FUPSqlite alloc] initWithFileName:@"flowupdb.sqlite"];
+    static FUPSqlite *_sqlite;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        _sqlite = [[FUPSqlite alloc] initWithFileName:@"flowupdb.sqlite"];
+    });
+
+    return _sqlite;
 }
 
 @end

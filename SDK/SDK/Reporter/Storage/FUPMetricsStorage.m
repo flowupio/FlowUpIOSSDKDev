@@ -58,9 +58,9 @@ static NSUInteger const MaxNumberOfStoredReports = HOURS(4) / CollectorScheduler
     BOOL success = [self.sqlite runStatement:insertStatement];
     [self cleanOldReports];
     if (success) {
-        NSLog(@"[MetricsStorage] Metrics stored");
+        NSLog(@"[FUPMetricsStorage] Metrics stored");
     } else {
-        NSLog(@"[MetricsStorage] There was an error inserting new metrics");
+        NSLog(@"[FUPMetricsStorage] There was an error inserting new metrics");
     }
 
 }
@@ -78,7 +78,7 @@ static NSUInteger const MaxNumberOfStoredReports = HOURS(4) / CollectorScheduler
         if (metric != nil) {
             [metrics addObject:metric];
         } else {
-            NSLog(@"[MetricsStorage] Unable to read metric from SQL storage");
+            NSLog(@"[FUPMetricsStorage] Unable to read metric from SQL storage");
         }
         return YES;
     }];
@@ -96,7 +96,7 @@ static NSUInteger const MaxNumberOfStoredReports = HOURS(4) / CollectorScheduler
     BOOL success = [self.sqlite runStatement:deleteStatement];
 
     if (!success) {
-        NSLog(@"[MetricsStorage] There was an error deleting reported metrics");
+        NSLog(@"[FUPMetricsStorage] There was an error deleting reported metrics");
     }
 }
 
@@ -107,7 +107,7 @@ static NSUInteger const MaxNumberOfStoredReports = HOURS(4) / CollectorScheduler
     BOOL success = [self.sqlite runStatement:deleteStatement];
 
     if (!success) {
-        NSLog(@"[MetricsStorage] There was an error deleting all reported metrics");
+        NSLog(@"[FUPMetricsStorage] There was an error deleting all reported metrics");
     }
 }
 

@@ -18,6 +18,7 @@
 #import "FUPFrameTimeCollector.h"
 #import "FUPDiskUsageCollector.h"
 #import "FUPSafetyNet.h"
+#import "FUPReachability.h"
 
 @interface FUPDiContainer : NSObject
 

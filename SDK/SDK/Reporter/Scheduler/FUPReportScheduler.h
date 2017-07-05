@@ -24,6 +24,7 @@
                                 device:(FUPDevice *)device
                          configService:(FUPConfigService *)configService
                              safetyNet:(FUPSafetyNet *)safetyNet
+                          reachability:(FUPReachability *)reachability
                                   time:(FUPTime *)time;
 
 - (void)start;

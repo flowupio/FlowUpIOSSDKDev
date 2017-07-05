@@ -21,7 +21,7 @@
         [[NSUserDefaults standardUserDefaults] setInteger:i forKey:[NSString stringWithFormat:@"Value #%d", i]];
     }
 
-    [FlowUp application:application didFinishLaunchingWithOptions:launchOptions apiKey:@"NO API KEY YET :(" isDebugModeEnabled:YES];
+    [FlowUp application:application didFinishLaunchingWithOptions:launchOptions apiKey:@"15207698c544f617e2c11151ada4972e1e7d6e8e" isDebugModeEnabled:YES];
     return YES;
 }
 @end
