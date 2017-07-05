@@ -122,6 +122,8 @@
 		49B8DF1E1EDC71CA00C8A9F5 /* FUPConfigServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B8DF1D1EDC71CA00C8A9F5 /* FUPConfigServiceTests.m */; };
 		49BB226F1F0D427C00BDD5B0 /* FUPReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BB226D1F0D427C00BDD5B0 /* FUPReachability.h */; };
 		49BB22701F0D427C00BDD5B0 /* FUPReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB226E1F0D427C00BDD5B0 /* FUPReachability.m */; };
+		49BB22731F0D4DB100BDD5B0 /* FUPQueueStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 49BB22711F0D4DB100BDD5B0 /* FUPQueueStorage.h */; };
+		49BB22741F0D4DB100BDD5B0 /* FUPQueueStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB22721F0D4DB100BDD5B0 /* FUPQueueStorage.m */; };
 		49D839CC1ED81B10004F47C6 /* FUPMetricsStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 49D839CA1ED81B10004F47C6 /* FUPMetricsStorage.h */; };
 		49D839CD1ED81B10004F47C6 /* FUPMetricsStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D839CB1ED81B10004F47C6 /* FUPMetricsStorage.m */; };
 		49DB72A41EDEDFCE00487567 /* FUPConfigStorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DB72A31EDEDFCE00487567 /* FUPConfigStorageTests.m */; };
@@ -269,6 +271,8 @@
 		49B8DF1D1EDC71CA00C8A9F5 /* FUPConfigServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPConfigServiceTests.m; sourceTree = "<group>"; };
 		49BB226D1F0D427C00BDD5B0 /* FUPReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPReachability.h; sourceTree = "<group>"; };
 		49BB226E1F0D427C00BDD5B0 /* FUPReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPReachability.m; sourceTree = "<group>"; };
+		49BB22711F0D4DB100BDD5B0 /* FUPQueueStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPQueueStorage.h; sourceTree = "<group>"; };
+		49BB22721F0D4DB100BDD5B0 /* FUPQueueStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPQueueStorage.m; sourceTree = "<group>"; };
 		49D839CA1ED81B10004F47C6 /* FUPMetricsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPMetricsStorage.h; sourceTree = "<group>"; };
 		49D839CB1ED81B10004F47C6 /* FUPMetricsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPMetricsStorage.m; sourceTree = "<group>"; };
 		49D839D51ED826FF004F47C6 /* FUPTimeIntervalUnits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUPTimeIntervalUnits.h; sourceTree = "<group>"; };
@@ -365,6 +369,8 @@
 				4909F5CB1ED726AB00825B0B /* FUPConfiguration.h */,
 				4909F5CC1ED72A1D00825B0B /* FUPDiContainer.h */,
 				4909F5CD1ED72A1D00825B0B /* FUPDiContainer.m */,
+				49BB22711F0D4DB100BDD5B0 /* FUPQueueStorage.h */,
+				49BB22721F0D4DB100BDD5B0 /* FUPQueueStorage.m */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -824,7 +830,6 @@
 				49BB226D1F0D427C00BDD5B0 /* FUPReachability.h */,
 				49BB226E1F0D427C00BDD5B0 /* FUPReachability.m */,
 			);
-			name = Reachability;
 			path = Reachability;
 			sourceTree = "<group>";
 		};
@@ -896,6 +901,7 @@
 				497BBBE31F0163E300399DB7 /* FUPSafetyNet.h in Headers */,
 				4909F5D71ED742DA00825B0B /* FUPCollectorScheduler.h in Headers */,
 				49BB226F1F0D427C00BDD5B0 /* FUPReachability.h in Headers */,
+				49BB22731F0D4DB100BDD5B0 /* FUPQueueStorage.h in Headers */,
 				49B8DF031EDC347500C8A9F5 /* FUPConfigStorage.h in Headers */,
 				499DEECE1EDD981400BDD763 /* AFHTTPSessionManager.h in Headers */,
 				4978C0791ED5E71400148A4E /* FUPReports.h in Headers */,
@@ -1111,6 +1117,7 @@
 				4909F5C61ED713AA00825B0B /* FUPReportScheduler.m in Sources */,
 				4909F5C11ED70E9E00825B0B /* FUPUuidGenerator.m in Sources */,
 				499DEEE81EDD981400BDD763 /* UIImageView+AFNetworking.m in Sources */,
+				49BB22741F0D4DB100BDD5B0 /* FUPQueueStorage.m in Sources */,
 				4983806F1ED48D6B003BCFB0 /* FUPCpuUsageCollector.m in Sources */,
 				4978C0781ED5E71400148A4E /* FUPReportApiClient.m in Sources */,
 				49B8DF0C1EDC35BF00C8A9F5 /* FUPConfigService.m in Sources */,

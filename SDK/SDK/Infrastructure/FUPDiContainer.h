@@ -19,6 +19,7 @@
 #import "FUPDiskUsageCollector.h"
 #import "FUPSafetyNet.h"
 #import "FUPReachability.h"
+#import "FUPQueueStorage.h"
 
 @interface FUPDiContainer : NSObject
 

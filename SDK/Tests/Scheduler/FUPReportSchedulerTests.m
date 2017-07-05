@@ -37,7 +37,8 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
 
 - (void)setUp {
     [super setUp];
-    FUPSqlite *sqlite = [[FUPSqlite alloc] initWithFileName:@"testingdb.sqlite"];
+    FUPSqlite *sqlite = [[FUPSqlite alloc] initWithFileName:@"testingdb.sqlite"
+                                               queueStorage:[[FUPQueueStorage alloc] init]];
     self.apiClient = mock([FUPReportApiClient class]);
     self.storage = [[FUPMetricsStorage alloc] initWithSqlite:sqlite
                                                       mapper:[[FUPMetricsStorageMapper alloc] init]];
@@ -67,6 +68,15 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
     [self givenSdkIsDisabled];
     [self givenApiClientReportsSuccessfully];
     [self givenDeviceIsConnectedToWiFi];
+    [self.scheduler reportMetrics];
+
+    [verifyCount(self.apiClient, never()) sendReports:anything() completion:anything()];
+}
+
+- (void)testScheduler_WontReport_IfNotConnectedToWiFi
+{
+    [self givenApiClientReportsSuccessfully];
+    [self givenDeviceIsNotConnectedToWiFi];
     [self.scheduler reportMetrics];
 
     [verifyCount(self.apiClient, never()) sendReports:anything() completion:anything()];
@@ -215,6 +225,11 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
     [given([self.reachability currentReachabilityStatus]) willReturnInt:ReachableViaWiFi];
 }
 
+- (void)givenDeviceIsNotConnectedToWiFi
+{
+    [given([self.reachability currentReachabilityStatus]) willReturnInt:NotReachable];
+}
+
 - (void)givenApiClientReportsSuccessfully
 {
     [self givenApiClientReports:nil];
@@ -267,6 +282,7 @@ static NSTimeInterval const LongTimeSinceNow = Now + ReportSchedulerTimeBetweenR
                                                 configService:self.configService
                                                     safetyNet:self.safetyNet
                                                  reachability:self.reachability
+                                                 queueStorage:[[FUPQueueStorage alloc] init]
                                                          time:self.time];
 }
 

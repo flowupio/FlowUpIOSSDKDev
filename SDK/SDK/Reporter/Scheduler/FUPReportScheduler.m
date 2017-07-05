@@ -9,6 +9,7 @@
 #import "FUPReportScheduler.h"
 
 static NSTimeInterval const NeverReported = -1;
+static NSString *const QueueName = @"Report Scheduler Queue";
 
 @interface FUPReportScheduler ()
 
@@ -19,8 +20,8 @@ static NSTimeInterval const NeverReported = -1;
 @property (readonly, nonatomic) FUPConfigService *configService;
 @property (readonly, nonatomic) FUPReachability *reachability;
 @property (readonly, nonatomic) FUPSafetyNet *safetyNet;
+@property (readonly, nonatomic) FUPQueueStorage *queueStorage;
 
-@property (readonly, nonatomic) dispatch_queue_t queue;
 @property (readwrite, nonatomic) NSTimeInterval lastReportTimeInterval;
 
 @end
@@ -33,6 +34,7 @@ static NSTimeInterval const NeverReported = -1;
                          configService:(FUPConfigService *)configService
                              safetyNet:(FUPSafetyNet *)safetyNet
                           reachability:(FUPReachability *)reachability
+                          queueStorage:(FUPQueueStorage *)queueStorage
                                   time:(FUPTime *)time
 {
     self = [super init];
@@ -44,7 +46,7 @@ static NSTimeInterval const NeverReported = -1;
         _safetyNet = safetyNet;
         _reachability = reachability;
         _time = time;
-        _queue = dispatch_queue_create("Report Scheduler Queue", DISPATCH_QUEUE_SERIAL);
+        _queueStorage = queueStorage;
         _lastReportTimeInterval = NeverReported;
     }
     return self;
@@ -67,7 +69,7 @@ static NSTimeInterval const NeverReported = -1;
                                              selector:@selector(didChangeReachabilityStatus:)
                                                  name:kReachabilityChangedNotification
                                                object:nil];
-    async(self.queue, ^{
+    async([self.queueStorage queueWithName:QueueName], ^{
         [self.reachability startNotifier];
     });
 }
@@ -81,7 +83,7 @@ static NSTimeInterval const NeverReported = -1;
 
 - (void)reportMetricsSafely
 {
-    async(self.queue, ^{
+    async([self.queueStorage queueWithName:QueueName], ^{
         [self.safetyNet runBlock:^{
             [self reportMetrics];
         }];
