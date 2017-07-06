@@ -8,11 +8,13 @@
 
 #import "FUPCollectorScheduler.h"
 
+static NSString *const QueueName = @"Collector Scheduler Queue";
+
 @interface FUPCollectorScheduler ()
 
 @property (readonly, nonatomic) FUPSafetyNet *safetyNet;
 @property (readonly, nonatomic) FUPConfigService *configService;
-@property (readonly, nonatomic) dispatch_queue_t queue;
+@property (readonly, nonatomic) FUPQueueStorage *queueStorage;
 
 @end
 
@@ -20,12 +22,13 @@
 
 - (instancetype)initWithSafetyNet:(FUPSafetyNet *)safetyNet
                     configService:(FUPConfigService *)configService
+                     queueStorage:(FUPQueueStorage *)queueStorage
 {
     self = [super init];
     if (self) {
         _safetyNet = safetyNet;
         _configService = configService;
-        _queue = dispatch_queue_create("Collector Scheduler Queue", DISPATCH_QUEUE_CONCURRENT);
+        _queueStorage = queueStorage;
     }
     return self;
 }
@@ -39,7 +42,7 @@
             NSLog(@"[FUPCollectorScheduler] Collect");
             [self.safetyNet runBlock:^{
                 if (self.configService.enabled) {
-                    async(self.queue, ^{ [collector collect]; });
+                    async([self.queueStorage concurrentQueueWithName:QueueName], ^{ [collector collect]; });
                 }
             }];
         }];

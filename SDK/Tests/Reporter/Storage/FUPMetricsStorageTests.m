@@ -24,7 +24,8 @@
 - (void)setUp {
     [super setUp];
     FUPMetricsStorageMapper *mapper = [[FUPMetricsStorageMapper alloc] init];
-    self.sqlite = [[FUPSqlite alloc] initWithFileName:@"testingdb.sqlite"];
+    self.sqlite = [[FUPSqlite alloc] initWithFileName:@"testingdb.sqlite"
+                                         queueStorage:[[FUPQueueStorage alloc] init]];
     self.storage = [[FUPMetricsStorage alloc] initWithSqlite:self.sqlite
                                                       mapper:mapper];
 }

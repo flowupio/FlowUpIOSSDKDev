@@ -14,6 +14,8 @@
 #import "FUPTime.h"
 #import "FUPMetricsStorage.h"
 #import "FUPSafetyNet.h"
+#import "FUPReachability.h"
+#import "FUPQueueStorage.h"
 
 @interface FUPReportScheduler : NSObject
 
@@ -23,6 +25,8 @@
                                 device:(FUPDevice *)device
                          configService:(FUPConfigService *)configService
                              safetyNet:(FUPSafetyNet *)safetyNet
+                          reachability:(FUPReachability *)reachability
+                          queueStorage:(FUPQueueStorage *)queueStorage
                                   time:(FUPTime *)time;
 
 - (void)start;

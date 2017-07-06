@@ -10,21 +10,23 @@
 
 static NSString *const TableCreatedKeyFormat = @"FlowUp.%@TableCreated";
 static NSString *const TableVersionKeyFormat = @"FlowUp.%@TableVersion";
+static NSString *const QueueName = @"SQLite Access Queue";
 
 @interface FUPSqlite ()
 
-@property (readonly, nonatomic) dispatch_queue_t queue;
 @property (readonly, nonatomic) NSString *fileName;
+@property (readonly, nonatomic) FUPQueueStorage *queueStorage;
 
 @end
 
 @implementation FUPSqlite
 
 - (instancetype)initWithFileName:(NSString *)fileName
+                    queueStorage:(FUPQueueStorage *)queueStorage
 {
     self = [super init];
     if (self) {
-        _queue = dispatch_queue_create("SQLit access Queue", DISPATCH_QUEUE_SERIAL);
+        _queueStorage = queueStorage;
         _fileName = fileName;
     }
     return self;
@@ -38,7 +40,7 @@ static NSString *const TableVersionKeyFormat = @"FlowUp.%@TableVersion";
     dispatch_once(&onceToken, ^{
         NSString *dbPath = [self databasePath];
         if (sqlite3_open([dbPath UTF8String], &db) != SQLITE_OK) {
-            NSLog(@"[FUPConfigStorage] Unable to open a database connection");
+            NSLog(@"[FUPSqlite] Unable to open a database connection");
         }
     });
 
@@ -49,7 +51,7 @@ static NSString *const TableVersionKeyFormat = @"FlowUp.%@TableVersion";
 {
     __block BOOL success;
 
-    async(self.queue, ^{
+    dispatch_sync([self.queueStorage queueWithName:QueueName], ^{
         char *error;
         success = sqlite3_exec(self.db, [statement UTF8String], nil, nil, &error) == SQLITE_OK;
 
@@ -66,7 +68,7 @@ static NSString *const TableVersionKeyFormat = @"FlowUp.%@TableVersion";
 {
     __block BOOL success = YES;
 
-    dispatch_sync(self.queue, ^{
+    dispatch_sync([self.queueStorage queueWithName:QueueName], ^{
         sqlite3_stmt *statement = nil;
 
         if (sqlite3_prepare_v2(self.db, [query UTF8String], -1, &statement, nil) != SQLITE_OK) {

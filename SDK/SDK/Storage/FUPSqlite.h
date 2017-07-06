@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "FUPAsync.h"
+#import "FUPQueueStorage.h"
 #import <sqlite3.h>
 
 @interface FUPSqlite : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithFileName:(NSString *)fileName;
+- (instancetype)initWithFileName:(NSString *)fileName
+                    queueStorage:(FUPQueueStorage *)queueStorage;
 
 - (BOOL)runStatement:(NSString *)statement;
 - (BOOL)runQuery:(NSString *)query block:(BOOL (^)(sqlite3_stmt *))block;

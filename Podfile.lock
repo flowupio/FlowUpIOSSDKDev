@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - FlowUpIOSSDK (0.0.2)
+  - FlowUpIOSSDK (0.0.1)
   - Nimble (7.0.0)
   - Nocilla (0.11.0)
   - OCHamcrest (6.1.1)
@@ -34,7 +34,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  FlowUpIOSSDK: 24b3f0b8edd4c39f149aaedf22cba50dd20ddbb7
+  FlowUpIOSSDK: b2f9baaa39e00b1f161bd9580df94d1bfc9b733d
   Nimble: 874982b605d4d752fcac6be695d13c502de84b1b
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
   OCHamcrest: 363e1bf738c3e8a94abe7c2c415f70d671adde38
@@ -42,4 +42,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: e472dc1d62019fc52edbd332f1eb8aafcd190269
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.3.0.beta.2

@@ -22,7 +22,8 @@
 
 - (void)setUp {
     [super setUp];
-    self.sqlite = [[FUPSqlite alloc] initWithFileName:@"testingdb.sqlite"];
+    self.sqlite = [[FUPSqlite alloc] initWithFileName:@"testingdb.sqlite"
+                                         queueStorage:[[FUPQueueStorage alloc] init]];
     self.storage = [[FUPConfigStorage alloc] initWithSqlite:self.sqlite];
 }
 

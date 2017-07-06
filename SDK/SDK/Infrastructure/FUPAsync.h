@@ -11,9 +11,9 @@
 
 NS_INLINE void async(dispatch_queue_t queue, dispatch_block_t block) {
 #ifdef RUN_SYNC
-    dispatch_async(queue, block);
-#else
     dispatch_sync(queue, block);
+#else
+    dispatch_async(queue, block);
 #endif
 }
 

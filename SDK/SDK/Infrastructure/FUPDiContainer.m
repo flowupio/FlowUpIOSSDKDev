@@ -13,7 +13,8 @@
 + (FUPCollectorScheduler *)collectorSchedulerWithApiKey:(NSString *)apiKey
 {
     return [[FUPCollectorScheduler alloc] initWithSafetyNet:[FUPDiContainer safetyNetWithApiKey:apiKey]
-                                              configService:[FUPDiContainer configServiceWithApiKey:apiKey]];
+                                              configService:[FUPDiContainer configServiceWithApiKey:apiKey]
+                                               queueStorage:[FUPDiContainer queueStorage]];
 }
 
 + (FUPReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey
@@ -23,6 +24,8 @@
                                                        device:[FUPDiContainer device]
                                                 configService:[FUPDiContainer configServiceWithApiKey:apiKey]
                                                     safetyNet:[FUPDiContainer safetyNetWithApiKey:apiKey]
+                                                 reachability:[FUPDiContainer reachability]
+                                                 queueStorage:[FUPDiContainer queueStorage]
                                                          time:[FUPDiContainer time]];
 }
 
@@ -138,6 +141,23 @@
     return [[FUPMetricsStorageMapper alloc] init];
 }
 
++ (FUPReachability *)reachability
+{
+    return [FUPReachability reachabilityForInternetConnection];
+}
+
++ (FUPQueueStorage *)queueStorage
+{
+    static FUPQueueStorage *_storage;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        _storage = [[FUPQueueStorage alloc] init];
+    });
+
+    return _storage;
+}
+
 + (FUPDevice *)device
 {
     return [[FUPDevice alloc] initWithUuidGenerator:[FUPDiContainer uuidGenerator]];
@@ -160,7 +180,8 @@
 
 + (FUPSqlite *)sqlite
 {
-    return [[FUPSqlite alloc] initWithFileName:@"flowupdb.sqlite"];
+    return [[FUPSqlite alloc] initWithFileName:@"flowupdb.sqlite"
+                                  queueStorage:[FUPDiContainer queueStorage]];
 }
 
 @end
