@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PODSPEC_VERSION=$(cat SDK/FlowUpIOSSDK.podspec | grep s.version | awk '{print $3}' | tr -d '"')
+PODSPEC_VERSION=$(cat SDK/FlowUpIOSSDK.podspec | grep 's.version ' | awk '{print $3}' | tr -d '"')
 
 echo "Building library for iphone"
 xcodebuild -workspace FlowUpIOSSDK.xcworkspace -scheme 'SDK' -configuration Release -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk "iphoneos" clean build
@@ -28,7 +28,7 @@ if [ $? -ne 0 ]; then
     exit
 fi
 
-echo "Commiting new version ${PODSPEC_VERSION}"
+echo "Commiting new version $PODSPEC_VERSION"
 git add .
-git ci -m "Release ${PODSPEC_VERSION}"
-git tag ${PODSPEC_VERSION}
+git ci -m "Release $PODSPEC_VERSION"
+git tag $PODSPEC_VERSION
