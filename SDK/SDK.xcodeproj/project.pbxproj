@@ -29,6 +29,8 @@
 		4909F5D81ED742DA00825B0B /* FUPCollectorScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909F5D61ED742DA00825B0B /* FUPCollectorScheduler.m */; };
 		491BECBF1EDEB3B800BB77A3 /* FUPSqlite.h in Headers */ = {isa = PBXBuildFile; fileRef = 491BECBD1EDEB3B800BB77A3 /* FUPSqlite.h */; };
 		491BECC01EDEB3B800BB77A3 /* FUPSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 491BECBE1EDEB3B800BB77A3 /* FUPSqlite.m */; };
+		4946DB081F135C1700169F4F /* FUPMemoryUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4946DB061F135C1700169F4F /* FUPMemoryUsageCollector.h */; };
+		4946DB091F135C1700169F4F /* FUPMemoryUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4946DB071F135C1700169F4F /* FUPMemoryUsageCollector.m */; };
 		4960D64B1EEA862F008A8CDE /* FUPCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4960D64A1EEA862F008A8CDE /* FUPCalculatorTests.m */; };
 		4960D6531EEAAFD7008A8CDE /* FUPDiskUsageCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4960D6511EEAAFD7008A8CDE /* FUPDiskUsageCollector.h */; };
 		4960D6541EEAAFD7008A8CDE /* FUPDiskUsageCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4960D6521EEAAFD7008A8CDE /* FUPDiskUsageCollector.m */; };
@@ -170,6 +172,8 @@
 		4909F5D91ED748CB00825B0B /* FUPCollector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUPCollector.h; sourceTree = "<group>"; };
 		491BECBD1EDEB3B800BB77A3 /* FUPSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPSqlite.h; sourceTree = "<group>"; };
 		491BECBE1EDEB3B800BB77A3 /* FUPSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPSqlite.m; sourceTree = "<group>"; };
+		4946DB061F135C1700169F4F /* FUPMemoryUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPMemoryUsageCollector.h; sourceTree = "<group>"; };
+		4946DB071F135C1700169F4F /* FUPMemoryUsageCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPMemoryUsageCollector.m; sourceTree = "<group>"; };
 		494E911B1EE183E100943D96 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		4960D64A1EEA862F008A8CDE /* FUPCalculatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUPCalculatorTests.m; sourceTree = "<group>"; };
 		4960D6511EEAAFD7008A8CDE /* FUPDiskUsageCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUPDiskUsageCollector.h; sourceTree = "<group>"; };
@@ -613,6 +617,8 @@
 				4960D6521EEAAFD7008A8CDE /* FUPDiskUsageCollector.m */,
 				4978BC1E1EE95B96005EF4E4 /* FUPFrameTimeCollector.h */,
 				4978BC1F1EE95B96005EF4E4 /* FUPFrameTimeCollector.m */,
+				4946DB061F135C1700169F4F /* FUPMemoryUsageCollector.h */,
+				4946DB071F135C1700169F4F /* FUPMemoryUsageCollector.m */,
 			);
 			path = Collector;
 			sourceTree = "<group>";
@@ -880,6 +886,7 @@
 				499DEEE61EDD981400BDD763 /* UIImage+AFNetworking.h in Headers */,
 				4978C0771ED5E71400148A4E /* FUPReportApiClient.h in Headers */,
 				499DEED01EDD981400BDD763 /* AFNetworking.h in Headers */,
+				4946DB081F135C1700169F4F /* FUPMemoryUsageCollector.h in Headers */,
 				497BBBDD1F015D9F00399DB7 /* FUPCrashReporterApiClient.h in Headers */,
 				49B8DEEB1EDC246900C8A9F5 /* FUPConfigApiClient.h in Headers */,
 				496E20DE1EE87155006196F5 /* FUPDebugModeStorage.h in Headers */,
@@ -1144,6 +1151,7 @@
 				499DEEEF1EDD981400BDD763 /* UIWebView+AFNetworking.m in Sources */,
 				4909F5D81ED742DA00825B0B /* FUPCollectorScheduler.m in Sources */,
 				49BB22701F0D427C00BDD5B0 /* FUPReachability.m in Sources */,
+				4946DB091F135C1700169F4F /* FUPMemoryUsageCollector.m in Sources */,
 				49B8DEEC1EDC246900C8A9F5 /* FUPConfigApiClient.m in Sources */,
 				4978C0891ED5EFCB00148A4E /* FlowUp.m in Sources */,
 				499DEEE11EDD981400BDD763 /* AFNetworkActivityIndicatorManager.m in Sources */,

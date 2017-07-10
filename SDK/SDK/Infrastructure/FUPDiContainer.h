@@ -17,6 +17,7 @@
 #import "FUPDebugModeStorage.h"
 #import "FUPFrameTimeCollector.h"
 #import "FUPDiskUsageCollector.h"
+#import "FUPMemoryUsageCollector.h"
 #import "FUPSafetyNet.h"
 #import "FUPReachability.h"
 #import "FUPQueueStorage.h"
@@ -27,6 +28,7 @@
 + (FUPCpuUsageCollector *)cpuUsageCollector;
 + (FUPFrameTimeCollector *)frameTimeCollector;
 + (FUPDiskUsageCollector *)diskUsageCollector;
++ (FUPMemoryUsageCollector *)memoryUsageCollector;
 + (FUPReportScheduler *)reportSchedulerWithApiKey:(NSString *)apiKey;
 + (FUPConfigSyncScheduler *)configSyncSchedulerWithApiKey:(NSString *)apiKey;
 + (FUPConfigStorage *)configStorage;

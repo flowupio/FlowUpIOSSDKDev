@@ -70,6 +70,13 @@
                                                             time:[FUPDiContainer time]];
 }
 
++ (FUPMemoryUsageCollector *)memoryUsageCollector
+{
+    return [[FUPMemoryUsageCollector alloc] initWithMetricsStorage:[FUPDiContainer metricsStorage]
+                                                            device:[FUPDiContainer device]
+                                                              time:[FUPDiContainer time]];
+}
+
 + (FUPMetricsStorage *)metricsStorage
 {
     static FUPMetricsStorage *_storage;
