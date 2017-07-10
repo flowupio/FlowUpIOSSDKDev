@@ -20,6 +20,17 @@
             "iOSVersion": "OS Version"
         }
     ],
+    "memory": [
+        {
+            "batterySaverOn": false,
+            "bytesAllocated": 3333,
+            "consumption": 4444,
+            "isInBackground": false,
+            "appVersionName": "App Version Name",
+            "timestamp": 1234,
+            "iOSVersion": "OS Version"
+        }
+    ],
     "ui": [
         {
             "batterySaverOn": false,

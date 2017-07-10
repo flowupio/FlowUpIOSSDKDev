@@ -64,4 +64,20 @@
                         userDefaultsSizeInBytes:userDefaultsSizeInBytes];
 }
 
++ (FUPMetric *)anyMemory
+{
+    return [FUPMetricMother anyMemoryWithMemoryUsageInBytes:1000 memoryUsageInPercent:2000];
+}
+
++ (FUPMetric *)anyMemoryWithMemoryUsageInBytes:(NSUInteger)memoryUsageInBytes
+                          memoryUsageInPercent:(NSUInteger)memoryUsageInPercent
+{
+    return [[FUPMetric alloc] initWithTimestamp:1234
+                                 appVersionName:@"App Version Name"
+                                      osVersion:@"OS Version"
+                          isLowPowerModeEnabled:NO
+                             memoryUsageInBytes:memoryUsageInBytes
+                           memoryUsageInPercent:memoryUsageInPercent];
+}
+
 @end
