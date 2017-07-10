@@ -50,6 +50,11 @@
         [serializedReports setValue:diskSerializedReports forKey:@"disk"];
     }
 
+    NSArray *memorySerializedReports = [self serializeMetrics:reports.memoryMetrics];
+    if (memorySerializedReports.count > 0) {
+        [serializedReports setValue:memorySerializedReports forKey:@"memory"];
+    }
+
     NSLog(@"[FUPReportApiClient] Reporting... %@", serializedReports);
 
     return serializedReports;

@@ -20,6 +20,7 @@
 @property (readonly, nonatomic, copy) NSArray<FUPMetric *> *cpuMetrics;
 @property (readonly, nonatomic, copy) NSArray<FUPMetric *> *uiMetrics;
 @property (readonly, nonatomic, copy) NSArray<FUPMetric *> *diskMetrics;
+@property (readonly, nonatomic, copy) NSArray<FUPMetric *> *memoryMetrics;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithAppPackage:(NSString *)appPackage
@@ -30,6 +31,7 @@
                      numberOfCores:(NSInteger)numberOfCores
                         cpuMetrics:(NSArray<FUPMetric *> *)cpuMetrics
                          uiMetrics:(NSArray<FUPMetric *> *)uiMetrics
-                       diskMetrics:(NSArray<FUPMetric *> *)diskMetrics;
+                       diskMetrics:(NSArray<FUPMetric *> *)diskMetrics
+                     memoryMetrics:(NSArray<FUPMetric *> *)memoryMetrics;
 
 @end
