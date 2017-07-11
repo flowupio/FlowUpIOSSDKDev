@@ -69,6 +69,7 @@
         kern_return_t kr = thread_info(actPointer.unsignedIntValue, THREAD_BASIC_INFO, threadInfo, threadInfoCount);
 
         if (kr != KERN_SUCCESS) {
+            NSLog(@"[FUPCpuUsageCollector] Error retrieving app CPU usage: %d", kr);
             return @[];
         }
 
@@ -88,6 +89,7 @@
     kern_return_t result = task_threads(mach_task_self_, &threadsArray, &count);
 
     if (result != KERN_SUCCESS) {
+        NSLog(@"[FUPCpuUsageCollector] Error retrieving app threads info: %d", result);
         return threadsAct;
     }
 

@@ -153,7 +153,8 @@ static NSString *const QueueName = @"Report Scheduler Queue";
                                     numberOfCores:self.device.numberOfCores
                                        cpuMetrics:[self filteredMetrics:metrics byName:@"CPU"]
                                         uiMetrics:[self filteredMetrics:metrics byName:@"UI"]
-                                      diskMetrics:[self filteredMetrics:metrics byName:@"Disk"]];
+                                      diskMetrics:[self filteredMetrics:metrics byName:@"Disk"]
+                                    memoryMetrics:[self filteredMetrics:metrics byName:@"Memory"]];
 }
 
 - (NSArray <FUPMetric *> *)filteredMetrics:(NSArray<FUPMetric *> *)metrics byName:(NSString *)name

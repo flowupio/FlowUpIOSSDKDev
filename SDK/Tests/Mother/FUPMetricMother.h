@@ -21,5 +21,8 @@
 + (FUPMetric *)anyDisk;
 + (FUPMetric *)anyDiskWithDiskUsageInBytes:(NSUInteger)diskUsageInBytes
                    userDefaultsSizeInBytes:(NSUInteger)userDefaultsSizeInBytes;
++ (FUPMetric *)anyMemory;
++ (FUPMetric *)anyMemoryWithMemoryUsageInBytes:(NSUInteger)memoryUsageInBytes
+                          memoryUsageInPercent:(NSUInteger)memoryUsageInPercent;
 
 @end

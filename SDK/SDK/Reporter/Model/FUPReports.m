@@ -19,6 +19,7 @@
                         cpuMetrics:(NSArray<FUPMetric *> *)cpuMetrics
                          uiMetrics:(NSArray<FUPMetric *> *)uiMetrics
                        diskMetrics:(NSArray<FUPMetric *> *)diskMetrics
+                     memoryMetrics:(NSArray<FUPMetric *> *)memoryMetrics
 {
     self = [super init];
     if (self) {
@@ -31,6 +32,7 @@
         _cpuMetrics = cpuMetrics;
         _uiMetrics = uiMetrics;
         _diskMetrics = diskMetrics;
+        _memoryMetrics = memoryMetrics;
     }
     return self;
 }

@@ -46,4 +46,11 @@
                  diskUsageInBytes:(NSUInteger)diskUsageInBytes
           userDefaultsSizeInBytes:(NSUInteger)userDefaultsSizeInBytes;
 
+- (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
+                   appVersionName:(NSString *)appVersionName
+                        osVersion:(NSString *)osVersion
+            isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled
+               memoryUsageInBytes:(unsigned long long)memoryUsageInBytes
+             memoryUsageInPercent:(NSUInteger)memoryUsageInPercent;
+
 @end

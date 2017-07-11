@@ -58,6 +58,22 @@
 }
 
 - (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
+                   appVersionName:(NSString *)appVersionName
+                        osVersion:(NSString *)osVersion
+            isLowPowerModeEnabled:(BOOL)isLowPowerModeEnabled
+               memoryUsageInBytes:(unsigned long long)memoryUsageInBytes
+             memoryUsageInPercent:(NSUInteger)memoryUsageInPercent
+{
+    return [self initWithTimestamp:timestamp
+                              name:@"Memory"
+                    appVersionName:appVersionName
+                         osVersion:osVersion
+             isLowPowerModeEnabled:isLowPowerModeEnabled
+                            values:@{@"bytesAllocated": [NSNumber numberWithUnsignedLongLong:memoryUsageInBytes],
+                                     @"consumption": [NSNumber numberWithUnsignedInteger:memoryUsageInPercent]}];
+}
+
+- (instancetype)initWithTimestamp:(NSTimeInterval)timestamp
                              name:(NSString *)name
                    appVersionName:(NSString *)appVersionName
                         osVersion:(NSString *)osVersion
