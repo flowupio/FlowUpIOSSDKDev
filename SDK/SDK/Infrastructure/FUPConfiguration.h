@@ -19,7 +19,7 @@ static NSTimeInterval const ReportSchedulerFirstReportDelayTimeInterval = 15;
 static NSTimeInterval const ReportSchedulerReportingTimeInterval = 30;
 static NSTimeInterval const ReportSchedulerTimeBetweenReportsTimeInterval = MINUTES(5);
 static NSUInteger const MaxNumberOfReportsPerRequest = 400;
-static NSString *const SDKVersion = @"0.0.2";
+static NSString *const SDKVersion = @"0.0.3";
 static NSString *const ApiBaseUrl = @"https://api.flowupapp.com";
 
 #endif /* FUPConfiguration_h */
